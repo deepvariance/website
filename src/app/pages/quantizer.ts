@@ -6,7 +6,13 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { CircleCheck, LucideAngularModule } from 'lucide-angular';
+import {
+  Activity,
+  CircleCheck,
+  Layers,
+  LucideAngularModule,
+  Zap,
+} from 'lucide-angular';
 
 function businessEmailValidator(
   control: AbstractControl,
@@ -83,7 +89,7 @@ function businessEmailValidator(
           class="text-5xl sm:text-6xl md:text-8xl font-header font-bold text-dark tracking-tighter leading-[1] mb-12 max-w-4xl mx-auto"
         >
           DeepTuner:<br />The
-          <span class="text-blue-600 italic">FP8 engine</span>.
+          <span class="text-blue-600">FP8 engine</span>.
         </h1>
 
         <p
@@ -225,6 +231,149 @@ function businessEmailValidator(
             </ul>
           </div>
         </div>
+
+        <!-- Technical Architecture -->
+        <div class="max-w-4xl mx-auto mt-24 text-left">
+          <h2
+            class="text-2xl sm:text-3xl font-header font-bold text-dark mb-4 text-center tracking-tight"
+          >
+            How DeepTuner Achieves Near-Zero Perplexity Loss
+          </h2>
+          <p
+            class="text-slate-500 text-base font-medium text-center mb-12 max-w-xl mx-auto"
+          >
+            Three precision-aware techniques work in concert to maintain
+            convergence quality while halving memory requirements.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
+              >
+                <lucide-icon [img]="Layers" [size]="20" />
+              </div>
+              <h4 class="font-header font-bold text-dark mb-2">
+                Dual-Format FP8
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Forward pass uses E4M3 (4-bit exponent, 3-bit mantissa) for
+                high accuracy. Backward pass uses E5M2 (5-bit exponent, 2-bit
+                mantissa) for wider dynamic range during gradient flow.
+              </p>
+            </div>
+            <div
+              class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
+              >
+                <lucide-icon [img]="Activity" [size]="20" />
+              </div>
+              <h4 class="font-header font-bold text-dark mb-2">
+                Adaptive Loss Scaling
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Auto-scaling mu policy monitors per-tensor saturation ratios
+                every step. When saturation exceeds 0.001%, mu is halved
+                immediately. When stable, mu grows back toward its maximum
+                over a 1,000-step window.
+              </p>
+            </div>
+            <div
+              class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
+              >
+                <lucide-icon [img]="Zap" [size]="20" />
+              </div>
+              <h4 class="font-header font-bold text-dark mb-2">
+                Compressed Optimizer States
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                First-order momentum stored in FP8, second-order variance in
+                FP16, master weights in FP16. Reduces optimizer memory from 16
+                bytes per parameter to under 7 bytes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optimization Levels -->
+        <div class="max-w-4xl mx-auto mt-16 text-left">
+          <h3
+            class="text-xl sm:text-2xl font-header font-bold text-dark mb-8 text-center tracking-tight"
+          >
+            Three Levels of FP8 Optimization
+          </h3>
+          <div class="space-y-4">
+            <div
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/5 border border-blue-600/10 flex items-center justify-center"
+              >
+                <span class="text-blue-600 font-header font-bold text-sm"
+                  >O1</span
+                >
+              </div>
+              <div>
+                <h4 class="font-header font-bold text-dark mb-1">
+                  FP8 Gradient Communication
+                </h4>
+                <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                  FP8 all-reduce for DDP gradient synchronization. Compresses
+                  inter-GPU bandwidth by up to 2x with no change to the model
+                  or optimizer code.
+                </p>
+              </div>
+            </div>
+            <div
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/5 border border-blue-600/10 flex items-center justify-center"
+              >
+                <span class="text-blue-600 font-header font-bold text-sm"
+                  >O2</span
+                >
+              </div>
+              <div>
+                <h4 class="font-header font-bold text-dark mb-1">
+                  FP8 Optimizer States
+                </h4>
+                <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                  Includes O1 plus first-order momentum compression to FP8.
+                  Cuts peak optimizer memory by over 2x, enabling larger models
+                  or larger batch sizes on the same GPU.
+                </p>
+              </div>
+            </div>
+            <div
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center"
+              >
+                <span class="text-blue-600 font-header font-bold text-sm"
+                  >O3</span
+                >
+              </div>
+              <div>
+                <h4 class="font-header font-bold text-dark mb-1">
+                  Full FP8 Pipeline with ZeRO
+                </h4>
+                <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                  Includes O2 plus ZeRO-aware FP8 weight partitioning for
+                  multi-GPU setups. Enables the full distributed FP8 training
+                  pipeline with minimal precision loss across all ranks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
 
@@ -256,6 +405,9 @@ function businessEmailValidator(
 export class QuantizerPageComponent {
   private fb = inject(FormBuilder);
   readonly CircleCheck = CircleCheck;
+  readonly Layers = Layers;
+  readonly Activity = Activity;
+  readonly Zap = Zap;
 
   form = this.fb.group({
     name: ['', Validators.required],
