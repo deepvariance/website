@@ -2,13 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
+  Activity,
+  Brain,
   CircleCheck,
   Copy,
   Database,
   ExternalLink,
+  Eye,
   FileText,
+  Layers,
   LucideAngularModule,
+  Network,
+  Package,
   RefreshCw,
+  Server,
+  Shield,
 } from 'lucide-angular';
 
 @Component({
@@ -126,6 +134,90 @@ import {
         </div>
       </section>
 
+      <!-- Model Architecture Section -->
+      <section class="container mx-auto px-6 py-16 md:py-20">
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl sm:text-4xl font-header font-bold text-dark tracking-tight mb-4"
+          >
+            Built for Every AI Workload
+          </h2>
+          <p class="text-slate-500 text-lg font-medium max-w-2xl mx-auto">
+            Optimemory is not tied to any model architecture. If it runs on
+            PyTorch and CUDA, it benefits from VMM-backed memory pooling.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+        >
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Brain" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Large Language Models
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              GPT, LLaMA, Mistral, Megatron. Pre-allocate batch buffers once
+              and reuse them across tens of thousands of training steps.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Eye" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Vision Transformers
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              ViT, CLIP, DINO, SigLIP. Image patch buffers stay resident in a
+              fixed VMM pool through the full training run.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Layers" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Diffusion Models
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              Stable Diffusion, FLUX, DiT. Noisy latent buffers across
+              denoising timesteps share the same physical VRAM pool.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Activity" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Inference Servers
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              ResNet, BERT, EfficientNet. Pre-allocate I/O buffers at startup
+              and serve every request from reusable VMM slots with zero
+              allocation on the hot path.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- How it Works -->
       <section
         class="container mx-auto px-6 py-12 md:py-20 bg-slate-50/50 rounded-[2rem] md:rounded-[3rem] border border-slate-100"
@@ -137,12 +229,13 @@ import {
             <h2
               class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-8 tracking-tight"
             >
-              Virtualizing Memory for the Transformer Era
+              Hardware-Aware Memory for Any Architecture
             </h2>
             <p class="text-slate-500 text-lg mb-12 font-medium">
-              Transformers are memory-bound. Optimemory decouples physical
-              hardware limitations from model capacity using intelligent paging
-              and tiered storage.
+              Every deep learning workload is memory-bound. Optimemory decouples
+              physical hardware limitations from model capacity by operating
+              below the framework level, invisible to the model and the
+              optimizer.
             </p>
 
             <div class="space-y-8">
@@ -191,8 +284,9 @@ import {
                   </h4>
                   <p class="text-slate-500 text-sm font-medium">
                     Queries the CUDA driver for hardware-specific allocation
-                    granularity and aligns chunk sizes accordingly, validated on
-                    NVIDIA H100 and A100.
+                    granularity and aligns chunk sizes accordingly. Works on
+                    any NVIDIA GPU with Compute Capability 6.0 or higher
+                    (Pascal through Hopper).
                   </p>
                 </div>
               </div>
@@ -415,6 +509,84 @@ img_buf = vmm_empty_nd(
         </div>
       </section>
 
+      <!-- Compatibility Section -->
+      <section
+        class="container mx-auto px-6 py-12 md:py-20 bg-slate-50/50 rounded-[2rem] md:rounded-[3rem] border border-slate-100"
+      >
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl sm:text-4xl font-header font-bold text-dark tracking-tight mb-4"
+          >
+            Works Everywhere PyTorch Runs
+          </h2>
+          <p class="text-slate-500 text-base font-medium max-w-xl mx-auto">
+            Designed to fit your infrastructure, not the other way around.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+        >
+          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Server" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">HPC and SLURM</h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              Built-in module-load support. Validated on Big Red 200,
+              Perlmutter, and Summit with <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">deep-variance-check</code> environment diagnostics.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Network" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Multi-GPU Training
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              Process-local by design. Each DDP rank manages its own VMM
+              pool independently on its assigned device, mapping cleanly to
+              PyTorch's multi-process data-parallel patterns.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Shield" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">Mixed Precision</h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              VMM tensors participate fully in FP16 and BF16 autocast regions.
+              Autograd and
+              <code class="text-xs bg-slate-100 px-1 py-0.5 rounded"
+                >nn.Module</code
+              >
+              work without modification.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
+            >
+              <lucide-icon [img]="Package" [size]="24" />
+            </div>
+            <h4 class="font-header font-bold text-dark mb-2">
+              Pre-Compiled Wheel
+            </h4>
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
+              Ships as a pre-compiled Python wheel for CUDA 12.x and Linux
+              x86_64. No compiler, no build tools. One pip install and you are
+              running.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Bottom CTA -->
       <section
         class="container mx-auto px-6 pt-12 md:pt-16 pb-6 md:pb-10 text-center"
@@ -473,4 +645,12 @@ export class OptimemoryPageComponent {
   readonly FileText = FileText;
   readonly RefreshCw = RefreshCw;
   readonly Database = Database;
+  readonly Brain = Brain;
+  readonly Eye = Eye;
+  readonly Activity = Activity;
+  readonly Layers = Layers;
+  readonly Network = Network;
+  readonly Shield = Shield;
+  readonly Package = Package;
+  readonly Server = Server;
 }
