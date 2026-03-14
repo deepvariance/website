@@ -48,7 +48,9 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
                   /></svg
               ></a>
               <a
-                href="#"
+                href="https://github.com/deepvariance"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Deep Variance on GitHub"
                 class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:text-primary transition-colors border border-slate-100"
                 ><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
