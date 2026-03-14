@@ -7,6 +7,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
   Ban,
@@ -1176,6 +1177,19 @@ function businessEmailValidator(
   `,
 })
 export class HomeComponent {
+  private meta = inject(Meta);
+  private title = inject(Title);
+
+  constructor() {
+    this.title.setTitle('Deep Variance — Hardware-Aware AI Infrastructure');
+    this.meta.updateTag({ name: 'description', content: 'Infrastructure tools for AI training. Autopilot automates ML pipelines from raw data. Optimemory doubles effective VRAM. DeepTuner delivers FP8 training with near-zero perplexity loss.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
+    this.meta.updateTag({ property: 'og:description', content: 'Infrastructure tools for AI training. Autopilot automates ML pipelines from raw data. Optimemory doubles effective VRAM. DeepTuner delivers FP8 training with near-zero perplexity loss.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'Infrastructure tools for AI training. Autopilot automates ML pipelines from raw data. Optimemory doubles effective VRAM. DeepTuner delivers FP8 training with near-zero perplexity loss.' });
+  }
+
   readonly Copy = Copy;
   readonly ExternalLink = ExternalLink;
   readonly Image = Image;

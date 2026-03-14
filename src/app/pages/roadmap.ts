@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-roadmap',
@@ -78,4 +79,17 @@ import { CommonModule } from '@angular/common';
     </div>
   `
 })
-export class RoadmapPageComponent {}
+export class RoadmapPageComponent {
+  private meta = inject(Meta);
+  private title = inject(Title);
+
+  constructor() {
+    this.title.setTitle('Roadmap | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Roadmap | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/roadmap' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Roadmap | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+  }
+}

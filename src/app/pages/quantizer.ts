@@ -6,6 +6,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import {
   Activity,
   CircleCheck,
@@ -404,6 +405,18 @@ function businessEmailValidator(
 })
 export class QuantizerPageComponent {
   private fb = inject(FormBuilder);
+  private meta = inject(Meta);
+  private title = inject(Title);
+
+  constructor() {
+    this.title.setTitle('LLM Tuner — FP8 Quantization Engine | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
+    this.meta.updateTag({ property: 'og:title', content: 'LLM Tuner — FP8 Quantization Engine | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/llm-tuner' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'LLM Tuner — FP8 Quantization Engine | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
+  }
   readonly CircleCheck = CircleCheck;
   readonly Layers = Layers;
   readonly Activity = Activity;

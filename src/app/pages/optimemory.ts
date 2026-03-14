@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
   Activity,
@@ -631,6 +632,19 @@ img_buf = vmm_empty_nd(
   `,
 })
 export class OptimemoryPageComponent {
+  private meta = inject(Meta);
+  private title = inject(Title);
+
+  constructor() {
+    this.title.setTitle('Optimemory — GPU Virtual Memory Management | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Optimemory — GPU Virtual Memory Management | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/optimemory' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Optimemory — GPU Virtual Memory Management | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
+  }
+
   readonly Copy = Copy;
   readonly CircleCheck = CircleCheck;
   readonly ExternalLink = ExternalLink;
