@@ -1,6 +1,6 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 import { HeaderComponent } from './components/header';
@@ -16,16 +16,15 @@ export class App {
   protected readonly title = signal('fusion-angular-tailwind-starter');
   private router = inject(Router);
   private viewportScroller = inject(ViewportScroller);
+  private platformId = inject(PLATFORM_ID);
 
   constructor() {
-    // Offset anchor scrolling by header height so anchors aren't hidden
     this.viewportScroller.setOffset([0, 80]);
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Only scroll to top when there's no fragment; anchorScrolling handles fragments
-      if (!event.urlAfterRedirects.includes('#')) {
+      if (!event.urlAfterRedirects.includes('#') && isPlatformBrowser(this.platformId)) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
