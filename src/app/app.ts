@@ -24,7 +24,7 @@ export class App {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Only scroll to top when there's no fragment — let anchorScrolling handle fragments
+      // Only scroll to top when there's no fragment; anchorScrolling handles fragments
       if (!event.urlAfterRedirects.includes('#')) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }

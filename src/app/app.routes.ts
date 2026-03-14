@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home';
 import { OptimemoryPageComponent } from './pages/optimemory';
+import { PricingPageComponent } from './pages/pricing';
 import { QuantizerPageComponent } from './pages/quantizer';
 import { RoadmapPageComponent } from './pages/roadmap';
-import { PricingPageComponent } from './pages/pricing';
 import { UseCasesPageComponent } from './pages/use-cases';
 
 export const routes: Routes = [
