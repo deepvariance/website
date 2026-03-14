@@ -547,6 +547,117 @@ function businessEmailValidator(
         </div>
       </section>
 
+      <!-- Core Optimization -->
+      <section class="container mx-auto px-6 py-16 md:py-24">
+        <div class="text-center mb-12 md:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
+          >
+            Core Optimization
+          </h2>
+          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
+            Integrated directly into your runtime to automate efficiency without
+            changing your training code.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="Zap" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              Intelligent Data Processing
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Automatically infer column types, encode categoricals, and extract
+              structural patterns to guide intelligent preprocessing decisions.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                LLM-driven type inference
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Categorical encoding
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Correlation & MI analysis
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="ShieldCheck" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              LLM-Driven Preprocessing
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Self-correcting LLM code generation handles data cleaning,
+              imputation, and feature engineering, automatically retrying on
+              failure.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Missing value imputation
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Outlier handling
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Automatic retry on error
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="Cpu" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              Automated Model Selection
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Evaluates and ranks multiple model architectures per run,
+              returning a full leaderboard and per-feature importance scores.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Ranked model leaderboard
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Feature importance scores
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Classification & regression
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- Features / Capabilities -->
       <section class="container mx-auto px-6 py-16 md:py-24">
         <div class="mb-16 md:mb-24 text-center">
@@ -632,114 +743,62 @@ function businessEmailValidator(
           </div>
         </div>
 
-        <div class="text-center mb-12 md:mb-16">
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
-          >
-            Core Optimization
-          </h2>
-          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
-            Integrated directly into your runtime to automate efficiency without
-            changing your training code.
-          </p>
-        </div>
+      </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Autopilot -->
+      <!-- Who We Build For -->
+      <section
+        class="container mx-auto px-6 py-12 md:py-20 border-t border-slate-100"
+      >
+        <h2
+          class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-12"
+        >
+          Who We Build For
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="Zap" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              Intelligent Data Processing
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Automatically infer column types, encode categoricals, and extract
-              structural patterns to guide intelligent preprocessing decisions.
+            <h4 class="font-header font-bold text-dark mb-4 text-xl">
+              ML Platform Teams
+            </h4>
+            <p class="text-slate-500 text-sm font-medium">
+              Standardize optimization policies across the organization and
+              reduce infrastructure overhead.
             </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                LLM-driven type inference
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Categorical encoding
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Correlation & MI analysis
-              </li>
-            </ul>
           </div>
-
-          <!-- Policy Engine -->
           <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="ShieldCheck" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              LLM-Driven Preprocessing
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Self-correcting LLM code generation handles data cleaning,
-              imputation, and feature engineering, automatically retrying on
-              failure.
+            <h4 class="font-header font-bold text-dark mb-4 text-xl">
+              Applied AI Orgs
+            </h4>
+            <p class="text-slate-500 text-sm font-medium">
+              Accelerate time-to-market for models by automating hardware-aware
+              placement and scaling.
             </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Missing value imputation
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Outlier handling
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Automatic retry on error
-              </li>
-            </ul>
           </div>
-
-          <!-- Hardware Engine -->
           <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="Cpu" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              Automated Model Selection
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Evaluates and ranks multiple model architectures per run,
-              returning a full leaderboard and per-feature importance scores.
+            <h4 class="font-header font-bold text-dark mb-4 text-xl">
+              Research Labs
+            </h4>
+            <p class="text-slate-500 text-sm font-medium">
+              Maximized GPU availability for experimental workloads with
+              intelligent resource scheduling.
             </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Ranked model leaderboard
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Feature importance scores
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Classification & regression
-              </li>
-            </ul>
+          </div>
+          <div
+            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
+          >
+            <h4 class="font-header font-bold text-dark mb-4 text-xl">
+              HPC Centers
+            </h4>
+            <p class="text-slate-500 text-sm font-medium">
+              National labs running large-scale simulations on GPU clusters.
+              Virtual memory stitching eliminates VRAM fragmentation across
+              parallel workloads.
+            </p>
           </div>
         </div>
       </section>
@@ -823,50 +882,49 @@ function businessEmailValidator(
                     [1/7] AutoCastLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >0.8s</span
+                      >1.2s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [2/7] DataProfilingLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >0.4s</span
+                      >6.8s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [3/7] CorrelationLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >1.2s</span
+                      >14.2s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [4/7] SamplingLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >0.3s</span
+                      >3.1s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [5/7] PreprocessingLayer
-                    <span class="text-amber-400">↻ retry 1/3</span>
-                    <span class="text-emerald-400">→ ✓</span>&nbsp;<span
+                    <span class="text-amber-400">↻ retry 1/3</span>&nbsp;<span class="text-emerald-400">→ ✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >1.1s</span
+                      >22.7s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [6/7] ModelRecommendationLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >0.6s</span
+                      >8.3s</span
                     >
                   </p>
                   <p class="text-slate-500">
                     [7/7] ModelTrainingLayer
                     <span class="text-emerald-400">✓</span>&nbsp;<span
                       class="text-slate-600"
-                      >42.3s</span
+                      >4m 18s</span
                     >
                   </p>
                   <div class="pt-3 mt-2 border-t border-white/5 space-y-1">
@@ -874,58 +932,12 @@ function businessEmailValidator(
                       accuracy: 92.3% | f1_macro: 91.1%
                     </p>
                     <p class="text-slate-600">
-                      peak_mem: 512 MB | total_time: 47.0s
+                      peak_mem: 512 MB | total_time: 5m 14.3s
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Who it's for -->
-      <section
-        class="container mx-auto px-6 py-12 md:py-20 border-t border-slate-100"
-      >
-        <h2
-          class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-12"
-        >
-          Who We Build For
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div
-            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
-          >
-            <h4 class="font-header font-bold text-dark mb-4 text-xl">
-              ML Platform Teams
-            </h4>
-            <p class="text-slate-500 text-sm font-medium">
-              Standardize optimization policies across the organization and
-              reduce infrastructure overhead.
-            </p>
-          </div>
-          <div
-            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
-          >
-            <h4 class="font-header font-bold text-dark mb-4 text-xl">
-              Applied AI Orgs
-            </h4>
-            <p class="text-slate-500 text-sm font-medium">
-              Accelerate time-to-market for models by automating hardware-aware
-              placement and scaling.
-            </p>
-          </div>
-          <div
-            class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
-          >
-            <h4 class="font-header font-bold text-dark mb-4 text-xl">
-              Research Labs
-            </h4>
-            <p class="text-slate-500 text-sm font-medium">
-              Maximized GPU availability for experimental workloads with
-              intelligent resource scheduling.
-            </p>
           </div>
         </div>
       </section>

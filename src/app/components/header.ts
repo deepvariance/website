@@ -180,11 +180,11 @@ import {
           </div>
 
           <a
-            routerLink="/pricing"
+            routerLink="/use-cases"
             routerLinkActive="text-primary"
             (click)="closeAllMenus()"
             class="hover:text-primary transition-colors"
-            >Pricing</a
+            >Use Cases</a
           >
           <a
             routerLink="/roadmap"
@@ -192,6 +192,13 @@ import {
             (click)="closeAllMenus()"
             class="hover:text-primary transition-colors"
             >Roadmap</a
+          >
+          <a
+            routerLink="/pricing"
+            routerLinkActive="text-primary"
+            (click)="closeAllMenus()"
+            class="hover:text-primary transition-colors"
+            >Pricing</a
           >
         </div>
 
@@ -277,16 +284,22 @@ import {
 
           <div class="space-y-4 pt-4 border-t border-slate-50">
             <a
-              routerLink="/pricing"
+              routerLink="/use-cases"
               (click)="closeAllMenus()"
               class="block text-sm font-bold text-dark"
-              >Pricing</a
+              >Use Cases</a
             >
             <a
               routerLink="/roadmap"
               (click)="closeAllMenus()"
               class="block text-sm font-bold text-dark"
               >Roadmap</a
+            >
+            <a
+              routerLink="/pricing"
+              (click)="closeAllMenus()"
+              class="block text-sm font-bold text-dark"
+              >Pricing</a
             >
           </div>
 

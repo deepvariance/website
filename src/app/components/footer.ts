@@ -9,7 +9,7 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
   template: `
     <footer class="bg-white border-t border-slate-100 py-24 mt-24">
       <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16">
           <div class="sm:col-span-2 md:col-span-2 space-y-8">
             <a
               routerLink="/"
@@ -87,48 +87,6 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             <h4
               class="font-header font-bold text-dark text-sm uppercase tracking-wider"
             >
-              Use Cases
-            </h4>
-            <ul class="space-y-4 text-[13px] text-slate-500 font-medium">
-              <li>
-                <a
-                  routerLink="/use-cases"
-                  fragment="gpu-providers"
-                  class="hover:text-primary transition-colors"
-                  >GPU Providers</a
-                >
-              </li>
-              <li>
-                <a
-                  routerLink="/use-cases"
-                  fragment="enterprise-training"
-                  class="hover:text-primary transition-colors"
-                  >Enterprise Training</a
-                >
-              </li>
-              <li>
-                <a
-                  routerLink="/use-cases"
-                  fragment="research-institutions"
-                  class="hover:text-primary transition-colors"
-                  >Research Institutions</a
-                >
-              </li>
-              <li>
-                <a
-                  routerLink="/use-cases"
-                  fragment="manufacturing"
-                  class="hover:text-primary transition-colors"
-                  >Manufacturing</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="space-y-6">
-            <h4
-              class="font-header font-bold text-dark text-sm uppercase tracking-wider"
-            >
               Resources
             </h4>
             <ul class="space-y-4 text-[13px] text-slate-400 font-medium">
@@ -169,14 +127,14 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
         >
           <p>&copy; 2026 Deep Variance, Inc. All rights reserved.</p>
           <div class="flex gap-8">
-            <a href="#" class="hover:text-primary transition-colors"
+            <a routerLink="/privacy-policy" class="hover:text-primary transition-colors"
               >Privacy Policy</a
             >
-            <a href="#" class="hover:text-primary transition-colors"
+            <a routerLink="/terms" class="hover:text-primary transition-colors"
               >Terms of Service</a
             >
-            <a href="#" class="hover:text-slate-900 transition-colors"
-              >Cookie Settings</a
+            <a routerLink="/cookie-policy" class="hover:text-slate-900 transition-colors"
+              >Cookie Policy</a
             >
           </div>
         </div>
