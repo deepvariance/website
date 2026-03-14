@@ -11,11 +11,13 @@ import { RouterLink } from '@angular/router';
 import {
   Ban,
   Braces,
+  Building2,
   ChartBar,
   CircleCheck,
   Copy,
   Cpu,
   ExternalLink,
+  Factory,
   Globe,
   HardDrive,
   Image,
@@ -23,6 +25,7 @@ import {
   Layers,
   Lightbulb,
   LucideAngularModule,
+  Microscope,
   Server,
   ShieldCheck,
   Sparkles,
@@ -658,93 +661,6 @@ function businessEmailValidator(
         </div>
       </section>
 
-      <!-- Features / Capabilities -->
-      <section class="container mx-auto px-6 py-16 md:py-24">
-        <div class="mb-16 md:mb-24 text-center">
-          <h2
-            class="text-3xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
-          >
-            Use Cases
-          </h2>
-          <p class="text-slate-500 text-lg mb-10 font-medium max-w-2xl mx-auto">
-            DeepVariance is architected for researchers and hardware providers
-            alike. We cater to industries renting out compute and companies
-            training on proprietary clusters.
-          </p>
-
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
-          >
-            <a
-              routerLink="/use-cases"
-              fragment="gpu-providers"
-              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
-            >
-              <h4
-                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
-              >
-                GPU Providers
-              </h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                Turn stranded VRAM into a competitive advantage. VMM stitching
-                lets tenants address 2x model memory per physical card, cutting
-                OOM-driven churn and boosting fleet utilization.
-              </p>
-            </a>
-            <a
-              routerLink="/use-cases"
-              fragment="enterprise-training"
-              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
-            >
-              <h4
-                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
-              >
-                Enterprise Training
-              </h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                High-compliance ML teams stuck rebuilding the same pipeline
-                project after project. LLM calls carry only schema metadata,
-                never raw records, making Autopilot auditable and compliant by
-                design.
-              </p>
-            </a>
-            <a
-              routerLink="/use-cases"
-              fragment="research-institutions"
-              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
-            >
-              <h4
-                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
-              >
-                Research Institutions
-              </h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                Computational biology labs hitting VRAM ceilings before their
-                science can scale. A single import moves the effective model
-                ceiling from 3B to 6B parameters on identical hardware.
-              </p>
-            </a>
-            <a
-              routerLink="/use-cases"
-              fragment="manufacturing"
-              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
-            >
-              <h4
-                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
-              >
-                Manufacturing
-              </h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                Quality inspection and predictive maintenance on factory-floor
-                hardware. Autopilot handles sensor and image data natively; FP8
-                compression fits trained models onto edge inference nodes.
-              </p>
-            </a>
-          </div>
-        </div>
-
-      </section>
-
       <!-- Who We Build For -->
       <section
         class="container mx-auto px-6 py-12 md:py-20 border-t border-slate-100"
@@ -801,6 +717,106 @@ function businessEmailValidator(
             </p>
           </div>
         </div>
+      </section>
+
+      <!-- Features / Capabilities -->
+      <section class="container mx-auto px-6 py-12 md:py-16">
+        <div class="mb-10 md:mb-14 text-center">
+          <h2
+            class="text-3xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
+          >
+            Use Cases
+          </h2>
+          <p class="text-slate-500 text-lg mb-10 font-medium max-w-2xl mx-auto">
+            From GPU fleet operators to compliance-constrained enterprise teams,
+            our full stack of memory, training, and quantization tools addresses
+            the infrastructure problems that block production AI.
+          </p>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
+          >
+            <a
+              routerLink="/use-cases"
+              fragment="gpu-providers"
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary mb-4"
+              >
+                <lucide-icon [img]="Cpu" [size]="20" />
+              </div>
+              <h4
+                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
+              >
+                GPU Providers
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Optimemory's VMM layer lets tenants address 2x model memory per
+                physical card, cutting OOM-driven churn. Autopilot reduces
+                time-to-first-run for new tenants to a single API call.
+              </p>
+            </a>
+            <a
+              routerLink="/use-cases"
+              fragment="enterprise-training"
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
+            >
+              <div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary mb-4">
+                <lucide-icon [img]="Building2" [size]="20" />
+              </div>
+              <h4
+                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
+              >
+                Enterprise Training
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Autopilot automates pipeline builds with zero raw data egress,
+                satisfying compliance requirements. DeepTuner's FP8 path
+                compresses trained models for on-device deployment.
+              </p>
+            </a>
+            <a
+              routerLink="/use-cases"
+              fragment="research-institutions"
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
+            >
+              <div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary mb-4">
+                <lucide-icon [img]="Microscope" [size]="20" />
+              </div>
+              <h4
+                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
+              >
+                Research Institutions
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Optimemory moves the effective model ceiling from 3B to 6B
+                parameters on identical hardware. Autopilot accelerates
+                hypothesis testing on tabular phenotype datasets.
+              </p>
+            </a>
+            <a
+              routerLink="/use-cases"
+              fragment="manufacturing"
+              class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm text-left hover:border-primary/30 hover:shadow-md transition-all group"
+            >
+              <div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary mb-4">
+                <lucide-icon [img]="Factory" [size]="20" />
+              </div>
+              <h4
+                class="text-base font-header font-bold text-dark mb-2 group-hover:text-primary transition-colors"
+              >
+                Manufacturing
+              </h4>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                Autopilot ingests sensor and image data natively. Optimemory
+                extends VRAM on constrained edge nodes. DeepTuner compresses
+                models for real-time factory-floor inference.
+              </p>
+            </a>
+          </div>
+        </div>
+
       </section>
 
       <!-- Developer Experience -->
@@ -970,7 +986,7 @@ function businessEmailValidator(
             <h4 class="text-sm font-bold text-dark mb-2">
               On-Premise Execution
             </h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               The entire pipeline, from data profiling to model training, runs
               on your own servers. No data ever leaves your environment.
             </p>
@@ -984,7 +1000,7 @@ function businessEmailValidator(
               <lucide-icon [img]="Ban" [size]="20" />
             </div>
             <h4 class="text-sm font-bold text-dark mb-2">Zero Data Egress</h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               Training data is never transmitted to external services. LLM calls
               carry only schema metadata and error traces, never raw records.
             </p>
@@ -1000,7 +1016,7 @@ function businessEmailValidator(
             <h4 class="text-sm font-bold text-dark mb-2">
               Sandboxed Code Execution
             </h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               LLM-generated preprocessing code runs in a restricted sandbox.
               Only approved libraries are permitted with no arbitrary system
               access.
@@ -1017,7 +1033,7 @@ function businessEmailValidator(
             <h4 class="text-sm font-bold text-dark mb-2">
               Bring Your Own LLM Key
             </h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               Supply your own OpenAI or Groq API key via
               <code class="bg-slate-100 px-1 rounded text-dark"
                 >PipelineConfig</code
@@ -1033,7 +1049,7 @@ function businessEmailValidator(
               <lucide-icon [img]="ChartBar" [size]="20" />
             </div>
             <h4 class="text-sm font-bold text-dark mb-2">Full Audit Trail</h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               Every pipeline run emits per-stage timing, memory usage, and CPU
               metrics: a complete, inspectable record of every automated
               decision.
@@ -1048,7 +1064,7 @@ function businessEmailValidator(
               <lucide-icon [img]="Globe" [size]="20" />
             </div>
             <h4 class="text-sm font-bold text-dark mb-2">Industry Agnostic</h4>
-            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+            <p class="text-sm text-slate-500 font-medium leading-relaxed">
               Works on any tabular dataset regardless of domain: healthcare,
               finance, retail, or manufacturing. No industry-specific
               configuration needed.
@@ -1178,6 +1194,9 @@ export class HomeComponent {
   readonly Layers = Layers;
   readonly HardDrive = HardDrive;
   readonly Braces = Braces;
+  readonly Building2 = Building2;
+  readonly Factory = Factory;
+  readonly Microscope = Microscope;
 
   private fb = inject(FormBuilder);
 
