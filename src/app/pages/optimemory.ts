@@ -535,8 +535,8 @@ img_buf = vmm_empty_nd(
             </div>
             <h4 class="font-header font-bold text-dark mb-2">HPC and SLURM</h4>
             <p class="text-sm text-slate-500 font-medium leading-relaxed">
-              Built-in module-load support. Validated on Big Red 200,
-              Perlmutter, and Summit with <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">deep-variance-check</code> environment diagnostics.
+              Built-in module-load support. Validated on Perlmutter
+              and Summit with <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">deep-variance-check</code> environment diagnostics.
             </p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-100">
