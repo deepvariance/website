@@ -1,4 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 import {
   AbstractControl,
   FormBuilder,
@@ -273,6 +275,30 @@ function businessEmailValidator(
 })
 export class PricingPageComponent {
   private fb = inject(FormBuilder);
+  private title = inject(Title);
+  private meta = inject(Meta);
+  private doc = inject(DOCUMENT);
+
+  constructor() {
+    this.title.setTitle('Pricing | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Pricing | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/pricing' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Pricing | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.setCanonical('https://deepvariance.com/pricing');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
+  }
   readonly CircleCheck = CircleCheck;
   readonly Server = Server;
   readonly Users = Users;

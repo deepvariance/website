@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import {
   AbstractControl,
@@ -609,18 +609,19 @@ function businessEmailValidator(
               LLM-Driven Preprocessing
             </h3>
             <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Self-correcting LLM code generation handles data cleaning,
-              imputation, and feature engineering, automatically retrying on
-              failure.
+              Self-correcting LLM code generation handles missing data and
+              feature engineering. Intelligent sampling selects representative
+              subsets to guide preprocessing decisions efficiently across
+              large datasets.
             </p>
             <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
               <li class="flex items-center gap-2">
                 <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Missing value imputation
+                Missing data handling
               </li>
               <li class="flex items-center gap-2">
                 <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Outlier handling
+                Intelligent sampling
               </li>
               <li class="flex items-center gap-2">
                 <div class="w-1 h-1 rounded-full bg-primary"></div>
@@ -1179,6 +1180,7 @@ function businessEmailValidator(
 export class HomeComponent {
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     this.title.setTitle('Deep Variance — Hardware-Aware AI Infrastructure');
@@ -1188,6 +1190,17 @@ export class HomeComponent {
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
     this.meta.updateTag({ name: 'twitter:description', content: 'Infrastructure tools for AI training. Autopilot automates ML pipelines from raw data. Optimemory doubles effective VRAM. DeepTuner delivers FP8 training with near-zero perplexity loss.' });
+    this.setCanonical('https://deepvariance.com/');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
   }
 
   readonly Copy = Copy;

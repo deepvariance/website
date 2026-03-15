@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import {
   AbstractControl,
   FormBuilder,
@@ -407,6 +408,7 @@ export class QuantizerPageComponent {
   private fb = inject(FormBuilder);
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     this.title.setTitle('LLM Tuner — FP8 Quantization Engine | Deep Variance');
@@ -416,6 +418,17 @@ export class QuantizerPageComponent {
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/llm-tuner' });
     this.meta.updateTag({ name: 'twitter:title', content: 'LLM Tuner — FP8 Quantization Engine | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
+    this.setCanonical('https://deepvariance.com/llm-tuner');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
   }
   readonly CircleCheck = CircleCheck;
   readonly Layers = Layers;

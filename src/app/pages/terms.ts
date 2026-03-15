@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-terms',
@@ -227,4 +229,28 @@ import { RouterLink } from '@angular/router';
     </div>
   `,
 })
-export class TermsComponent {}
+export class TermsComponent {
+  private title = inject(Title);
+  private meta = inject(Meta);
+  private doc = inject(DOCUMENT);
+
+  constructor() {
+    this.title.setTitle('Terms of Service | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'Deep Variance Terms of Service. Read the terms governing use of our products and website.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Terms of Service | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance Terms of Service. Read the terms governing use of our products and website.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/terms' });
+    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    this.setCanonical('https://deepvariance.com/terms');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
+  }
+}

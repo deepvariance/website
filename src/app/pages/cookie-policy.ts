@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cookie-policy',
@@ -197,4 +199,28 @@ import { RouterLink } from '@angular/router';
     </div>
   `,
 })
-export class CookiePolicyComponent {}
+export class CookiePolicyComponent {
+  private title = inject(Title);
+  private meta = inject(Meta);
+  private doc = inject(DOCUMENT);
+
+  constructor() {
+    this.title.setTitle('Cookie Policy | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'Deep Variance Cookie Policy. Learn about the cookies we use and how to manage them.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Cookie Policy | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance Cookie Policy. Learn about the cookies we use and how to manage them.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/cookie-policy' });
+    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    this.setCanonical('https://deepvariance.com/cookie-policy');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
+  }
+}

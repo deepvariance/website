@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -82,6 +82,7 @@ import { Meta, Title } from '@angular/platform-browser';
 export class RoadmapPageComponent {
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     this.title.setTitle('Roadmap | Deep Variance');
@@ -91,5 +92,16 @@ export class RoadmapPageComponent {
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/roadmap' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Roadmap | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.setCanonical('https://deepvariance.com/roadmap');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
   }
 }

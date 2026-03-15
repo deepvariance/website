@@ -168,12 +168,6 @@ import {
                   >
                     Researching Multi-GPU & NVlink Support
                   </p>
-                  <a
-                    routerLink="/roadmap"
-                    (click)="closeAllMenus()"
-                    class="text-[11px] font-bold text-primary uppercase tracking-widest hover:underline"
-                    >View Roadmap &rarr;</a
-                  >
                 </div>
               </div>
             </div>
@@ -185,13 +179,6 @@ import {
             (click)="closeAllMenus()"
             class="hover:text-primary transition-colors"
             >Use Cases</a
-          >
-          <a
-            routerLink="/roadmap"
-            routerLinkActive="text-primary"
-            (click)="closeAllMenus()"
-            class="hover:text-primary transition-colors"
-            >Roadmap</a
           >
           <a
             routerLink="/pricing"
@@ -288,12 +275,6 @@ import {
               (click)="closeAllMenus()"
               class="block text-sm font-bold text-dark"
               >Use Cases</a
-            >
-            <a
-              routerLink="/roadmap"
-              (click)="closeAllMenus()"
-              class="block text-sm font-bold text-dark"
-              >Roadmap</a
             >
             <a
               routerLink="/pricing"

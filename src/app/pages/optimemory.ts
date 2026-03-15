@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
@@ -634,6 +634,7 @@ img_buf = vmm_empty_nd(
 export class OptimemoryPageComponent {
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     this.title.setTitle('Optimemory — GPU Virtual Memory Management | Deep Variance');
@@ -643,6 +644,17 @@ export class OptimemoryPageComponent {
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/optimemory' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Optimemory — GPU Virtual Memory Management | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
+    this.setCanonical('https://deepvariance.com/optimemory');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
   }
 
   readonly Copy = Copy;

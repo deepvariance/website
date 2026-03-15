@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -229,4 +231,28 @@ import { RouterLink } from '@angular/router';
     </div>
   `,
 })
-export class PrivacyPolicyComponent {}
+export class PrivacyPolicyComponent {
+  private title = inject(Title);
+  private meta = inject(Meta);
+  private doc = inject(DOCUMENT);
+
+  constructor() {
+    this.title.setTitle('Privacy Policy | Deep Variance');
+    this.meta.updateTag({ name: 'description', content: 'Deep Variance Privacy Policy. Learn how we collect, use, and protect your data.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Privacy Policy | Deep Variance' });
+    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance Privacy Policy. Learn how we collect, use, and protect your data.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/privacy-policy' });
+    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    this.setCanonical('https://deepvariance.com/privacy-policy');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
+  }
+}

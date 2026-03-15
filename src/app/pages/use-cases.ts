@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -865,12 +866,6 @@ import {
             >
               Talk to our team
             </a>
-            <a
-              routerLink="/roadmap"
-              class="px-6 py-3 rounded-xl border border-white/20 text-white font-bold text-sm hover:bg-white/10 transition-colors"
-            >
-              View roadmap
-            </a>
           </div>
         </div>
       </section>
@@ -880,6 +875,7 @@ import {
 export class UseCasesPageComponent {
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     this.title.setTitle('Use Cases | Deep Variance');
@@ -889,6 +885,17 @@ export class UseCasesPageComponent {
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/use-cases' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Use Cases | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.' });
+    this.setCanonical('https://deepvariance.com/use-cases');
+  }
+
+  private setCanonical(url: string) {
+    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', 'canonical');
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', url);
   }
 
   readonly Cpu = Cpu;
