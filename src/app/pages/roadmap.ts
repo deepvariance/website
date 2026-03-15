@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-roadmap',
   standalone: true,
-  imports: [CommonModule, AnimateOnScrollDirective],
+  imports: [CommonModule],
   template: `
     <div class="relative overflow-hidden min-h-screen">
       <!-- Grid and Blur Background -->
@@ -25,7 +24,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
         <div class="max-w-3xl mx-auto space-y-12">
           <!-- Released -->
-          <div class="relative pl-8 border-l-2 border-primary/20" appAos="fade-up" [aosDelay]="0">
+          <div class="relative pl-8 border-l-2 border-primary/20">
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm"></div>
             <div class="mb-2">
               <span class="text-[10px] font-bold text-primary uppercase tracking-widest">Released • Available Now</span>
@@ -43,7 +42,7 @@ import { Meta, Title } from '@angular/platform-browser';
           </div>
 
           <!-- Early Access -->
-          <div class="relative pl-8 border-l-2 border-blue-600/20" appAos="fade-up" [aosDelay]="100">
+          <div class="relative pl-8 border-l-2 border-blue-600/20">
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600/40 border-4 border-white shadow-sm"></div>
             <div class="mb-2">
               <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Early Access • Beta</span>
@@ -60,7 +59,7 @@ import { Meta, Title } from '@angular/platform-browser';
           </div>
 
           <!-- Research -->
-          <div class="relative pl-8 border-l-2 border-slate-200" appAos="fade-up" [aosDelay]="200">
+          <div class="relative pl-8 border-l-2 border-slate-200">
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-200 border-4 border-white shadow-sm"></div>
             <div class="mb-2">
               <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Research • Ongoing</span>

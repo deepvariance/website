@@ -35,7 +35,6 @@ import {
   Zap,
 } from 'lucide-angular';
 import { DeveloperSnippetComponent } from '../components/developer-snippet';
-import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 
 function businessEmailValidator(
   control: AbstractControl,
@@ -94,7 +93,6 @@ function businessEmailValidator(
     ReactiveFormsModule,
     DeveloperSnippetComponent,
     LucideAngularModule,
-    AnimateOnScrollDirective,
   ],
   template: `
     <div class="relative overflow-hidden">
@@ -109,7 +107,7 @@ function businessEmailValidator(
       <!-- Hero Section -->
       <section class="container mx-auto px-6 pt-24 md:pt-32 pb-16 text-center">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8 animate-fade-in"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8"
         >
           <span class="relative flex h-2 w-2">
             <span
@@ -123,14 +121,12 @@ function businessEmailValidator(
         </div>
 
         <h1
-          appAos="fade-up" [aosDelay]="100"
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
         >
           DeepVariance <span class="text-primary">Autopilot</span>.
         </h1>
 
         <p
-          appAos="fade-up" [aosDelay]="200"
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
           The end-to-end AutoML pipeline. Automatically infer types, clean data,
@@ -185,14 +181,13 @@ function businessEmailValidator(
         <div
           class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto pt-12 border-t border-slate-100"
         >
-          <div appAos="fade-up" [aosDelay]="0" class="space-y-1">
+          <div class="space-y-1">
             <p class="text-4xl font-header font-bold text-dark">7</p>
             <p class="text-sm text-slate-500 font-medium">
               Fully automated pipeline stages
             </p>
           </div>
           <div
-            appAos="fade-up" [aosDelay]="100"
             class="space-y-1 border-y md:border-y-0 md:border-x border-slate-100 py-6 md:py-0"
           >
             <p class="text-4xl font-header font-bold text-dark">1 Call</p>
@@ -200,7 +195,7 @@ function businessEmailValidator(
               From raw data to trained model
             </p>
           </div>
-          <div appAos="fade-up" [aosDelay]="200" class="space-y-1">
+          <div class="space-y-1">
             <p class="text-4xl font-header font-bold text-dark">8+</p>
             <p class="text-sm text-slate-500 font-medium">
               Model architectures evaluated & ranked
@@ -226,7 +221,7 @@ function businessEmailValidator(
 
 <!-- Core Optimization -->
       <section class="container mx-auto px-6 py-10 md:py-14">
-        <div appAos="fade-up" class="text-center mb-10 md:mb-12">
+        <div class="text-center mb-10 md:mb-12">
           <h2
             class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
           >
@@ -240,7 +235,6 @@ function businessEmailValidator(
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
-            appAos="fade-up" [aosDelay]="0"
             class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
           >
             <div
@@ -272,7 +266,6 @@ function businessEmailValidator(
           </div>
 
           <div
-            appAos="fade-up" [aosDelay]="100"
             class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
           >
             <div
@@ -305,7 +298,6 @@ function businessEmailValidator(
           </div>
 
           <div
-            appAos="fade-up" [aosDelay]="200"
             class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
           >
             <div
@@ -345,7 +337,7 @@ function businessEmailValidator(
       >
         <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div appAos="fade-right">
+          <div>
             <h2
               class="text-3xl md:text-5xl font-header font-bold mb-8 leading-tight tracking-tight"
             >
@@ -480,7 +472,7 @@ function businessEmailValidator(
 
 <!-- Compatibility -->
       <section class="container mx-auto px-6 py-10 md:py-14">
-        <div appAos="fade-up" class="text-center mb-10">
+        <div class="text-center mb-10">
           <h2
             class="text-2xl sm:text-3xl font-header font-bold text-dark mb-4 tracking-tight"
           >
@@ -816,14 +808,12 @@ function businessEmailValidator(
         class="container mx-auto px-6 py-10 md:py-14 border-t border-slate-100"
       >
         <h2
-          appAos="fade-up"
           class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-12"
         >
           Who We Build For
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div
-            appAos="fade-up" [aosDelay]="0"
             class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
             <h4 class="font-header font-bold text-dark mb-4 text-xl">
@@ -835,7 +825,6 @@ function businessEmailValidator(
             </p>
           </div>
           <div
-            appAos="fade-up" [aosDelay]="100"
             class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
             <h4 class="font-header font-bold text-dark mb-4 text-xl">
@@ -847,7 +836,6 @@ function businessEmailValidator(
             </p>
           </div>
           <div
-            appAos="fade-up" [aosDelay]="200"
             class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
             <h4 class="font-header font-bold text-dark mb-4 text-xl">
@@ -859,7 +847,6 @@ function businessEmailValidator(
             </p>
           </div>
           <div
-            appAos="fade-up" [aosDelay]="300"
             class="p-8 rounded-3xl bg-slate-50/50 border border-slate-100/50"
           >
             <h4 class="font-header font-bold text-dark mb-4 text-xl">
@@ -876,7 +863,7 @@ function businessEmailValidator(
 
 <!-- Features / Capabilities -->
       <section class="container mx-auto px-6 py-10 md:py-12">
-        <div appAos="fade-up" class="mb-8 md:mb-10 text-center">
+        <div class="mb-8 md:mb-10 text-center">
           <h2
             class="text-3xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
           >
