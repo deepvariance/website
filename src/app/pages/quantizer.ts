@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 import {
   AbstractControl,
   FormBuilder,
@@ -68,7 +69,7 @@ function businessEmailValidator(
 @Component({
   selector: 'app-quantizer',
   standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  imports: [ReactiveFormsModule, LucideAngularModule, AnimateOnScrollDirective],
   template: `
     <div
       class="relative overflow-hidden min-h-[calc(100vh-64px)] flex items-center justify-center"
@@ -90,6 +91,7 @@ function businessEmailValidator(
 
         <h1
           class="text-5xl sm:text-6xl md:text-8xl font-header font-bold text-dark tracking-tighter leading-[1] mb-12 max-w-4xl mx-auto"
+          appAos="fade-in" [aosDelay]="0"
         >
           DeepTuner:<br />The
           <span class="text-blue-600">FP8 engine</span>.
@@ -97,13 +99,14 @@ function businessEmailValidator(
 
         <p
           class="text-base sm:text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto mb-16 font-medium leading-relaxed"
+          appAos="fade-in" [aosDelay]="80"
         >
           State-of-the-art quantization techniques for large language models.
           Currently supporting <span class="font-bold text-dark">FP8</span> with
           near-zero perplexity loss.
         </p>
 
-        <div class="max-w-md mx-auto relative group mt-8 sm:mt-0">
+        <div class="max-w-md mx-auto relative group mt-8 sm:mt-0" appAos="fade-up">
           <div
             class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600/50 blur opacity-20 group-hover:opacity-40 transition"
           ></div>
@@ -197,6 +200,7 @@ function businessEmailValidator(
         >
           <div
             class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-sm"
+            appAos="fade-up" [aosDelay]="0"
           >
             <span
               class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-4 block"
@@ -226,6 +230,7 @@ function businessEmailValidator(
           </div>
           <div
             class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-sm"
+            appAos="fade-up" [aosDelay]="100"
           >
             <span
               class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 block"
@@ -255,6 +260,7 @@ function businessEmailValidator(
         <div class="max-w-4xl mx-auto mt-24 text-left">
           <h2
             class="text-2xl sm:text-3xl font-header font-bold text-dark mb-4 text-center tracking-tight"
+            appAos="fade-up"
           >
             How DeepTuner Achieves Near-Zero Perplexity Loss
           </h2>
@@ -267,6 +273,7 @@ function businessEmailValidator(
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
               class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+              appAos="fade-up" [aosDelay]="0"
             >
               <div
                 class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
@@ -284,6 +291,7 @@ function businessEmailValidator(
             </div>
             <div
               class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+              appAos="fade-up" [aosDelay]="100"
             >
               <div
                 class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
@@ -302,6 +310,7 @@ function businessEmailValidator(
             </div>
             <div
               class="p-6 rounded-2xl bg-blue-600/5 border border-blue-600/10"
+              appAos="fade-up" [aosDelay]="200"
             >
               <div
                 class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4"
@@ -324,12 +333,14 @@ function businessEmailValidator(
         <div class="max-w-4xl mx-auto mt-16 text-left">
           <h3
             class="text-xl sm:text-2xl font-header font-bold text-dark mb-8 text-center tracking-tight"
+            appAos="fade-up"
           >
             Three Levels of FP8 Optimization
           </h3>
           <div class="space-y-4">
             <div
               class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+              appAos="fade-up" [aosDelay]="0"
             >
               <div
                 class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/5 border border-blue-600/10 flex items-center justify-center"
@@ -351,6 +362,7 @@ function businessEmailValidator(
             </div>
             <div
               class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+              appAos="fade-up" [aosDelay]="100"
             >
               <div
                 class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/5 border border-blue-600/10 flex items-center justify-center"
@@ -372,6 +384,7 @@ function businessEmailValidator(
             </div>
             <div
               class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-start gap-6"
+              appAos="fade-up" [aosDelay]="200"
             >
               <div
                 class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center"

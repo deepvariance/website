@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -18,7 +19,7 @@ import {
 @Component({
   selector: 'app-use-cases',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule],
+  imports: [RouterLink, LucideAngularModule, AnimateOnScrollDirective],
   template: `
     <div class="relative overflow-hidden">
       <div
@@ -90,7 +91,7 @@ import {
         class="container mx-auto px-6 pb-24 scroll-mt-24"
       >
         <div class="max-w-5xl mx-auto">
-          <div class="flex items-center gap-3 mb-8">
+          <div class="flex items-center gap-3 mb-8" appAos="fade-up">
             <div
               class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0"
             >
@@ -105,7 +106,7 @@ import {
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
           >
-            <div>
+            <div appAos="fade-right">
               <h2
                 class="text-3xl sm:text-4xl font-header font-bold text-dark mb-6 tracking-tight leading-tight"
               >
@@ -156,7 +157,7 @@ import {
               </a>
             </div>
 
-            <div class="space-y-3">
+            <div class="space-y-3" appAos="fade-left">
               <div class="grid grid-cols-2 gap-3">
                 <div
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
@@ -272,7 +273,7 @@ import {
         class="container mx-auto px-6 py-24 scroll-mt-24"
       >
         <div class="max-w-5xl mx-auto">
-          <div class="flex items-center gap-3 mb-8">
+          <div class="flex items-center gap-3 mb-8" appAos="fade-up">
             <div
               class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 flex-shrink-0"
             >
@@ -287,7 +288,7 @@ import {
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
           >
-            <div>
+            <div appAos="fade-right">
               <h2
                 class="text-3xl sm:text-4xl font-header font-bold text-dark mb-6 tracking-tight leading-tight"
               >
@@ -345,7 +346,7 @@ import {
               </a>
             </div>
 
-            <div class="space-y-3">
+            <div class="space-y-3" appAos="fade-left">
               <div class="grid grid-cols-2 gap-3">
                 <div
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
@@ -459,7 +460,7 @@ import {
         class="container mx-auto px-6 py-24 scroll-mt-24"
       >
         <div class="max-w-5xl mx-auto">
-          <div class="flex items-center gap-3 mb-8">
+          <div class="flex items-center gap-3 mb-8" appAos="fade-up">
             <div
               class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 flex-shrink-0"
             >
@@ -474,7 +475,7 @@ import {
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
           >
-            <div>
+            <div appAos="fade-right">
               <h2
                 class="text-3xl sm:text-4xl font-header font-bold text-dark mb-6 tracking-tight leading-tight"
               >
@@ -540,7 +541,7 @@ import {
               </a>
             </div>
 
-            <div class="space-y-3">
+            <div class="space-y-3" appAos="fade-left">
               <div class="grid grid-cols-2 gap-3">
                 <div
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
@@ -656,7 +657,7 @@ import {
         class="container mx-auto px-6 py-24 scroll-mt-24"
       >
         <div class="max-w-5xl mx-auto">
-          <div class="flex items-center gap-3 mb-8">
+          <div class="flex items-center gap-3 mb-8" appAos="fade-up">
             <div
               class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 flex-shrink-0"
             >
@@ -671,7 +672,7 @@ import {
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
           >
-            <div>
+            <div appAos="fade-right">
               <h2
                 class="text-3xl sm:text-4xl font-header font-bold text-dark mb-6 tracking-tight leading-tight"
               >
@@ -735,7 +736,7 @@ import {
               </a>
             </div>
 
-            <div class="space-y-3">
+            <div class="space-y-3" appAos="fade-left">
               <div class="grid grid-cols-2 gap-3">
                 <div
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
@@ -843,6 +844,7 @@ import {
       <section class="container mx-auto px-6 pb-24">
         <div
           class="max-w-3xl mx-auto p-10 sm:p-14 rounded-[2rem] bg-slate-900 text-white text-center relative overflow-hidden"
+          appAos="fade-up"
         >
           <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
           <div

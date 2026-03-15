@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scroll animations */
+.aos-init {
+  transition-property: opacity, transform;
+  transition-duration: 0.65s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-fade-up    { opacity: 0; transform: translateY(28px); }
+.aos-fade-in    { opacity: 0; transform: translateY(0); }
+.aos-fade-left  { opacity: 0; transform: translateX(28px); }
+.aos-fade-right { opacity: 0; transform: translateX(-28px); }
+
+.aos-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -2,6 +2,7 @@ import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Component, PLATFORM_ID, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 import {
   Activity,
   Brain,
@@ -23,7 +24,7 @@ import {
 @Component({
   selector: 'app-optimemory',
   standalone: true,
-  imports: [CommonModule, RouterLink, LucideAngularModule],
+  imports: [CommonModule, RouterLink, LucideAngularModule, AnimateOnScrollDirective],
   template: `
     <div class="relative overflow-hidden">
       <!-- Grid and Blur Background -->
@@ -52,6 +53,7 @@ import {
 
         <h1
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
+          appAos="fade-in" [aosDelay]="0"
         >
           Optimemory:<br />
           <span class="whitespace-nowrap">Hardware-aware</span>
@@ -60,6 +62,7 @@ import {
 
         <p
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
+          appAos="fade-in" [aosDelay]="80"
         >
           Unlock 2.5x more efficient model weights with research-backed virtual
           memory stitching. A specialized VMM layer that optimizes memory
@@ -138,7 +141,7 @@ import {
 
       <!-- Model Architecture Section -->
       <section class="container mx-auto px-6 py-16 md:py-20">
-        <div class="text-center mb-12">
+        <div class="text-center mb-12" appAos="fade-up">
           <h2
             class="text-3xl sm:text-4xl font-header font-bold text-dark tracking-tight mb-4"
           >
@@ -154,6 +157,7 @@ import {
         >
           <div
             class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+            appAos="fade-up" [aosDelay]="0"
           >
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
@@ -170,6 +174,7 @@ import {
           </div>
           <div
             class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+            appAos="fade-up" [aosDelay]="100"
           >
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
@@ -186,6 +191,7 @@ import {
           </div>
           <div
             class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+            appAos="fade-up" [aosDelay]="200"
           >
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
@@ -202,6 +208,7 @@ import {
           </div>
           <div
             class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all"
+            appAos="fade-up" [aosDelay]="300"
           >
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
@@ -227,7 +234,7 @@ import {
         <div
           class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
         >
-          <div>
+          <div appAos="fade-right">
             <h2
               class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-8 tracking-tight"
             >
@@ -334,7 +341,7 @@ import {
             </div>
           </div>
 
-          <div class="relative group">
+          <div class="relative group" appAos="fade-left">
             <div
               class="absolute -inset-1 bg-emerald-500/20 blur opacity-25 group-hover:opacity-50 transition duration-1000"
             ></div>
@@ -400,7 +407,7 @@ import {
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 items-center"
         >
-          <div>
+          <div appAos="fade-right">
             <h2
               class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-8 tracking-tight"
             >
@@ -457,6 +464,7 @@ import {
 
           <div
             class="bg-dark rounded-[2rem] p-1 shadow-2xl shadow-emerald-500/10"
+            appAos="fade-left"
           >
             <div class="bg-slate-900 rounded-[1.8rem] overflow-hidden">
               <div
@@ -515,7 +523,7 @@ img_buf = vmm_empty_nd(
       <section
         class="container mx-auto px-6 py-12 md:py-20 bg-slate-50/50 rounded-[2rem] md:rounded-[3rem] border border-slate-100"
       >
-        <div class="text-center mb-12">
+        <div class="text-center mb-12" appAos="fade-up">
           <h2
             class="text-3xl sm:text-4xl font-header font-bold text-dark tracking-tight mb-4"
           >
@@ -528,7 +536,7 @@ img_buf = vmm_empty_nd(
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
         >
-          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+          <div class="p-6 rounded-2xl bg-white border border-slate-100" appAos="fade-up" [aosDelay]="0">
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
             >
@@ -540,7 +548,7 @@ img_buf = vmm_empty_nd(
               and Summit with <code class="text-xs bg-slate-100 px-1 py-0.5 rounded">deep-variance-check</code> environment diagnostics.
             </p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+          <div class="p-6 rounded-2xl bg-white border border-slate-100" appAos="fade-up" [aosDelay]="100">
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
             >
@@ -555,7 +563,7 @@ img_buf = vmm_empty_nd(
               PyTorch's multi-process data-parallel patterns.
             </p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+          <div class="p-6 rounded-2xl bg-white border border-slate-100" appAos="fade-up" [aosDelay]="200">
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
             >
@@ -571,7 +579,7 @@ img_buf = vmm_empty_nd(
               work without modification.
             </p>
           </div>
-          <div class="p-6 rounded-2xl bg-white border border-slate-100">
+          <div class="p-6 rounded-2xl bg-white border border-slate-100" appAos="fade-up" [aosDelay]="300">
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-4"
             >
@@ -595,6 +603,7 @@ img_buf = vmm_empty_nd(
       >
         <div
           class="max-w-4xl mx-auto p-8 sm:p-12 md:p-24 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 relative overflow-hidden"
+          appAos="fade-up"
         >
           <div
             class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2"

@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AnimateOnScrollDirective } from '../directives/animate-on-scroll';
 import { Meta, Title } from '@angular/platform-browser';
 import {
   AbstractControl,
@@ -67,7 +68,7 @@ function businessEmailValidator(
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  imports: [ReactiveFormsModule, LucideAngularModule, AnimateOnScrollDirective],
   template: `
     <div class="relative overflow-hidden min-h-screen">
       <!-- Background -->
@@ -82,16 +83,18 @@ function businessEmailValidator(
         <!-- Hero -->
         <div class="max-w-3xl mx-auto text-center mb-20">
           <span
-            class="inline-block text-[10px] font-bold text-primary uppercase tracking-widest mb-6 px-3 py-1.5 bg-primary/8 rounded-full"
+            class="inline-block text-[10px] font-bold text-primary uppercase tracking-widest mb-6 px-3 py-1.5 bg-primary/8 rounded-full animate-fade-in"
             >Pricing</span
           >
           <h1
             class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8"
+            appAos="fade-in" [aosDelay]="0"
           >
             Tailored to your<br />infrastructure.
           </h1>
           <p
             class="text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed"
+            appAos="fade-in" [aosDelay]="80"
           >
             Every team runs different hardware, different workloads, and
             different constraints. We work directly with you to scope what fits.
@@ -104,6 +107,7 @@ function businessEmailValidator(
         >
           <div
             class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
+            appAos="fade-up" [aosDelay]="0"
           >
             <div
               class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
@@ -121,6 +125,7 @@ function businessEmailValidator(
 
           <div
             class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
+            appAos="fade-up" [aosDelay]="100"
           >
             <div
               class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
@@ -138,6 +143,7 @@ function businessEmailValidator(
 
           <div
             class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
+            appAos="fade-up" [aosDelay]="200"
           >
             <div
               class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
@@ -155,7 +161,7 @@ function businessEmailValidator(
         </div>
 
         <!-- Contact Form -->
-        <div class="max-w-xl mx-auto">
+        <div class="max-w-xl mx-auto" appAos="fade-up">
           <div class="text-center mb-10">
             <h2
               id="contact-form"
