@@ -129,7 +129,7 @@ function businessEmailValidator(
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
           The end-to-end AutoML pipeline. Automatically infer types, clean data,
-          engineer features, and train the best-fit model. Powered by LLM-driven
+          engineer features, and train the best-fit ML or deep learning model. Powered by LLM-driven
           code generation and intelligent multi-model comparison.
         </p>
 
@@ -218,7 +218,259 @@ function businessEmailValidator(
       </section>
       -->
 
-      <!-- Compatibility -->
+<!-- Core Optimization -->
+      <section class="container mx-auto px-6 py-16 md:py-24">
+        <div class="text-center mb-12 md:mb-16">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
+          >
+            Core Optimization
+          </h2>
+          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
+            Integrated directly into your runtime to automate efficiency without
+            changing your training code.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="Zap" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              Intelligent Data Processing
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Automatically infer column types, encode categoricals, and extract
+              structural patterns to guide intelligent preprocessing decisions.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                LLM-driven type inference
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Categorical encoding
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Correlation & MI analysis
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="ShieldCheck" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              LLM-Driven Preprocessing
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Self-correcting LLM code generation handles missing data and
+              feature engineering. Intelligent sampling selects representative
+              subsets to guide preprocessing decisions efficiently across
+              large datasets.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Missing data handling
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Intelligent sampling
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Automatic retry on error
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+            >
+              <lucide-icon [img]="Cpu" [size]="24" />
+            </div>
+            <h3 class="text-xl font-header font-bold text-dark mb-4">
+              Automated Model Selection
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              Evaluates and ranks classical ML and deep learning architectures
+              per run, returning a full leaderboard and per-feature importance
+              scores.
+            </p>
+            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Ranked model leaderboard
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Feature importance scores
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1 h-1 rounded-full bg-primary"></div>
+                Classical ML &amp; deep learning
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+<!-- Secondary Features Row -->
+      <section
+        class="container mx-auto px-8 md:px-16 py-12 md:py-16 mb-16 bg-slate-900 rounded-[2rem] md:rounded-[3rem] text-white overflow-hidden relative"
+      >
+        <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2
+              class="text-3xl md:text-5xl font-header font-bold mb-8 leading-tight tracking-tight"
+            >
+              Pipeline Intelligence
+            </h2>
+            <div class="space-y-12">
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary"
+                >
+                  <lucide-icon [img]="Lightbulb" [size]="24" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-header font-bold mb-2">
+                    Self-Correcting Generation
+                  </h4>
+                  <p class="text-slate-400 text-sm font-medium">
+                    If LLM-generated code fails, the error is automatically fed
+                    back as context and retried up to 3 times, without any
+                    manual intervention.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-emerald-400"
+                >
+                  <lucide-icon [img]="Sparkles" [size]="24" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-header font-bold mb-2">
+                    Full Run Observability
+                  </h4>
+                  <p class="text-slate-400 text-sm font-medium">
+                    Every pipeline run returns per-stage wall-clock timing, peak
+                    memory usage, and CPU metrics for complete visibility into
+                    the automated process.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl border border-white/10 p-1"
+            >
+              <div class="w-full bg-[#0d0d14] rounded-[1.4rem] overflow-hidden">
+                <div
+                  class="flex items-center gap-1.5 px-5 py-3 border-b border-white/5"
+                >
+                  <div
+                    class="w-2.5 h-2.5 rounded-full bg-red-500/30 border border-red-500/40"
+                  ></div>
+                  <div
+                    class="w-2.5 h-2.5 rounded-full bg-amber-500/30 border border-amber-500/40"
+                  ></div>
+                  <div
+                    class="w-2.5 h-2.5 rounded-full bg-emerald-500/30 border border-emerald-500/40"
+                  ></div>
+                  <span
+                    class="ml-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest"
+                    >pipeline.run(data, target="churn")</span
+                  >
+                </div>
+                <div class="p-6 font-mono text-xs space-y-1.5 leading-relaxed">
+                  <p class="text-slate-500">
+                    [1/7] AutoCastLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >1.2s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [2/7] DataProfilingLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >6.8s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [3/7] CorrelationLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >14.2s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [4/7] SamplingLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >3.1s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [5/7] PreprocessingLayer
+                    <span class="text-amber-400">↻ retry 1/3</span>&nbsp;<span class="text-emerald-400">→ ✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >22.7s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [6/7] ModelRecommendationLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >8.3s</span
+                    >
+                  </p>
+                  <p class="text-slate-500">
+                    [7/7] ModelTrainingLayer
+                    <span class="text-emerald-400">✓</span>&nbsp;<span
+                      class="text-slate-600"
+                      >4m 18s</span
+                    >
+                  </p>
+                  <div class="pt-3 mt-2 border-t border-white/5 space-y-1">
+                    <p class="text-emerald-400">
+                      accuracy: 92.3% | f1_macro: 91.1%
+                    </p>
+                    <p class="text-slate-600">
+                      peak_mem: 512 MB | total_time: 5m 14.3s
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!-- Developer Experience -->
+      <app-developer-snippet />
+
+<!-- Compatibility -->
       <section class="container mx-auto px-6 py-16 md:py-24">
         <div class="text-center mb-12">
           <h2
@@ -551,119 +803,7 @@ function businessEmailValidator(
         </div>
       </section>
 
-      <!-- Core Optimization -->
-      <section class="container mx-auto px-6 py-16 md:py-24">
-        <div class="text-center mb-12 md:mb-16">
-          <h2
-            class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
-          >
-            Core Optimization
-          </h2>
-          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
-            Integrated directly into your runtime to automate efficiency without
-            changing your training code.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
-          >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="Zap" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              Intelligent Data Processing
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Automatically infer column types, encode categoricals, and extract
-              structural patterns to guide intelligent preprocessing decisions.
-            </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                LLM-driven type inference
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Categorical encoding
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Correlation & MI analysis
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
-          >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="ShieldCheck" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              LLM-Driven Preprocessing
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Self-correcting LLM code generation handles missing data and
-              feature engineering. Intelligent sampling selects representative
-              subsets to guide preprocessing decisions efficiently across
-              large datasets.
-            </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Missing data handling
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Intelligent sampling
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Automatic retry on error
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
-          >
-            <div
-              class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-            >
-              <lucide-icon [img]="Cpu" [size]="24" />
-            </div>
-            <h3 class="text-xl font-header font-bold text-dark mb-4">
-              Automated Model Selection
-            </h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-              Evaluates and ranks multiple model architectures per run,
-              returning a full leaderboard and per-feature importance scores.
-            </p>
-            <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Ranked model leaderboard
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Feature importance scores
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1 h-1 rounded-full bg-primary"></div>
-                Classification & regression
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Who We Build For -->
+<!-- Who We Build For -->
       <section
         class="container mx-auto px-6 py-12 md:py-20 border-t border-slate-100"
       >
@@ -721,7 +861,7 @@ function businessEmailValidator(
         </div>
       </section>
 
-      <!-- Features / Capabilities -->
+<!-- Features / Capabilities -->
       <section class="container mx-auto px-6 py-12 md:py-16">
         <div class="mb-10 md:mb-14 text-center">
           <h2
@@ -821,146 +961,7 @@ function businessEmailValidator(
 
       </section>
 
-      <!-- Developer Experience -->
-      <app-developer-snippet />
-
-      <!-- Secondary Features Row -->
-      <section
-        class="container mx-auto px-8 md:px-16 py-12 md:py-16 mb-16 bg-slate-900 rounded-[2rem] md:rounded-[3rem] text-white overflow-hidden relative"
-      >
-        <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2
-              class="text-3xl md:text-5xl font-header font-bold mb-8 leading-tight tracking-tight"
-            >
-              Pipeline Intelligence
-            </h2>
-            <div class="space-y-12">
-              <div class="flex gap-6">
-                <div
-                  class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary"
-                >
-                  <lucide-icon [img]="Lightbulb" [size]="24" />
-                </div>
-                <div>
-                  <h4 class="text-lg font-header font-bold mb-2">
-                    Self-Correcting Generation
-                  </h4>
-                  <p class="text-slate-400 text-sm font-medium">
-                    If LLM-generated code fails, the error is automatically fed
-                    back as context and retried up to 3 times, without any
-                    manual intervention.
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-6">
-                <div
-                  class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-emerald-400"
-                >
-                  <lucide-icon [img]="Sparkles" [size]="24" />
-                </div>
-                <div>
-                  <h4 class="text-lg font-header font-bold mb-2">
-                    Full Run Observability
-                  </h4>
-                  <p class="text-slate-400 text-sm font-medium">
-                    Every pipeline run returns per-stage wall-clock timing, peak
-                    memory usage, and CPU metrics for complete visibility into
-                    the automated process.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="relative">
-            <div
-              class="bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl border border-white/10 p-1"
-            >
-              <div class="w-full bg-[#0d0d14] rounded-[1.4rem] overflow-hidden">
-                <div
-                  class="flex items-center gap-1.5 px-5 py-3 border-b border-white/5"
-                >
-                  <div
-                    class="w-2.5 h-2.5 rounded-full bg-red-500/30 border border-red-500/40"
-                  ></div>
-                  <div
-                    class="w-2.5 h-2.5 rounded-full bg-amber-500/30 border border-amber-500/40"
-                  ></div>
-                  <div
-                    class="w-2.5 h-2.5 rounded-full bg-emerald-500/30 border border-emerald-500/40"
-                  ></div>
-                  <span
-                    class="ml-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest"
-                    >pipeline.run(data, target="churn")</span
-                  >
-                </div>
-                <div class="p-6 font-mono text-xs space-y-1.5 leading-relaxed">
-                  <p class="text-slate-500">
-                    [1/7] AutoCastLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >1.2s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [2/7] DataProfilingLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >6.8s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [3/7] CorrelationLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >14.2s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [4/7] SamplingLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >3.1s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [5/7] PreprocessingLayer
-                    <span class="text-amber-400">↻ retry 1/3</span>&nbsp;<span class="text-emerald-400">→ ✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >22.7s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [6/7] ModelRecommendationLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >8.3s</span
-                    >
-                  </p>
-                  <p class="text-slate-500">
-                    [7/7] ModelTrainingLayer
-                    <span class="text-emerald-400">✓</span>&nbsp;<span
-                      class="text-slate-600"
-                      >4m 18s</span
-                    >
-                  </p>
-                  <div class="pt-3 mt-2 border-t border-white/5 space-y-1">
-                    <p class="text-emerald-400">
-                      accuracy: 92.3% | f1_macro: 91.1%
-                    </p>
-                    <p class="text-slate-600">
-                      peak_mem: 512 MB | total_time: 5m 14.3s
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Enterprise Features -->
+<!-- Enterprise Features -->
       <section
         class="container mx-auto px-6 py-12 md:py-16 bg-slate-50/30 rounded-[2rem] md:rounded-[3rem] border border-slate-100/50"
       >

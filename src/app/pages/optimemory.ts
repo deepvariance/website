@@ -53,8 +53,9 @@ import {
         <h1
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
         >
-          Optimemory: Hardware-aware
-          <span class="text-emerald-500">memory virtualization</span>.
+          Optimemory:<br />
+          <span class="whitespace-nowrap">Hardware-aware</span>
+          <span class="text-emerald-500"> memory virtualization</span>.
         </h1>
 
         <p
