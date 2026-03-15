@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -636,6 +636,7 @@ export class OptimemoryPageComponent {
   private meta = inject(Meta);
   private title = inject(Title);
   private doc = inject(DOCUMENT);
+  private platformId = inject(PLATFORM_ID);
 
   constructor() {
     this.title.setTitle('Optimemory — GPU Virtual Memory Management | Deep Variance');
@@ -665,6 +666,7 @@ export class OptimemoryPageComponent {
   pipCopied = signal(false);
 
   copyPip() {
+    if (!isPlatformBrowser(this.platformId)) return;
     navigator.clipboard.writeText('pip install deep-variance');
     this.pipCopied.set(true);
     setTimeout(() => this.pipCopied.set(false), 1500);

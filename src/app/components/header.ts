@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { NgClass, isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, PLATFORM_ID, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   ChevronDown,
@@ -14,10 +15,11 @@ import {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, LucideAngularModule],
+  imports: [RouterLink, RouterLinkActive, LucideAngularModule, NgClass],
   template: `
     <header
-      class="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100/50 font-sans"
+      class="fixed top-0 left-0 right-0 z-[100] backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/60 shadow-sm font-sans transition-colors duration-300"
+      [ngClass]="scrolled() ? 'bg-white/90' : 'bg-white/50'"
     >
       <nav
         class="container mx-auto px-6 py-3.5 flex items-center justify-between gap-8 relative"
@@ -321,8 +323,18 @@ export class HeaderComponent {
   readonly Menu = Menu;
   readonly X = X;
 
+  private platformId = inject(PLATFORM_ID);
+
   isProductsMenuOpen = signal(false);
   isMobileMenuOpen = signal(false);
+  scrolled = signal(false);
+
+  @HostListener('window:scroll')
+  onScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.scrolled.set(window.scrollY > 10);
+    }
+  }
 
   toggleMobileMenu(event: Event) {
     event.stopPropagation();

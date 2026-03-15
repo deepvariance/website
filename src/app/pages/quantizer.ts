@@ -13,6 +13,7 @@ import {
   CircleCheck,
   Layers,
   LucideAngularModule,
+  X,
   Zap,
 } from 'lucide-angular';
 
@@ -106,72 +107,88 @@ function businessEmailValidator(
           <div
             class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600/50 blur opacity-20 group-hover:opacity-40 transition"
           ></div>
-          <form
-            [formGroup]="form"
-            (ngSubmit)="submitAccess()"
-            class="relative bg-white p-6 rounded-2xl border border-slate-200 space-y-3"
-          >
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <input
-                formControlName="name"
-                type="text"
-                placeholder="Your name"
-                class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 transition-colors"
-                [class.border-red-300]="isInvalid('name')"
-                [class.border-slate-200]="!isInvalid('name')"
-              />
-              <input
-                formControlName="org"
-                type="text"
-                placeholder="Organization"
-                class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border border-slate-200 bg-slate-50/50"
-              />
-            </div>
-            <input
-              formControlName="email"
-              type="email"
-              placeholder="Work email"
-              class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 transition-colors"
-              [class.border-red-300]="isInvalid('email')"
-              [class.border-slate-200]="!isInvalid('email')"
-            />
-            <textarea
-              formControlName="usecase"
-              placeholder="Describe your use case: model size, hardware, and what you want to fine-tune."
-              rows="3"
-              class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 resize-none transition-colors"
-              [class.border-red-300]="isInvalid('usecase')"
-              [class.border-slate-200]="!isInvalid('usecase')"
-            ></textarea>
-            @if (submitted()) {
-              @if (isInvalid('name')) {
-                <p class="text-xs text-red-500 font-semibold text-left">
-                  Please enter your name.
-                </p>
-              } @else if (
-                isInvalid('email') && form.get('email')?.hasError('required')
-              ) {
-                <p class="text-xs text-red-500 font-semibold text-left">
-                  Please enter your work email.
-                </p>
-              } @else if (isInvalid('email')) {
-                <p class="text-xs text-red-500 font-semibold text-left">
-                  Please use a valid business email address.
-                </p>
-              } @else if (isInvalid('usecase')) {
-                <p class="text-xs text-red-500 font-semibold text-left">
-                  Please describe your use case.
-                </p>
-              }
-            }
-            <button
-              type="submit"
-              [disabled]="submitting()"
-              class="w-full bg-blue-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+          @if (!succeeded()) {
+            <form
+              [formGroup]="form"
+              (ngSubmit)="submitAccess()"
+              class="relative bg-white p-6 rounded-2xl border border-slate-200 space-y-3"
             >
-              {{ submitting() ? 'Sending…' : 'Request Early Access' }}
-            </button>
-          </form>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  formControlName="name"
+                  type="text"
+                  placeholder="Your name"
+                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 transition-colors"
+                  [class.border-red-300]="isInvalid('name')"
+                  [class.border-slate-200]="!isInvalid('name')"
+                />
+                <input
+                  formControlName="org"
+                  type="text"
+                  placeholder="Organization"
+                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border border-slate-200 bg-slate-50/50"
+                />
+              </div>
+              <input
+                formControlName="email"
+                type="email"
+                placeholder="Work email"
+                class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 transition-colors"
+                [class.border-red-300]="isInvalid('email')"
+                [class.border-slate-200]="!isInvalid('email')"
+              />
+              <textarea
+                formControlName="usecase"
+                placeholder="Describe your use case: model size, hardware, and what you want to fine-tune."
+                rows="3"
+                class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 rounded-xl border bg-slate-50/50 resize-none transition-colors"
+                [class.border-red-300]="isInvalid('usecase')"
+                [class.border-slate-200]="!isInvalid('usecase')"
+              ></textarea>
+              @if (submitted()) {
+                @if (isInvalid('name')) {
+                  <p class="text-xs text-red-500 font-semibold text-left">
+                    Please enter your name.
+                  </p>
+                } @else if (
+                  isInvalid('email') && form.get('email')?.hasError('required')
+                ) {
+                  <p class="text-xs text-red-500 font-semibold text-left">
+                    Please enter your work email.
+                  </p>
+                } @else if (isInvalid('email')) {
+                  <p class="text-xs text-red-500 font-semibold text-left">
+                    Please use a valid business email address.
+                  </p>
+                } @else if (isInvalid('usecase')) {
+                  <p class="text-xs text-red-500 font-semibold text-left">
+                    Please describe your use case.
+                  </p>
+                }
+              }
+              <button
+                type="submit"
+                [disabled]="submitting()"
+                class="w-full bg-blue-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {{ submitting() ? 'Sending…' : 'Request Early Access' }}
+              </button>
+            </form>
+          } @else {
+            <div
+              class="relative bg-white p-8 rounded-2xl border border-slate-200 flex flex-col items-center text-center"
+            >
+              <div class="w-[72px] h-[72px] rounded-full bg-emerald-500/10 flex items-center justify-center mb-6">
+                <lucide-icon [img]="CircleCheck" [size]="44" class="text-emerald-500" />
+              </div>
+              <h3 class="text-2xl font-header font-bold text-dark mb-3 tracking-tight">
+                You're in ✨
+              </h3>
+              <p class="text-slate-500 text-sm font-medium leading-relaxed">
+                Thank you for reaching out. We just saw this and can't wait to connect. Our founders will reach out personally.
+              </p>
+            </div>
+          }
         </div>
 
         <!-- Release Tiers -->
@@ -379,26 +396,12 @@ function businessEmailValidator(
       </section>
     </div>
 
-    <!-- Toast -->
-    @if (toastVisible()) {
-      <div
-        class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4"
-      >
-        <div
-          class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-slate-900 text-white shadow-2xl border border-white/10 max-w-sm w-full sm:w-auto"
-        >
-          <div
-            class="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0"
-          >
-            <lucide-icon
-              [img]="CircleCheck"
-              [size]="14"
-              class="text-blue-400"
-            />
-          </div>
-          <span class="text-sm font-semibold"
-            >You're on the list. We'll reach out soon.</span
-          >
+    <!-- Failure Toast -->
+    @if (failed()) {
+      <div class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4">
+        <div class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-red-600 text-white shadow-2xl max-w-sm w-full sm:w-auto">
+          <lucide-icon [img]="X" [size]="16" class="flex-shrink-0" />
+          <span class="text-sm font-semibold">Failed to send. Please try again.</span>
         </div>
       </div>
     }
@@ -434,6 +437,7 @@ export class QuantizerPageComponent {
   readonly Layers = Layers;
   readonly Activity = Activity;
   readonly Zap = Zap;
+  readonly X = X;
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -443,8 +447,9 @@ export class QuantizerPageComponent {
   });
 
   submitting = signal(false);
-  toastVisible = signal(false);
+  succeeded = signal(false);
   submitted = signal(false);
+  failed = signal(false);
 
   isInvalid(field: string): boolean {
     const ctrl = this.form.get(field);
@@ -457,7 +462,7 @@ export class QuantizerPageComponent {
     this.submitting.set(true);
     const { name, org, email, usecase } = this.form.getRawValue();
     try {
-      await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
+      const res = await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -472,10 +477,11 @@ export class QuantizerPageComponent {
           _captcha: 'false',
         }),
       });
-      this.form.reset();
-      this.submitted.set(false);
-      this.toastVisible.set(true);
-      setTimeout(() => this.toastVisible.set(false), 4000);
+      if (!res.ok) throw new Error('Failed');
+      this.succeeded.set(true);
+    } catch {
+      this.failed.set(true);
+      setTimeout(() => this.failed.set(false), 4000);
     } finally {
       this.submitting.set(false);
     }

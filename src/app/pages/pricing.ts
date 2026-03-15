@@ -13,6 +13,7 @@ import {
   LucideAngularModule,
   Server,
   Users,
+  X,
 } from 'lucide-angular';
 
 function businessEmailValidator(
@@ -174,100 +175,102 @@ function businessEmailValidator(
             <div
               class="absolute -inset-1 bg-gradient-to-r from-primary to-primary/40 blur opacity-10 group-hover:opacity-20 transition rounded-3xl"
             ></div>
-            <form
-              [formGroup]="form"
-              (ngSubmit)="submitContact()"
-              class="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-8 space-y-4"
-            >
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  formControlName="name"
-                  type="text"
-                  placeholder="Your name"
-                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
-                  [class.border-red-300]="isInvalid('name')"
-                  [class.border-slate-200]="!isInvalid('name')"
-                />
-                <input
-                  formControlName="org"
-                  type="text"
-                  placeholder="Organization"
-                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border border-slate-200 bg-slate-50/50"
-                />
-              </div>
-              <input
-                formControlName="email"
-                type="email"
-                placeholder="Work email"
-                class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
-                [class.border-red-300]="isInvalid('email')"
-                [class.border-slate-200]="!isInvalid('email')"
-              />
-              <textarea
-                formControlName="message"
-                placeholder="Describe your workload, hardware setup, and team size."
-                rows="4"
-                class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 resize-none transition-colors"
-                [class.border-red-300]="isInvalid('message')"
-                [class.border-slate-200]="!isInvalid('message')"
-              ></textarea>
-              @if (submitted()) {
-                @if (isInvalid('name')) {
-                  <p class="text-xs text-red-500 font-semibold">
-                    Please enter your name.
-                  </p>
-                } @else if (
-                  isInvalid('email') && form.get('email')?.hasError('required')
-                ) {
-                  <p class="text-xs text-red-500 font-semibold">
-                    Please enter your work email.
-                  </p>
-                } @else if (isInvalid('email')) {
-                  <p class="text-xs text-red-500 font-semibold">
-                    Please use a valid business email address.
-                  </p>
-                } @else if (isInvalid('message')) {
-                  <p class="text-xs text-red-500 font-semibold">
-                    Please describe your workload.
-                  </p>
-                }
-              }
-              <button
-                type="submit"
-                [disabled]="submitting()"
-                class="w-full bg-primary text-white px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+            @if (!succeeded()) {
+              <form
+                [formGroup]="form"
+                (ngSubmit)="submitContact()"
+                class="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-8 space-y-4"
               >
-                {{ submitting() ? 'Sending…' : 'Talk to our team' }}
-              </button>
-              <p class="text-center text-[11px] text-slate-400 font-medium">
-                We typically respond within one business day.
-              </p>
-            </form>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    formControlName="name"
+                    type="text"
+                    placeholder="Your name"
+                    class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
+                    [class.border-red-300]="isInvalid('name')"
+                    [class.border-slate-200]="!isInvalid('name')"
+                  />
+                  <input
+                    formControlName="org"
+                    type="text"
+                    placeholder="Organization"
+                    class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border border-slate-200 bg-slate-50/50"
+                  />
+                </div>
+                <input
+                  formControlName="email"
+                  type="email"
+                  placeholder="Work email"
+                  class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
+                  [class.border-red-300]="isInvalid('email')"
+                  [class.border-slate-200]="!isInvalid('email')"
+                />
+                <textarea
+                  formControlName="message"
+                  placeholder="Describe your workload, hardware setup, and team size."
+                  rows="4"
+                  class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 resize-none transition-colors"
+                  [class.border-red-300]="isInvalid('message')"
+                  [class.border-slate-200]="!isInvalid('message')"
+                ></textarea>
+                @if (submitted()) {
+                  @if (isInvalid('name')) {
+                    <p class="text-xs text-red-500 font-semibold">
+                      Please enter your name.
+                    </p>
+                  } @else if (
+                    isInvalid('email') && form.get('email')?.hasError('required')
+                  ) {
+                    <p class="text-xs text-red-500 font-semibold">
+                      Please enter your work email.
+                    </p>
+                  } @else if (isInvalid('email')) {
+                    <p class="text-xs text-red-500 font-semibold">
+                      Please use a valid business email address.
+                    </p>
+                  } @else if (isInvalid('message')) {
+                    <p class="text-xs text-red-500 font-semibold">
+                      Please describe your workload.
+                    </p>
+                  }
+                }
+                <button
+                  type="submit"
+                  [disabled]="submitting()"
+                  class="w-full bg-primary text-white px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {{ submitting() ? 'Sending…' : 'Talk to our team' }}
+                </button>
+                <p class="text-center text-[11px] text-slate-400 font-medium">
+                  We typically respond within one business day.
+                </p>
+              </form>
+            } @else {
+              <div
+                class="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-10 flex flex-col items-center text-center"
+              >
+                <div class="w-[72px] h-[72px] rounded-full bg-emerald-500/10 flex items-center justify-center mb-6">
+                  <lucide-icon [img]="CircleCheck" [size]="44" class="text-emerald-500" />
+                </div>
+                <h3 class="text-2xl font-header font-bold text-dark mb-3 tracking-tight">
+                  We'll be in touch ✨
+                </h3>
+                <p class="text-slate-500 text-sm font-medium leading-relaxed">
+                  Thank you for reaching out. Your message landed directly in our founders' inbox and they'll reach out personally.
+                </p>
+              </div>
+            }
           </div>
         </div>
       </section>
     </div>
 
-    <!-- Toast -->
-    @if (toastVisible()) {
-      <div
-        class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4"
-      >
-        <div
-          class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-slate-900 text-white shadow-2xl border border-white/10 max-w-sm w-full sm:w-auto"
-        >
-          <div
-            class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0"
-          >
-            <lucide-icon
-              [img]="CircleCheck"
-              [size]="14"
-              class="text-emerald-400"
-            />
-          </div>
-          <span class="text-sm font-semibold"
-            >Thanks! We'll be in touch soon.</span
-          >
+    <!-- Failure Toast -->
+    @if (failed()) {
+      <div class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4">
+        <div class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-red-600 text-white shadow-2xl max-w-sm w-full sm:w-auto">
+          <lucide-icon [img]="X" [size]="16" class="flex-shrink-0" />
+          <span class="text-sm font-semibold">Failed to send. Please try again.</span>
         </div>
       </div>
     }
@@ -302,6 +305,7 @@ export class PricingPageComponent {
   readonly CircleCheck = CircleCheck;
   readonly Server = Server;
   readonly Users = Users;
+  readonly X = X;
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -311,8 +315,9 @@ export class PricingPageComponent {
   });
 
   submitting = signal(false);
-  toastVisible = signal(false);
+  succeeded = signal(false);
   submitted = signal(false);
+  failed = signal(false);
 
   isInvalid(field: string): boolean {
     const ctrl = this.form.get(field);
@@ -325,7 +330,7 @@ export class PricingPageComponent {
     this.submitting.set(true);
     const { name, org, email, message } = this.form.getRawValue();
     try {
-      await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
+      const res = await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -340,10 +345,11 @@ export class PricingPageComponent {
           _captcha: 'false',
         }),
       });
-      this.form.reset();
-      this.submitted.set(false);
-      this.toastVisible.set(true);
-      setTimeout(() => this.toastVisible.set(false), 4000);
+      if (!res.ok) throw new Error('Failed');
+      this.succeeded.set(true);
+    } catch {
+      this.failed.set(true);
+      setTimeout(() => this.failed.set(false), 4000);
     } finally {
       this.submitting.set(false);
     }

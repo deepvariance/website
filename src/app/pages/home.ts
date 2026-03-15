@@ -1,5 +1,5 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject, signal } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -31,6 +31,7 @@ import {
   ShieldCheck,
   Sparkles,
   Table2,
+  X,
   Zap,
 } from 'lucide-angular';
 import { DeveloperSnippetComponent } from '../components/developer-snippet';
@@ -219,8 +220,8 @@ function businessEmailValidator(
       -->
 
 <!-- Core Optimization -->
-      <section class="container mx-auto px-6 py-16 md:py-24">
-        <div class="text-center mb-12 md:mb-16">
+      <section class="container mx-auto px-6 py-10 md:py-14">
+        <div class="text-center mb-10 md:mb-12">
           <h2
             class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
           >
@@ -278,8 +279,7 @@ function businessEmailValidator(
             <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
               Self-correcting LLM code generation handles missing data and
               feature engineering. Intelligent sampling selects representative
-              subsets to guide preprocessing decisions efficiently across
-              large datasets.
+              subsets efficiently.
             </p>
             <ul class="space-y-3 text-[13px] text-slate-600 font-semibold">
               <li class="flex items-center gap-2">
@@ -333,7 +333,7 @@ function businessEmailValidator(
 
 <!-- Secondary Features Row -->
       <section
-        class="container mx-auto px-8 md:px-16 py-12 md:py-16 mb-16 bg-slate-900 rounded-[2rem] md:rounded-[3rem] text-white overflow-hidden relative"
+        class="container mx-auto px-8 md:px-16 py-10 md:py-12 mb-12 bg-slate-900 rounded-[2rem] md:rounded-[3rem] text-white overflow-hidden relative"
       >
         <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -471,8 +471,8 @@ function businessEmailValidator(
       <app-developer-snippet />
 
 <!-- Compatibility -->
-      <section class="container mx-auto px-6 py-16 md:py-24">
-        <div class="text-center mb-12">
+      <section class="container mx-auto px-6 py-10 md:py-14">
+        <div class="text-center mb-10">
           <h2
             class="text-2xl sm:text-3xl font-header font-bold text-dark mb-4 tracking-tight"
           >
@@ -805,7 +805,7 @@ function businessEmailValidator(
 
 <!-- Who We Build For -->
       <section
-        class="container mx-auto px-6 py-12 md:py-20 border-t border-slate-100"
+        class="container mx-auto px-6 py-10 md:py-14 border-t border-slate-100"
       >
         <h2
           class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-12"
@@ -862,8 +862,8 @@ function businessEmailValidator(
       </section>
 
 <!-- Features / Capabilities -->
-      <section class="container mx-auto px-6 py-12 md:py-16">
-        <div class="mb-10 md:mb-14 text-center">
+      <section class="container mx-auto px-6 py-10 md:py-12">
+        <div class="mb-8 md:mb-10 text-center">
           <h2
             class="text-3xl md:text-5xl font-header font-bold text-dark mb-6 tracking-tight"
           >
@@ -963,7 +963,7 @@ function businessEmailValidator(
 
 <!-- Enterprise Features -->
       <section
-        class="container mx-auto px-6 py-12 md:py-16 bg-slate-50/30 rounded-[2rem] md:rounded-[3rem] border border-slate-100/50"
+        class="container mx-auto px-6 py-10 md:py-12 bg-slate-50/30 rounded-[2rem] md:rounded-[3rem] border border-slate-100/50"
       >
         <div class="text-center mb-12 md:mb-16">
           <h2
@@ -1078,110 +1078,124 @@ function businessEmailValidator(
 
       <!-- Enterprise CTA -->
       <section
-        class="container mx-auto px-6 pt-12 md:pt-16 pb-6 md:pb-10 text-center"
+        class="container mx-auto px-6 pt-10 md:pt-12 pb-6 md:pb-8 text-center"
       >
         <div
-          class="max-w-xl mx-auto p-8 sm:p-12 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 relative overflow-hidden"
+          class="max-w-xl mx-auto p-6 sm:p-8 rounded-[2rem] md:rounded-[3rem] bg-slate-50 border border-slate-100 relative overflow-hidden"
         >
           <div
             class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2"
           ></div>
-          <h2
-            class="text-2xl sm:text-3xl font-header font-bold text-dark mb-3 tracking-tight"
-          >
-            Request a Demo
-          </h2>
-          <p class="text-slate-500 text-sm mb-8 max-w-sm mx-auto font-medium">
-            See Autopilot in action on your data. Our team will walk you through
-            a live session.
-          </p>
-          <form
-            [formGroup]="demoForm"
-            (ngSubmit)="submitDemo()"
-            class="space-y-3 text-left"
-          >
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <input
-                formControlName="name"
-                type="text"
-                placeholder="Your name"
-                class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-white transition-colors"
-                [class.border-red-300]="isDemoInvalid('name')"
-                [class.border-slate-200]="!isDemoInvalid('name')"
-              />
-              <input
-                formControlName="org"
-                type="text"
-                placeholder="Company"
-                class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border border-slate-200 bg-white"
-              />
-            </div>
-            <input
-              formControlName="email"
-              type="email"
-              placeholder="Work email"
-              class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-white transition-colors"
-              [class.border-red-300]="isDemoInvalid('email')"
-              [class.border-slate-200]="!isDemoInvalid('email')"
-            />
-            @if (demoSubmitted()) {
-              @if (isDemoInvalid('name')) {
-                <p class="text-xs text-red-500 font-semibold">
-                  Please enter your name.
-                </p>
-              } @else if (
-                isDemoInvalid('email') &&
-                demoForm.get('email')?.hasError('required')
-              ) {
-                <p class="text-xs text-red-500 font-semibold">
-                  Please enter your work email.
-                </p>
-              } @else if (isDemoInvalid('email')) {
-                <p class="text-xs text-red-500 font-semibold">
-                  Please use a valid business email address.
-                </p>
-              }
-            }
-            <button
-              type="submit"
-              [disabled]="demoSubmitting()"
-              class="w-full bg-dark text-white px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-black transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-slate-200"
+          @if (!demoSucceeded()) {
+            <h2
+              class="text-2xl sm:text-3xl font-header font-bold text-dark mb-3 tracking-tight"
             >
-              {{ demoSubmitting() ? 'Sending…' : 'Request Demo' }}
-            </button>
-          </form>
+              Request a Demo
+            </h2>
+            <p class="text-slate-500 text-sm mb-8 max-w-sm mx-auto font-medium">
+              See Autopilot in action on your data. Our team will walk you through
+              a live session.
+            </p>
+            <form
+              [formGroup]="demoForm"
+              (ngSubmit)="submitDemo()"
+              class="space-y-3 text-left"
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  formControlName="name"
+                  type="text"
+                  placeholder="Your name"
+                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-white transition-colors"
+                  [class.border-red-300]="isDemoInvalid('name')"
+                  [class.border-slate-200]="!isDemoInvalid('name')"
+                />
+                <input
+                  formControlName="org"
+                  type="text"
+                  placeholder="Company"
+                  class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border border-slate-200 bg-white"
+                />
+              </div>
+              <input
+                formControlName="email"
+                type="email"
+                placeholder="Work email"
+                class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-white transition-colors"
+                [class.border-red-300]="isDemoInvalid('email')"
+                [class.border-slate-200]="!isDemoInvalid('email')"
+              />
+              @if (demoSubmitted()) {
+                @if (isDemoInvalid('name')) {
+                  <p class="text-xs text-red-500 font-semibold">
+                    Please enter your name.
+                  </p>
+                } @else if (
+                  isDemoInvalid('email') &&
+                  demoForm.get('email')?.hasError('required')
+                ) {
+                  <p class="text-xs text-red-500 font-semibold">
+                    Please enter your work email.
+                  </p>
+                } @else if (isDemoInvalid('email')) {
+                  <p class="text-xs text-red-500 font-semibold">
+                    Please use a valid business email address.
+                  </p>
+                }
+              }
+              <button
+                type="submit"
+                [disabled]="demoSubmitting()"
+                class="w-full bg-dark text-white px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-black transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-slate-200"
+              >
+                {{ demoSubmitting() ? 'Sending…' : 'Request Demo' }}
+              </button>
+            </form>
+          } @else {
+            <div class="py-3 flex flex-col items-center text-center">
+              <!-- Checkmark -->
+              <div class="w-[72px] h-[72px] rounded-full bg-emerald-500/10 flex items-center justify-center mb-7">
+                <lucide-icon [img]="CircleCheck" [size]="44" class="text-emerald-500" />
+              </div>
+              <h3 class="text-2xl font-header font-bold text-dark mb-3 tracking-tight">
+                You're in ✨
+              </h3>
+              <p class="text-slate-500 text-sm font-medium leading-relaxed">
+                Thank you for reaching out. We just saw this and can't wait to connect. Our founders will reach out personally.
+              </p>
+            </div>
+          }
         </div>
       </section>
 
-      @if (demoToastVisible()) {
-        <div
-          class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4"
-        >
-          <div
-            class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-slate-900 text-white shadow-2xl border border-white/10 max-w-sm w-full sm:w-auto"
-          >
-            <div
-              class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0"
-            >
-              <lucide-icon
-                [img]="CircleCheck"
-                [size]="14"
-                class="text-primary"
-              />
-            </div>
-            <span class="text-sm font-semibold"
-              >Demo request sent. We'll be in touch soon.</span
-            >
-          </div>
-        </div>
-      }
     </div>
+
+    <!-- Failure Toast -->
+    @if (demoFailed()) {
+      <div
+        class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4"
+      >
+        <div
+          class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-red-600 text-white shadow-2xl max-w-sm w-full sm:w-auto"
+        >
+          <lucide-icon [img]="X" [size]="16" class="flex-shrink-0" />
+          <span class="text-sm font-semibold">Failed to send. Please try again.</span>
+        </div>
+      </div>
+    }
   `,
+  styles: [`
+    @keyframes float-star {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-8px) scale(1.15); opacity: 1; }
+    }
+  `],
 })
 export class HomeComponent {
   private meta = inject(Meta);
   private title = inject(Title);
   private doc = inject(DOCUMENT);
+  private platformId = inject(PLATFORM_ID);
 
   constructor() {
     this.title.setTitle('Deep Variance — Hardware-Aware AI Infrastructure');
@@ -1225,12 +1239,14 @@ export class HomeComponent {
   readonly Building2 = Building2;
   readonly Factory = Factory;
   readonly Microscope = Microscope;
+  readonly X = X;
 
   private fb = inject(FormBuilder);
 
   pipCopied = signal(false);
 
   copyPip() {
+    if (!isPlatformBrowser(this.platformId)) return;
     navigator.clipboard.writeText('pip install deepvariance-sdk');
     this.pipCopied.set(true);
     setTimeout(() => this.pipCopied.set(false), 1500);
@@ -1243,8 +1259,9 @@ export class HomeComponent {
   });
 
   demoSubmitting = signal(false);
-  demoToastVisible = signal(false);
+  demoSucceeded = signal(false);
   demoSubmitted = signal(false);
+  demoFailed = signal(false);
 
   isDemoInvalid(field: string): boolean {
     const ctrl = this.demoForm.get(field);
@@ -1257,7 +1274,7 @@ export class HomeComponent {
     this.demoSubmitting.set(true);
     const { name, org, email } = this.demoForm.getRawValue();
     try {
-      await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
+      const res = await fetch('https://formsubmit.co/ajax/founders@deepvariance.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1271,10 +1288,11 @@ export class HomeComponent {
           _captcha: 'false',
         }),
       });
-      this.demoForm.reset();
-      this.demoSubmitted.set(false);
-      this.demoToastVisible.set(true);
-      setTimeout(() => this.demoToastVisible.set(false), 4000);
+      if (!res.ok) throw new Error('Failed');
+      this.demoSucceeded.set(true);
+    } catch {
+      this.demoFailed.set(true);
+      setTimeout(() => this.demoFailed.set(false), 4000);
     } finally {
       this.demoSubmitting.set(false);
     }

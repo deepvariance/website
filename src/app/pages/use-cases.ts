@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -879,12 +879,33 @@ export class UseCasesPageComponent {
 
   constructor() {
     this.title.setTitle('Use Cases | Deep Variance');
-    this.meta.updateTag({ name: 'description', content: 'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.' });
-    this.meta.updateTag({ property: 'og:title', content: 'Use Cases | Deep Variance' });
-    this.meta.updateTag({ property: 'og:description', content: 'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/use-cases' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Use Cases | Deep Variance' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.' });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+    });
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Use Cases | Deep Variance',
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content:
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+    });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: 'https://deepvariance.com/use-cases',
+    });
+    this.meta.updateTag({
+      name: 'twitter:title',
+      content: 'Use Cases | Deep Variance',
+    });
+    this.meta.updateTag({
+      name: 'twitter:description',
+      content:
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+    });
     this.setCanonical('https://deepvariance.com/use-cases');
   }
 
