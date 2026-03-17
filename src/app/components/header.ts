@@ -3,6 +3,7 @@ import { Component, HostListener, PLATFORM_ID, inject, signal } from '@angular/c
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   ChevronDown,
+  Gauge,
   Lightbulb,
   LucideAngularModule,
   Menu,
@@ -136,7 +137,7 @@ import {
                     routerLink="/llm-tuner"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item col-span-2"
+                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
                       class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover/item:scale-110 transition-transform"
@@ -156,6 +157,36 @@ import {
                       >
                         Weight quantization and fine-tuning tooling for large
                         language models. FP8 support in early access.
+                      </p>
+                    </div>
+                  </a>
+
+                  <!-- HyperRAG -->
+                  <a
+                    routerLink="/hyperrag"
+                    routerLinkActive="bg-slate-50 border-slate-200"
+                    (click)="closeAllMenus()"
+                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 group-hover/item:scale-110 transition-transform"
+                    >
+                      <lucide-icon [img]="Gauge" [size]="20" />
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
+                        <h4 class="text-sm font-bold text-dark">HyperRAG</h4>
+                        <span
+                          class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded"
+                          >dv-hyperrag</span
+                        >
+                      </div>
+                      <p
+                        class="text-xs text-slate-500 font-medium leading-relaxed"
+                      >
+                        KV cache optimization for RAG serving. Prefix-trie
+                        caching, PGDSF eviction, and Pareto schedule search
+                        for up to 9x faster TTFT.
                       </p>
                     </div>
                   </a>
@@ -268,6 +299,18 @@ import {
                 </div>
                 <span class="text-sm font-bold text-dark">LLM Tuner</span>
               </a>
+              <a
+                routerLink="/hyperrag"
+                (click)="closeAllMenus()"
+                class="flex items-center gap-3"
+              >
+                <div
+                  class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600"
+                >
+                  <lucide-icon [img]="Gauge" [size]="16" />
+                </div>
+                <span class="text-sm font-bold text-dark">HyperRAG</span>
+              </a>
             </div>
           </div>
 
@@ -319,6 +362,7 @@ export class HeaderComponent {
   readonly Zap = Zap;
   readonly Server = Server;
   readonly Lightbulb = Lightbulb;
+  readonly Gauge = Gauge;
   readonly Phone = Phone;
   readonly Menu = Menu;
   readonly X = X;

@@ -5,6 +5,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'optimemory', loadComponent: () => import('./pages/optimemory').then(m => m.OptimemoryPageComponent) },
   { path: 'llm-tuner', loadComponent: () => import('./pages/quantizer').then(m => m.QuantizerPageComponent) },
+  { path: 'hyperrag', loadComponent: () => import('./pages/hyperrag').then(m => m.HyperRagPageComponent) },
   { path: 'roadmap', loadComponent: () => import('./pages/roadmap').then(m => m.RoadmapPageComponent) },
   { path: 'pricing', loadComponent: () => import('./pages/pricing').then(m => m.PricingPageComponent) },
   { path: 'use-cases', loadComponent: () => import('./pages/use-cases').then(m => m.UseCasesPageComponent) },

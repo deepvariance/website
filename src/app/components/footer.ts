@@ -78,6 +78,13 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
                   >LLM Tuner</a
                 >
               </li>
+              <li>
+                <a
+                  routerLink="/hyperrag"
+                  class="hover:text-primary transition-colors"
+                  >HyperRAG</a
+                >
+              </li>
             </ul>
           </div>
 
