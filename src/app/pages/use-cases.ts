@@ -29,7 +29,7 @@ import {
       ></div>
 
       <!-- Hero -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-16 text-center">
+      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -38,7 +38,7 @@ import {
         <h1
           class="text-4xl sm:text-5xl md:text-6xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-6 max-w-3xl mx-auto"
         >
-          How teams build on<br /><span class="text-primary">DeepVariance</span
+          How teams build on<br /><span class="text-primary">Deep Variance</span
           >.
         </h1>
         <p
@@ -139,7 +139,7 @@ import {
                   <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/"
+                  routerLink="/autopilot"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
                   <lucide-icon [img]="Zap" [size]="11" /> Autopilot
@@ -322,7 +322,7 @@ import {
 
               <div class="flex flex-wrap gap-2 mb-8">
                 <a
-                  routerLink="/"
+                  routerLink="/autopilot"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
                   <lucide-icon [img]="Zap" [size]="11" /> Autopilot
@@ -517,7 +517,7 @@ import {
                   <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/"
+                  routerLink="/autopilot"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
                   <lucide-icon [img]="Zap" [size]="11" /> Autopilot
@@ -706,7 +706,7 @@ import {
 
               <div class="flex flex-wrap gap-2 mb-8">
                 <a
-                  routerLink="/"
+                  routerLink="/autopilot"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
                   <lucide-icon [img]="Zap" [size]="11" /> Autopilot

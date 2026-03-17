@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'autopilot', loadComponent: () => import('./pages/autopilot').then(m => m.AutopilotPageComponent) },
   { path: 'optimemory', loadComponent: () => import('./pages/optimemory').then(m => m.OptimemoryPageComponent) },
   { path: 'llm-tuner', loadComponent: () => import('./pages/quantizer').then(m => m.QuantizerPageComponent) },
   { path: 'hyperrag', loadComponent: () => import('./pages/hyperrag').then(m => m.HyperRagPageComponent) },

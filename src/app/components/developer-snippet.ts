@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 items-center">
         <div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-8 tracking-tight">Python-first integration</h2>
-          <p class="text-slate-500 text-base sm:text-lg mb-8 font-medium">Integrate DeepVariance into your existing training scripts with just a few lines of code.</p>
+          <p class="text-slate-500 text-base sm:text-lg mb-8 font-medium">Integrate Deep Variance into your existing training scripts with just a few lines of code.</p>
 
           <div class="space-y-6">
             <div class="flex gap-4">

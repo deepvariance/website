@@ -23,7 +23,7 @@ import {
       [ngClass]="scrolled() ? 'bg-white/90' : 'bg-white/50'"
     >
       <nav
-        class="container mx-auto px-6 py-3.5 flex items-center justify-between gap-8 relative"
+        class="container mx-auto px-6 py-2 flex items-center justify-between gap-8 relative"
       >
         <a
           routerLink="/"
@@ -47,7 +47,9 @@ import {
             (mouseleave)="isProductsMenuOpen.set(false)"
           >
             <button
-              class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-default"
+              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all cursor-default"
+              [class.bg-slate-100]="isProductsMenuOpen()"
+              [class.text-primary]="isProductsMenuOpen()"
             >
               Products
               <lucide-icon
@@ -74,8 +76,7 @@ import {
                 <div class="grid grid-cols-2 gap-2">
                   <!-- Autopilot -->
                   <a
-                    routerLink="/"
-                    [routerLinkActiveOptions]="{ exact: true }"
+                    routerLink="/autopilot"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
                     class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
@@ -210,14 +211,14 @@ import {
             routerLink="/use-cases"
             routerLinkActive="text-primary"
             (click)="closeAllMenus()"
-            class="hover:text-primary transition-colors"
+            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
             >Use Cases</a
           >
           <a
             routerLink="/pricing"
             routerLinkActive="text-primary"
             (click)="closeAllMenus()"
-            class="hover:text-primary transition-colors"
+            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
             >Pricing</a
           >
         </div>
@@ -264,7 +265,7 @@ import {
             </p>
             <div class="grid gap-4">
               <a
-                routerLink="/"
+                routerLink="/autopilot"
                 (click)="closeAllMenus()"
                 class="flex items-center gap-3"
               >

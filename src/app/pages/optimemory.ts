@@ -35,7 +35,7 @@ import {
       ></div>
 
       <!-- Hero Section -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-16 text-center">
+      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-emerald-600 text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -111,27 +111,19 @@ import {
 
         <!-- Memory Stats -->
         <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto pt-12 border-t border-slate-100"
+          class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden max-w-3xl mx-auto border border-slate-200/60"
         >
-          <div class="space-y-1">
-            <p class="text-4xl font-header font-bold text-dark">2.5x</p>
-            <p class="text-sm text-slate-500 font-medium">
-              Model scale increase
-            </p>
+          <div class="bg-white px-8 py-6 text-center">
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">2.5x</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Model scale increase</p>
           </div>
-          <div
-            class="space-y-1 border-y md:border-y-0 md:border-x border-slate-100 py-6 md:py-0"
-          >
-            <p class="text-4xl font-header font-bold text-dark">-65%</p>
-            <p class="text-sm text-slate-500 font-medium">
-              Memory allocation overhead reduced
-            </p>
+          <div class="bg-white px-8 py-6 text-center">
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">-65%</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Memory allocation overhead</p>
           </div>
-          <div class="space-y-1">
-            <p class="text-4xl font-header font-bold text-dark">+42%</p>
-            <p class="text-sm text-slate-500 font-medium">
-              Training stability uplift
-            </p>
+          <div class="bg-white px-8 py-6 text-center">
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">+42%</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Training stability uplift</p>
           </div>
         </div>
       </section>
@@ -639,12 +631,12 @@ export class OptimemoryPageComponent {
   private platformId = inject(PLATFORM_ID);
 
   constructor() {
-    this.title.setTitle('Optimemory — GPU Virtual Memory Management | Deep Variance');
+    this.title.setTitle('Optimemory | Deep Variance');
     this.meta.updateTag({ name: 'description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
-    this.meta.updateTag({ property: 'og:title', content: 'Optimemory — GPU Virtual Memory Management | Deep Variance' });
+    this.meta.updateTag({ property: 'og:title', content: 'Optimemory | Deep Variance' });
     this.meta.updateTag({ property: 'og:description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/optimemory' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Optimemory — GPU Virtual Memory Management | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Optimemory | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'Optimemory is a CUDA VMM driver-level memory layer that doubles effective VRAM without new hardware. Eliminate OOM errors and serve larger models today.' });
     this.setCanonical('https://deepvariance.com/optimemory');
   }

@@ -12,7 +12,7 @@ import { Meta, Title } from '@angular/platform-browser';
       <div class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-24">
+      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-14">
         <div class="max-w-4xl mx-auto text-center mb-20">
           <h1 class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8">
             Product Roadmap

@@ -4,13 +4,13 @@ import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
   ArrowRight,
-  BarChart3,
-  BookOpen,
+  ChartBar,
   CircleCheck,
   Copy,
   Cpu,
   Database,
-  FileCode2,
+  ExternalLink,
+  FileCode,
   Gauge,
   GitBranch,
   LucideAngularModule,
@@ -40,7 +40,7 @@ import {
       ></div>
 
       <!-- Hero -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-16 text-center">
+      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/5 border border-amber-500/10 text-amber-600 text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -52,7 +52,7 @@ import {
               class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"
             ></span>
           </span>
-          HyperRAG - Now available. Try out python package.
+          HyperRAG - Now in beta.
         </div>
 
         <h1
@@ -73,7 +73,7 @@ import {
 
         <!-- pip install -->
         <div
-          class="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-sm mb-16 shadow-sm"
+          class="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-sm mb-12 shadow-sm"
         >
           <span class="text-slate-400 select-none">$&nbsp;</span>
           <span class="select-all"
@@ -93,6 +93,15 @@ import {
               <lucide-icon [img]="Copy" [size]="16" />
             }
           </button>
+          <a
+            href="https://pypi.org/project/dv-hyperrag/"
+            target="_blank"
+            rel="noopener"
+            class="text-slate-400 hover:text-slate-700 transition-colors"
+            title="View on PyPI"
+          >
+            <lucide-icon [img]="ExternalLink" [size]="16" />
+          </a>
         </div>
 
         <!-- Stats -->
@@ -100,34 +109,16 @@ import {
           class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden max-w-3xl mx-auto border border-slate-200/60"
         >
           <div class="bg-white px-8 py-6 text-center">
-            <div
-              class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-1"
-            >
-              9x
-            </div>
-            <div class="text-xs text-slate-500 font-medium uppercase tracking-widest">
-              Faster TTFT (long-context 70B)
-            </div>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">9x</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Faster TTFT (long-context 70B)</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
-            <div
-              class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-1"
-            >
-              ~180
-            </div>
-            <div class="text-xs text-slate-500 font-medium uppercase tracking-widest">
-              Schedules on Pareto frontier
-            </div>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">~180</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Schedules on Pareto frontier</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
-            <div
-              class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-1"
-            >
-              ±5%
-            </div>
-            <div class="text-xs text-slate-500 font-medium uppercase tracking-widest">
-              Latency prediction accuracy
-            </div>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">±5%</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Latency prediction accuracy</p>
           </div>
         </div>
       </section>
@@ -240,10 +231,12 @@ import {
             >
               Research-backed algorithms
             </h2>
-            <p class="text-slate-500 max-w-xl mx-auto font-medium">
-              Built on two peer-reviewed systems papers: RAGO (ISCA 2025) for
-              macro scheduling and RAGCache (ACM TOCS 2025) for micro-level KV
-              caching.
+            <p class="text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+              Every core decision in HyperRAG is grounded in peer-reviewed systems research.
+              The scheduling layer jointly optimizes latency and throughput across hardware
+              configurations<sup class="text-amber-500 font-bold">1</sup>, while the caching
+              layer predicts which knowledge fragments will be reused and holds them in memory
+              before the next query arrives<sup class="text-amber-500 font-bold">2</sup>.
             </p>
           </div>
 
@@ -344,7 +337,7 @@ import {
                 <div
                   class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 flex-shrink-0"
                 >
-                  <lucide-icon [img]="BarChart3" [size]="20" />
+                  <lucide-icon [img]="ChartBar" [size]="20" />
                 </div>
                 <div>
                   <h3 class="font-header font-bold text-dark text-base mb-0.5">
@@ -660,7 +653,7 @@ import {
                 >
               </div>
               <pre
-                class="p-6 text-xs leading-relaxed overflow-x-auto font-mono"
+                class="p-6 text-xs leading-relaxed overflow-x-auto font-mono text-slate-300"
               ><code><span class="text-slate-500">from</span> <span class="text-amber-400">hyperrag</span> <span class="text-slate-500">import</span> RAGOptimize, RAGOptimizeConfig, LLMModel, Query
 
 <span class="text-slate-500"># Step 1: Configure</span>
@@ -824,98 +817,6 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
         </div>
       </section>
 
-      <!-- GPU / Simulation Modes -->
-      <section class="container mx-auto px-6 py-10 md:py-14">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Simulation Mode -->
-          <div
-            class="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm hover:shadow-md hover:border-amber-200/60 transition-all"
-          >
-            <div class="flex items-start gap-4 mb-5">
-              <div
-                class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 flex-shrink-0"
-              >
-                <lucide-icon [img]="BarChart3" [size]="22" />
-              </div>
-              <div>
-                <h3 class="font-header font-bold text-dark text-lg">
-                  Simulation mode
-                </h3>
-                <span
-                  class="text-[9px] font-mono px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded"
-                  >gpu=False (default)</span
-                >
-              </div>
-            </div>
-            <p class="text-slate-500 text-sm leading-relaxed mb-5">
-              Analytical roofline model predicts latency without requiring a
-              GPU. Accuracy within plus or minus 20% of real hardware, narrowing
-              to plus or minus 5% with a hardware calibration profile from
-              <code
-                class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                >profile_hardware.py</code
-              >. Model selection and architecture decisions on a laptop.
-            </p>
-            <ul class="space-y-2 text-sm text-slate-500">
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                No GPU required
-              </li>
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                Roofline: T = max(FLOPs / TFLOPS, Bytes / BW)
-              </li>
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                Calibrate to actual hardware for 5% error
-              </li>
-            </ul>
-          </div>
-
-          <!-- GPU Mode -->
-          <div
-            class="rounded-2xl border border-amber-200/60 bg-white p-8 shadow-sm hover:shadow-md transition-all"
-          >
-            <div class="flex items-start gap-4 mb-5">
-              <div
-                class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 flex-shrink-0"
-              >
-                <lucide-icon [img]="Zap" [size]="22" />
-              </div>
-              <div>
-                <h3 class="font-header font-bold text-dark text-lg">
-                  Production mode
-                </h3>
-                <span
-                  class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded"
-                  >pip install "dv-hyperrag[gpu]"</span
-                >
-              </div>
-            </div>
-            <p class="text-slate-500 text-sm leading-relaxed mb-5">
-              Loads the model via vLLM (version 0.4.0 or higher). Real
-              GPU inference with KV cache prefix-sharing. Measured wall-clock
-              latencies replace roofline estimates. Requires an NVIDIA GPU and
-              model weights accessible via HuggingFace or local path.
-            </p>
-            <ul class="space-y-2 text-sm text-slate-500">
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                Real vLLM inference
-              </li>
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                KV prefix-sharing via vLLM backend
-              </li>
-              <li class="flex items-center gap-2">
-                <lucide-icon [img]="CircleCheck" [size]="14" class="text-amber-500 flex-shrink-0" />
-                GPU benchmarks: A100-SXM4-40GB profiled
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <!-- CTA -->
       <section class="container mx-auto px-6 py-10 md:py-14">
         <div
@@ -937,60 +838,30 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
             mode on any machine.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div
-              class="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white border border-slate-200 font-mono text-sm shadow-sm"
-            >
-              <span class="text-slate-400 select-none">$&nbsp;</span>
-              <span class="select-all"
-                ><span class="text-amber-600">pip install </span
-                ><span class="text-slate-700">dv-hyperrag</span></span
-              >
-              <button
-                (click)="copyPipCta()"
-                class="ml-1 transition-colors"
-                [class.text-amber-500]="pipCtaCopied()"
-                [class.text-slate-400]="!pipCtaCopied()"
-                title="Copy"
-              >
-                @if (pipCtaCopied()) {
-                  <lucide-icon [img]="CircleCheck" [size]="15" />
-                } @else {
-                  <lucide-icon [img]="Copy" [size]="15" />
-                }
-              </button>
-            </div>
+          <a
+            routerLink="/pricing"
+            fragment="contact-form"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-white font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg shadow-amber-500/20"
+          >
+            Talk to us
+            <lucide-icon [img]="ArrowRight" [size]="16" />
+          </a>
+        </div>
+      </section>
 
-            <a
-              routerLink="/pricing"
-              fragment="contact-form"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-white font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg shadow-amber-500/20"
-            >
-              Talk to us
-              <lucide-icon [img]="ArrowRight" [size]="16" />
-            </a>
-          </div>
-
-          <div class="flex items-center justify-center gap-6 mt-8">
-            <a
-              href="https://arxiv.org/abs/2503.14649"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-amber-600 transition-colors font-medium"
-            >
-              <lucide-icon [img]="BookOpen" [size]="13" />
-              RAGO paper (ISCA 2025) arXiv:2503.14649
-            </a>
-            <a
-              href="https://arxiv.org/abs/2404.12457"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-amber-600 transition-colors font-medium"
-            >
-              <lucide-icon [img]="BookOpen" [size]="13" />
-              RAGCache paper (TOCS 2025) arXiv:2404.12457
-            </a>
-          </div>
+      <!-- Footnotes -->
+      <section class="container mx-auto px-6 pb-16">
+        <div class="max-w-3xl mx-auto border-t border-slate-100 pt-6 space-y-2">
+          <p class="text-xs text-slate-400 font-medium leading-relaxed">
+            <sup class="font-bold">1</sup>&nbsp;
+            Alnaasan et al., "RAGO: Retrieval-Augmented Generation Optimization," ISCA 2025.
+            <a href="https://arxiv.org/abs/2503.14649" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 transition-colors underline underline-offset-2">arXiv:2503.14649</a>.
+          </p>
+          <p class="text-xs text-slate-400 font-medium leading-relaxed">
+            <sup class="font-bold">2</sup>&nbsp;
+            Jin et al., "RAGCache: Efficient Knowledge Caching for Retrieval-Augmented Generation," ACM TOCS 2025.
+            <a href="https://arxiv.org/abs/2404.12457" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 transition-colors underline underline-offset-2">arXiv:2404.12457</a>.
+          </p>
         </div>
       </section>
     </div>
@@ -999,22 +870,22 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
 export class HyperRagPageComponent {
   readonly CircleCheck = CircleCheck;
   readonly Copy = Copy;
+  readonly ExternalLink = ExternalLink;
   readonly Search = Search;
   readonly Gauge = Gauge;
   readonly Zap = Zap;
   readonly GitBranch = GitBranch;
   readonly Database = Database;
   readonly Shuffle = Shuffle;
-  readonly BarChart3 = BarChart3;
+  readonly ChartBar = ChartBar;
   readonly Server = Server;
   readonly Cpu = Cpu;
   readonly Route = Route;
   readonly Workflow = Workflow;
   readonly Microchip = Microchip;
   readonly ArrowRight = ArrowRight;
-  readonly BookOpen = BookOpen;
   readonly PackageSearch = PackageSearch;
-  readonly FileCode2 = FileCode2;
+  readonly FileCode = FileCode;
   readonly Timer = Timer;
 
   private platformId = inject(PLATFORM_ID);
@@ -1023,8 +894,6 @@ export class HyperRagPageComponent {
   private meta = inject(Meta);
 
   pipCopied = signal(false);
-  pipCtaCopied = signal(false);
-
   modelFamilies = [
     { family: 'LLaMA 3.x', sizes: '1B, 3B, 8B, 70B, 405B' },
     { family: 'Mistral', sizes: '7B, Nemo 12B' },
@@ -1108,10 +977,4 @@ export class HyperRagPageComponent {
     setTimeout(() => this.pipCopied.set(false), 2000);
   }
 
-  copyPipCta() {
-    if (!isPlatformBrowser(this.platformId)) return;
-    navigator.clipboard.writeText('pip install dv-hyperrag');
-    this.pipCtaCopied.set(true);
-    setTimeout(() => this.pipCtaCopied.set(false), 2000);
-  }
 }

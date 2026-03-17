@@ -81,7 +81,7 @@ function businessEmailValidator(
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[600px] bg-blue-600/15 blur-[160px] rounded-full -z-20"
       ></div>
 
-      <section class="container mx-auto px-6 py-16 md:py-24 text-center">
+      <section class="container mx-auto px-6 py-10 md:py-16 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/5 border border-blue-600/10 text-blue-600 text-[11px] font-bold uppercase tracking-wider mb-12"
         >
@@ -414,12 +414,12 @@ export class QuantizerPageComponent {
   private doc = inject(DOCUMENT);
 
   constructor() {
-    this.title.setTitle('LLM Tuner — FP8 Quantization Engine | Deep Variance');
+    this.title.setTitle('LLM Tuner | Deep Variance');
     this.meta.updateTag({ name: 'description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
-    this.meta.updateTag({ property: 'og:title', content: 'LLM Tuner — FP8 Quantization Engine | Deep Variance' });
+    this.meta.updateTag({ property: 'og:title', content: 'LLM Tuner | Deep Variance' });
     this.meta.updateTag({ property: 'og:description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/llm-tuner' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'LLM Tuner — FP8 Quantization Engine | Deep Variance' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'LLM Tuner | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'DeepTuner delivers near-zero perplexity loss FP8 training. Dual-format E4M3/E5M2 precision, adaptive loss scaling, and compressed optimizer states. Currently in beta.' });
     this.setCanonical('https://deepvariance.com/llm-tuner');
   }

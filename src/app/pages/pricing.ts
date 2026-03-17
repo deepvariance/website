@@ -78,7 +78,7 @@ function businessEmailValidator(
         class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"
       ></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-24">
+      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-14">
         <!-- Hero -->
         <div class="max-w-3xl mx-auto text-center mb-20">
           <span
@@ -341,7 +341,7 @@ export class PricingPageComponent {
           email,
           organization: org,
           message,
-          _subject: 'DeepVariance: Talk to Sales',
+          _subject: 'Deep Variance: Talk to Sales',
           _captcha: 'false',
         }),
       });

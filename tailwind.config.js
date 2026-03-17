@@ -9,7 +9,7 @@ module.exports = {
       },
       fontFamily: {
         header: ["Bricolage Grotesque", "sans-serif"],
-        sans: ["Inter", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",

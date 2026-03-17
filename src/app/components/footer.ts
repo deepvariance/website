@@ -9,8 +9,8 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
   template: `
     <footer class="bg-white border-t border-slate-100 py-24 mt-24">
       <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-16">
-          <div class="sm:col-span-2 md:col-span-2 space-y-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16">
+          <div class="sm:col-span-2 md:col-span-1 space-y-8">
             <a
               routerLink="/"
               class="flex-shrink-0 text-xl tracking-tighter text-dark flex items-center group/logo"
@@ -23,8 +23,8 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             <p
               class="text-slate-500 text-[14px] font-medium leading-relaxed max-w-sm"
             >
-              An infrastructure research lab building hardware-aware
-              optimization layers for the next generation of AI training stacks.
+              Building hardware-aware optimization layers for the next
+              generation of AI training stacks.
             </p>
             <div class="flex gap-4">
               <a
@@ -60,7 +60,7 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             </h4>
             <ul class="space-y-4 text-[13px] text-slate-500 font-medium">
               <li>
-                <a routerLink="/" class="hover:text-primary transition-colors"
+                <a routerLink="/autopilot" class="hover:text-primary transition-colors"
                   >Autopilot</a
                 >
               </li>
@@ -88,17 +88,7 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             </ul>
           </div>
 
-          <div class="space-y-6">
-            <h4 class="font-header font-bold text-dark text-sm uppercase tracking-wider">Use Cases</h4>
-            <ul class="space-y-4 text-[13px] text-slate-500 font-medium">
-              <li><a routerLink="/use-cases" fragment="gpu-providers" class="hover:text-primary transition-colors">GPU Providers</a></li>
-              <li><a routerLink="/use-cases" fragment="enterprise-training" class="hover:text-primary transition-colors">Enterprise Training</a></li>
-              <li><a routerLink="/use-cases" fragment="research-institutions" class="hover:text-primary transition-colors">Research Institutions</a></li>
-              <li><a routerLink="/use-cases" fragment="manufacturing" class="hover:text-primary transition-colors">Manufacturing</a></li>
-            </ul>
-          </div>
-
-          <div class="space-y-6">
+<div class="space-y-6">
             <h4
               class="font-header font-bold text-dark text-sm uppercase tracking-wider"
             >
