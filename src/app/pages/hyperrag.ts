@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Component, PLATFORM_ID, inject, signal } from '@angular/core';
+import { Component, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -736,6 +736,88 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
         </p>
       </section>
 
+      <!-- Performance Benchmarks -->
+      <section class="bg-slate-50/60 border-y border-slate-100 py-10 md:py-14">
+        <div class="container mx-auto px-6">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <h2
+                class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-4"
+              >
+                Benchmark Results
+              </h2>
+              <p class="text-slate-500 max-w-xl mx-auto font-medium">
+                1,000 queries across four RAG serving paradigms.
+              </p>
+              <div class="flex items-center justify-center gap-1 mt-6">
+                @for (m of benchmarkModels; track m.id) {
+                  <button
+                    (click)="selectedModel.set(m.id)"
+                    class="px-4 py-1.5 rounded-full text-xs font-semibold transition-all"
+                    [class.bg-amber-500]="selectedModel() === m.id"
+                    [class.text-white]="selectedModel() === m.id"
+                    [class.bg-slate-100]="selectedModel() !== m.id"
+                    [class.text-slate-500]="selectedModel() !== m.id"
+                  >{{ m.label }}</button>
+                }
+              </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-100">
+                    <th class="text-left px-6 py-4 text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                      Paradigm
+                    </th>
+                    <th class="text-right px-6 py-4 text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                      Baseline TTFT
+                    </th>
+                    <th class="text-right px-6 py-4 text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                      With HyperRAG
+                    </th>
+                    <th class="text-right px-6 py-4 text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                      Speedup
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of benchmarkRows(); track row.paradigm; let last = $last) {
+                    <tr [class.border-b]="!last" class="border-slate-50">
+                      <td class="px-6 py-4">
+                        <div class="font-semibold text-dark">{{ row.paradigm }}</div>
+                      </td>
+                      <td class="px-6 py-4 text-right text-slate-500 font-mono text-xs">
+                        {{ row.baseline }}
+                      </td>
+                      <td class="px-6 py-4 text-right font-mono text-xs font-bold text-amber-600">
+                        {{ row.optimized }}
+                      </td>
+                      <td class="px-6 py-4 text-right">
+                        <span
+                          class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold"
+                          [class.bg-amber-500]="row.highlight"
+                          [class.text-white]="row.highlight"
+                          [class.bg-slate-100]="!row.highlight"
+                          [class.text-slate-600]="!row.highlight"
+                        >
+                          {{ row.speedup }}
+                        </span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-center text-xs text-slate-400 mt-4 font-medium">
+              Results are for text-only models. Multimodal and vision-language
+              models are not included in this benchmark set.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- CTA -->
       <section class="container mx-auto px-6 py-10 md:py-14">
         <div
@@ -822,40 +904,36 @@ export class HyperRagPageComponent {
     { family: 'Phi-3', sizes: 'Mini 3.8B, Medium 14B' },
   ];
 
-  benchmarkRows = [
-    {
-      paradigm: 'Hyperscale',
-      model: 'LLaMA 3.1 8B',
-      baseline: '264.8 ms',
-      optimized: '243.6 ms',
-      speedup: '1.09x',
-      highlight: false,
-    },
-    {
-      paradigm: 'Long Context',
-      model: 'LLaMA 3.1 70B',
-      baseline: '30.9 ms',
-      optimized: '3.4 ms',
-      speedup: '9.02x',
-      highlight: true,
-    },
-    {
-      paradigm: 'Iterative',
-      model: 'LLaMA 3.1 70B',
-      baseline: '264.8 ms',
-      optimized: '243.6 ms',
-      speedup: '1.09x',
-      highlight: false,
-    },
-    {
-      paradigm: 'Rewriter-Reranker',
-      model: 'LLaMA 3.1 70B',
-      baseline: '649.2 ms',
-      optimized: '339.7 ms',
-      speedup: '1.91x',
-      highlight: false,
-    },
+  readonly benchmarkModels = [
+    { id: 'llama', label: 'Llama 3 8B' },
+    { id: 'ministral', label: 'Mistral 8B' },
+    { id: 'qwen', label: 'Qwen2.5 14B' },
   ];
+
+  selectedModel = signal('llama');
+
+  private readonly allBenchmarkData: Record<string, { paradigm: string; baseline: string; optimized: string; speedup: string; highlight: boolean }[]> = {
+    llama: [
+      { paradigm: 'Hyperscale',        baseline: '68.3 ms', optimized: '53.9 ms', speedup: '1.27×', highlight: false },
+      { paradigm: 'Long Context',      baseline: '68.1 ms', optimized: '54.9 ms', speedup: '1.24×', highlight: false },
+      { paradigm: 'Iterative',         baseline: '68.8 ms', optimized: '53.6 ms', speedup: '1.28×', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '68.3 ms', optimized: '53.6 ms', speedup: '1.27×', highlight: false },
+    ],
+    ministral: [
+      { paradigm: 'Hyperscale',        baseline: '69.6 ms', optimized: '54.9 ms', speedup: '1.27×', highlight: false },
+      { paradigm: 'Long Context',      baseline: '69.6 ms', optimized: '56.0 ms', speedup: '1.24×', highlight: false },
+      { paradigm: 'Iterative',         baseline: '70.4 ms', optimized: '54.4 ms', speedup: '1.29×', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '69.7 ms', optimized: '54.5 ms', speedup: '1.28×', highlight: false },
+    ],
+    qwen: [
+      { paradigm: 'Hyperscale',        baseline: '120.9 ms', optimized: '94.6 ms', speedup: '1.28×', highlight: false },
+      { paradigm: 'Long Context',      baseline: '120.9 ms', optimized: '96.7 ms', speedup: '1.25×', highlight: false },
+      { paradigm: 'Iterative',         baseline: '120.8 ms', optimized: '93.2 ms', speedup: '1.30×', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '120.9 ms', optimized: '92.9 ms', speedup: '1.30×', highlight: true  },
+    ],
+  };
+
+  benchmarkRows = computed(() => this.allBenchmarkData[this.selectedModel()]);
 
   constructor() {
     this.title.setTitle('HyperRAG | Deep Variance');
