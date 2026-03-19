@@ -66,7 +66,7 @@ import {
         <p
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          Reduce time-to-first-token by up to 9x. HyperRAG combines a
+          Reduce time-to-first-token by up to 2x. HyperRAG combines a
           prefix-trie KV cache, PGDSF eviction, speculative pipelining, and
           Pareto schedule search into one serving optimization layer.
         </p>
@@ -109,8 +109,8 @@ import {
           class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden max-w-3xl mx-auto border border-slate-200/60"
         >
           <div class="bg-white px-8 py-6 text-center">
-            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">9x</p>
-            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Faster TTFT (long-context 70B)</p>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Up to 2×</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Faster TTFT</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
             <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">~180</p>
@@ -940,18 +940,18 @@ export class HyperRagPageComponent {
     this.meta.updateTag({
       name: 'description',
       content:
-        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 9x faster TTFT.',
+        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 2x faster TTFT.',
     });
     this.meta.updateTag({ property: 'og:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       property: 'og:description',
-      content: 'KV cache optimization for RAG serving. Up to 9x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 2x faster time-to-first-token.',
     });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       name: 'twitter:description',
-      content: 'KV cache optimization for RAG serving. Up to 9x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 2x faster time-to-first-token.',
     });
     this.setCanonical('https://deepvariance.com/hyperrag');
   }
