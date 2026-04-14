@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'deepvariance-blog',
+  deployment: {
+    appId: 'a4r0yo5j7zo8kk6krrdzj10d',
+  },
 });
