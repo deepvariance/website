@@ -24,15 +24,27 @@ export interface SanityPost {
   ogImage: string | null;
 }
 
+export interface SanityConfig {
+  projectId: string;
+  dataset: string;
+  apiVersion: string;
+  useCdn: boolean;
+}
+
 interface SanityQueryResponse<T> {
   result: T;
+}
+
+export function buildSanityQueryBaseUrl(config: SanityConfig): string {
+  const host = config.useCdn ? 'apicdn' : 'api';
+  return `https://${config.projectId}.${host}.sanity.io/v${config.apiVersion}/data/query/${config.dataset}`;
 }
 
 @Injectable({ providedIn: 'root' })
 export class SanityService {
   private readonly http = inject(HttpClient);
   private readonly config = environment.sanity;
-  private readonly baseUrl = `https://${this.config.projectId}.${this.config.useCdn ? 'cdn' : 'api'}.sanity.io/v${this.config.apiVersion}/data/query/${this.config.dataset}`;
+  private readonly baseUrl = buildSanityQueryBaseUrl(this.config);
 
   private imageUrl(ref: string): string {
     // Sanity image ref format: image-{id}-{dimensions}-{format}
