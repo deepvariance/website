@@ -46,7 +46,7 @@ Thumbs.db
 /studio/dist
 
 # Claude Code / AI tools
+# Keep AGENTS.md versioned; only ignore local tool state.
 .claude/
 .agents/
-AGENTS.md
 skills-lock.json
