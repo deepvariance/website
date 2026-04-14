@@ -126,9 +126,15 @@ export class SanityService {
   private mapPost(raw: SanityRawPost): SanityPost {
     const bodyHtml = raw.body ? this.blocksToHtml(raw.body) : null;
     const wordCount = raw.body
-      ? raw.body
-          .filter((b: SanityBlock) => b._type === 'block')
-          .reduce((acc: number, b: SanityBlock) => acc + (b.children ?? []).reduce((a: number, c: SanitySpan) => a + (c.text ?? '').split(/\s+/).filter(Boolean).length, 0), 0)
+      ? raw.body.reduce((acc: number, b: SanityBlock) => {
+          if (b._type === 'block') {
+            return acc + (b.children ?? []).reduce((a: number, c: SanitySpan) => a + (c.text ?? '').split(/\s+/).filter(Boolean).length, 0);
+          }
+          if (b._type === 'code') {
+            return acc + (b.code ?? '').split(/\s+/).filter(Boolean).length;
+          }
+          return acc;
+        }, 0)
       : 0;
 
     return {
