@@ -221,6 +221,13 @@ import {
             class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
             >Pricing</a
           >
+          <a
+            routerLink="/blog"
+            routerLinkActive="text-primary"
+            (click)="closeAllMenus()"
+            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
+            >Blog</a
+          >
         </div>
 
         <div class="flex items-center gap-3 ml-auto relative z-[110]">
@@ -327,6 +334,12 @@ import {
               (click)="closeAllMenus()"
               class="block text-sm font-bold text-dark"
               >Pricing</a
+            >
+            <a
+              routerLink="/blog"
+              (click)="closeAllMenus()"
+              class="block text-sm font-bold text-dark"
+              >Blog</a
             >
           </div>
 

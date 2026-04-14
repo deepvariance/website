@@ -41,6 +41,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Sanity Studio
+/studio/node_modules
+/studio/dist
+
 # Claude Code / AI tools
 .claude/
 .agents/

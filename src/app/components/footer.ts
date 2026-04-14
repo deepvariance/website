@@ -94,9 +94,12 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             >
               Resources
             </h4>
-            <ul class="space-y-4 text-[13px] text-slate-400 font-medium">
+            <ul class="space-y-4 text-[13px] text-slate-500 font-medium">
+              <li>
+                <a routerLink="/blog" class="hover:text-primary transition-colors">Blog</a>
+              </li>
               <li
-                class="flex items-center gap-2 cursor-not-allowed select-none"
+                class="flex items-center gap-2 cursor-not-allowed select-none text-slate-400"
               >
                 <lucide-icon
                   [img]="Lock"
@@ -110,7 +113,7 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
                 >
               </li>
               <li
-                class="flex items-center gap-2 cursor-not-allowed select-none"
+                class="flex items-center gap-2 cursor-not-allowed select-none text-slate-400"
               >
                 <lucide-icon
                   [img]="Lock"

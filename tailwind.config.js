@@ -22,5 +22,15 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    function ({ addBase, theme }) {
+      addBase({
+        '.prose': {
+          '--tw-prose-links': theme('colors.primary'),
+          '--tw-prose-headings': theme('colors.dark'),
+        },
+      });
+    },
+  ],
 };
