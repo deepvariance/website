@@ -41,8 +41,12 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Sanity Studio
+/studio/node_modules
+/studio/dist
+
 # Claude Code / AI tools
+# Keep AGENTS.md versioned; only ignore local tool state.
 .claude/
 .agents/
-AGENTS.md
 skills-lock.json

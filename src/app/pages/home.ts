@@ -1,7 +1,9 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { BlogCardComponent } from '../components/blog-card';
+import { SanityPost, SanityService } from '../services/sanity.service';
 import {
   ArrowRight,
   Building2,
@@ -20,7 +22,7 @@ import {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, LucideAngularModule],
+  imports: [CommonModule, RouterLink, LucideAngularModule, BlogCardComponent],
   template: `
     <div class="relative overflow-hidden">
 
@@ -347,6 +349,50 @@ import {
         </div>
       </section>
 
+      <!-- Latest Articles Section -->
+      <section class="container mx-auto px-6 py-10 md:py-14">
+        <div class="text-center mb-10 md:mb-12">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-4 tracking-tight">
+            From the lab.
+          </h2>
+          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
+            Research notes and engineering deep-dives from the Deep Variance team.
+          </p>
+        </div>
+
+        @if (latestPosts() === null) {
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            @for (i of [1, 2, 3]; track i) {
+              <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden animate-pulse">
+                <div class="aspect-[16/9] bg-slate-100"></div>
+                <div class="p-6 space-y-3">
+                  <div class="h-3 bg-slate-100 rounded-full w-1/4"></div>
+                  <div class="h-4 bg-slate-100 rounded-full w-3/4"></div>
+                  <div class="h-3 bg-slate-100 rounded-full w-full"></div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        @if (latestPosts() !== null && latestPosts()!.length > 0) {
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            @for (post of latestPosts()!; track post.slug) {
+              <app-blog-card [post]="post" />
+            }
+          </div>
+          <div class="text-center mt-10">
+            <a
+              routerLink="/blog"
+              class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-dark font-semibold text-base border border-slate-200 hover:border-primary/30 hover:text-primary transition-all"
+            >
+              View all articles
+              <lucide-icon [img]="ArrowRight" [size]="16" />
+            </a>
+          </div>
+        }
+      </section>
+
       <!-- CTA Section -->
       <section class="container mx-auto px-6 py-10 md:py-14 text-center">
         <div class="max-w-xl mx-auto">
@@ -370,11 +416,14 @@ import {
     </div>
   `,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private meta = inject(Meta);
   private title = inject(Title);
   private doc = inject(DOCUMENT);
+  private readonly sanity = inject(SanityService);
   readonly _platformId = inject(PLATFORM_ID);
+
+  latestPosts = signal<SanityPost[] | null>(null);
 
   constructor() {
     this.title.setTitle('Deep Variance — Hardware-Aware AI Infrastructure');
@@ -386,6 +435,13 @@ export class HomeComponent {
     this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
     this.meta.updateTag({ name: 'twitter:description', content: desc });
     this.setCanonical('https://deepvariance.com/');
+  }
+
+  ngOnInit(): void {
+    this.sanity.getPosts(3).subscribe({
+      next: (posts) => this.latestPosts.set(posts),
+      error: () => this.latestPosts.set([]),
+    });
   }
 
   private setCanonical(url: string) {

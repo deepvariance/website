@@ -10,6 +10,8 @@ export const routes: Routes = [
   { path: 'roadmap', loadComponent: () => import('./pages/roadmap').then(m => m.RoadmapPageComponent) },
   { path: 'pricing', loadComponent: () => import('./pages/pricing').then(m => m.PricingPageComponent) },
   { path: 'use-cases', loadComponent: () => import('./pages/use-cases').then(m => m.UseCasesPageComponent) },
+  { path: 'blog', loadComponent: () => import('./pages/blog').then(m => m.BlogPageComponent), data: { prerender: false } },
+  { path: 'blog/:slug', loadComponent: () => import('./pages/blog-post').then(m => m.BlogPostPageComponent), data: { prerender: false } },
   { path: 'privacy-policy', loadComponent: () => import('./pages/privacy-policy').then(m => m.PrivacyPolicyComponent) },
   { path: 'terms', loadComponent: () => import('./pages/terms').then(m => m.TermsComponent) },
   { path: 'cookie-policy', loadComponent: () => import('./pages/cookie-policy').then(m => m.CookiePolicyComponent) },
