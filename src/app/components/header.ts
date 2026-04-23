@@ -71,7 +71,7 @@ import {
               [class.translate-y-0]="isProductsMenuOpen()"
             >
               <div
-                class="w-[380px] -translate-x-12 bg-white rounded-[2rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden p-2 pointer-events-auto"
+                class="w-[420px] -translate-x-12 bg-white rounded-[2rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden p-2 pointer-events-auto"
               >
                 <div class="flex flex-col gap-1">
 
@@ -80,19 +80,21 @@ import {
                     routerLink="/optimemory"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                    class="flex items-start gap-4 px-4 py-4 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
-                      class="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 group-hover/item:scale-110 transition-transform flex-shrink-0"
+                      class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 group-hover/item:scale-110 transition-transform flex-shrink-0 mt-0.5"
                     >
-                      <lucide-icon [img]="Server" [size]="18" />
+                      <lucide-icon [img]="Server" [size]="20" />
                     </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-2">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
                         <h4 class="text-sm font-bold text-dark">Optimemory</h4>
                         <span class="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded">deep-variance</span>
                       </div>
-                      <p class="text-xs text-slate-400 font-medium truncate">CUDA VMM layer for memory pooling &amp; address stitching</p>
+                      <p class="text-xs text-slate-500 font-medium leading-relaxed">
+                        CUDA VMM layer for physical memory pooling and virtual address stitching. Zero-overhead buffer reuse across training steps.
+                      </p>
                     </div>
                   </a>
 
@@ -101,19 +103,21 @@ import {
                     routerLink="/hyperrag"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                    class="flex items-start gap-4 px-4 py-4 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
-                      class="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 group-hover/item:scale-110 transition-transform flex-shrink-0"
+                      class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 group-hover/item:scale-110 transition-transform flex-shrink-0 mt-0.5"
                     >
-                      <lucide-icon [img]="Gauge" [size]="18" />
+                      <lucide-icon [img]="Gauge" [size]="20" />
                     </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-2">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
                         <h4 class="text-sm font-bold text-dark">HyperRAG</h4>
                         <span class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded">dv-hyperrag</span>
                       </div>
-                      <p class="text-xs text-slate-400 font-medium truncate">KV cache optimization for up to 9x faster TTFT</p>
+                      <p class="text-xs text-slate-500 font-medium leading-relaxed">
+                        KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and Pareto schedule search for up to 9x faster TTFT.
+                      </p>
                     </div>
                   </a>
 
@@ -122,33 +126,26 @@ import {
                     routerLink="/deeptuner"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                    class="flex items-start gap-4 px-4 py-4 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
-                      class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:scale-110 transition-transform flex-shrink-0"
+                      class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:scale-110 transition-transform flex-shrink-0 mt-0.5"
                     >
-                      <lucide-icon [img]="Layers" [size]="18" />
+                      <lucide-icon [img]="Layers" [size]="20" />
                     </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center gap-2">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
                         <h4 class="text-sm font-bold text-dark">DeepTuner</h4>
                         <span class="text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest font-extrabold">Early</span>
                       </div>
-                      <p class="text-xs text-slate-400 font-medium truncate">Intermediate code analysis for energy-efficient GPU runs</p>
+                      <p class="text-xs text-slate-500 font-medium leading-relaxed">
+                        Intermediate code analysis for energy-efficient GPU run configurations. Up to 50% less energy and 2x throughput on MHA kernels.
+                      </p>
                     </div>
                   </a>
                 </div>
 
-                <!-- Megamenu Footer -->
-                <div
-                  class="bg-slate-50 p-6 flex items-center justify-between mt-2"
-                >
-                  <p
-                    class="text-[11px] font-bold text-slate-400 uppercase tracking-widest"
-                  >
-                    Researching Multi-GPU & NVlink Support
-                  </p>
-                </div>
+
               </div>
             </div>
           </div>
