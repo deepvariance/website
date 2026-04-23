@@ -39,13 +39,13 @@ import {
 <h1
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
         >
-          Hardware-aware infrastructure<br /><span class="text-primary">for the AI stack</span>.
+          Hardware-aware<br /><span class="text-primary">infra optimization</span>.
         </h1>
 
         <p
           class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-12"
         >
-          Building hardware-aware optimization layers for the next generation of AI training stacks.
+          Production AI runs on GPUs. We make those GPUs leaner — less VRAM waste, lower latency, and less energy per token, without touching your model or framework.
         </p>
 
         <!-- CTAs -->
@@ -170,58 +170,7 @@ import {
         </div>
       </section>
 
-      <!-- Research Section -->
-      <section class="container mx-auto px-6 py-10 md:py-14">
-        <div
-          class="bg-slate-900 text-white rounded-[2rem] md:rounded-[3rem] overflow-hidden relative px-8 md:px-16 py-12 md:py-16"
-        >
-          <!-- Inner grid background -->
-          <div class="absolute inset-0 bg-grid-white/[0.04] -z-10"></div>
-          <!-- Blur accent -->
-          <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full -z-10"></div>
-
-          <div class="text-center mb-10">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold mb-4 tracking-tight">
-              Closing the decade-long research gap
-            </h2>
-            <p class="text-slate-400 max-w-3xl mx-auto font-medium">
-              The best AI infrastructure algorithms are published years, sometimes decades, before
-              industry ships them. Not from lack of effort, but because academic and production
-              engineering require fundamentally different expertise that rarely coexists.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-
-            <!-- Why the gap persists -->
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col">
-              <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-slate-300 mb-4">
-                <lucide-icon [img]="FlaskConical" [size]="22" />
-              </div>
-              <h4 class="font-header font-bold text-white mb-2">Why the gap persists</h4>
-              <p class="text-slate-400 text-sm font-medium leading-relaxed">
-                Academic research optimizes for correctness and novelty. Industry demands reliability,
-                operational simplicity, and performance under real-world constraints. Bridging the
-                two requires a team that speaks both languages fluently.
-              </p>
-            </div>
-
-            <!-- How we close it -->
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col">
-              <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-slate-300 mb-4">
-                <lucide-icon [img]="Layers" [size]="22" />
-              </div>
-              <h4 class="font-header font-bold text-white mb-2">How we close it</h4>
-              <p class="text-slate-400 text-sm font-medium leading-relaxed">
-                We sit permanently at the intersection, tracking research as it is published
-                and validating it against production workloads. Every SDK we ship is one less
-                decade between a breakthrough and the teams who need it.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <!-- TODO: "Why Deep Variance" / production gap section — content TBD, remove placeholder and fill in with final messaging -->
 
       <!-- Use Cases Section -->
       <section class="container mx-auto px-6 py-10 md:py-14">
@@ -236,6 +185,28 @@ import {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
+          <!-- HPC Infrastructure -->
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <lucide-icon [img]="Layers" [size]="18" />
+              </div>
+              <span class="text-[11px] font-extrabold text-primary uppercase tracking-widest">HPC Infrastructure</span>
+            </div>
+            <p class="text-2xl font-header font-bold text-dark mb-1">−79%</p>
+            <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">energy per token on MHA kernels</p>
+            <p class="text-slate-500 text-sm font-medium leading-relaxed flex-1">
+              Long-running training and inference jobs amplify every kernel inefficiency.
+              DeepTuner tunes kernel shape and power cap for minimum energy per token.
+            </p>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+              <a routerLink="/deeptuner" class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors">
+                Learn more <lucide-icon [img]="ChevronRight" [size]="12" />
+              </a>
+            </div>
+          </div>
+
+          <!-- GPU Providers -->
           <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
@@ -256,6 +227,7 @@ import {
             </div>
           </div>
 
+          <!-- Enterprise Training -->
           <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-amber-500/30 transition-all p-6 flex flex-col">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600">
@@ -276,6 +248,7 @@ import {
             </div>
           </div>
 
+          <!-- Research Institutions -->
           <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-500/30 transition-all p-6 flex flex-col">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
@@ -292,26 +265,6 @@ import {
             <div class="pt-4 mt-4 border-t border-slate-100">
               <a routerLink="/use-cases" fragment="research-institutions" class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-500 transition-colors">
                 Read more <lucide-icon [img]="ChevronRight" [size]="12" />
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                <lucide-icon [img]="Layers" [size]="18" />
-              </div>
-              <span class="text-[11px] font-extrabold text-primary uppercase tracking-widest">HPC Infrastructure</span>
-            </div>
-            <p class="text-2xl font-header font-bold text-dark mb-1">−79%</p>
-            <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">energy per token on MHA kernels</p>
-            <p class="text-slate-500 text-sm font-medium leading-relaxed flex-1">
-              Long-running training and inference jobs amplify every kernel inefficiency.
-              DeepTuner tunes kernel shape and power cap for minimum energy per token.
-            </p>
-            <div class="pt-4 mt-4 border-t border-slate-100">
-              <a routerLink="/deeptuner" class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors">
-                Learn more <lucide-icon [img]="ChevronRight" [size]="12" />
               </a>
             </div>
           </div>
