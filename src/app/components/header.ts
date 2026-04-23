@@ -116,7 +116,7 @@ import {
                         <span class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded">dv-hyperrag</span>
                       </div>
                       <p class="text-xs text-slate-500 font-medium leading-relaxed">
-                        KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and Pareto schedule search for up to 3x faster TTFT.
+                        KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and Pareto schedule search for up to 5.7x faster TTFT.
                       </p>
                     </div>
                   </a>

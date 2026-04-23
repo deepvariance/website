@@ -124,7 +124,7 @@ import {
             <h3 class="text-lg font-header font-bold text-dark mb-2">HyperRAG</h3>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
               KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and
-              Pareto schedule search for up to 3x faster TTFT.
+              Pareto schedule search for up to 5.7x faster TTFT.
             </p>
             <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
               <code class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">dv-hyperrag</code>
