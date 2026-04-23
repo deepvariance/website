@@ -124,7 +124,7 @@ import {
             <h3 class="text-lg font-header font-bold text-dark mb-2">HyperRAG</h3>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
               KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and
-              Pareto schedule search for up to 9x faster TTFT.
+              Pareto schedule search for up to 5x faster TTFT.
             </p>
             <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
               <code class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">dv-hyperrag</code>
@@ -349,13 +349,13 @@ export class HomeComponent implements OnInit {
   latestPosts = signal<SanityPost[] | null>(null);
 
   constructor() {
-    this.title.setTitle('Deep Variance — Hardware-Aware AI Infrastructure');
+    this.title.setTitle('Deep Variance — Hardware-Aware AI Infra Optimization');
     const desc = 'Deep Variance builds hardware-aware optimization layers for the next generation of AI training stacks. Autopilot, Optimemory, LLM Tuner, and HyperRAG.';
     this.meta.updateTag({ name: 'description', content: desc });
-    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
+    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance — Hardware-Aware AI Infra Optimization' });
     this.meta.updateTag({ property: 'og:description', content: desc });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infrastructure' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infra Optimization' });
     this.meta.updateTag({ name: 'twitter:description', content: desc });
     this.setCanonical('https://deepvariance.com/');
   }

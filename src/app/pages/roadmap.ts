@@ -37,7 +37,7 @@ import { Meta, Title } from '@angular/platform-browser';
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> deep-variance on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> dv-hyperrag on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Physical memory pooling via CUDA VMM</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Up to 9x faster TTFT on long-context RAG</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Up to 5x faster TTFT on long-context RAG</li>
             </ul>
           </div>
 
