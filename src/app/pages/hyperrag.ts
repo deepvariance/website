@@ -435,8 +435,8 @@ import {
             </div>
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
               1M+ token context where retrieval is skipped. Bottleneck is LLM
-              prefill. Default model: LLaMA 3.1 70B. High cache hit rate (94%)
-              with 4-GPU tensor parallelism delivers up to 2x speedup on 70B models,
+              prefill. Default model: LLaMA 3.1 70B.
+              4-GPU tensor parallelism delivers up to 2x speedup on 70B models,
               with peak 2.95x on 7B models in hyperscale mode.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -747,7 +747,7 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
                 Benchmark Results
               </h2>
               <p class="text-slate-500 max-w-xl mx-auto font-medium">
-                1,000 queries across four RAG serving paradigms. LLaMA 3.1 70B shows best-run results at 94% cache hit rate.
+                1,000 queries across four RAG serving paradigms. Benchmarks are expanding across more models and configurations.
               </p>
               <div class="flex items-center justify-center gap-1 mt-6">
                 @for (m of benchmarkModels; track m.id) {
