@@ -18,7 +18,7 @@ import { Meta, Title } from '@angular/platform-browser';
             Product Roadmap
           </h1>
           <p class="text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
-            Our research-first approach to infrastructure optimization. From LLM-driven AutoML to cross-GPU virtual memory.
+            Our research-first approach to infrastructure optimization. From hardware-aware memory pooling to energy-efficient kernel tuning.
           </p>
         </div>
 
@@ -28,33 +28,36 @@ import { Meta, Title } from '@angular/platform-browser';
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm"></div>
             <div class="mb-2">
               <span class="text-[10px] font-bold text-primary uppercase tracking-widest">Released • Available Now</span>
-              <h3 class="text-xl font-header font-bold text-dark mt-1">Autopilot & Optimemory</h3>
+              <h3 class="text-xl font-header font-bold text-dark mt-1">Optimemory & HyperRAG</h3>
             </div>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4">
-              Launch of our LLM-driven AutoML pipeline and CUDA VMM layer for single-node GPU hardware. Both packages are available on PyPI today.
+              CUDA VMM layer for single-node GPU hardware and KV cache optimization for RAG serving. Both packages are available on PyPI today.
             </p>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-bold text-slate-600">
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> deepvariance-sdk on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> deep-variance on PyPI</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> 7-stage automated ML pipeline</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> dv-hyperrag on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Physical memory pooling via CUDA VMM</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Up to 9x faster TTFT on long-context RAG</li>
             </ul>
           </div>
 
           <!-- Early Access -->
-          <div class="relative pl-8 border-l-2 border-blue-600/20">
-            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600/40 border-4 border-white shadow-sm"></div>
+          <div class="relative pl-8 border-l-2 border-primary/30">
+            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary/40 border-4 border-white shadow-sm"></div>
             <div class="mb-2">
-              <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Early Access • Beta</span>
-              <h3 class="text-xl font-header font-bold text-dark mt-1">LLM Tuner (DeepTuner) & FP8 Kernels</h3>
+              <span class="text-[10px] font-bold text-primary uppercase tracking-widest">Early Access • Beta</span>
+              <h3 class="text-xl font-header font-bold text-dark mt-1">DeepTuner</h3>
             </div>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4">
-              Weight quantization and fine-tuning tooling for large language models. FP8 precision support is available in early access with near-zero accuracy loss on transformer architectures.
+              Static PTX analysis for energy-efficient kernel configurations on HPC infrastructure.
+              Jointly tunes thread block shape and GPU power cap for minimum energy per token,
+              without runtime profiling.
             </p>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-bold text-slate-600">
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-blue-600/60"></div> Native FP8 quantization kernels</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-blue-600/60"></div> Transformer-specific tuning</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-blue-600/60"></div> Optimemory v2.4 integration (planned)</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> Static PTX analysis (no runtime profiling)</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> Up to 79% energy savings per token</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> 93.4% reduction in kernel search space</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> DeepTuner dashboard (planned)</li>
             </ul>
           </div>
 

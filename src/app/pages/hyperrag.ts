@@ -3,7 +3,7 @@ import { Component, PLATFORM_ID, computed, inject, signal } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
-  ArrowRight,
+  ChevronRight,
   ChartBar,
   CircleCheck,
   Copy,
@@ -66,7 +66,7 @@ import {
         <p
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          Reduce time-to-first-token by up to 2x. HyperRAG combines a
+          Reduce time-to-first-token by up to 9x. HyperRAG combines a
           prefix-trie KV cache, PGDSF eviction, speculative pipelining, and
           Pareto schedule search into one serving optimization layer.
         </p>
@@ -109,7 +109,7 @@ import {
           class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden max-w-3xl mx-auto border border-slate-200/60"
         >
           <div class="bg-white px-8 py-6 text-center">
-            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Up to 2×</p>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Up to 9x</p>
             <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Faster TTFT</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
@@ -747,7 +747,7 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
                 Benchmark Results
               </h2>
               <p class="text-slate-500 max-w-xl mx-auto font-medium">
-                1,000 queries across four RAG serving paradigms.
+                1,000 queries across four RAG serving paradigms. LLaMA 3.1 70B shows best-run results at 94% cache hit rate.
               </p>
               <div class="flex items-center justify-center gap-1 mt-6">
                 @for (m of benchmarkModels; track m.id) {
@@ -845,7 +845,7 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-white font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg shadow-amber-500/20"
           >
             Talk to us
-            <lucide-icon [img]="ArrowRight" [size]="16" />
+            <lucide-icon [img]="ChevronRight" [size]="16" />
           </a>
         </div>
       </section>
@@ -884,7 +884,7 @@ export class HyperRagPageComponent {
   readonly Route = Route;
   readonly Workflow = Workflow;
   readonly Microchip = Microchip;
-  readonly ArrowRight = ArrowRight;
+  readonly ChevronRight = ChevronRight;
   readonly PackageSearch = PackageSearch;
   readonly FileCode = FileCode;
   readonly Timer = Timer;
@@ -905,31 +905,38 @@ export class HyperRagPageComponent {
   ];
 
   readonly benchmarkModels = [
+    { id: 'llama70b', label: 'Llama 3.1 70B' },
     { id: 'llama', label: 'Llama 3 8B' },
     { id: 'ministral', label: 'Mistral 8B' },
     { id: 'qwen', label: 'Qwen2.5 14B' },
   ];
 
-  selectedModel = signal('llama');
+  selectedModel = signal('llama70b');
 
   private readonly allBenchmarkData: Record<string, { paradigm: string; baseline: string; optimized: string; speedup: string; highlight: boolean }[]> = {
+    llama70b: [
+      { paradigm: 'Hyperscale',        baseline: '243.6 ms', optimized: '223.4 ms', speedup: '1.09x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '30.9 ms',  optimized: '3.4 ms',   speedup: '9.02x', highlight: true  },
+      { paradigm: 'Iterative',         baseline: '648.0 ms', optimized: '361.2 ms', speedup: '1.79x', highlight: false },
+      { paradigm: 'Rewriter-Reranker', baseline: '649.2 ms', optimized: '339.7 ms', speedup: '1.91x', highlight: true  },
+    ],
     llama: [
-      { paradigm: 'Hyperscale',        baseline: '68.3 ms', optimized: '53.9 ms', speedup: '1.27×', highlight: false },
-      { paradigm: 'Long Context',      baseline: '68.1 ms', optimized: '54.9 ms', speedup: '1.24×', highlight: false },
-      { paradigm: 'Iterative',         baseline: '68.8 ms', optimized: '53.6 ms', speedup: '1.28×', highlight: true  },
-      { paradigm: 'Rewriter-Reranker', baseline: '68.3 ms', optimized: '53.6 ms', speedup: '1.27×', highlight: false },
+      { paradigm: 'Hyperscale',        baseline: '68.3 ms', optimized: '53.9 ms', speedup: '1.27x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '68.1 ms', optimized: '54.9 ms', speedup: '1.24x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '68.8 ms', optimized: '53.6 ms', speedup: '1.28x', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '68.3 ms', optimized: '53.6 ms', speedup: '1.27x', highlight: false },
     ],
     ministral: [
-      { paradigm: 'Hyperscale',        baseline: '69.6 ms', optimized: '54.9 ms', speedup: '1.27×', highlight: false },
-      { paradigm: 'Long Context',      baseline: '69.6 ms', optimized: '56.0 ms', speedup: '1.24×', highlight: false },
-      { paradigm: 'Iterative',         baseline: '70.4 ms', optimized: '54.4 ms', speedup: '1.29×', highlight: true  },
-      { paradigm: 'Rewriter-Reranker', baseline: '69.7 ms', optimized: '54.5 ms', speedup: '1.28×', highlight: false },
+      { paradigm: 'Hyperscale',        baseline: '69.6 ms', optimized: '54.9 ms', speedup: '1.27x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '69.6 ms', optimized: '56.0 ms', speedup: '1.24x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '70.4 ms', optimized: '54.4 ms', speedup: '1.29x', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '69.7 ms', optimized: '54.5 ms', speedup: '1.28x', highlight: false },
     ],
     qwen: [
-      { paradigm: 'Hyperscale',        baseline: '120.9 ms', optimized: '94.6 ms', speedup: '1.28×', highlight: false },
-      { paradigm: 'Long Context',      baseline: '120.9 ms', optimized: '96.7 ms', speedup: '1.25×', highlight: false },
-      { paradigm: 'Iterative',         baseline: '120.8 ms', optimized: '93.2 ms', speedup: '1.30×', highlight: true  },
-      { paradigm: 'Rewriter-Reranker', baseline: '120.9 ms', optimized: '92.9 ms', speedup: '1.30×', highlight: true  },
+      { paradigm: 'Hyperscale',        baseline: '120.9 ms', optimized: '94.6 ms', speedup: '1.28x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '120.9 ms', optimized: '96.7 ms', speedup: '1.25x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '120.8 ms', optimized: '93.2 ms', speedup: '1.30x', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '120.9 ms', optimized: '92.9 ms', speedup: '1.30x', highlight: true  },
     ],
   };
 
@@ -940,18 +947,18 @@ export class HyperRagPageComponent {
     this.meta.updateTag({
       name: 'description',
       content:
-        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 2x faster TTFT.',
+        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 9x faster TTFT.',
     });
     this.meta.updateTag({ property: 'og:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       property: 'og:description',
-      content: 'KV cache optimization for RAG serving. Up to 2x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 9x faster time-to-first-token.',
     });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       name: 'twitter:description',
-      content: 'KV cache optimization for RAG serving. Up to 2x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 9x faster time-to-first-token.',
     });
     this.setCanonical('https://deepvariance.com/hyperrag');
   }

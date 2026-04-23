@@ -2,15 +2,15 @@ import { NgClass, isPlatformBrowser } from '@angular/common';
 import { Component, HostListener, PLATFORM_ID, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
+  BatteryCharging,
   ChevronDown,
   Gauge,
-  Lightbulb,
+  Layers,
   LucideAngularModule,
   Menu,
   Phone,
   Server,
   X,
-  Zap,
 } from 'lucide-angular';
 
 @Component({
@@ -71,94 +71,28 @@ import {
               [class.translate-y-0]="isProductsMenuOpen()"
             >
               <div
-                class="w-[600px] -translate-x-12 bg-white rounded-[2rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden p-2 pointer-events-auto"
+                class="w-[380px] -translate-x-12 bg-white rounded-[2rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden p-2 pointer-events-auto"
               >
-                <div class="grid grid-cols-2 gap-2">
-                  <!-- Autopilot -->
-                  <a
-                    routerLink="/autopilot"
-                    routerLinkActive="bg-slate-50 border-slate-200"
-                    (click)="closeAllMenus()"
-                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
-                  >
-                    <div
-                      class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:scale-110 transition-transform"
-                    >
-                      <lucide-icon [img]="Zap" [size]="20" />
-                    </div>
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
-                        <h4 class="text-sm font-bold text-dark">Autopilot</h4>
-                        <span
-                          class="text-[9px] font-mono px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded"
-                          >deepvariance-sdk</span
-                        >
-                      </div>
-                      <p
-                        class="text-xs text-slate-500 font-medium leading-relaxed"
-                      >
-                        End-to-end AutoML pipeline. Raw data to trained model in
-                        one call, powered by LLM-driven code generation.
-                      </p>
-                    </div>
-                  </a>
+                <div class="flex flex-col gap-1">
 
                   <!-- Optimemory -->
                   <a
                     routerLink="/optimemory"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
-                      class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 group-hover/item:scale-110 transition-transform"
+                      class="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 group-hover/item:scale-110 transition-transform flex-shrink-0"
                     >
-                      <lucide-icon [img]="Server" [size]="20" />
+                      <lucide-icon [img]="Server" [size]="18" />
                     </div>
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2">
                         <h4 class="text-sm font-bold text-dark">Optimemory</h4>
-                        <span
-                          class="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded"
-                          >deep-variance</span
-                        >
+                        <span class="text-[9px] font-mono px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded">deep-variance</span>
                       </div>
-                      <p
-                        class="text-xs text-slate-500 font-medium leading-relaxed"
-                      >
-                        CUDA VMM layer for physical memory pooling and virtual
-                        address stitching. Zero-overhead buffer reuse across
-                        training steps.
-                      </p>
-                    </div>
-                  </a>
-
-                  <!-- LLM Tuner -->
-                  <a
-                    routerLink="/llm-tuner"
-                    routerLinkActive="bg-slate-50 border-slate-200"
-                    (click)="closeAllMenus()"
-                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
-                  >
-                    <div
-                      class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 group-hover/item:scale-110 transition-transform"
-                    >
-                      <lucide-icon [img]="Lightbulb" [size]="20" />
-                    </div>
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
-                        <h4 class="text-sm font-bold text-dark">LLM Tuner</h4>
-                        <span
-                          class="text-[9px] px-1.5 py-0.5 bg-blue-600/10 text-blue-600 rounded-full uppercase tracking-widest font-extrabold"
-                          >Early</span
-                        >
-                      </div>
-                      <p
-                        class="text-xs text-slate-500 font-medium leading-relaxed"
-                      >
-                        Weight quantization and fine-tuning tooling for large
-                        language models. FP8 support in early access.
-                      </p>
+                      <p class="text-xs text-slate-400 font-medium truncate">CUDA VMM layer for memory pooling &amp; address stitching</p>
                     </div>
                   </a>
 
@@ -167,28 +101,40 @@ import {
                     routerLink="/hyperrag"
                     routerLinkActive="bg-slate-50 border-slate-200"
                     (click)="closeAllMenus()"
-                    class="flex items-start gap-4 p-6 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
                   >
                     <div
-                      class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 group-hover/item:scale-110 transition-transform"
+                      class="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 group-hover/item:scale-110 transition-transform flex-shrink-0"
                     >
-                      <lucide-icon [img]="Gauge" [size]="20" />
+                      <lucide-icon [img]="Gauge" [size]="18" />
                     </div>
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2">
                         <h4 class="text-sm font-bold text-dark">HyperRAG</h4>
-                        <span
-                          class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded"
-                          >dv-hyperrag</span
-                        >
+                        <span class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded">dv-hyperrag</span>
                       </div>
-                      <p
-                        class="text-xs text-slate-500 font-medium leading-relaxed"
-                      >
-                        KV cache optimization for RAG serving. Prefix-trie
-                        caching, PGDSF eviction, and Pareto schedule search
-                        for up to 9x faster TTFT.
-                      </p>
+                      <p class="text-xs text-slate-400 font-medium truncate">KV cache optimization for up to 9x faster TTFT</p>
+                    </div>
+                  </a>
+
+                  <!-- DeepTuner -->
+                  <a
+                    routerLink="/deeptuner"
+                    routerLinkActive="bg-slate-50 border-slate-200"
+                    (click)="closeAllMenus()"
+                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-slate-50 border border-transparent transition-all group/item"
+                  >
+                    <div
+                      class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover/item:scale-110 transition-transform flex-shrink-0"
+                    >
+                      <lucide-icon [img]="Layers" [size]="18" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2">
+                        <h4 class="text-sm font-bold text-dark">DeepTuner</h4>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest font-extrabold">Early</span>
+                      </div>
+                      <p class="text-xs text-slate-400 font-medium truncate">Intermediate code analysis for energy-efficient GPU runs</p>
                     </div>
                   </a>
                 </div>
@@ -272,18 +218,6 @@ import {
             </p>
             <div class="grid gap-4">
               <a
-                routerLink="/autopilot"
-                (click)="closeAllMenus()"
-                class="flex items-center gap-3"
-              >
-                <div
-                  class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"
-                >
-                  <lucide-icon [img]="Zap" [size]="16" />
-                </div>
-                <span class="text-sm font-bold text-dark">Autopilot</span>
-              </a>
-              <a
                 routerLink="/optimemory"
                 (click)="closeAllMenus()"
                 class="flex items-center gap-3"
@@ -296,18 +230,6 @@ import {
                 <span class="text-sm font-bold text-dark">Optimemory</span>
               </a>
               <a
-                routerLink="/llm-tuner"
-                (click)="closeAllMenus()"
-                class="flex items-center gap-3"
-              >
-                <div
-                  class="w-8 h-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600"
-                >
-                  <lucide-icon [img]="Lightbulb" [size]="16" />
-                </div>
-                <span class="text-sm font-bold text-dark">LLM Tuner</span>
-              </a>
-              <a
                 routerLink="/hyperrag"
                 (click)="closeAllMenus()"
                 class="flex items-center gap-3"
@@ -318,6 +240,19 @@ import {
                   <lucide-icon [img]="Gauge" [size]="16" />
                 </div>
                 <span class="text-sm font-bold text-dark">HyperRAG</span>
+              </a>
+              <a
+                routerLink="/deeptuner"
+                (click)="closeAllMenus()"
+                class="flex items-center gap-3"
+              >
+                <div
+                  class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary"
+                >
+                  <lucide-icon [img]="Layers" [size]="16" />
+                </div>
+                <span class="text-sm font-bold text-dark">DeepTuner</span>
+                <span class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-primary/10 text-primary rounded-full">Early</span>
               </a>
             </div>
           </div>
@@ -372,10 +307,10 @@ import {
   ],
 })
 export class HeaderComponent {
+  readonly BatteryCharging = BatteryCharging;
   readonly ChevronDown = ChevronDown;
-  readonly Zap = Zap;
+  readonly Layers = Layers;
   readonly Server = Server;
-  readonly Lightbulb = Lightbulb;
   readonly Gauge = Gauge;
   readonly Phone = Phone;
   readonly Menu = Menu;

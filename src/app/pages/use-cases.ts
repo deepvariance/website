@@ -3,16 +3,15 @@ import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
-  ArrowRight,
+  ChevronRight,
   Building2,
   CheckCircle2,
   Cpu,
   Factory,
-  Lightbulb,
+  Layers,
   LucideAngularModule,
   Microscope,
   Server,
-  Zap,
 } from 'lucide-angular';
 
 @Component({
@@ -125,10 +124,10 @@ import {
                 default driver layer changes the unit economics. The VMM
                 stitching layer lets a 40 GB physical card address 80–100 GB of
                 model memory, eliminating over-provisioning at booking time.
-                Adding <strong class="text-dark">Autopilot</strong> as a
-                tenant-facing training environment reduces time-to-first-run to
-                a single API call, raising the perceived value of the rental
-                without additional hardware spend.
+                <strong class="text-dark">HyperRAG</strong> raises
+                per-tenant throughput for RAG workloads, and
+                <strong class="text-dark">AI GPU Tuner</strong> cuts
+                idle energy costs during low-QPS windows.
               </p>
 
               <div class="flex flex-wrap gap-2 mb-8">
@@ -139,10 +138,10 @@ import {
                   <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/autopilot"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
+                  routerLink="/hyperrag"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-700 hover:bg-amber-100 transition-colors"
                 >
-                  <lucide-icon [img]="Zap" [size]="11" /> Autopilot
+                  <lucide-icon [img]="Server" [size]="11" /> HyperRAG
                 </a>
               </div>
 
@@ -152,7 +151,7 @@ import {
                 class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
               >
                 Talk to us about GPU provider pricing
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
 
@@ -162,7 +161,7 @@ import {
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
                 >
                   <p class="text-3xl font-header font-bold text-dark mb-1">
-                    2.5×
+                    2.5x
                   </p>
                   <p class="text-xs text-slate-500 font-medium">
                     effective model scale per physical GPU
@@ -215,7 +214,7 @@ import {
                     />
                     <span
                       class="text-xs text-slate-600 font-medium leading-relaxed"
-                      >Tenants allocating 2× the GPU they need to avoid OOM
+                      >Tenants allocating 2x the GPU they need to avoid OOM
                       failures mid-run</span
                     >
                   </li>
@@ -304,34 +303,31 @@ import {
                 and business context, not engineering challenge.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-6">
-                Regulated environments can't send raw data to external services,
-                which rules out every managed cloud AutoML product.
-                <strong class="text-dark">Autopilot</strong> is built for this
-                constraint. LLM calls carry only schema metadata and error
-                traces, never raw records, making it auditable and compliant by
-                design. For edge deployment,
-                <strong class="text-dark">DeepTuner</strong>'s FP8 path
-                compresses production models to fit on-device hardware with less
-                than 0.4% accuracy loss on classification benchmarks we've run.
+                Long training runs in regulated environments are where inefficiency
+                compounds most aggressively. <strong class="text-dark">Optimemory</strong>
+                eliminates VRAM fragmentation across steps, keeping jobs from
+                crashing or restarting due to allocator drift.
+                <strong class="text-dark">AI GPU Tuner</strong> identifies
+                energy-optimal kernel configurations before the run starts, not
+                after the power bill arrives.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-8">
-                Platform teams that adopt Autopilot move from maintaining
-                pipelines to curating problem definitions. The engineering
-                effort shifts upstream.
+                DeepTuner runs on-premise with no data leaving your environment.
+                One integration surfaces memory, latency, and energy metrics together.
               </p>
 
               <div class="flex flex-wrap gap-2 mb-8">
                 <a
-                  routerLink="/autopilot"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
+                  routerLink="/optimemory"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors"
                 >
-                  <lucide-icon [img]="Zap" [size]="11" /> Autopilot
+                  <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/llm-tuner"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors"
+                  routerLink="/deeptuner"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <lucide-icon [img]="Lightbulb" [size]="11" /> LLM Tuner
+                  <lucide-icon [img]="Layers" [size]="11" /> DeepTuner
                 </a>
               </div>
 
@@ -341,7 +337,7 @@ import {
                 class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
               >
                 Talk to us about enterprise deployments
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
 
@@ -496,17 +492,16 @@ import {
                 layer recovers addressable memory at the driver level without
                 altering training code. In our own experiments on genomic
                 benchmark datasets, a single import moved the effective ceiling
-                from 3B to 6B parameters on a four-card A100 node. For
-                hypothesis testing on tabular phenotype data,
-                <strong class="text-dark">Autopilot</strong> accepts HDF5 and
-                NumPy inputs directly and returns a ranked model leaderboard in
-                under an hour.
+                from 3B to 6B parameters on a four-card A100 node.                 For
+                RAG workloads over genomic literature and protein databases,
+                <strong class="text-dark">HyperRAG</strong>'s KV cache
+                eliminates redundant prefill costs when the same documents
+                appear across queries.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-8">
-                When size-constrained deployment is required (clinical edge
-                devices, hospital-side inference),
-                <strong class="text-dark">DeepTuner</strong>'s FP8 path
-                compresses without retraining.
+                For clinical edge deployment, <strong class="text-dark">AI GPU Tuner</strong>
+                identifies thread block configurations that minimize energy per
+                token without retraining, validated on constrained hardware.
               </p>
 
               <div class="flex flex-wrap gap-2 mb-8">
@@ -517,16 +512,16 @@ import {
                   <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/autopilot"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
+                  routerLink="/hyperrag"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-700 hover:bg-amber-100 transition-colors"
                 >
-                  <lucide-icon [img]="Zap" [size]="11" /> Autopilot
+                  <lucide-icon [img]="Server" [size]="11" /> HyperRAG
                 </a>
                 <a
-                  routerLink="/llm-tuner"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors"
+                  routerLink="/deeptuner"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <lucide-icon [img]="Lightbulb" [size]="11" /> LLM Tuner
+                  <lucide-icon [img]="Layers" [size]="11" /> DeepTuner
                 </a>
               </div>
 
@@ -536,7 +531,7 @@ import {
                 class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
               >
                 Talk to us about academic licensing
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
 
@@ -556,7 +551,7 @@ import {
                   class="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm"
                 >
                   <p class="text-3xl font-header font-bold text-dark mb-1">
-                    4×
+                    4x
                   </p>
                   <p class="text-xs text-slate-500 font-medium">
                     more experiments per GPU-week
@@ -688,16 +683,13 @@ import {
                 GPU node.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-6">
-                <strong class="text-dark">Autopilot</strong> ingests sensor
-                time-series and image data natively, handling the full pipeline
-                from raw readings to a ranked model leaderboard without manual
-                feature engineering.
                 <strong class="text-dark">Optimemory</strong> extends the
                 effective VRAM ceiling on constrained edge nodes, allowing
                 larger vision architectures to run where only smaller ones fit
-                before. <strong class="text-dark">DeepTuner</strong>'s FP8 path
-                then compresses the trained model for deployment, cutting memory
-                footprint and inference latency without retraining.
+                before. <strong class="text-dark">AI GPU Tuner</strong>
+                identifies energy-optimal kernel configurations for the specific
+                edge GPU hardware, critical where power draw directly affects
+                battery life or thermal envelope on the factory floor.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-8">
                 The full stack runs on-premise, air-gapped if required, with no
@@ -706,22 +698,16 @@ import {
 
               <div class="flex flex-wrap gap-2 mb-8">
                 <a
-                  routerLink="/autopilot"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
-                >
-                  <lucide-icon [img]="Zap" [size]="11" /> Autopilot
-                </a>
-                <a
                   routerLink="/optimemory"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors"
                 >
                   <lucide-icon [img]="Server" [size]="11" /> Optimemory
                 </a>
                 <a
-                  routerLink="/llm-tuner"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors"
+                  routerLink="/deeptuner"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <lucide-icon [img]="Lightbulb" [size]="11" /> LLM Tuner
+                  <lucide-icon [img]="Layers" [size]="11" /> DeepTuner
                 </a>
               </div>
 
@@ -731,7 +717,7 @@ import {
                 class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
               >
                 Talk to us about manufacturing deployments
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
 
@@ -882,7 +868,7 @@ export class UseCasesPageComponent {
     this.meta.updateTag({
       name: 'description',
       content:
-        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, HyperRAG, and DeepTuner to solve real infrastructure problems.',
     });
     this.meta.updateTag({
       property: 'og:title',
@@ -891,7 +877,7 @@ export class UseCasesPageComponent {
     this.meta.updateTag({
       property: 'og:description',
       content:
-        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, HyperRAG, and DeepTuner to solve real infrastructure problems.',
     });
     this.meta.updateTag({
       property: 'og:url',
@@ -904,7 +890,7 @@ export class UseCasesPageComponent {
     this.meta.updateTag({
       name: 'twitter:description',
       content:
-        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, Autopilot, and DeepTuner to solve real infrastructure problems.',
+        'How GPU providers, enterprise ML teams, research institutions, and manufacturers use Optimemory, HyperRAG, and DeepTuner to solve real infrastructure problems.',
     });
     this.setCanonical('https://deepvariance.com/use-cases');
   }
@@ -922,10 +908,9 @@ export class UseCasesPageComponent {
   readonly Cpu = Cpu;
   readonly Building2 = Building2;
   readonly Microscope = Microscope;
-  readonly ArrowRight = ArrowRight;
-  readonly Zap = Zap;
+  readonly ChevronRight = ChevronRight;
+  readonly Layers = Layers;
   readonly Server = Server;
-  readonly Lightbulb = Lightbulb;
   readonly CheckCircle2 = CheckCircle2;
   readonly Factory = Factory;
 }

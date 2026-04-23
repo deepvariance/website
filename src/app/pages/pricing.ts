@@ -284,9 +284,9 @@ export class PricingPageComponent {
 
   constructor() {
     this.title.setTitle('Pricing | Deep Variance');
-    this.meta.updateTag({ name: 'description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.meta.updateTag({ name: 'description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
     this.meta.updateTag({ property: 'og:title', content: 'Pricing | Deep Variance' });
-    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/pricing' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Pricing | Deep Variance' });
     this.meta.updateTag({ name: 'twitter:description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });

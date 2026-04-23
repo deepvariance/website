@@ -60,11 +60,6 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
             </h4>
             <ul class="space-y-4 text-[13px] text-slate-500 font-medium">
               <li>
-                <a routerLink="/autopilot" class="hover:text-primary transition-colors"
-                  >Autopilot</a
-                >
-              </li>
-              <li>
                 <a
                   routerLink="/optimemory"
                   class="hover:text-primary transition-colors"
@@ -73,16 +68,16 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
               </li>
               <li>
                 <a
-                  routerLink="/llm-tuner"
+                  routerLink="/hyperrag"
                   class="hover:text-primary transition-colors"
-                  >LLM Tuner</a
+                  >HyperRAG</a
                 >
               </li>
               <li>
                 <a
-                  routerLink="/hyperrag"
-                  class="hover:text-primary transition-colors"
-                  >HyperRAG</a
+                  routerLink="/deeptuner"
+                  class="hover:text-primary transition-colors inline-flex items-center gap-1.5"
+                  >DeepTuner <span class="text-[9px] font-extrabold uppercase tracking-widest px-1 py-0.5 bg-primary/10 text-primary rounded">Early</span></a
                 >
               </li>
             </ul>

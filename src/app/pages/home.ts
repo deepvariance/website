@@ -5,18 +5,17 @@ import { RouterLink } from '@angular/router';
 import { BlogCardComponent } from '../components/blog-card';
 import { SanityPost, SanityService } from '../services/sanity.service';
 import {
-  ArrowRight,
+  ChevronRight,
+  BatteryCharging,
   Building2,
   Cpu,
   Factory,
   FlaskConical,
   Gauge,
   Layers,
-  Lightbulb,
   LucideAngularModule,
   Microscope,
   Server,
-  Zap,
 } from 'lucide-angular';
 
 @Component({
@@ -57,7 +56,7 @@ import {
             class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-semibold text-base hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
           >
             Talk to us
-            <lucide-icon [img]="ArrowRight" [size]="16" />
+            <lucide-icon [img]="ChevronRight" [size]="16" />
           </a>
           <a
             href="#products"
@@ -72,43 +71,14 @@ import {
       <section id="products" class="container mx-auto px-6 py-10 md:py-14">
         <div class="text-center mb-10 md:mb-12">
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-4 tracking-tight">
-            Four SDKs. One stack.
+            Three products. One stack.
           </h2>
           <p class="text-slate-500 max-w-2xl mx-auto font-medium">
             Each product targets a distinct bottleneck in the AI infrastructure pipeline.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-          <!-- Autopilot -->
-          <div
-            class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col"
-          >
-            <div class="flex items-start justify-between mb-4">
-              <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                <lucide-icon [img]="Zap" [size]="22" />
-              </div>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
-                Available
-              </span>
-            </div>
-            <h3 class="text-lg font-header font-bold text-dark mb-2">Autopilot</h3>
-            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
-              End-to-end AutoML pipeline. Raw data to trained model in one call, powered by
-              LLM-driven code generation and intelligent model comparison.
-            </p>
-            <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-              <code class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">deepvariance-sdk</code>
-              <a
-                routerLink="/autopilot"
-                class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-              >
-                Learn more
-                <lucide-icon [img]="ArrowRight" [size]="14" />
-              </a>
-            </div>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
           <!-- Optimemory -->
           <div
@@ -134,36 +104,7 @@ import {
                 class="inline-flex items-center gap-1 text-sm font-semibold text-emerald-600 hover:text-emerald-500 transition-colors"
               >
                 Learn more
-                <lucide-icon [img]="ArrowRight" [size]="14" />
-              </a>
-            </div>
-          </div>
-
-          <!-- LLM Tuner -->
-          <div
-            class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-600/30 transition-all p-6 flex flex-col"
-          >
-            <div class="flex items-start justify-between mb-4">
-              <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                <lucide-icon [img]="Lightbulb" [size]="22" />
-              </div>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
-                Beta
-              </span>
-            </div>
-            <h3 class="text-lg font-header font-bold text-dark mb-2">LLM Tuner</h3>
-            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
-              FP8 weight quantization and fine-tuning tooling for large language models. Near-zero
-              perplexity loss with significant memory savings.
-            </p>
-            <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-              <code class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">dv-deeptuner</code>
-              <a
-                routerLink="/llm-tuner"
-                class="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors"
-              >
-                Learn more
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
           </div>
@@ -192,7 +133,36 @@ import {
                 class="inline-flex items-center gap-1 text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors"
               >
                 Learn more
-                <lucide-icon [img]="ArrowRight" [size]="14" />
+                <lucide-icon [img]="ChevronRight" [size]="14" />
+              </a>
+            </div>
+          </div>
+
+          <!-- DeepTuner -->
+          <div
+            class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col"
+          >
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <lucide-icon [img]="Layers" [size]="22" />
+              </div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20">
+                Early Access
+              </span>
+            </div>
+            <h3 class="text-lg font-header font-bold text-dark mb-2">DeepTuner</h3>
+            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
+              Intermediate code analysis for energy-efficient GPU kernels. Up to 50% less energy
+              and 2x throughput gains on MHA, without runtime profiling.
+            </p>
+            <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+              <span class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">deeptuner</span>
+              <a
+                routerLink="/deeptuner"
+                class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                Learn more
+                <lucide-icon [img]="ChevronRight" [size]="14" />
               </a>
             </div>
           </div>
@@ -281,7 +251,7 @@ import {
             </p>
             <div class="pt-4 mt-4 border-t border-slate-100">
               <a routerLink="/use-cases" fragment="gpu-providers" class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors">
-                Read more <lucide-icon [img]="ArrowRight" [size]="12" />
+                Read more <lucide-icon [img]="ChevronRight" [size]="12" />
               </a>
             </div>
           </div>
@@ -301,7 +271,7 @@ import {
             </p>
             <div class="pt-4 mt-4 border-t border-slate-100">
               <a routerLink="/use-cases" fragment="enterprise-training" class="inline-flex items-center gap-1 text-xs font-semibold text-amber-600 hover:text-amber-500 transition-colors">
-                Read more <lucide-icon [img]="ArrowRight" [size]="12" />
+                Read more <lucide-icon [img]="ChevronRight" [size]="12" />
               </a>
             </div>
           </div>
@@ -321,27 +291,27 @@ import {
             </p>
             <div class="pt-4 mt-4 border-t border-slate-100">
               <a routerLink="/use-cases" fragment="research-institutions" class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                Read more <lucide-icon [img]="ArrowRight" [size]="12" />
+                Read more <lucide-icon [img]="ChevronRight" [size]="12" />
               </a>
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-500/30 transition-all p-6 flex flex-col">
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/30 transition-all p-6 flex flex-col">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-9 h-9 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600">
-                <lucide-icon [img]="Factory" [size]="18" />
+              <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <lucide-icon [img]="Layers" [size]="18" />
               </div>
-              <span class="text-[11px] font-extrabold text-orange-600 uppercase tracking-widest">Manufacturing</span>
+              <span class="text-[11px] font-extrabold text-primary uppercase tracking-widest">HPC Infrastructure</span>
             </div>
-            <p class="text-2xl font-header font-bold text-dark mb-1">50%</p>
-            <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">less VRAM for edge vision models</p>
+            <p class="text-2xl font-header font-bold text-dark mb-1">−79%</p>
+            <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">energy per token on MHA kernels</p>
             <p class="text-slate-500 text-sm font-medium leading-relaxed flex-1">
-              Inference must run on the factory floor, not the cloud. The full Deep Variance stack
-              runs on-premise, air-gapped if required, with no data leaving the facility.
+              Long-running training and inference jobs amplify every kernel inefficiency.
+              DeepTuner tunes kernel shape and power cap for minimum energy per token.
             </p>
             <div class="pt-4 mt-4 border-t border-slate-100">
-              <a routerLink="/use-cases" fragment="manufacturing" class="inline-flex items-center gap-1 text-xs font-semibold text-orange-600 hover:text-orange-500 transition-colors">
-                Read more <lucide-icon [img]="ArrowRight" [size]="12" />
+              <a routerLink="/deeptuner" class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors">
+                Learn more <lucide-icon [img]="ChevronRight" [size]="12" />
               </a>
             </div>
           </div>
@@ -387,7 +357,7 @@ import {
               class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-dark font-semibold text-base border border-slate-200 hover:border-primary/30 hover:text-primary transition-all"
             >
               View all articles
-              <lucide-icon [img]="ArrowRight" [size]="16" />
+              <lucide-icon [img]="ChevronRight" [size]="16" />
             </a>
           </div>
         }
@@ -408,7 +378,7 @@ import {
             class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-semibold text-base hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
           >
             Get in touch
-            <lucide-icon [img]="ArrowRight" [size]="16" />
+            <lucide-icon [img]="ChevronRight" [size]="16" />
           </a>
         </div>
       </section>
@@ -454,15 +424,14 @@ export class HomeComponent implements OnInit {
     el.setAttribute('href', url);
   }
 
-  readonly ArrowRight = ArrowRight;
+  readonly ChevronRight = ChevronRight;
+  readonly BatteryCharging = BatteryCharging;
   readonly Building2 = Building2;
   readonly Cpu = Cpu;
   readonly Factory = Factory;
   readonly FlaskConical = FlaskConical;
   readonly Microscope = Microscope;
   readonly Gauge = Gauge;
-  readonly Lightbulb = Lightbulb;
-  readonly Server = Server;
-  readonly Zap = Zap;
   readonly Layers = Layers;
+  readonly Server = Server;
 }

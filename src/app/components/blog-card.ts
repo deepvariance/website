@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ArrowRight, LucideAngularModule } from 'lucide-angular';
+import { ChevronRight, LucideAngularModule } from 'lucide-angular';
 import { SanityPost } from '../services/sanity.service';
 
 @Component({
@@ -54,5 +54,5 @@ import { SanityPost } from '../services/sanity.service';
 export class BlogCardComponent {
   @Input({ required: true }) post!: SanityPost;
 
-  readonly ArrowRight = ArrowRight;
+  readonly ChevronRight = ChevronRight;
 }
