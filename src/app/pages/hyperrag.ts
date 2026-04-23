@@ -436,13 +436,13 @@ import {
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
               1M+ token context where retrieval is skipped. Bottleneck is LLM
               prefill. Default model: LLaMA 3.1 70B. High cache hit rate (94%)
-              with 4-GPU tensor parallelism delivers 9.02x speedup, reducing
-              TTFT from 30.9 ms to 3.4 ms.
+              with 4-GPU tensor parallelism delivers up to 5x speedup, reducing
+              TTFT significantly on long-context workloads.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
                 class="text-[10px] bg-amber-50 text-amber-700 font-semibold px-2 py-1 rounded-full border border-amber-100"
-                >9.02x speedup</span
+                >Up to 5x speedup</span
               >
               <span
                 class="text-[10px] bg-slate-50 text-slate-500 font-semibold px-2 py-1 rounded-full border border-slate-100"
@@ -916,7 +916,7 @@ export class HyperRagPageComponent {
   private readonly allBenchmarkData: Record<string, { paradigm: string; baseline: string; optimized: string; speedup: string; highlight: boolean }[]> = {
     llama70b: [
       { paradigm: 'Hyperscale',        baseline: '243.6 ms', optimized: '223.4 ms', speedup: '1.09x', highlight: false },
-      { paradigm: 'Long Context',      baseline: '30.9 ms',  optimized: '3.4 ms',   speedup: '9.02x', highlight: true  },
+      { paradigm: 'Long Context',      baseline: '30.9 ms',  optimized: '6.2 ms',   speedup: '4.98x', highlight: true  },
       { paradigm: 'Iterative',         baseline: '648.0 ms', optimized: '361.2 ms', speedup: '1.79x', highlight: false },
       { paradigm: 'Rewriter-Reranker', baseline: '649.2 ms', optimized: '339.7 ms', speedup: '1.91x', highlight: true  },
     ],
