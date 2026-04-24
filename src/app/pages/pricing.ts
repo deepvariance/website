@@ -71,14 +71,10 @@ function businessEmailValidator(
   template: `
     <div class="relative overflow-hidden min-h-screen">
       <!-- Background -->
-      <div
-        class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"
-      ></div>
-      <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"
-      ></div>
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-14">
+      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-14">
         <!-- Hero -->
         <div class="max-w-3xl mx-auto text-center mb-20">
           <span
@@ -289,7 +285,7 @@ export class PricingPageComponent {
     this.meta.updateTag({ property: 'og:description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/pricing' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Pricing | Deep Variance' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Deep Variance pricing. Get access to Autopilot, Optimemory, and DeepTuner. Talk to our team for enterprise plans.' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
     this.setCanonical('https://deepvariance.com/pricing');
   }
 

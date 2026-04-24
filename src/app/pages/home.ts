@@ -26,15 +26,10 @@ import {
     <div class="relative overflow-hidden">
 
       <!-- Hero Section -->
-      <section class="relative container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
+      <section class="relative container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
         <!-- Grid background -->
-        <div
-          class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"
-        ></div>
-        <!-- Purple blur -->
-        <div
-          class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"
-        ></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-glow hero-glow--primary"></div>
 
 <h1
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
@@ -238,8 +233,8 @@ import {
             <p class="text-2xl font-header font-bold text-dark mb-1">11w → 3d</p>
             <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">pipeline build cycle</p>
             <p class="text-slate-500 text-sm font-medium leading-relaxed flex-1">
-              Regulated teams rebuild the same pipeline project after project. Autopilot automates it
-              without transmitting a single raw record to an external service.
+              Regulated teams run long jobs where memory overhead and energy drift compound over time.
+              DeepTuner predicts efficient run settings before execution and helps keep cost per run stable.
             </p>
             <div class="pt-4 mt-4 border-t border-slate-100">
               <a routerLink="/use-cases" fragment="enterprise-training" class="inline-flex items-center gap-1 text-xs font-semibold text-amber-600 hover:text-amber-500 transition-colors">
@@ -350,7 +345,7 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.title.setTitle('Deep Variance — Hardware-Aware AI Infra Optimization');
-    const desc = 'Deep Variance builds hardware-aware optimization layers for the next generation of AI training stacks. Autopilot, Optimemory, LLM Tuner, and HyperRAG.';
+    const desc = 'Deep Variance builds hardware-aware optimization layers for the next generation of AI training stacks. Optimemory, HyperRAG, and DeepTuner.';
     this.meta.updateTag({ name: 'description', content: desc });
     this.meta.updateTag({ property: 'og:title', content: 'Deep Variance — Hardware-Aware AI Infra Optimization' });
     this.meta.updateTag({ property: 'og:description', content: desc });

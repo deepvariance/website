@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
           <div class="space-y-6">
             <div class="flex gap-4">
               <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">1</div>
-              <p class="text-slate-600 text-sm font-medium">Install via pip: <code class="bg-slate-100 px-2 py-0.5 rounded text-dark">deepvariance-sdk</code></p>
+              <p class="text-slate-600 text-sm font-medium">Install via pip: <code class="bg-slate-100 px-2 py-0.5 rounded text-dark">deep-variance</code></p>
             </div>
             <div class="flex gap-4">
               <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">2</div>

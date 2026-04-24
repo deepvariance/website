@@ -19,10 +19,10 @@ import {
     <div class="relative overflow-hidden">
 
       <!-- Hero -->
-      <div class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"></div>
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
 
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8">
           <span class="relative flex h-2 w-2">

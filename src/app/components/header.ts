@@ -18,12 +18,13 @@ import {
   standalone: true,
   imports: [RouterLink, RouterLinkActive, LucideAngularModule, NgClass],
   template: `
-    <header
-      class="fixed top-0 left-0 right-0 z-[100] backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/60 shadow-sm font-sans transition-colors duration-300"
-      [ngClass]="scrolled() ? 'bg-white/90' : 'bg-white/50'"
-    >
+    <div class="fixed top-4 left-0 right-0 z-[100] px-6 pointer-events-none">
+      <header
+        class="floating-header w-full max-w-screen-2xl mx-auto rounded-2xl font-sans pointer-events-auto"
+        [ngClass]="scrolled() ? 'floating-header--scrolled' : 'floating-header--top'"
+      >
       <nav
-        class="container mx-auto px-6 py-2 flex items-center justify-between gap-8 relative"
+        class="px-6 py-2 flex items-center justify-between gap-8 relative"
       >
         <a
           routerLink="/"
@@ -38,7 +39,7 @@ import {
 
         <!-- Main Navigation (Desktop) -->
         <div
-          class="hidden md:flex items-center gap-8 text-[13px] font-semibold text-slate-500"
+          class="hidden md:flex items-center gap-8 text-[13px] font-semibold text-slate-600 md:absolute md:left-1/2 md:-translate-x-1/2"
         >
           <!-- Products Megamenu -->
           <div
@@ -47,8 +48,8 @@ import {
             (mouseleave)="isProductsMenuOpen.set(false)"
           >
             <button
-              class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all cursor-default"
-              [class.bg-slate-100]="isProductsMenuOpen()"
+              class="nav-chip flex items-center gap-1.5 px-3 py-1.5 rounded-xl cursor-default"
+              [class.nav-chip--active]="isProductsMenuOpen()"
               [class.text-primary]="isProductsMenuOpen()"
             >
               Products
@@ -152,28 +153,28 @@ import {
 
           <a
             routerLink="/use-cases"
-            routerLinkActive="text-primary"
+            routerLinkActive="text-primary nav-chip--active"
             (click)="closeAllMenus()"
-            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
+            class="nav-chip px-3 py-1.5 rounded-xl"
             >Use Cases</a
           >
           <a
             routerLink="/pricing"
-            routerLinkActive="text-primary"
+            routerLinkActive="text-primary nav-chip--active"
             (click)="closeAllMenus()"
-            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
+            class="nav-chip px-3 py-1.5 rounded-xl"
             >Pricing</a
           >
           <a
             routerLink="/blog"
-            routerLinkActive="text-primary"
+            routerLinkActive="text-primary nav-chip--active"
             (click)="closeAllMenus()"
-            class="px-3 py-1.5 rounded-lg hover:bg-slate-100 hover:text-primary transition-all"
+            class="nav-chip px-3 py-1.5 rounded-xl"
             >Blog</a
           >
         </div>
 
-        <div class="flex items-center gap-3 ml-auto relative z-[110]">
+        <div class="flex items-center gap-3 relative z-[110]">
           <a
             routerLink="/pricing"
             fragment="contact-form"
@@ -288,7 +289,8 @@ import {
           </div>
         </div>
       }
-    </header>
+      </header>
+    </div>
   `,
   styles: [
     `
@@ -299,6 +301,63 @@ import {
         font-family: 'Inter var', 'Inter', sans-serif;
         font-feature-settings: 'cv11' 1;
         letter-spacing: -0.04em;
+      }
+
+      .floating-header {
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        transition: background-color 220ms ease, box-shadow 220ms ease;
+      }
+
+      .floating-header--top {
+        background: linear-gradient(
+          180deg,
+          rgb(248 250 252 / 0.78) 0%,
+          rgb(248 250 252 / 0.62) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 0.6),
+          inset 0 0 0 1px rgb(15 23 42 / 0.05),
+          0 8px 24px rgb(15 23 42 / 0.08);
+      }
+
+      .floating-header--scrolled {
+        background: linear-gradient(
+          180deg,
+          rgb(248 250 252 / 0.9) 0%,
+          rgb(248 250 252 / 0.8) 100%
+        );
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 0.68),
+          inset 0 0 0 1px rgb(15 23 42 / 0.06),
+          0 10px 30px rgb(15 23 42 / 0.12);
+      }
+
+      .nav-chip {
+        transition:
+          color 180ms ease,
+          background-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .nav-chip:hover {
+        color: rgb(124 58 237);
+        background: rgb(124 58 237 / 0.1);
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 0.42),
+          inset 0 -1px 0 rgb(124 58 237 / 0.28);
+        backdrop-filter: blur(8px) saturate(125%);
+        -webkit-backdrop-filter: blur(8px) saturate(125%);
+      }
+
+      .nav-chip--active {
+        color: rgb(124 58 237);
+        background: rgb(124 58 237 / 0.1);
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 0.42),
+          inset 0 -1px 0 rgb(124 58 237 / 0.28);
+        backdrop-filter: blur(8px) saturate(125%);
+        -webkit-backdrop-filter: blur(8px) saturate(125%);
       }
     `,
   ],

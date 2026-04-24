@@ -44,7 +44,7 @@ studio/             # Sanity Studio (CMS schema only — not part of Angular bui
 |---|---|---|---|
 | Optimemory | `/optimemory` | Available | `deep-variance` |
 | HyperRAG | `/hyperrag` | Beta | `dv-hyperrag` |
-| GPU Suite | `/gpu-suite` | Early Access | — (teaser) |
+| DeepTuner (AI GPU Tuner) | `/deeptuner` | Early Access | — (private beta) |
 
 **Removed products (do not re-add):** Autopilot, LLM Tuner (quantizer).
 
@@ -68,7 +68,7 @@ Blog routes have `data: { prerender: false }` — they are dynamic (Sanity CMS).
 ### Colors (tailwind.config.js)
 - `primary` — `#7C3AED` (purple) — CTAs, links, primary accents
 - `dark` — `#0B0B0D` — headings, dark text
-- Product accents: emerald (Optimemory), amber (HyperRAG), purple (GPU Suite / primary)
+- Product accents: emerald (Optimemory), amber (HyperRAG), purple (DeepTuner / primary)
 
 ### Typography
 - **Headings:** `font-header` → Bricolage Grotesque (Google Fonts)
@@ -142,7 +142,7 @@ Create `src/app/components/my-component.ts`. Import it directly in whichever pag
 | `src/app/pages/home.ts` | Main landing page |
 | `src/app/pages/hyperrag.ts` | HyperRAG product page (benchmarks live here) |
 | `src/app/pages/optimemory.ts` | Optimemory product page |
-| `src/app/pages/gpu-suite.ts` | GPU Suite teaser page |
+| `src/app/pages/deeptuner.ts` | DeepTuner (AI GPU Tuner) product page |
 | `src/app/pages/pricing.ts` | Pricing + contact form (FormSubmit) |
 | `src/app/pages/roadmap.ts` | Product roadmap timeline |
 | `src/app/pages/use-cases.ts` | Industry use cases |
@@ -169,16 +169,16 @@ node dist/fusion-angular-tailwind-starter/server/server.mjs  # SSR preview
 
 ## HyperRAG Benchmark Data
 
-Benchmarks live in `src/app/pages/hyperrag.ts` in `allBenchmarkData`. The default tab is `llama70b` which shows the best-run numbers (LLaMA 3.1 70B at 94% cache hit rate):
+Benchmarks live in `src/app/pages/hyperrag.ts` in `allBenchmarkData`. The default tab is `qwen7b` and the UI supports `qwen7b`, `llama8b`, `qwen14b`, and `llama70b`.
 
-- Long Context: **9.02× speedup** (30.9 ms → 3.4 ms)
-- Rewriter-Reranker: **1.91× speedup** (649.2 ms → 339.7 ms)
+- Qwen2.5 7B peak: **2.95× speedup** (Hyperscale, 56.4 ms → 19.1 ms)
+- Llama 3 70B peak: **2.01× speedup** (Rewriter-Reranker, 225.7 ms → 112.2 ms)
 
-Smaller models (Llama 3 8B, Mistral 8B, Qwen 2.5 14B) show 1.24–1.30× speedup under typical workload conditions.
+Across paradigms, current benchmark tables show roughly **1.95× to 2.95×** speedup depending on model and workload profile.
 
 ---
 
-## GPU Suite — AI GPU Tuner (Research Background)
+## DeepTuner — AI GPU Tuner (Research Background)
 
 The AI GPU Tuner component is inspired by *FlipFlop* (ICSE '26 — Rajput et al.), a static PTX analysis framework for energy-efficient GPU kernel configuration:
 

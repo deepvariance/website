@@ -17,6 +17,7 @@ export class App {
   private router = inject(Router);
   private viewportScroller = inject(ViewportScroller);
   private platformId = inject(PLATFORM_ID);
+  private hasHandledInitialNavigation = false;
 
   constructor() {
     this.viewportScroller.setOffset([0, 80]);
@@ -24,8 +25,15 @@ export class App {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      if (!event.urlAfterRedirects.includes('#') && isPlatformBrowser(this.platformId)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!isPlatformBrowser(this.platformId)) return;
+
+      if (!this.hasHandledInitialNavigation) {
+        this.hasHandledInitialNavigation = true;
+        return;
+      }
+
+      if (!event.urlAfterRedirects.includes('#')) {
+        this.viewportScroller.scrollToPosition([0, 0]);
       }
     });
   }

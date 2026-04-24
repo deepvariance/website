@@ -33,11 +33,11 @@ import { Meta, Title } from '@angular/platform-browser';
             <strong class="text-dark">deepvariance.com</strong> and associated
             developer tooling including the
             <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deepvariance-sdk</code
+              >deep-variance</code
             >
             and
             <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deep-variance</code
+              >dv-hyperrag</code
             >
             Python packages. This Privacy Policy explains how we collect, use,
             and protect information when you interact with our website or
@@ -75,12 +75,11 @@ import { Meta, Title } from '@angular/platform-browser';
           </ul>
           <h3 class="text-base font-bold text-dark">What we do NOT collect</h3>
           <p>
-            Our SDK products (<code
-              class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deepvariance-sdk</code
+            Our SDK products (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
+              >deep-variance</code
             >,
             <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deep-variance</code
+              >dv-hyperrag</code
             >) run entirely on your infrastructure. We do not receive, transmit,
             or store your training data, model weights, or proprietary datasets.
           </p>

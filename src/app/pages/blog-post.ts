@@ -11,10 +11,10 @@ import { SanityPost, SanityService } from '../services/sanity.service';
   imports: [CommonModule, RouterLink, LucideAngularModule, DatePipe],
   template: `
     <div class="relative min-h-screen">
-      <div class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+      <div class="hero-grid-overlay"></div>
 
       @if (loading()) {
-        <div class="container mx-auto px-6 pt-16 md:pt-24 pb-14 max-w-3xl animate-pulse">
+        <div class="container mx-auto px-6 pt-24 md:pt-32 pb-14 max-w-3xl animate-pulse">
           <div class="h-3 bg-slate-100 rounded-full w-16 mb-8"></div>
           <div class="h-8 bg-slate-100 rounded-full w-3/4 mb-4"></div>
           <div class="h-8 bg-slate-100 rounded-full w-1/2 mb-8"></div>
@@ -39,7 +39,7 @@ import { SanityPost, SanityService } from '../services/sanity.service';
       }
 
       @if (post()) {
-        <article class="container mx-auto px-6 pt-16 md:pt-24 pb-20 max-w-3xl">
+        <article class="container mx-auto px-6 pt-24 md:pt-32 pb-20 max-w-3xl">
           <a routerLink="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors mb-10">
             <lucide-icon [img]="ArrowLeft" [size]="16" />
             All posts

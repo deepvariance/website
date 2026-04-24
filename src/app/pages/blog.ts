@@ -10,10 +10,10 @@ import { BlogCardComponent } from '../components/blog-card';
   imports: [CommonModule, BlogCardComponent],
   template: `
     <div class="relative overflow-hidden min-h-screen">
-      <div class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/10 blur-[120px] rounded-full -z-20"></div>
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-14">
+      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-14">
         <div class="max-w-3xl mx-auto text-center mb-16">
           <span class="inline-block text-[10px] font-bold text-primary uppercase tracking-widest mb-6 px-3 py-1.5 bg-primary/10 rounded-full">Blog</span>
           <h1 class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-6">

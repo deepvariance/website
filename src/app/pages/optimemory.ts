@@ -27,15 +27,11 @@ import {
   template: `
     <div class="relative overflow-hidden">
       <!-- Grid and Blur Background -->
-      <div
-        class="absolute inset-0 bg-grid-slate-900/[0.04] -z-10 [mask-image:linear-gradient(to_bottom,white,transparent)]"
-      ></div>
-      <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-emerald-500/10 blur-[120px] rounded-full -z-20"
-      ></div>
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-glow hero-glow--emerald"></div>
 
       <!-- Hero Section -->
-      <section class="container mx-auto px-6 pt-16 md:pt-24 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-emerald-600 text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -213,12 +209,11 @@ import {
       </section>
 
       <!-- How it Works -->
-      <section
-        class="container mx-auto px-6 py-12 md:py-20 bg-slate-50/50 rounded-[2rem] md:rounded-[3rem] border border-slate-100"
-      >
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
-        >
+      <section class="bg-slate-50/60 border-y border-slate-100 py-14 md:py-20">
+        <div class="container mx-auto px-6">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
+          >
           <div>
             <h2
               class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-8 tracking-tight"
@@ -293,16 +288,16 @@ import {
               >
                 <div>
                   <h5 class="text-sm font-bold text-dark mb-1">
-                    Upcoming in v2.4
+                    Upcoming platform work
                   </h5>
                   <p class="text-xs text-slate-500 font-medium">
-                    Native FP8 quantization and weight optimization kernels.
+                    Deeper integration with AI GPU Tuner workflows and scheduling controls.
                   </p>
                 </div>
                 <a
-                  routerLink="/llm-tuner"
+                  routerLink="/roadmap"
                   class="text-xs font-bold text-emerald-600 hover:text-emerald-700 whitespace-nowrap"
-                  >Learn More &rarr;</a
+                  >See roadmap &rarr;</a
                 >
               </div>
 
@@ -383,6 +378,7 @@ import {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

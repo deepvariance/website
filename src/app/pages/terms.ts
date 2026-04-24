@@ -34,11 +34,11 @@ import { Meta, Title } from '@angular/platform-browser';
             By accessing <strong class="text-dark">deepvariance.com</strong> or
             using any Deep Variance product or service (including the
             <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deepvariance-sdk</code
+              >deep-variance</code
             >
             and
             <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >deep-variance</code
+              >dv-hyperrag</code
             >
             packages), you agree to be bound by these Terms of Service
             ("Terms"). If you do not agree, do not use our services.
@@ -52,13 +52,6 @@ import { Meta, Title } from '@angular/platform-browser';
           <p>Deep Variance provides:</p>
           <ul class="list-disc pl-5 space-y-2">
             <li>
-              <strong class="text-dark">Autopilot</strong> — an end-to-end
-              AutoML pipeline SDK (<code
-                class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-                >deepvariance-sdk</code
-              >).
-            </li>
-            <li>
               <strong class="text-dark">Optimemory</strong> — a CUDA virtual
               memory management layer (<code
                 class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
@@ -66,8 +59,16 @@ import { Meta, Title } from '@angular/platform-browser';
               >).
             </li>
             <li>
-              <strong class="text-dark">LLM Tuner</strong> — FP8 quantization
-              tooling for large language models (early access).
+              <strong class="text-dark">HyperRAG</strong> — KV cache and
+              schedule optimization for RAG serving (<code
+                class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
+                >dv-hyperrag</code
+              >).
+            </li>
+            <li>
+              <strong class="text-dark">DeepTuner (AI GPU Tuner)</strong> —
+              early-access static analysis tooling for energy-efficient GPU run
+              configuration.
             </li>
             <li>This marketing website and associated documentation.</li>
           </ul>
@@ -140,13 +141,11 @@ import { Meta, Title } from '@angular/platform-browser';
             7. Third-Party APIs
           </h2>
           <p>
-            Autopilot requires access to a third-party LLM API key (such as
-            OpenAI or Groq), which you supply via
-            <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm"
-              >PipelineConfig</code
-            >. Your use of such third-party services is governed by their
+            Certain integrations may depend on third-party services (for
+            example, cloud infrastructure, analytics, or managed model serving).
+            Your use of those third-party services is governed by their
             respective terms and policies. Deep Variance is not responsible for
-            third-party API availability, pricing changes, or terms
+            third-party service availability, pricing changes, or terms
             modifications.
           </p>
         </section>
