@@ -23,8 +23,8 @@ import { LucideAngularModule } from 'lucide-angular';
             <p
               class="text-slate-500 text-[14px] font-medium leading-relaxed max-w-sm"
             >
-              Building hardware-aware optimization layers for the next
-              generation of AI training stacks.
+              Software stack for AI optimization across memory, latency, and
+              GPU energy efficiency.
             </p>
             <div class="flex gap-4">
               <a

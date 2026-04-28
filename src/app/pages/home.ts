@@ -34,13 +34,15 @@ import {
 <h1
           class="text-[2.25rem] sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.08] mb-8 max-w-[18ch] sm:max-w-4xl mx-auto"
         >
-          Hardware-aware <br class="hidden sm:block" /><span class="text-primary whitespace-nowrap">infra optimization</span>.
+          Hardware-aware <br class="hidden sm:block" /><span class="text-primary whitespace-nowrap">AI infra optimization</span>.
         </h1>
 
         <p
           class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-12"
         >
-          Production AI runs on GPUs. We make those GPUs leaner — less VRAM waste, lower latency, and less energy per token, without touching your model or framework.
+          AI infrastructure leaks performance at memory, latency, and kernel
+          layers. Deep Variance is a software stack for AI optimization that
+          fixes all three without touching your model or framework.
         </p>
 
         <!-- CTAs -->
@@ -66,10 +68,11 @@ import {
       <section id="products" class="container mx-auto px-6 py-10 md:py-14">
         <div class="text-center mb-10 md:mb-12">
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-4 tracking-tight">
-            Three products. One stack.
+            One stack. Three bottlenecks solved.
           </h2>
           <p class="text-slate-500 max-w-2xl mx-auto font-medium">
-            Each product targets a distinct bottleneck in the AI infrastructure pipeline.
+            Integrated layers for memory virtualization, RAG latency reduction,
+            and energy-efficient GPU kernel tuning.
           </p>
         </div>
 
@@ -267,33 +270,18 @@ import {
         </div>
       </section>
 
-      <!-- Latest Articles Section -->
-      <section class="container mx-auto px-6 py-10 md:py-14">
-        <div class="text-center mb-10 md:mb-12">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-4 tracking-tight">
-            From the lab.
-          </h2>
-          <p class="text-slate-500 max-w-2xl mx-auto font-medium">
-            Research notes and engineering deep-dives from the Deep Variance team.
-          </p>
-        </div>
-
-        @if (latestPosts() === null) {
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            @for (i of [1, 2, 3]; track i) {
-              <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden animate-pulse">
-                <div class="aspect-[16/9] bg-slate-100"></div>
-                <div class="p-6 space-y-3">
-                  <div class="h-3 bg-slate-100 rounded-full w-1/4"></div>
-                  <div class="h-4 bg-slate-100 rounded-full w-3/4"></div>
-                  <div class="h-3 bg-slate-100 rounded-full w-full"></div>
-                </div>
-              </div>
-            }
+      @if (latestPosts() !== null && latestPosts()!.length > 0) {
+        <!-- Latest Articles Section -->
+        <section class="container mx-auto px-6 py-10 md:py-14">
+          <div class="text-center mb-10 md:mb-12">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-header font-bold text-dark mb-4 tracking-tight">
+              From the lab.
+            </h2>
+            <p class="text-slate-500 max-w-2xl mx-auto font-medium">
+              Research notes and engineering deep-dives from the Deep Variance team.
+            </p>
           </div>
-        }
 
-        @if (latestPosts() !== null && latestPosts()!.length > 0) {
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
             @for (post of latestPosts()!; track post.slug) {
               <app-blog-card [post]="post" />
@@ -308,8 +296,8 @@ import {
               <lucide-icon [img]="ChevronRight" [size]="16" />
             </a>
           </div>
-        }
-      </section>
+        </section>
+      }
 
       <!-- CTA Section -->
       <section class="container mx-auto px-6 py-10 md:py-14 text-center">
@@ -344,13 +332,13 @@ export class HomeComponent implements OnInit {
   latestPosts = signal<SanityPost[] | null>(null);
 
   constructor() {
-    this.title.setTitle('Deep Variance | Hardware-Aware AI Infra Optimization');
-    const desc = 'Deep Variance builds hardware-aware optimization layers for the next generation of AI training stacks. Optimemory, HyperRAG, and DeepTuner.';
+    this.title.setTitle('Deep Variance | AI Optimization Software Stack');
+    const desc = 'Deep Variance is a software stack for AI optimization. Optimemory expands effective VRAM, HyperRAG reduces TTFT, and DeepTuner improves GPU energy efficiency.';
     this.meta.updateTag({ name: 'description', content: desc });
-    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance | Hardware-Aware AI Infra Optimization' });
+    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance | AI Optimization Software Stack' });
     this.meta.updateTag({ property: 'og:description', content: desc });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance | Hardware-Aware AI Infra Optimization' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance | AI Optimization Software Stack' });
     this.meta.updateTag({ name: 'twitter:description', content: desc });
     this.setCanonical('https://deepvariance.com/');
   }

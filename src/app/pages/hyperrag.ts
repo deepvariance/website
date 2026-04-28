@@ -62,9 +62,9 @@ import {
         <p
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          Reduce time-to-first-token by up to 6x. HyperRAG combines a
-          prefix-trie KV cache, PGDSF eviction, speculative pipelining, and
-          Pareto schedule search into one serving optimization layer.
+          Reduce time-to-first-token by up to 6x. HyperRAG improves caching,
+          scheduling, and execution across your existing RAG stack with no
+          model changes.
         </p>
 
         <!-- pip install -->
@@ -150,13 +150,8 @@ import {
               Describe your workload
             </h3>
             <p class="text-slate-500 text-sm leading-relaxed">
-              Pick a paradigm (hyperscale, long-context, iterative, or
-              rewriter-reranker), specify your model and GPU budget.
-              <code
-                class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                >RAGOptimizeConfig</code
-              >
-              validates and structures your constraints.
+              Tell HyperRAG your traffic pattern, model size, and latency
+              goals. It maps your current serving constraints automatically.
             </p>
           </div>
 
@@ -176,13 +171,8 @@ import {
               Run Pareto schedule search
             </h3>
             <p class="text-slate-500 text-sm leading-relaxed">
-              <code
-                class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                >rago.optimize()</code
-              >
-              sweeps ~180 candidate configurations across GPU count, batch
-              size, and cache hit rate targets. Returns the non-dominated
-              schedule that minimizes TTFT for your QPS target.
+              HyperRAG evaluates cache and scheduling plans, then selects the
+              best latency-throughput tradeoff for your workload.
             </p>
           </div>
 
@@ -202,37 +192,25 @@ import {
               Serve with KV caching
             </h3>
             <p class="text-slate-500 text-sm leading-relaxed">
-              <code
-                class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                >rago.build_controller()</code
-              >
-              returns a
-              <code
-                class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                >RAGServeController</code
-              >
-              ready to process queries with prefix reuse, PGDSF eviction, and
-              speculative pipelining active.
+              Deploy the selected plan and start serving immediately. HyperRAG
+              keeps tracking TTFT and cache efficiency in real time.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Core Algorithms -->
+      <!-- Core System -->
       <section class="bg-slate-50/60 border-y border-slate-100 py-10 md:py-14">
         <div class="container mx-auto px-6">
           <div class="text-center mb-12">
             <h2
               class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-4"
             >
-              Research-backed algorithms
+              Built for production RAG
             </h2>
             <p class="text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-              Every core decision in HyperRAG is grounded in peer-reviewed systems research.
-              The scheduling layer jointly optimizes latency and throughput across hardware
-              configurations<sup class="text-amber-500 font-bold">1</sup>, while the caching
-              layer predicts which knowledge fragments will be reused and holds them in memory
-              before the next query arrives<sup class="text-amber-500 font-bold">2</sup>.
+              HyperRAG combines cache reuse, adaptive eviction, speculative
+              execution, and schedule selection into one serving layer.
             </p>
           </div>
 
@@ -258,11 +236,8 @@ import {
                 </div>
               </div>
               <p class="text-slate-500 text-sm leading-relaxed">
-                Multi-level prefix trie that stores transformer KV attention
-                tensors per document. When two queries share retrieved
-                documents, the cached KV state for that prefix is reused
-                exactly once. Nodes span GPU HBM (L1) and host DRAM (L2)
-                tiers.
+                Reuses document context across similar queries so the system
+                avoids repeated prefill work.
               </p>
             </div>
 
@@ -282,15 +257,13 @@ import {
                   </h3>
                   <span
                     class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded"
-                    >Priority = Clock + (Freq x Cost) / Size</span
+                    >cost-aware eviction</span
                   >
                 </div>
               </div>
               <p class="text-slate-500 text-sm leading-relaxed">
-                Priority-based Greedy Dual Size Frequency policy. Each cached
-                node is scored by recency (clock), access frequency, prefill
-                recomputation cost, and KV tensor size. Lowest-priority leaf
-                nodes are demoted to host DRAM or evicted first.
+                Keeps high-value context in fast memory and evicts low-impact
+                entries first when memory pressure rises.
               </p>
             </div>
 
@@ -315,13 +288,8 @@ import {
                 </div>
               </div>
               <p class="text-slate-500 text-sm leading-relaxed">
-                Starts prefill on cached documents immediately, while retrieval
-                of remaining documents runs in parallel. New documents are
-                merged into the prefill pass on arrival. Estimated savings:
-                <code
-                  class="text-[11px] bg-slate-50 border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                  >min(t_retrieve, t_prefill x 0.8)</code
-                >.
+                Starts useful work from cached context while slower retrieval
+                completes in parallel to reduce wait time.
               </p>
             </div>
 
@@ -341,16 +309,13 @@ import {
                   </h3>
                   <span
                     class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded"
-                    >~180 candidates</span
+                    >auto plan search</span
                   >
                 </div>
               </div>
               <p class="text-slate-500 text-sm leading-relaxed">
-                Enumerates GPU counts (1, 2, 4), batch sizes (1, 2, 4, 8, 16),
-                cache hit rates (0 to 0.9), and placements (collocated,
-                disaggregated, hybrid). Returns a Pareto frontier of 14 to 18
-                non-dominated configurations. No schedule in the frontier
-                dominates another on both TTFT and QPS.
+                Selects a serving plan that matches your traffic profile and
+                balances low TTFT with stable throughput.
               </p>
             </div>
           </div>
@@ -391,9 +356,8 @@ import {
               >
             </div>
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
-              Standard single-hop RAG at scale. Bottleneck is FAISS index
-              scan, not the LLM. Default model: LLaMA 3.1 8B. Measured 1.09x
-              speedup on 4x A100 at 1000 queries (Zipfian workload, alpha 1.1).
+              Standard single-hop RAG at high query volume where retrieval
+              overhead dominates.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
@@ -430,10 +394,8 @@ import {
               >
             </div>
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
-              1M+ token context where retrieval is skipped. Bottleneck is LLM
-              prefill. Default model: LLaMA 3.1 70B.
-              4-GPU tensor parallelism delivers around 2x speedup on 70B models,
-              with peak 6.28x on 7B models in rewriter-reranker mode.
+              Long-context generation where prefill dominates. HyperRAG
+              improves prompt reuse and batching efficiency.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
@@ -470,10 +432,8 @@ import {
               >
             </div>
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
-              Multi-hop and agentic retrieval. FAISS is called up to 4 times
-              per query. Bottleneck is cumulative retrieval latency. Default
-              model: LLaMA 3.1 70B. Speculative pipelining provides the
-              largest relative improvement here.
+              Multi-hop and agentic retrieval where repeated document access
+              creates cumulative latency.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
@@ -510,15 +470,13 @@ import {
               >
             </div>
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
-              Query rewriting plus cross-encoder reranking. Bottleneck is
-              both encoder and rewriter LLM. Default model: LLaMA 3.1 70B.
-              Combined scheduler and cache optimization reduces TTFT from
-              649.2 ms to 339.7 ms, a 1.91x speedup.
+              Query rewriting and reranking pipelines where latency compounds
+              across multiple model stages.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
                 class="text-[10px] bg-amber-50 text-amber-700 font-semibold px-2 py-1 rounded-full border border-amber-100"
-                >1.91x speedup</span
+                >multi-stage</span
               >
               <span
                 class="text-[10px] bg-slate-50 text-slate-500 font-semibold px-2 py-1 rounded-full border border-slate-100"
@@ -526,7 +484,7 @@ import {
               >
               <span
                 class="text-[10px] bg-slate-50 text-slate-500 font-semibold px-2 py-1 rounded-full border border-slate-100"
-                >339.7 ms TTFT</span
+                >latency-sensitive</span
               >
             </div>
           </div>
@@ -545,18 +503,9 @@ import {
                 Fits into any RAG pipeline
               </h2>
               <p class="text-slate-500 font-medium leading-relaxed mb-10">
-                HyperRAG wraps your existing retriever. Pass
-                <code
-                  class="text-[12px] bg-white border border-slate-200 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                  >doc_ids</code
-                >
-                and
-                <code
-                  class="text-[12px] bg-white border border-slate-200 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-                  >doc_tokens</code
-                >
-                from your retriever output. Integrates with LangChain and
-                LlamaIndex in three lines.
+                HyperRAG wraps your current retriever and serving stack. Keep
+                your model and retrieval flow, then add optimization and
+                metrics in one integration step.
               </p>
 
               <div class="space-y-6">
@@ -571,14 +520,8 @@ import {
                       Configure and optimize
                     </h4>
                     <p class="text-slate-500 text-sm leading-relaxed">
-                      Set your paradigm, model preset, and GPU/host budget.
-                      Call
-                      <code
-                        class="text-[11px] bg-white border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                        >optimize()</code
-                      >
-                      to get the best schedule and cache allocation for your
-                      workload.
+                      Set workload goals and hardware budget, then let
+                      HyperRAG generate the best serving plan.
                     </p>
                   </div>
                 </div>
@@ -594,13 +537,8 @@ import {
                       Build the serving controller
                     </h4>
                     <p class="text-slate-500 text-sm leading-relaxed">
-                      <code
-                        class="text-[11px] bg-white border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                        >build_controller()</code
-                      >
-                      wires up the KnowledgeTree, multi-tier cache, request
-                      reordering, and speculative pipelining into one
-                      ready-to-call object.
+                      Deploy the selected plan as a single controller in front
+                      of your existing RAG calls.
                     </p>
                   </div>
                 </div>
@@ -616,18 +554,8 @@ import {
                       Process queries and read metrics
                     </h4>
                     <p class="text-slate-500 text-sm leading-relaxed">
-                      Each
-                      <code
-                        class="text-[11px] bg-white border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                        >QueryResult</code
-                      >
-                      reports TTFT, total latency, cached token count, and
-                      whether speculative pipelining fired.
-                      <code
-                        class="text-[11px] bg-white border border-slate-100 rounded px-1 py-0.5 font-mono text-slate-700"
-                        >ctrl.metrics()</code
-                      >
-                      gives aggregate hit rate and GPU cache usage.
+                      Run traffic normally and monitor TTFT, cache hit rate,
+                      and serving latency from the built-in metrics.
                     </p>
                   </div>
                 </div>
@@ -650,37 +578,19 @@ import {
               </div>
               <pre
                 class="p-6 text-xs leading-relaxed overflow-x-auto font-mono text-slate-300"
-              ><code><span class="text-slate-500">from</span> <span class="text-amber-400">hyperrag</span> <span class="text-slate-500">import</span> RAGOptimize, RAGOptimizeConfig, LLMModel, Query
+              ><code><span class="text-slate-500">from</span> <span class="text-amber-400">hyperrag</span> <span class="text-slate-500">import</span> HyperRAG
 
-<span class="text-slate-500"># Step 1: Configure</span>
-rago <span class="text-slate-400">=</span> RAGOptimize(RAGOptimizeConfig(
-    paradigm<span class="text-slate-400">=</span><span class="text-green-400">"hyperscale"</span>,
-    model<span class="text-slate-400">=</span>LLMModel<span class="text-slate-400">.</span>LLAMA_3_1_8B,
-    gpu_budget_gb<span class="text-slate-400">=</span><span class="text-blue-400">4.0</span>,
-    host_budget_gb<span class="text-slate-400">=</span><span class="text-blue-400">16.0</span>,
-))
+hr <span class="text-slate-400">=</span> HyperRAG()
+plan <span class="text-slate-400">=</span> hr<span class="text-slate-400">.</span>optimize(workload<span class="text-slate-400">=</span><span class="text-green-400">"hyperscale"</span>)
+ctrl <span class="text-slate-400">=</span> hr<span class="text-slate-400">.</span>deploy(plan)
 
-<span class="text-slate-500"># Step 2: Find optimal schedule</span>
-result <span class="text-slate-400">=</span> rago<span class="text-slate-400">.</span>optimize()
-<span class="text-amber-400">print</span>(result<span class="text-slate-400">.</span>summary())
-<span class="text-slate-500"># TTFT=243.6ms  QPS/chip=47.0  hit_rate=82.0%</span>
-<span class="text-slate-500">#   gpus=4  batch=1  pareto_size=18</span>
-
-<span class="text-slate-500"># Step 3: Build controller</span>
-ctrl <span class="text-slate-400">=</span> rago<span class="text-slate-400">.</span>build_controller()
-
-<span class="text-slate-500"># Step 4: Process a query</span>
-r <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span>process(Query(
-    query_id<span class="text-slate-400">=</span><span class="text-green-400">"q1"</span>,
+r <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span>query(
     text<span class="text-slate-400">=</span><span class="text-green-400">"What is transformer attention?"</span>,
     doc_ids<span class="text-slate-400">=</span>[<span class="text-green-400">"d1"</span>, <span class="text-green-400">"d2"</span>],
-    doc_tokens<span class="text-slate-400">=</span>[<span class="text-blue-400">512</span>, <span class="text-blue-400">256</span>],
-))
-<span class="text-amber-400">print</span>(<span class="text-green-400">f"TTFT=<span class="text-amber-300">&#123;r.ttft_s*1000:.1f&#125;</span>ms  hit=<span class="text-amber-300">&#123;r.cache_hit&#125;</span>"</span>)
+)
 
-<span class="text-slate-500"># Step 5: Aggregate metrics</span>
-m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span>metrics()
-<span class="text-amber-400">print</span>(<span class="text-green-400">f"hit_rate=<span class="text-amber-300">&#123;m.hit_rate:.1%&#125;</span>  gpu_mib=<span class="text-amber-300">&#123;m.gpu_used_mib:.0f&#125;</span>"</span>)</code></pre>
+<span class="text-amber-400">print</span>(r<span class="text-slate-400">.</span>ttft_ms, r<span class="text-slate-400">.</span>latency_ms)
+<span class="text-amber-400">print</span>(ctrl<span class="text-slate-400">.</span>metrics())</code></pre>
             </div>
           </div>
         </div>
@@ -692,15 +602,11 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
           <h2
             class="text-3xl md:text-4xl font-header font-bold text-dark tracking-tight mb-4"
           >
-            17 built-in model presets
+            Built-in model presets
           </h2>
           <p class="text-slate-500 max-w-xl mx-auto font-medium">
-            Roofline cost model parameters are pre-calibrated for all major
-            open-weight LLMs. Custom model specs are accepted via
-            <code
-              class="text-[12px] bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-slate-700 font-mono"
-              >LLMModel.custom()</code
-            >.
+            Common open-weight model families are supported out of the box,
+            and custom models can be configured when needed.
           </p>
         </div>
 
@@ -727,8 +633,8 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
         </div>
 
         <p class="text-center text-xs text-slate-400 mt-6 font-medium">
-          All presets include layer count, GQA head configuration, and head
-          dimension for accurate KV cache size estimation.
+          Presets are tuned for practical deployment defaults across model
+          sizes and serving profiles.
         </p>
       </section>
 
@@ -846,21 +752,6 @@ m <span class="text-slate-400">=</span> ctrl<span class="text-slate-400">.</span
         </div>
       </section>
 
-      <!-- Footnotes -->
-      <section class="container mx-auto px-6 pb-16">
-        <div class="max-w-3xl mx-auto border-t border-slate-100 pt-6 space-y-2">
-          <p class="text-xs text-slate-400 font-medium leading-relaxed">
-            <sup class="font-bold">1</sup>&nbsp;
-            Alnaasan et al., "RAGO: Retrieval-Augmented Generation Optimization," ISCA 2025.
-            <a href="https://arxiv.org/abs/2503.14649" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 transition-colors underline underline-offset-2">arXiv:2503.14649</a>.
-          </p>
-          <p class="text-xs text-slate-400 font-medium leading-relaxed">
-            <sup class="font-bold">2</sup>&nbsp;
-            Jin et al., "RAGCache: Efficient Knowledge Caching for Retrieval-Augmented Generation," ACM TOCS 2025.
-            <a href="https://arxiv.org/abs/2404.12457" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 transition-colors underline underline-offset-2">arXiv:2404.12457</a>.
-          </p>
-        </div>
-      </section>
     </div>
   `,
 })

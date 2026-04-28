@@ -46,7 +46,16 @@ import { BlogCardComponent } from '../components/blog-card';
           </div>
         }
 
-        @if (posts() !== null && !error()) {
+        @if (posts() !== null && !error() && posts()!.length === 0) {
+          <div class="max-w-lg mx-auto text-center py-12 px-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
+            <h3 class="text-2xl font-header font-bold text-dark mb-2 tracking-tight">No posts yet</h3>
+            <p class="text-slate-500 font-medium">
+              Check back soon.
+            </p>
+          </div>
+        }
+
+        @if (posts() !== null && !error() && posts()!.length > 0) {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             @for (post of posts()!; track post.slug) {
               <app-blog-card [post]="post" />
