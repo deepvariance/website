@@ -18,18 +18,18 @@ import {
   standalone: true,
   imports: [RouterLink, RouterLinkActive, LucideAngularModule, NgClass],
   template: `
-    <div class="fixed top-4 left-0 right-0 z-[100] px-6 pointer-events-none">
+    <div class="fixed top-3 sm:top-4 left-0 right-0 z-[100] px-3 sm:px-6 pointer-events-none">
       <header
-        class="floating-header w-full max-w-screen-2xl mx-auto rounded-2xl font-sans pointer-events-auto"
+        class="floating-header w-full max-w-screen-2xl mx-auto rounded-xl sm:rounded-2xl font-sans pointer-events-auto"
         [ngClass]="scrolled() ? 'floating-header--scrolled' : 'floating-header--top'"
       >
       <nav
-        class="px-6 py-2 flex items-center justify-between gap-8 relative"
+        class="px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-4 sm:gap-8 relative"
       >
         <a
           routerLink="/"
           (click)="closeAllMenus()"
-          class="flex-shrink-0 text-xl tracking-tighter text-dark flex items-center group/logo relative z-[110]"
+          class="flex-shrink-0 text-lg sm:text-xl tracking-tighter text-dark flex items-center group/logo relative z-[110]"
         >
           <div class="logo-text leading-none flex items-baseline">
             <span class="font-bold">deep</span>
@@ -117,7 +117,7 @@ import {
                         <span class="text-[9px] font-mono px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded">dv-hyperrag</span>
                       </div>
                       <p class="text-xs text-slate-500 font-medium leading-relaxed">
-                        KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and Pareto schedule search for up to 5x faster TTFT.
+                        KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and Pareto schedule search for up to 6x faster TTFT.
                       </p>
                     </div>
                   </a>
@@ -188,7 +188,7 @@ import {
           <!-- Mobile Menu Toggle -->
           <button
             (click)="toggleMobileMenu($event)"
-            class="md:hidden flex items-center justify-center p-3 -mr-2 text-slate-600 hover:text-primary transition-all rounded-xl hover:bg-slate-50 relative z-[150]"
+            class="md:hidden flex items-center justify-center p-2.5 -mr-1 text-slate-600 hover:text-primary transition-all rounded-xl hover:bg-slate-50 relative z-[150]"
             [class.bg-slate-50]="isMobileMenuOpen()"
             [class.text-primary]="isMobileMenuOpen()"
             aria-label="Toggle menu"
@@ -206,7 +206,7 @@ import {
       <!-- Mobile Menu Content -->
       @if (isMobileMenuOpen()) {
         <div
-          class="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl p-6 space-y-8 animate-fade-in z-[140] max-h-[calc(100vh-80px)] overflow-y-auto"
+          class="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl p-4 sm:p-6 space-y-6 sm:space-y-8 animate-fade-in z-[140] max-h-[calc(100vh-76px)] overflow-y-auto"
         >
           <div class="space-y-4">
             <p

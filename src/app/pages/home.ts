@@ -26,15 +26,15 @@ import {
     <div class="relative overflow-hidden">
 
       <!-- Hero Section -->
-      <section class="relative container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
+      <section class="relative container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-10 text-center">
         <!-- Grid background -->
         <div class="hero-grid-overlay"></div>
         <div class="hero-glow hero-glow--primary"></div>
 
 <h1
-          class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
+          class="text-[2.25rem] sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.08] mb-8 max-w-[18ch] sm:max-w-4xl mx-auto"
         >
-          Hardware-aware<br /><span class="text-primary">infra optimization</span>.
+          Hardware-aware <br class="hidden sm:block" /><span class="text-primary whitespace-nowrap">infra optimization</span>.
         </h1>
 
         <p
@@ -44,18 +44,18 @@ import {
         </p>
 
         <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="w-full max-w-sm sm:max-w-none mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             routerLink="/pricing"
             fragment="contact-form"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-semibold text-base hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-semibold text-base hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
           >
             Talk to us
             <lucide-icon [img]="ChevronRight" [size]="16" />
           </a>
           <a
             href="#products"
-            class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-dark font-semibold text-base border border-slate-200 hover:border-slate-300 transition-all hover:bg-slate-50"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-dark font-semibold text-base border border-slate-200 hover:border-slate-300 transition-all hover:bg-slate-50"
           >
             View products
           </a>
@@ -119,7 +119,7 @@ import {
             <h3 class="text-lg font-header font-bold text-dark mb-2">HyperRAG</h3>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
               KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, and
-              Pareto schedule search for up to 5x faster TTFT.
+              Pareto schedule search for up to 6x faster TTFT.
             </p>
             <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
               <code class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">dv-hyperrag</code>
@@ -147,8 +147,8 @@ import {
             </div>
             <h3 class="text-lg font-header font-bold text-dark mb-2">DeepTuner</h3>
             <p class="text-slate-500 text-sm font-medium leading-relaxed mb-4 flex-1">
-              Intermediate code analysis for energy-efficient GPU kernels. Up to 50% less energy
-              and 2x throughput gains on MHA, without runtime profiling.
+              Intermediate code analysis for energy-efficient GPU kernels. Up to 50% less
+              energy and 2x throughput gains on MHA, without runtime profiling.
             </p>
             <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
               <span class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded-lg">deeptuner</span>
@@ -188,7 +188,7 @@ import {
               </div>
               <span class="text-[11px] font-extrabold text-primary uppercase tracking-widest">HPC Infrastructure</span>
             </div>
-            <p class="text-2xl font-header font-bold text-dark mb-1">−79%</p>
+            <p class="text-2xl font-header font-bold text-dark mb-1">−50%</p>
             <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-3">energy per token on MHA kernels</p>
             <p class="text-slate-500 text-sm font-medium leading-relaxed flex-1">
               Long-running training and inference jobs amplify every kernel inefficiency.
@@ -344,13 +344,13 @@ export class HomeComponent implements OnInit {
   latestPosts = signal<SanityPost[] | null>(null);
 
   constructor() {
-    this.title.setTitle('Deep Variance — Hardware-Aware AI Infra Optimization');
+    this.title.setTitle('Deep Variance | Hardware-Aware AI Infra Optimization');
     const desc = 'Deep Variance builds hardware-aware optimization layers for the next generation of AI training stacks. Optimemory, HyperRAG, and DeepTuner.';
     this.meta.updateTag({ name: 'description', content: desc });
-    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance — Hardware-Aware AI Infra Optimization' });
+    this.meta.updateTag({ property: 'og:title', content: 'Deep Variance | Hardware-Aware AI Infra Optimization' });
     this.meta.updateTag({ property: 'og:description', content: desc });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance — Hardware-Aware AI Infra Optimization' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Deep Variance | Hardware-Aware AI Infra Optimization' });
     this.meta.updateTag({ name: 'twitter:description', content: desc });
     this.setCanonical('https://deepvariance.com/');
   }

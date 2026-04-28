@@ -66,7 +66,7 @@ import { Meta, Title } from '@angular/platform-browser';
               >).
             </li>
             <li>
-              <strong class="text-dark">DeepTuner (AI GPU Tuner)</strong> —
+              <strong class="text-dark">DeepTuner</strong> —
               early-access static analysis tooling for energy-efficient GPU run
               configuration.
             </li>

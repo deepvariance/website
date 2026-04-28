@@ -14,7 +14,7 @@ import { SanityPost, SanityService } from '../services/sanity.service';
       <div class="hero-grid-overlay"></div>
 
       @if (loading()) {
-        <div class="container mx-auto px-6 pt-24 md:pt-32 pb-14 max-w-3xl animate-pulse">
+        <div class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14 max-w-3xl animate-pulse">
           <div class="h-3 bg-slate-100 rounded-full w-16 mb-8"></div>
           <div class="h-8 bg-slate-100 rounded-full w-3/4 mb-4"></div>
           <div class="h-8 bg-slate-100 rounded-full w-1/2 mb-8"></div>
@@ -28,7 +28,7 @@ import { SanityPost, SanityService } from '../services/sanity.service';
       }
 
       @if (error()) {
-        <div class="container mx-auto px-6 pt-32 pb-14 text-center">
+        <div class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14 text-center">
           <h1 class="text-2xl font-header font-bold text-dark mb-4">Post not found</h1>
           <p class="text-slate-500 font-medium mb-8">This article may have been moved or deleted.</p>
           <a routerLink="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
@@ -39,7 +39,7 @@ import { SanityPost, SanityService } from '../services/sanity.service';
       }
 
       @if (post()) {
-        <article class="container mx-auto px-6 pt-24 md:pt-32 pb-20 max-w-3xl">
+        <article class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-20 max-w-3xl">
           <a routerLink="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors mb-10">
             <lucide-icon [img]="ArrowLeft" [size]="16" />
             All posts

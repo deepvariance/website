@@ -12,7 +12,7 @@ import { Meta, Title } from '@angular/platform-browser';
       <div class="hero-grid-overlay"></div>
       <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-14">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14">
         <div class="max-w-4xl mx-auto text-center mb-20">
           <h1 class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8">
             Product Roadmap
@@ -37,7 +37,7 @@ import { Meta, Title } from '@angular/platform-browser';
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> deep-variance on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> dv-hyperrag on PyPI</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Physical memory pooling via CUDA VMM</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Up to 5x faster TTFT on long-context RAG</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary"></div> Up to 6x faster TTFT on long-context RAG</li>
             </ul>
           </div>
 
@@ -55,7 +55,7 @@ import { Meta, Title } from '@angular/platform-browser';
             </p>
             <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-bold text-slate-600">
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> Static PTX analysis (no runtime profiling)</li>
-              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> Up to 79% energy savings per token</li>
+              <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> Up to 50% energy savings per token</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> 93.4% reduction in kernel search space</li>
               <li class="flex items-center gap-2"><div class="w-1 h-1 rounded-full bg-primary/60"></div> DeepTuner dashboard (planned)</li>
             </ul>
@@ -89,12 +89,12 @@ export class RoadmapPageComponent {
 
   constructor() {
     this.title.setTitle('Roadmap | Deep Variance');
-    this.meta.updateTag({ name: 'description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.meta.updateTag({ name: 'description', content: 'See what Deep Variance is building next, from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
     this.meta.updateTag({ property: 'og:title', content: 'Roadmap | Deep Variance' });
-    this.meta.updateTag({ property: 'og:description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.meta.updateTag({ property: 'og:description', content: 'See what Deep Variance is building next, from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
     this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/roadmap' });
     this.meta.updateTag({ name: 'twitter:title', content: 'Roadmap | Deep Variance' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'See what Deep Variance is building next — from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'See what Deep Variance is building next, from Multi-GPU NVLink virtual memory to the full distributed AI inference stack.' });
     this.setCanonical('https://deepvariance.com/roadmap');
   }
 

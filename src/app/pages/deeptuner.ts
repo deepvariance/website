@@ -22,7 +22,7 @@ import {
       <div class="hero-grid-overlay"></div>
       <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-10 text-center">
 
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8">
           <span class="relative flex h-2 w-2">
@@ -40,7 +40,7 @@ import {
         <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-500 font-medium leading-relaxed mb-14">
           DeepTuner uses intermediate code analysis to predict energy-efficient run
           configurations before any code runs. Up to 50% less energy
-          and 2x throughput gains on multi-head attention kernels, no runtime profiling required.
+          and 2x throughput gains on MHA kernels, no runtime profiling required.
         </p>
 
         <!-- Three-stat bar -->
@@ -92,7 +92,7 @@ import {
                 microbenchmark per GPU generation is all it needs.
                 </p>
                 <p class="text-slate-500 font-medium leading-relaxed">
-                  Validated on NVIDIA RTX 5000 Ada (Hopper) and RTX 3070 (Ampere) across
+                  Validated on NVIDIA RTX 5000 Ada (Ada Lovelace) and RTX 3070 (Ampere) across
                   multi-head attention, convolution, and matrix multiplication kernels.
                 </p>
               </div>
@@ -217,7 +217,7 @@ import {
               Expanding beyond NVIDIA
             </h2>
             <p class="text-slate-500 font-medium max-w-xl mx-auto">
-              DeepTuner currently runs on NVIDIA GPUs. Work is underway to bring the same
+              DeepTuner currently runs on NVIDIA GPUs. Work is actively in progress to bring the same
               intermediate code analysis approach to other hardware targets.
             </p>
           </div>
@@ -230,11 +230,10 @@ import {
               <div>
                 <div class="flex items-center gap-2 mb-1">
                   <h4 class="font-header font-bold text-dark">AMD ROCm</h4>
-                  <span class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded-full">In research</span>
+                  <span class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded-full">In progress</span>
                 </div>
                 <p class="text-slate-500 text-sm font-medium leading-relaxed">
                   Porting the intermediate code analysis pipeline to AMD's ROCm stack and CDNA architecture.
-                  Coming soon.
                 </p>
               </div>
             </div>
@@ -246,11 +245,11 @@ import {
               <div>
                 <div class="flex items-center gap-2 mb-1">
                   <h4 class="font-header font-bold text-dark">Google TPUs</h4>
-                  <span class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded-full">In research</span>
+                  <span class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded-full">In progress</span>
                 </div>
                 <p class="text-slate-500 text-sm font-medium leading-relaxed">
                   Adapting energy-aware run configuration search to XLA's compilation model
-                  for TPU v4 and v5 workloads. Coming soon.
+                  for TPU v4 and v5 workloads.
                 </p>
               </div>
             </div>
@@ -299,7 +298,7 @@ export class DeepTunerPageComponent {
 
   readonly energyRows = [
     { seq: '256',  power: 100, shape: '2x32',  baseline: '5.03x10⁻⁶', optimized: '1.63x10⁻⁶', saved: '-67.5%', highlight: false },
-    { seq: '512',  power: 100, shape: '2x32',  baseline: '3.87x10⁻⁶', optimized: '0.88x10⁻⁶', saved: '-78.9%', highlight: true  },
+    { seq: '512',  power: 100, shape: '2x32',  baseline: '3.87x10⁻⁶', optimized: '0.88x10⁻⁶', saved: '-50.0%', highlight: true  },
     { seq: '1024', power: 100, shape: '2x32',  baseline: '1.25x10⁻⁶', optimized: '0.41x10⁻⁶', saved: '-67.4%', highlight: false },
     { seq: '2048', power: 165, shape: '4x16',  baseline: '0.25x10⁻⁶', optimized: '0.12x10⁻⁶', saved: '-22.3%', highlight: false },
     { seq: '4096', power: 100, shape: '2x32',  baseline: '0.40x10⁻⁶', optimized: '0.12x10⁻⁶', saved: '-74.7%', highlight: true  },

@@ -13,7 +13,7 @@ import { BlogCardComponent } from '../components/blog-card';
       <div class="hero-grid-overlay"></div>
       <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-14">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14">
         <div class="max-w-3xl mx-auto text-center mb-16">
           <span class="inline-block text-[10px] font-bold text-primary uppercase tracking-widest mb-6 px-3 py-1.5 bg-primary/10 rounded-full">Blog</span>
           <h1 class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-6">

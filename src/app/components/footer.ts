@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Lock, LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-footer',
@@ -93,34 +93,6 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
               <li>
                 <a routerLink="/blog" class="hover:text-primary transition-colors">Blog</a>
               </li>
-              <li
-                class="flex items-center gap-2 cursor-not-allowed select-none text-slate-400"
-              >
-                <lucide-icon
-                  [img]="Lock"
-                  [size]="12"
-                  class="text-slate-300 flex-shrink-0"
-                />
-                API Reference
-                <span
-                  class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded"
-                  >Soon</span
-                >
-              </li>
-              <li
-                class="flex items-center gap-2 cursor-not-allowed select-none text-slate-400"
-              >
-                <lucide-icon
-                  [img]="Lock"
-                  [size]="12"
-                  class="text-slate-300 flex-shrink-0"
-                />
-                Benchmarks
-                <span
-                  class="text-[9px] font-extrabold uppercase tracking-widest px-1.5 py-0.5 bg-slate-100 text-slate-400 rounded"
-                  >Soon</span
-                >
-              </li>
             </ul>
           </div>
         </div>
@@ -158,5 +130,4 @@ import { Lock, LucideAngularModule } from 'lucide-angular';
   ],
 })
 export class FooterComponent {
-  readonly Lock = Lock;
 }

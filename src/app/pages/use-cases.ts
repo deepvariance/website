@@ -24,7 +24,7 @@ import {
       <div class="hero-glow hero-glow--primary"></div>
 
       <!-- Hero -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -122,7 +122,7 @@ import {
                 model memory, eliminating over-provisioning at booking time.
                 <strong class="text-dark">HyperRAG</strong> raises
                 per-tenant throughput for RAG workloads, and
-                <strong class="text-dark">AI GPU Tuner</strong> cuts
+                <strong class="text-dark">DeepTuner</strong> cuts
                 idle energy costs during low-QPS windows.
               </p>
 
@@ -303,7 +303,7 @@ import {
                 compounds most aggressively. <strong class="text-dark">Optimemory</strong>
                 eliminates VRAM fragmentation across steps, keeping jobs from
                 crashing or restarting due to allocator drift.
-                <strong class="text-dark">AI GPU Tuner</strong> identifies
+                <strong class="text-dark">DeepTuner</strong> identifies
                 energy-optimal kernel configurations before the run starts, not
                 after the power bill arrives.
               </p>
@@ -495,7 +495,7 @@ import {
                 appear across queries.
               </p>
               <p class="text-slate-500 font-medium leading-relaxed mb-8">
-                For clinical edge deployment, <strong class="text-dark">AI GPU Tuner</strong>
+                For clinical edge deployment, <strong class="text-dark">DeepTuner</strong>
                 identifies thread block configurations that minimize energy per
                 token without retraining, validated on constrained hardware.
               </p>
@@ -682,7 +682,7 @@ import {
                 <strong class="text-dark">Optimemory</strong> extends the
                 effective VRAM ceiling on constrained edge nodes, allowing
                 larger vision architectures to run where only smaller ones fit
-                before. <strong class="text-dark">AI GPU Tuner</strong>
+                before. <strong class="text-dark">DeepTuner</strong>
                 identifies energy-optimal kernel configurations for the specific
                 edge GPU hardware, critical where power draw directly affects
                 battery life or thermal envelope on the factory floor.

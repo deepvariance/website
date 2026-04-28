@@ -31,7 +31,7 @@ import {
       <div class="hero-glow hero-glow--emerald"></div>
 
       <!-- Hero Section -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-emerald-600 text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -50,7 +50,7 @@ import {
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-4xl mx-auto"
         >
           Optimemory:<br />
-          <span class="whitespace-nowrap">Hardware-aware</span>
+          <span class="sm:whitespace-nowrap">Hardware-aware</span>
           <span class="text-emerald-500"> memory virtualization</span>.
         </h1>
 
@@ -118,8 +118,8 @@ import {
             <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Memory allocation overhead</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
-            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">+42%</p>
-            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Training stability uplift</p>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Zero</p>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Runtime overhead</p>
           </div>
         </div>
       </section>
@@ -291,7 +291,7 @@ import {
                     Upcoming platform work
                   </h5>
                   <p class="text-xs text-slate-500 font-medium">
-                    Deeper integration with AI GPU Tuner workflows and scheduling controls.
+                    Deeper integration with DeepTuner workflows and scheduling controls.
                   </p>
                 </div>
                 <a

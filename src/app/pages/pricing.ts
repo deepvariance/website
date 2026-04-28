@@ -74,7 +74,7 @@ function businessEmailValidator(
       <div class="hero-grid-overlay"></div>
       <div class="hero-glow hero-glow--primary"></div>
 
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-14">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14">
         <!-- Hero -->
         <div class="max-w-3xl mx-auto text-center mb-20">
           <span

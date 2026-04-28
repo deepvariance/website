@@ -36,7 +36,7 @@ import {
       <div class="hero-glow hero-glow--amber"></div>
 
       <!-- Hero -->
-      <section class="container mx-auto px-6 pt-24 md:pt-32 pb-10 text-center">
+      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-10 text-center">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/5 border border-amber-500/10 text-amber-600 text-[11px] font-bold uppercase tracking-wider mb-8"
         >
@@ -55,14 +55,14 @@ import {
           class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8 max-w-5xl mx-auto"
         >
           HyperRAG:<br />
-          <span class="whitespace-nowrap">KV cache optimization</span>
+          <span class="sm:whitespace-nowrap">KV cache optimization</span>
           <span class="text-amber-500"> for RAG serving</span>.
         </h1>
 
         <p
           class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          Reduce time-to-first-token by up to 5x. HyperRAG combines a
+          Reduce time-to-first-token by up to 6x. HyperRAG combines a
           prefix-trie KV cache, PGDSF eviction, speculative pipelining, and
           Pareto schedule search into one serving optimization layer.
         </p>
@@ -105,7 +105,7 @@ import {
           class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden max-w-3xl mx-auto border border-slate-200/60"
         >
           <div class="bg-white px-8 py-6 text-center">
-            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Up to 5x</p>
+            <p class="text-4xl font-header font-bold text-dark tracking-tight mb-1">Up to 6x</p>
             <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Faster TTFT</p>
           </div>
           <div class="bg-white px-8 py-6 text-center">
@@ -438,7 +438,7 @@ import {
             <div class="flex flex-wrap gap-2">
               <span
                 class="text-[10px] bg-amber-50 text-amber-700 font-semibold px-2 py-1 rounded-full border border-amber-100"
-                >Up to 5x speedup</span
+                >Up to 6x speedup</span
               >
               <span
                 class="text-[10px] bg-slate-50 text-slate-500 font-semibold px-2 py-1 rounded-full border border-slate-100"
@@ -910,33 +910,33 @@ export class HyperRagPageComponent {
   selectedModel = signal('qwen7b');
 
   private readonly allBenchmarkData: Record<string, { paradigm: string; baseline: string; optimized: string; speedup: string; highlight: boolean }[]> = {
-    // Qwen2.5-7B-Instruct — best overall results (peak 2.95x on hyperscale semantic_vllm_prefix)
+    // Baseline vs optimized (No optimization vs best optimized config)
     qwen7b: [
-      { paradigm: 'Hyperscale',        baseline: '56.4 ms',  optimized: '19.1 ms',  speedup: '2.95x', highlight: true  },
-      { paradigm: 'Long Context',      baseline: '56.5 ms',  optimized: '21.6 ms',  speedup: '2.62x', highlight: false },
-      { paradigm: 'Iterative',         baseline: '57.1 ms',  optimized: '21.8 ms',  speedup: '2.62x', highlight: false },
-      { paradigm: 'Rewriter-Reranker', baseline: '57.1 ms',  optimized: '21.6 ms',  speedup: '2.65x', highlight: true  },
+      { paradigm: 'Hyperscale',        baseline: '56.4 ms',  optimized: '9.8 ms',   speedup: '5.73x', highlight: true  },
+      { paradigm: 'Long Context',      baseline: '56.8 ms',  optimized: '10.4 ms',  speedup: '5.47x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '57.1 ms',  optimized: '10.4 ms',  speedup: '5.50x', highlight: false },
+      { paradigm: 'Rewriter-Reranker', baseline: '57.1 ms',  optimized: '9.1 ms',   speedup: '6.28x', highlight: true  },
     ],
-    // Meta-Llama-3-8B-Instruct
+    // Meta-Llama-3-8B-Instruct (baseline vs optimized)
     llama8b: [
-      { paradigm: 'Hyperscale',        baseline: '61.6 ms',  optimized: '23.5 ms',  speedup: '2.62x', highlight: true  },
-      { paradigm: 'Long Context',      baseline: '61.6 ms',  optimized: '23.8 ms',  speedup: '2.59x', highlight: false },
-      { paradigm: 'Iterative',         baseline: '62.3 ms',  optimized: '23.8 ms',  speedup: '2.62x', highlight: false },
-      { paradigm: 'Rewriter-Reranker', baseline: '62.1 ms',  optimized: '23.6 ms',  speedup: '2.63x', highlight: true  },
+      { paradigm: 'Hyperscale',        baseline: '61.7 ms',  optimized: '21.9 ms',  speedup: '2.82x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '61.9 ms',  optimized: '21.7 ms',  speedup: '2.85x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '62.1 ms',  optimized: '21.6 ms',  speedup: '2.88x', highlight: true  },
+      { paradigm: 'Rewriter-Reranker', baseline: '62.0 ms',  optimized: '21.5 ms',  speedup: '2.88x', highlight: true  },
     ],
-    // Qwen2.5-14B-Instruct
+    // Qwen2.5-14B-Instruct (baseline vs optimized)
     qwen14b: [
-      { paradigm: 'Hyperscale',        baseline: '110.2 ms', optimized: '43.1 ms',  speedup: '2.55x', highlight: false },
-      { paradigm: 'Long Context',      baseline: '109.4 ms', optimized: '41.9 ms',  speedup: '2.61x', highlight: true  },
-      { paradigm: 'Iterative',         baseline: '108.9 ms', optimized: '41.9 ms',  speedup: '2.60x', highlight: false },
-      { paradigm: 'Rewriter-Reranker', baseline: '108.9 ms', optimized: '41.9 ms',  speedup: '2.60x', highlight: true  },
+      { paradigm: 'Hyperscale',        baseline: '108.8 ms', optimized: '40.8 ms',  speedup: '2.67x', highlight: true  },
+      { paradigm: 'Long Context',      baseline: '108.8 ms', optimized: '40.8 ms',  speedup: '2.67x', highlight: false },
+      { paradigm: 'Iterative',         baseline: '108.9 ms', optimized: '40.8 ms',  speedup: '2.67x', highlight: false },
+      { paradigm: 'Rewriter-Reranker', baseline: '108.8 ms', optimized: '40.8 ms',  speedup: '2.67x', highlight: false },
     ],
-    // Meta-Llama-3-70B-Instruct (4-GPU TP)
+    // Meta-Llama-3-70B-Instruct (4-GPU TP, baseline vs optimized)
     llama70b: [
-      { paradigm: 'Hyperscale',        baseline: '220.8 ms', optimized: '113.3 ms', speedup: '1.95x', highlight: false },
-      { paradigm: 'Long Context',      baseline: '224.2 ms', optimized: '113.1 ms', speedup: '1.98x', highlight: false },
-      { paradigm: 'Iterative',         baseline: '225.0 ms', optimized: '112.5 ms', speedup: '2.00x', highlight: true  },
-      { paradigm: 'Rewriter-Reranker', baseline: '225.7 ms', optimized: '112.2 ms', speedup: '2.01x', highlight: true  },
+      { paradigm: 'Hyperscale',        baseline: '220.1 ms', optimized: '112.0 ms', speedup: '1.97x', highlight: false },
+      { paradigm: 'Long Context',      baseline: '222.5 ms', optimized: '111.9 ms', speedup: '1.99x', highlight: true  },
+      { paradigm: 'Iterative',         baseline: '224.5 ms', optimized: '113.0 ms', speedup: '1.99x', highlight: false },
+      { paradigm: 'Rewriter-Reranker', baseline: '223.3 ms', optimized: '112.5 ms', speedup: '1.98x', highlight: false },
     ],
   };
 
@@ -947,18 +947,18 @@ export class HyperRagPageComponent {
     this.meta.updateTag({
       name: 'description',
       content:
-        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 5x faster TTFT.',
+        'KV cache optimization for RAG serving. Prefix-trie caching, PGDSF eviction, speculative pipelining, and Pareto schedule search. Up to 6x faster TTFT.',
     });
     this.meta.updateTag({ property: 'og:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       property: 'og:description',
-      content: 'KV cache optimization for RAG serving. Up to 5x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 6x faster time-to-first-token.',
     });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: 'HyperRAG | Deep Variance' });
     this.meta.updateTag({
       name: 'twitter:description',
-      content: 'KV cache optimization for RAG serving. Up to 5x faster time-to-first-token.',
+      content: 'KV cache optimization for RAG serving. Up to 6x faster time-to-first-token.',
     });
     this.setCanonical('https://deepvariance.com/hyperrag');
   }
