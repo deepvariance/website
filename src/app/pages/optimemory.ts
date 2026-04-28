@@ -284,7 +284,7 @@ import {
             <!-- Upcoming & Research -->
             <div class="mt-16 space-y-4">
               <div
-                class="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 flex items-center justify-between gap-6"
+                class="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10"
               >
                 <div>
                   <h5 class="text-sm font-bold text-dark mb-1">
@@ -294,30 +294,8 @@ import {
                     Deeper integration with DeepTuner workflows and scheduling controls.
                   </p>
                 </div>
-                <a
-                  routerLink="/roadmap"
-                  class="text-xs font-bold text-emerald-600 hover:text-emerald-700 whitespace-nowrap"
-                  >See roadmap &rarr;</a
-                >
               </div>
 
-              <div
-                class="p-6 rounded-2xl bg-slate-100/50 border border-slate-200/50"
-              >
-                <div class="flex items-center gap-2 mb-2">
-                  <span
-                    class="px-2 py-0.5 bg-slate-200 text-slate-600 text-[9px] font-extrabold rounded-full uppercase tracking-tighter"
-                    >Research</span
-                  >
-                  <h5 class="text-sm font-bold text-dark">
-                    Multi-GPU & NVlink Support
-                  </h5>
-                </div>
-                <p class="text-xs text-slate-500 font-medium">
-                  We are currently researching cross-GPU virtual address space
-                  stitching via high-speed NVlink interconnects.
-                </p>
-              </div>
             </div>
           </div>
 

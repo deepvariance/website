@@ -432,8 +432,8 @@ import {
             <p class="text-slate-500 text-sm leading-relaxed mb-4">
               1M+ token context where retrieval is skipped. Bottleneck is LLM
               prefill. Default model: LLaMA 3.1 70B.
-              4-GPU tensor parallelism delivers up to 2x speedup on 70B models,
-              with peak 2.95x on 7B models in hyperscale mode.
+              4-GPU tensor parallelism delivers around 2x speedup on 70B models,
+              with peak 6.28x on 7B models in rewriter-reranker mode.
             </p>
             <div class="flex flex-wrap gap-2">
               <span
