@@ -6,7 +6,6 @@ export const routes: Routes = [
   { path: 'optimemory', loadComponent: () => import('./pages/optimemory').then(m => m.OptimemoryPageComponent) },
   { path: 'deeptuner', loadComponent: () => import('./pages/deeptuner').then(m => m.DeepTunerPageComponent) },
   { path: 'hyperrag', loadComponent: () => import('./pages/hyperrag').then(m => m.HyperRagPageComponent) },
-  { path: 'roadmap', loadComponent: () => import('./pages/roadmap').then(m => m.RoadmapPageComponent) },
   { path: 'pricing', loadComponent: () => import('./pages/pricing').then(m => m.PricingPageComponent) },
   { path: 'use-cases', loadComponent: () => import('./pages/use-cases').then(m => m.UseCasesPageComponent) },
   { path: 'blog', loadComponent: () => import('./pages/blog').then(m => m.BlogPageComponent), data: { prerender: false } },

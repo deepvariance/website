@@ -1,6 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Meta, Title } from '@angular/platform-browser';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,299 +7,296 @@ import {
   Validators,
 } from '@angular/forms';
 import {
+  Banknote,
   CircleCheck,
   LucideAngularModule,
+  Lock,
   Server,
   Users,
+  Wallet,
   X,
 } from 'lucide-angular';
 
-function businessEmailValidator(
-  control: AbstractControl,
-): ValidationErrors | null {
+import {
+  ChallengeCalloutsComponent,
+  ChallengeCallout,
+} from '../components/challenge-callouts';
+import { GlassCardComponent } from '../components/glass-card';
+import { StatusPillComponent } from '../components/status-pill';
+import { SeoService } from '../services/seo.service';
+
+function businessEmailValidator(control: AbstractControl): ValidationErrors | null {
   const v = (control.value || '').trim().toLowerCase();
   if (!v) return null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return { invalidEmail: true };
   const blocked = [
-    'mailinator',
-    'yopmail',
-    'guerrillamail',
-    'trashmail',
-    'temp-mail',
-    'throwaway',
-    'maildrop',
-    'sharklasers',
-    'spamgourmet',
-    'mailnull',
-    'getairmail',
-    'tempmail',
-    'dispostable',
-    'airmail.cc',
-    'spam4.me',
-    'yomail',
-    'throwam',
-    'fakeinbox',
-    'getnada',
-    '33mail',
-    'mailexpire',
-    'spamex',
-    'spamfree',
-    'spaml',
-    'spamoff',
-    'tempr.email',
-    'tempr',
-    'inboxbear',
-    'crazymailing',
-    'emailondeck',
-    'filzmail',
-    'tmail',
-    'tmpmail',
-    'moakt',
+    'mailinator', 'yopmail', 'guerrillamail', 'trashmail', 'temp-mail', 'throwaway',
+    'maildrop', 'sharklasers', 'spamgourmet', 'mailnull', 'getairmail', 'tempmail',
+    'dispostable', 'airmail.cc', 'spam4.me', 'yomail', 'throwam', 'fakeinbox',
+    'getnada', '33mail', 'mailexpire', 'spamex', 'spamfree', 'spaml', 'spamoff',
+    'tempr.email', 'tempr', 'inboxbear', 'crazymailing', 'emailondeck', 'filzmail',
+    'tmail', 'tmpmail', 'moakt',
   ];
   const domain = v.split('@')[1];
-  return blocked.some((b) => domain.includes(b))
-    ? { disposableEmail: true }
-    : null;
+  return blocked.some((b) => domain.includes(b)) ? { disposableEmail: true } : null;
 }
 
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  imports: [
+    ReactiveFormsModule,
+    LucideAngularModule,
+    GlassCardComponent,
+    ChallengeCalloutsComponent,
+    StatusPillComponent,
+  ],
   template: `
-    <div class="relative overflow-hidden min-h-screen">
-      <!-- Background -->
-      <div class="hero-grid-overlay"></div>
-      <div class="hero-glow hero-glow--primary"></div>
+    <div class="relative">
+      <!-- Hero -->
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-12 md:pt-40 md:pb-16">
+        <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
+        <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
 
-      <section class="container mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-14">
-        <!-- Hero -->
-        <div class="max-w-3xl mx-auto text-center mb-20">
-          <span
-            class="inline-block text-[10px] font-bold text-primary uppercase tracking-widest mb-6 px-3 py-1.5 bg-primary/8 rounded-full"
-            >Pricing</span
-          >
-          <h1
-            class="text-4xl sm:text-5xl md:text-7xl font-header font-bold text-dark tracking-tight leading-[1.1] mb-8"
-          >
-            Tailored to your<br />infrastructure.
+        <div class="relative max-w-3xl mx-auto text-center">
+          <div class="flex justify-center mb-7">
+            <app-status-pill variant="live">Enterprise ready · scoped to fit</app-status-pill>
+          </div>
+          <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
+            Tailored to your
+            <br class="hidden sm:block" />
+            <span class="text-white">infrastructure</span>.
           </h1>
-          <p
-            class="text-base sm:text-lg md:text-xl text-slate-600 font-medium leading-relaxed"
-          >
-            Every team runs different hardware, different workloads, and
-            different constraints. We work directly with you to scope what fits.
+          <p class="text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed">
+            Every team runs different hardware, different workloads, and different constraints. We
+            work directly with you to scope what fits.
           </p>
         </div>
+      </section>
 
-        <!-- Cards -->
-        <div
-          class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 mb-20"
-        >
-          <div
-            class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
-          >
-            <div
-              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
-            >
-              <lucide-icon [img]="CircleCheck" [size]="20" />
-            </div>
-            <h3 class="text-base font-header font-bold text-dark mb-2">
-              No seat limits
-            </h3>
-            <p class="text-sm text-slate-500 font-medium leading-relaxed">
-              Pricing is scoped to your deployment, not headcount. Every
-              engineer on your team can use it.
+      <!-- 3-up alliterative principles -->
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-10 md:py-14">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <app-glass-card extraClass="p-7">
+            <p class="font-display text-3xl text-on-surface mb-2">Memory.</p>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Optimemory is metered by GPU node-month. No tenant lock-in.
             </p>
-          </div>
-
-          <div
-            class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
-          >
-            <div
-              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
-            >
-              <lucide-icon [img]="Server" [size]="20" />
-            </div>
-            <h3 class="text-base font-header font-bold text-dark mb-2">
-              On-premise first
-            </h3>
-            <p class="text-sm text-slate-500 font-medium leading-relaxed">
-              Every solution runs entirely on your infrastructure. No data
-              leaves your environment, ever.
+          </app-glass-card>
+          <app-glass-card extraClass="p-7">
+            <p class="font-display text-3xl text-on-surface mb-2">Models.</p>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              HyperRAG and DeepTuner are scoped per workload, pay for the optimization runtime,
+              not seats.
             </p>
-          </div>
-
-          <div
-            class="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm"
-          >
-            <div
-              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5"
-            >
-              <lucide-icon [img]="Users" [size]="20" />
-            </div>
-            <h3 class="text-base font-header font-bold text-dark mb-2">
-              Dedicated support
-            </h3>
-            <p class="text-sm text-slate-500 font-medium leading-relaxed">
-              Direct access to the engineering team. Integration help, custom
-              kernel work, and ongoing guidance included.
+          </app-glass-card>
+          <app-glass-card extraClass="p-7">
+            <p class="font-display text-3xl text-on-surface mb-2">Money.</p>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Every pilot is scoped to a measurable target, utilization, TTFT, joules. If we don't
+              hit it, we revise the contract.
             </p>
-          </div>
+          </app-glass-card>
         </div>
+      </section>
 
-        <!-- Contact Form -->
+      <!-- Challenge callouts -->
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-10 md:py-14">
+        <app-challenge-callouts
+          headline="Most enterprise AI pricing is just SaaS pricing in a hat."
+          subhead="Per-seat licensing, opaque overages, and a cap on how much value you can extract per dollar. Our pricing tracks your hardware utilization, not your headcount."
+          [items]="pricingChallenges"
+        />
+      </section>
+
+      <!-- Feature trio (kept, secondary) -->
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-12 md:py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <app-glass-card extraClass="p-7">
+            <div class="dv-feature-icon"><lucide-icon [img]="CircleCheck" [size]="20" /></div>
+            <h3 class="font-display text-lg font-semibold text-on-surface mb-2">No seat limits</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Pricing is scoped to your deployment, not headcount. Every engineer on your team can
+              use it.
+            </p>
+          </app-glass-card>
+          <app-glass-card extraClass="p-7">
+            <div class="dv-feature-icon"><lucide-icon [img]="Server" [size]="20" /></div>
+            <h3 class="font-display text-lg font-semibold text-on-surface mb-2">On-premise first</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Every solution runs entirely on your infrastructure. No data leaves your environment,
+              ever.
+            </p>
+          </app-glass-card>
+          <app-glass-card extraClass="p-7">
+            <div class="dv-feature-icon"><lucide-icon [img]="Users" [size]="20" /></div>
+            <h3 class="font-display text-lg font-semibold text-on-surface mb-2">Dedicated support</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Direct access to the engineering team. Integration help, custom kernel work, and
+              ongoing guidance included.
+            </p>
+          </app-glass-card>
+        </div>
+      </section>
+
+      <!-- Contact form -->
+      <section id="contact-form" class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-16 md:py-24 scroll-mt-28">
         <div class="max-w-xl mx-auto">
           <div class="text-center mb-10">
-            <h2
-              id="contact-form"
-              class="text-2xl sm:text-3xl font-header font-bold text-dark mb-3 tracking-tight"
-            >
-              Tell us what you're building.
+            <span class="label-caps mb-4 inline-block">Talk to us</span>
+            <h2 class="font-display font-bold tracking-tight text-on-surface text-3xl md:text-4xl leading-tight">
+              Tell us what you're <span class="text-white">building</span>.
             </h2>
-            <p
-              class="text-slate-500 text-sm sm:text-base font-medium leading-relaxed"
-            >
-              Share a bit about your setup and what you're working on. We'll
-              take it from there.
+            <p class="mt-4 text-on-surface-variant leading-relaxed">
+              Share a bit about your setup and what you're working on. We'll take it from there.
             </p>
           </div>
 
-          <div class="relative group">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-primary to-primary/40 blur opacity-10 group-hover:opacity-20 transition rounded-3xl"
-            ></div>
-            @if (!succeeded()) {
-              <form
-                [formGroup]="form"
-                (ngSubmit)="submitContact()"
-                class="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-8 space-y-4"
-              >
+          @if (!succeeded()) {
+            <app-glass-card variant="strong" rounded="2xl" extraClass="p-8 md:p-10" [glow]="true">
+              <form [formGroup]="form" (ngSubmit)="submitContact()" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     formControlName="name"
                     type="text"
                     placeholder="Your name"
-                    class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
-                    [class.border-red-300]="isInvalid('name')"
-                    [class.border-slate-200]="!isInvalid('name')"
+                    class="glass-input w-full px-4 py-3 text-sm font-medium"
+                    [class.!border-red-400]="isInvalid('name')"
                   />
                   <input
                     formControlName="org"
                     type="text"
                     placeholder="Organization"
-                    class="px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border border-slate-200 bg-slate-50/50"
+                    class="glass-input w-full px-4 py-3 text-sm font-medium"
                   />
                 </div>
                 <input
                   formControlName="email"
                   type="email"
                   placeholder="Work email"
-                  class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 transition-colors"
-                  [class.border-red-300]="isInvalid('email')"
-                  [class.border-slate-200]="!isInvalid('email')"
+                  class="glass-input w-full px-4 py-3 text-sm font-medium"
+                  [class.!border-red-400]="isInvalid('email')"
                 />
                 <textarea
                   formControlName="message"
                   placeholder="Describe your workload, hardware setup, and team size."
                   rows="4"
-                  class="w-full px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl border bg-slate-50/50 resize-none transition-colors"
-                  [class.border-red-300]="isInvalid('message')"
-                  [class.border-slate-200]="!isInvalid('message')"
+                  class="glass-input w-full px-4 py-3 text-sm font-medium resize-none"
+                  [class.!border-red-400]="isInvalid('message')"
                 ></textarea>
+
                 @if (submitted()) {
                   @if (isInvalid('name')) {
-                    <p class="text-xs text-red-500 font-semibold">
+                    <p class="text-xs text-red-400 font-mono uppercase tracking-[0.16em]">
                       Please enter your name.
                     </p>
-                  } @else if (
-                    isInvalid('email') && form.get('email')?.hasError('required')
-                  ) {
-                    <p class="text-xs text-red-500 font-semibold">
+                  } @else if (isInvalid('email') && form.get('email')?.hasError('required')) {
+                    <p class="text-xs text-red-400 font-mono uppercase tracking-[0.16em]">
                       Please enter your work email.
                     </p>
                   } @else if (isInvalid('email')) {
-                    <p class="text-xs text-red-500 font-semibold">
+                    <p class="text-xs text-red-400 font-mono uppercase tracking-[0.16em]">
                       Please use a valid business email address.
                     </p>
                   } @else if (isInvalid('message')) {
-                    <p class="text-xs text-red-500 font-semibold">
+                    <p class="text-xs text-red-400 font-mono uppercase tracking-[0.16em]">
                       Please describe your workload.
                     </p>
                   }
                 }
+
                 <button
                   type="submit"
                   [disabled]="submitting()"
-                  class="w-full bg-primary text-white px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                  class="w-full inline-flex items-center justify-center gap-2 dv-btn-primary px-7 py-3.5 rounded-md text-[12px] tracking-[0.16em] uppercase font-display font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {{ submitting() ? 'Sending…' : 'Talk to our team' }}
                 </button>
-                <p class="text-center text-[11px] text-slate-400 font-medium">
+
+                <p class="text-center text-[11px] font-mono uppercase tracking-[0.18em] text-outline">
                   We typically respond within one business day.
                 </p>
               </form>
-            } @else {
+            </app-glass-card>
+          } @else {
+            <app-glass-card variant="strong" rounded="2xl" extraClass="p-10 text-center" [glow]="true">
               <div
-                class="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-10 flex flex-col items-center text-center"
+                class="w-[72px] h-[72px] rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center mx-auto mb-6"
               >
-                <div class="w-[72px] h-[72px] rounded-full bg-emerald-500/10 flex items-center justify-center mb-6">
-                  <lucide-icon [img]="CircleCheck" [size]="44" class="text-emerald-500" />
-                </div>
-                <h3 class="text-2xl font-header font-bold text-dark mb-3 tracking-tight">
-                  We'll be in touch ✨
-                </h3>
-                <p class="text-slate-500 text-sm font-medium leading-relaxed">
-                  Thank you for reaching out. Your message landed directly in our founders' inbox and they'll reach out personally.
-                </p>
+                <lucide-icon [img]="CircleCheck" [size]="40" class="text-white" />
               </div>
-            }
-          </div>
+              <h3 class="font-display text-2xl font-semibold text-on-surface mb-3">
+                We'll be in touch.
+              </h3>
+              <p class="text-on-surface-variant leading-relaxed max-w-md mx-auto">
+                Thank you for reaching out. Your message landed directly in the founders' inbox , 
+                they'll reach out personally.
+              </p>
+            </app-glass-card>
+          }
         </div>
       </section>
     </div>
 
-    <!-- Failure Toast -->
     @if (failed()) {
-      <div class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4">
-        <div class="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-red-600 text-white shadow-2xl max-w-sm w-full sm:w-auto">
+      <div
+        class="fixed bottom-6 inset-x-0 z-50 pointer-events-none animate-fade-in flex justify-center px-4"
+      >
+        <div
+          class="flex items-center gap-3 px-5 py-3.5 rounded-md bg-red-600/90 text-white shadow-2xl backdrop-blur-md max-w-sm w-full sm:w-auto"
+        >
           <lucide-icon [img]="X" [size]="16" class="flex-shrink-0" />
           <span class="text-sm font-semibold">Failed to send. Please try again.</span>
         </div>
       </div>
     }
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      .dv-feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 0.5rem;
+        margin-bottom: 1.1rem;
+        background: rgba(157, 111, 255, 0.06);
+        border: 1px solid rgba(157, 111, 255, 0.22);
+        color: #9d6fff;
+      }
+    `,
+  ],
 })
 export class PricingPageComponent {
   private fb = inject(FormBuilder);
-  private title = inject(Title);
-  private meta = inject(Meta);
-  private doc = inject(DOCUMENT);
+  private readonly seo = inject(SeoService);
 
-  constructor() {
-    this.title.setTitle('Pricing | Deep Variance');
-    this.meta.updateTag({ name: 'description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
-    this.meta.updateTag({ property: 'og:title', content: 'Pricing | Deep Variance' });
-    this.meta.updateTag({ property: 'og:description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://deepvariance.com/pricing' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Pricing | Deep Variance' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.' });
-    this.setCanonical('https://deepvariance.com/pricing');
-  }
-
-  private setCanonical(url: string) {
-    let el = this.doc.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!el) {
-      el = this.doc.createElement('link');
-      el.setAttribute('rel', 'canonical');
-      this.doc.head.appendChild(el);
-    }
-    el.setAttribute('href', url);
-  }
   readonly CircleCheck = CircleCheck;
   readonly Server = Server;
   readonly Users = Users;
   readonly X = X;
+
+  readonly pricingChallenges: ChallengeCallout[] = [
+    {
+      icon: Wallet,
+      highlight: 'Per-seat licensing',
+      body: 'caps your value extraction at your headcount, not your hardware. We scope by node, not by user.',
+    },
+    {
+      icon: Lock,
+      highlight: 'Opaque overage',
+      body: 'fees show up after the close. We bake all multipliers into the contract so spend is predictable from day one.',
+    },
+    {
+      icon: Banknote,
+      highlight: 'Fixed-tier plans',
+      body: 'force every team into the same SKU regardless of workload. Every Deep Variance pilot is scoped to a measurable target.',
+    },
+  ];
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -314,6 +309,15 @@ export class PricingPageComponent {
   succeeded = signal(false);
   submitted = signal(false);
   failed = signal(false);
+
+  constructor() {
+    this.seo.set({
+      title: 'Pricing | Deep Variance',
+      description:
+        'Deep Variance pricing. Get access to Optimemory, HyperRAG, and DeepTuner. Talk to our team for enterprise and HPC plans.',
+      path: '/pricing',
+    });
+  }
 
   isInvalid(field: string): boolean {
     const ctrl = this.form.get(field);

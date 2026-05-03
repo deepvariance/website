@@ -66,6 +66,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": ["75c8-129-79-197-22.ngrok-free.app"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "fusion-angular-tailwind-starter:build:production"
