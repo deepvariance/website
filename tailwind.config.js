@@ -22,7 +22,7 @@ module.exports = {
         // ── Type ──────────────────────────────────────────────────────────────
         'on-surface':          '#ffffff',
         'on-surface-variant':  '#a3a3a3',
-        outline:               '#525252',
+        outline:               '#737373',
         'outline-variant':     '#2a2a2a',
 
         // ── Borders ───────────────────────────────────────────────────────────

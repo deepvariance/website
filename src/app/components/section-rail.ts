@@ -24,7 +24,7 @@ export interface RailSection {
   imports: [CommonModule],
   template: `
     <aside
-      class="hidden 2xl:flex flex-col fixed left-4 top-1/2 -translate-y-1/2 z-30"
+      class="hidden 2xl:flex flex-col fixed left-4 top-20 z-30"
       [attr.aria-label]="ariaLabel"
     >
       <ul class="flex flex-col gap-1.5">

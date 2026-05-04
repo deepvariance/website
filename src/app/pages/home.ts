@@ -45,8 +45,10 @@ import { SeoService } from '../services/seo.service';
         <!-- GPU image: absolute inside the 1440px container so it never bleeds on wide screens -->
         <div class="hidden desk:block absolute inset-y-0 right-0 w-[52%] lg:w-[56%] pointer-events-none select-none">
           <img
-            src="/gpu-hero-v3.png"
+            src="/gpu-hero-v3.webp"
             alt=""
+            width="1536" height="1024"
+            fetchpriority="high"
             class="w-full h-full object-contain object-right gpu-hero-img"
             style="mix-blend-mode:screen;mask-image:linear-gradient(to right,transparent 0%,black 22%,black 100%),linear-gradient(to bottom,black 0%,black 78%,transparent 100%);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 22%,black 100%),linear-gradient(to bottom,black 0%,black 78%,transparent 100%);-webkit-mask-composite:source-in"
           />
@@ -55,8 +57,9 @@ import { SeoService } from '../services/seo.service';
           <!-- Below 940px: GPU image full width, stacked above text -->
           <div class="desk:hidden pt-16 -mx-6">
             <img
-              src="/gpu-hero-v3.png"
+              src="/gpu-hero-v3.webp"
               alt=""
+              width="1536" height="1024"
               class="w-full gpu-hero-img"
               style="mix-blend-mode:screen;opacity:0.9"
             />
@@ -69,7 +72,7 @@ import { SeoService } from '../services/seo.service';
               The software around<br class="hidden desk:block"/>
               them isn't.
             </h1>
-            <p class="font-mono text-sm sm:text-base text-on-surface-variant leading-relaxed mb-6 desk:max-w-lg">
+            <p class="font-mono text-base text-on-surface-variant leading-relaxed mb-6 desk:max-w-lg">
               Deep Variance sits between your framework and the hardware driver. It intercepts memory waste, cache misses, and kernel inefficiency before they cost you, without touching your models or your stack.
             </p>
             <div class="flex flex-col sm:flex-row gap-3 mb-6">
@@ -91,7 +94,7 @@ import { SeoService } from '../services/seo.service';
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-center desk:text-left" style="color:#8a8a8a">Works alongside</p>
               <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                 @for (tool of tools; track tool.name) {
-                  <img [src]="tool.src" [alt]="tool.name" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" />
+                  <img [src]="tool.src" [alt]="tool.name" [width]="tool.w" [height]="tool.h" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" />
                 }
               </div>
             </div>
@@ -139,10 +142,10 @@ import { SeoService } from '../services/seo.service';
               </svg>
             </div>
 
-            <p class="font-mono text-sm sm:text-base text-on-surface-variant leading-relaxed mb-4">
+            <p class="font-mono text-base text-on-surface-variant leading-relaxed mb-4">
               A job running at 95% SM occupancy still leaves up to 43% of GPU capacity unused through fragmentation, cache thrash, and kernel misconfiguration. Framework profilers report what the silicon sees. They stop at the API boundary, the same boundary your bill doesn't.
             </p>
-            <p class="font-mono text-sm sm:text-base text-on-surface-variant leading-relaxed mb-6">
+            <p class="font-mono text-base text-on-surface-variant leading-relaxed mb-6">
               Every observability tool in your stack generates a more detailed report of the same waste. None of them close the gap. By the time the report reaches you, that compute has already been paid for and discarded.
             </p>
             <div class="grid grid-cols-2 gap-3">
@@ -345,7 +348,6 @@ import { SeoService } from '../services/seo.service';
         <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden border border-border">
           <div class="bg-background p-6 md:p-7 flex flex-col">
             <span class="font-mono text-[10px] text-outline uppercase tracking-[0.18em] mb-4">Step 01</span>
-            <h3 class="font-display text-base font-semibold text-white mb-3">Install</h3>
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Add to your existing container image. No sidecar, no daemon, no new service to maintain.
             </p>
@@ -353,7 +355,6 @@ import { SeoService } from '../services/seo.service';
 
           <div class="bg-background p-6 md:p-7 flex flex-col">
             <span class="font-mono text-[10px] text-outline uppercase tracking-[0.18em] mb-4">Step 02</span>
-            <h3 class="font-display text-base font-semibold text-white mb-3">Model stays untouched</h3>
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Deep Variance runs at the kernel and memory allocation layer, below the abstraction your model ever sees. Weights, training loop, and inference code are unchanged.
             </p>
@@ -361,7 +362,6 @@ import { SeoService } from '../services/seo.service';
 
           <div class="bg-background p-6 md:p-7 flex flex-col">
             <span class="font-mono text-[10px] text-outline uppercase tracking-[0.18em] mb-4">Step 03</span>
-            <h3 class="font-display text-base font-semibold text-white mb-3">Stack stays the same</h3>
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Runs inside the same job scheduler and orchestration layer you already operate. No Kubernetes operator, no new network topology, no privilege escalation required.
             </p>
@@ -369,7 +369,6 @@ import { SeoService } from '../services/seo.service';
 
           <div class="bg-background p-6 md:p-7 flex flex-col">
             <span class="font-mono text-[10px] text-outline uppercase tracking-[0.18em] mb-4">Step 04</span>
-            <h3 class="font-display text-base font-semibold text-white mb-3">Savings are live</h3>
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Measurable VRAM recovery and throughput gains appear from the first job. No warm-up period, no tuning phase.
             </p>
@@ -691,19 +690,15 @@ import { SeoService } from '../services/seo.service';
       <!-- ── CTA ──────────────────────────────────────────────────────────── -->
       <section class="max-w-[1440px] mx-auto px-6 lg:px-10 py-14 md:py-20 border-t border-border">
         <div class="dv-panel rounded-xl px-8 py-14 md:px-16 md:py-20 text-center">
-          <p class="label-mono mb-5">We respond personally. No sales deck.</p>
           <h2 class="font-display font-bold text-white text-3xl sm:text-4xl md:text-5xl tracking-tight mb-5 max-w-2xl mx-auto leading-tight">
             Tell us your GPU setup.
           </h2>
-          <p class="font-mono text-on-surface-variant max-w-xl mx-auto mb-9 leading-relaxed">
+          <p class="font-mono text-base text-on-surface-variant max-w-xl mx-auto mb-9 leading-relaxed">
             We will walk through your specific fleet, identify where the waste lives, and show you exactly how much you will get back. Investors, operators, and evaluating engineers are all welcome.
           </p>
           <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a routerLink="/pricing" fragment="contact-form" class="dv-btn-primary">
               Talk to the founders
-            </a>
-            <a routerLink="/pricing" fragment="contact-form" class="dv-btn-outline">
-              Request investor memo
             </a>
           </div>
         </div>
@@ -741,7 +736,7 @@ import { SeoService } from '../services/seo.service';
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 12px; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.1em;
-      color: #525252; transition: color 180ms ease, transform 180ms ease;
+      color: #737373; transition: color 180ms ease, transform 180ms ease;
     }
     .dv-product-card:hover .dv-arrow { color: #ffffff; transform: translateX(3px); }
 
@@ -758,7 +753,7 @@ import { SeoService } from '../services/seo.service';
       white-space: nowrap;
     }
     .dv-comp-yes     { background: #ffffff; color: #000000; border: 1px solid #ffffff; }
-    .dv-comp-no      { background: transparent; color: #525252; border: 1px solid #2a2a2a; }
+    .dv-comp-no      { background: transparent; color: #737373; border: 1px solid #2a2a2a; }
     .dv-comp-partial { background: transparent; color: #a3a3a3; border: 1px solid #404040; }
   `],
 })
@@ -776,10 +771,10 @@ export class HomeComponent implements OnInit {
   ];
 
   readonly tools = [
-    { name: 'PyTorch',     src: '/pytorch-logo.png' },
-    { name: 'TensorFlow',  src: '/tensorflow-logo.png' },
-    { name: 'vLLM',        src: '/vllm-logo.png' },
-    { name: 'SGLang',      src: '/sglang-logo.png' },
+    { name: 'PyTorch',    src: '/pytorch-logo.webp',    w: 324, h: 80 },
+    { name: 'TensorFlow', src: '/tensorflow-logo.webp', w: 410, h: 80 },
+    { name: 'vLLM',       src: '/vllm-logo.webp',       w: 280, h: 80 },
+    { name: 'SGLang',     src: '/sglang-logo.webp',     w: 262, h: 80 },
   ];
 
   readonly ArrowRight = ArrowRight;

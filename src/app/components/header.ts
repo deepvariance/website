@@ -16,8 +16,8 @@ import { WordmarkComponent } from './wordmark';
 
             <!-- Logo -->
             <a routerLink="/" (click)="closeMobileMenu()" class="dv-logo" aria-label="Deep Variance home">
-              <img src="/logo-mark.svg" alt="" aria-hidden="true" class="dv-logo__mark" />
-              <app-wordmark [size]="20" />
+              <img src="/logo-mark.svg" alt="" aria-hidden="true" width="28" height="28" class="dv-logo__mark" />
+              <app-wordmark [size]="24" />
             </a>
 
             <!-- Desktop nav — centered -->

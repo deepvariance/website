@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
     <div
       class="mb-10 md:mb-14"
       [class.text-center]="align === 'center'"
-      [class.max-w-3xl]="align === 'center'"
+      [class.max-w-5xl]="align === 'center'"
       [class.mx-auto]="align === 'center'"
     >
       @if (eyebrow) {
@@ -20,8 +20,8 @@ import { Component, Input } from '@angular/core';
       </h2>
       @if (subhead) {
         <p
-          class="mt-5 font-mono text-on-surface-variant text-base sm:text-lg leading-relaxed"
-          [class.max-w-2xl]="align === 'center'"
+          class="mt-5 font-mono text-on-surface-variant text-base leading-relaxed"
+          [class.max-w-3xl]="align === 'center'"
           [class.mx-auto]="align === 'center'"
         >
           {{ subhead }}

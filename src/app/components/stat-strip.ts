@@ -14,8 +14,11 @@ export interface Stat {
   imports: [CommonModule],
   template: `
     <div
-      class="rounded-lg overflow-hidden border border-border grid grid-cols-3 divide-x divide-border max-w-3xl"
+      class="rounded-lg overflow-hidden border border-border divide-x divide-border"
+      [style.max-width]="stats.length === 1 ? '200px' : stats.length === 2 ? '420px' : '48rem'"
       [class.mx-auto]="centered"
+      [style.display]="'grid'"
+      [style.grid-template-columns]="'repeat(' + stats.length + ', minmax(0, 1fr))'"
     >
       @for (s of stats; track s.label) {
         <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface">

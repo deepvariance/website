@@ -70,7 +70,7 @@
     color: #ffffff;
     transition: border-color 200ms ease;
   }
-  .glass-input::placeholder { color: #525252; }
+  .glass-input::placeholder { color: #737373; }
   .glass-input:focus {
     outline: none;
     border-color: #ffffff;
@@ -126,7 +126,7 @@
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 11px; font-weight: 600;
     letter-spacing: 0.12em; text-transform: uppercase;
-    color: #525252;
+    color: #737373;
   }
 
   .label-mono {
@@ -137,7 +137,7 @@
   }
 
   /* ── Text utilities ────────────────────────────────────────────────────── */
-  .text-dim             { color: #525252; }
+  .text-dim             { color: #737373; }
   .text-glow-neon       { color: #ffffff; }  /* legacy alias, no glow */
   .text-gradient-neon   { color: #ffffff; }  /* legacy alias, no gradient */
   .text-spectrum        { color: #e5e5e5; }

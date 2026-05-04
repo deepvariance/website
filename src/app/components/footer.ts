@@ -7,15 +7,15 @@ import { WordmarkComponent } from './wordmark';
   standalone: true,
   imports: [RouterLink, WordmarkComponent],
   template: `
-    <footer class="border-t border-border mt-32">
+    <footer class="border-t border-border">
       <div class="max-w-[1440px] mx-auto px-6 lg:px-10 py-16">
         <div class="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
 
           <!-- Brand -->
           <div class="col-span-2 md:col-span-5">
             <a routerLink="/" class="inline-flex items-center mb-5">
-              <img src="/logo-mark.svg" alt="" class="h-10 w-10 flex-shrink-0" />
-              <app-wordmark [size]="20" />
+              <img src="/logo-mark.svg" alt="" width="40" height="40" class="h-10 w-10 flex-shrink-0" />
+              <app-wordmark [size]="24" />
             </a>
             <p class="text-sm text-on-surface-variant leading-relaxed max-w-sm mb-6">
               A software stack for AI infra optimization across memory, latency, and GPU energy efficiency.
@@ -86,7 +86,7 @@ import { WordmarkComponent } from './wordmark';
 
     .dv-foot-link {
       font-family: 'IBM Plex Mono', ui-monospace, monospace;
-      font-size: 13px; color: #525252; text-decoration: none;
+      font-size: 13px; color: #737373; text-decoration: none;
       transition: color 160ms ease;
     }
     .dv-foot-link:hover { color: #ffffff; }
@@ -96,7 +96,7 @@ import { WordmarkComponent } from './wordmark';
       width: 34px; height: 34px; border-radius: 0.375rem;
       background: #0a0a0a;
       border: 1px solid #1a1a1a;
-      color: #525252;
+      color: #737373;
       transition: all 180ms ease;
       text-decoration: none;
     }

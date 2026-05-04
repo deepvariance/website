@@ -13,8 +13,8 @@ interface VariantConfig {
 const VARIANT_MAP: Record<StatusVariant, VariantConfig> = {
   live:    { dot: '#ffffff', bg: '#111111', border: '#2a2a2a', text: '#a3a3a3' },
   beta:    { dot: '#e5e5e5', bg: '#111111', border: '#2a2a2a', text: '#737373' },
-  preview: { dot: '#737373', bg: '#111111', border: '#1a1a1a', text: '#525252' },
-  soon:    { dot: '#404040', bg: '#0a0a0a', border: '#1a1a1a', text: '#404040' },
+  preview: { dot: '#737373', bg: '#111111', border: '#1a1a1a', text: '#737373' },
+  soon:    { dot: '#404040', bg: '#0a0a0a', border: '#1a1a1a', text: '#525252' },
 };
 
 @Component({

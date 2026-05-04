@@ -6,6 +6,10 @@ export interface ToolItem {
   name: string;
   /** Optional inline SVG string. Rendered via DomSanitizer. */
   logo?: string;
+  /** Optional image path (WebP/PNG). Rendered as <img> with greyscale filter. */
+  imgSrc?: string;
+  imgWidth?: number;
+  imgHeight?: number;
 }
 
 @Component({
@@ -20,11 +24,21 @@ export interface ToolItem {
       <div class="tool-strip-mask">
         <div class="flex items-center justify-center gap-x-10 md:gap-x-14 gap-y-5 flex-wrap px-2">
           @for (tool of tools; track tool.name) {
-            <span class="inline-flex items-center text-on-surface-variant/55 hover:text-on-surface-variant transition-colors">
-              @if (tool.logo) {
-                <span class="inline-flex items-center" [innerHTML]="sanitize(tool.logo)"></span>
+            <span class="inline-flex items-center">
+              @if (tool.imgSrc) {
+                <img
+                  [src]="tool.imgSrc"
+                  [alt]="tool.name"
+                  [width]="tool.imgWidth || 80"
+                  [height]="tool.imgHeight || 28"
+                  class="h-7 w-auto"
+                  style="filter:grayscale(1) brightness(3);opacity:0.45"
+                  loading="lazy"
+                />
+              } @else if (tool.logo) {
+                <span class="inline-flex items-center text-on-surface-variant/55 hover:text-on-surface-variant transition-colors" [innerHTML]="sanitize(tool.logo)"></span>
               } @else {
-                <span class="font-display font-semibold text-sm tracking-[0.12em] uppercase">{{ tool.name }}</span>
+                <span class="font-display font-semibold text-sm tracking-[0.12em] uppercase text-on-surface-variant/55 hover:text-on-surface-variant transition-colors">{{ tool.name }}</span>
               }
             </span>
           }
