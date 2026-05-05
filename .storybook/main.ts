@@ -1,0 +1,17 @@
+import type { StorybookConfig } from '@storybook/angular';
+
+const config: StorybookConfig = {
+  stories: [
+    '../src/stories/**/*.stories.@(ts|tsx)',
+  ],
+  addons: [
+    '@storybook/addon-a11y',
+  ],
+  framework: {
+    name: '@storybook/angular',
+    options: {},
+  },
+  docs: {},
+};
+
+export default config;
