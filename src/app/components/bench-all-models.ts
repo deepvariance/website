@@ -31,7 +31,7 @@ type Metric = 'ttft' | 'throughput';
     <div class="dv-all-card">
 
       <!-- Metric toggle -->
-      <div class="flex gap-2 mb-7">
+      <div class="flex gap-2 mb-6">
         <button
           class="dv-pill"
           [class.is-active]="metric() === 'ttft'"
@@ -44,21 +44,57 @@ type Metric = 'ttft' | 'throughput';
         >Throughput gain</button>
       </div>
 
-      <!-- Ranked bars -->
-      <div class="dv-rows">
-        @for (entry of sortedModels(); track entry.label; let i = $index) {
-          <div class="dv-row">
-            <span class="dv-row-rank">{{ i + 1 }}</span>
-            <span class="dv-row-label">{{ entry.label }}</span>
-            <div class="dv-bar-wrap">
+      <!-- Chart: y-axis + vertical bars -->
+      <div class="flex dv-chart-area">
+
+        <!-- Y-axis labels -->
+        <div class="dv-y-axis relative shrink-0">
+          @for (tick of yTicks(); track tick) {
+            <span
+              class="dv-y-label"
+              [style.bottom]="(tick / ceiling()) * 100 + '%'"
+            >{{ tick }}{{ metric() === 'ttft' ? '%' : '×' }}</span>
+          }
+        </div>
+
+        <!-- Chart body -->
+        <div class="relative flex-1">
+
+          <!-- Grid lines -->
+          @for (tick of yTicks(); track tick) {
+            <div class="dv-grid-line" [style.bottom]="(tick / ceiling()) * 100 + '%'"></div>
+          }
+
+          <!-- Vertical bars -->
+          <div class="absolute inset-0 flex items-stretch gap-[2px] sm:gap-1">
+            @for (entry of sortedModels(); track entry.label) {
               <div
-                class="dv-bar-fill"
-                [class.is-throughput]="metric() === 'throughput'"
-                [style.width.%]="barPct(entry)"
-              ></div>
-            </div>
-            <span class="dv-row-value">{{ valueLabel(entry) }}</span>
+                class="dv-bar-col"
+                (mouseenter)="hovered.set(entry.label)"
+                (mouseleave)="hovered.set(null)"
+              >
+                @if (hovered() === entry.label) {
+                  <div class="dv-tooltip">
+                    <p class="dv-tooltip-title">{{ entry.label }}</p>
+                    <p class="dv-tooltip-value">{{ valueLabel(entry) }}</p>
+                  </div>
+                }
+                <div
+                  class="dv-bar"
+                  [class.is-throughput]="metric() === 'throughput'"
+                  [style.height.%]="barPct(entry)"
+                ></div>
+              </div>
+            }
           </div>
+
+        </div>
+      </div>
+
+      <!-- X-axis labels -->
+      <div class="flex mt-2 gap-[2px] sm:gap-1 dv-x-axis">
+        @for (entry of sortedModels(); track entry.label) {
+          <div class="dv-x-label">{{ entry.label }}</div>
         }
       </div>
 
@@ -103,71 +139,111 @@ type Metric = 'ttft' | 'throughput';
     .dv-pill:hover { border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
     .dv-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
 
-    /* ── Row layout ────────────────────────────── */
-    .dv-rows { display: flex; flex-direction: column; gap: 9px; }
-
-    .dv-row {
-      display: grid;
-      grid-template-columns: 18px 88px 1fr 48px;
-      align-items: center;
-      gap: 8px;
-    }
+    /* ── Chart + Y-axis dimensions (responsive) ── */
+    .dv-chart-area { height: 180px; overflow: visible; }
+    .dv-y-axis     { width: 34px; }
+    .dv-x-axis     { padding-left: 34px; }
     @media (min-width: 640px) {
-      .dv-row {
-        grid-template-columns: 22px 130px 1fr 60px;
-        gap: 12px;
-      }
+      .dv-chart-area { height: 220px; }
+      .dv-y-axis     { width: 44px; }
+      .dv-x-axis     { padding-left: 44px; }
     }
 
-    .dv-row-rank {
+    /* ── Y-axis ───────────────────────────────── */
+    .dv-y-label {
+      position: absolute;
+      right: 8px;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 10px;
       color: #4b5563;
-      text-align: right;
       line-height: 1;
+      transform: translateY(50%);
+      white-space: nowrap;
     }
 
-    .dv-row-label {
+    /* ── Grid lines ───────────────────────────── */
+    .dv-grid-line {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ── Bar columns ──────────────────────────── */
+    .dv-bar-col {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      cursor: default;
+    }
+
+    .dv-bar {
+      width: 100%;
+      max-width: 28px;
+      border-radius: 3px 3px 0 0;
+      min-height: 2px;
+      height: 0%;
+      transition: height 600ms cubic-bezier(0.16, 1, 0.3, 1);
+      background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+      box-shadow: 0 0 8px rgba(124,58,237,0.3);
+    }
+    @media (min-width: 640px) {
+      .dv-bar { max-width: 36px; }
+    }
+
+    .dv-bar.is-throughput {
+      background: linear-gradient(180deg, #34d399 0%, #059669 100%);
+      box-shadow: 0 0 8px rgba(5,150,105,0.3);
+    }
+
+    /* ── Tooltip ──────────────────────────────── */
+    .dv-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #16162a;
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 8px;
+      padding: 8px 12px;
+      white-space: nowrap;
+      z-index: 20;
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .dv-tooltip-title {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
+      font-weight: 600;
       color: #9ca3af;
-      text-align: right;
+      margin: 0 0 3px;
+    }
+    .dv-tooltip-value {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    /* ── X-axis ───────────────────────────────── */
+    .dv-x-label {
+      flex: 1;
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      color: #6b7280;
+      letter-spacing: 0.02em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.4;
-    }
-
-    /* ── Bars ──────────────────────────────────── */
-    .dv-bar-wrap {
-      height: 8px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .dv-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      width: 0%;
-      background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
-      transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .dv-bar-fill.is-throughput {
-      background: linear-gradient(90deg, #059669 0%, #34d399 100%);
-    }
-
-    /* ── Value ─────────────────────────────────── */
-    .dv-row-value {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #ffffff;
-      text-align: right;
-      white-space: nowrap;
+      line-height: 1.3;
     }
     @media (min-width: 640px) {
-      .dv-row-value { font-size: 14px; }
+      .dv-x-label { font-size: 9px; }
     }
 
     /* ── Note ──────────────────────────────────── */
@@ -189,6 +265,7 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
 
   readonly metric = signal<Metric>('ttft');
   readonly barsVisible = signal(false);
+  readonly hovered = signal<string | null>(null);
 
   private initTimer: ReturnType<typeof setTimeout> | null = null;
   private switchTimer: ReturnType<typeof setTimeout> | null = null;
@@ -202,16 +279,32 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
     });
   });
 
-  readonly maxValue = computed<number>(() => {
-    if (!this.models.length) return 1;
+  readonly ceiling = computed<number>(() => {
+    if (!this.models.length) return 100;
     const m = this.metric();
-    return Math.max(...this.models.map(e => m === 'ttft' ? e.ttftPct : e.throughputX));
+    const max = Math.max(...this.models.map(e => m === 'ttft' ? e.ttftPct : e.throughputX));
+    if (m === 'ttft') {
+      const step = 20;
+      return Math.ceil(max / step) * step;
+    } else {
+      const step = 1;
+      return Math.ceil(max / step) * step;
+    }
+  });
+
+  readonly yTicks = computed<number[]>(() => {
+    const ceil = this.ceiling();
+    const m = this.metric();
+    const step = m === 'ttft' ? 20 : 1;
+    const ticks: number[] = [];
+    for (let t = 0; t <= ceil; t += step) ticks.push(t);
+    return ticks;
   });
 
   barPct(entry: AllModelEntry): number {
     if (!this.barsVisible()) return 0;
     const val = this.metric() === 'ttft' ? entry.ttftPct : entry.throughputX;
-    return (val / this.maxValue()) * 100;
+    return (val / this.ceiling()) * 100;
   }
 
   valueLabel(entry: AllModelEntry): string {
