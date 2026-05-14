@@ -91,12 +91,10 @@ type Metric = 'ttft' | 'throughput';
         </div>
       </div>
 
-      <!-- X-axis labels -->
-      <div class="flex mt-8 gap-[2px] sm:gap-1 dv-x-axis items-start justify-center">
-        @for (entry of sortedModels(); track entry.label) {
-          <div class="dv-x-label">
-            <span>{{ entry.label }}</span>
-          </div>
+      <!-- X-axis labels (rank numbers) -->
+      <div class="flex mt-2 gap-[2px] sm:gap-1 dv-x-axis items-start justify-center">
+        @for (entry of sortedModels(); track entry.label; let i = $index) {
+          <div class="dv-x-label">{{ i + 1 }}</div>
         }
       </div>
 
@@ -231,30 +229,18 @@ type Metric = 'ttft' | 'throughput';
       margin: 0;
     }
 
-    /* ── X-axis ───────────────────────────────── */
+    /* ── X-axis (rank numbers) ───────────────── */
     .dv-x-label {
       flex: 1;
-      display: flex;
-      justify-content: center;
-      height: 42px;
-    }
-    @media (min-width: 640px) {
-      .dv-x-label { height: 48px; }
-    }
-    
-    .dv-x-label span {
+      text-align: center;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 8px;
-      color: #6b7280;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      line-height: 1.2;
-      transform: rotate(-45deg);
-      transform-origin: center center;
-      padding-top: 12px;
+      font-size: 9px;
+      color: #4b5563;
+      font-weight: 500;
+      line-height: 1;
     }
     @media (min-width: 640px) {
-      .dv-x-label span { font-size: 9px; padding-top: 14px; }
+      .dv-x-label { font-size: 10px; }
     }
 
     /* ── Note ──────────────────────────────────── */
