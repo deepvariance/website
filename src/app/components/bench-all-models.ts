@@ -47,8 +47,8 @@ type Metric = 'ttft' | 'throughput';
       <!-- Ranked bars -->
       <div class="dv-rows">
         @for (entry of sortedModels(); track entry.label; let i = $index) {
-          <div class="dv-row">
-            <span class="dv-row-rank">{{ i + 1 }}</span>
+          <div class="dv-row" [class.is-top3]="i < 3">
+            <div class="dv-row-rank" [class.is-top3]="i < 3">{{ i + 1 }}</div>
             <span class="dv-row-label">{{ entry.label }}</span>
             <div class="dv-bar-wrap">
               <div
@@ -104,46 +104,101 @@ type Metric = 'ttft' | 'throughput';
     .dv-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
 
     /* ── Row layout ────────────────────────────── */
-    .dv-rows { display: flex; flex-direction: column; gap: 9px; }
+    .dv-rows { display: flex; flex-direction: column; gap: 8px; }
 
     .dv-row {
       display: grid;
-      grid-template-columns: 18px 88px 1fr 48px;
+      grid-template-columns: 28px 100px 1fr 56px;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid transparent;
+      transition: all 200ms ease;
     }
     @media (min-width: 640px) {
       .dv-row {
-        grid-template-columns: 22px 130px 1fr 60px;
-        gap: 12px;
+        grid-template-columns: 32px 140px 1fr 68px;
+        gap: 14px;
+        padding: 10px 12px;
       }
+    }
+    .dv-row:hover {
+      background: rgba(124,58,237,0.05);
+      border-color: rgba(124,58,237,0.15);
+    }
+    .dv-row.is-top3 {
+      background: rgba(124,58,237,0.08);
+      border-color: rgba(124,58,237,0.25);
+    }
+    .dv-row.is-top3:hover {
+      background: rgba(124,58,237,0.12);
+      border-color: rgba(124,58,237,0.35);
     }
 
     .dv-row-rank {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 10px;
-      color: #4b5563;
-      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
       line-height: 1;
+    }
+    @media (min-width: 640px) {
+      .dv-row-rank {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+    }
+    .dv-row-rank.is-top3 {
+      background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(167,139,250,0.15) 100%);
+      border-color: rgba(124,58,237,0.4);
+      color: #c4b5fd;
+      font-weight: 700;
     }
 
     .dv-row-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       color: #9ca3af;
+      font-weight: 500;
       text-align: right;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 1.4;
+      transition: color 150ms;
+    }
+    @media (min-width: 640px) {
+      .dv-row-label { font-size: 12px; }
+    }
+    .dv-row:hover .dv-row-label {
+      color: #d1d5db;
+    }
+    .dv-row.is-top3 .dv-row-label {
+      color: #c4b5fd;
+      font-weight: 600;
     }
 
     /* ── Bars ──────────────────────────────────── */
     .dv-bar-wrap {
-      height: 8px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 4px;
+      height: 10px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 5px;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    @media (min-width: 640px) {
+      .dv-bar-wrap { height: 12px; border-radius: 6px; }
     }
 
     .dv-bar-fill {
@@ -151,23 +206,50 @@ type Metric = 'ttft' | 'throughput';
       border-radius: 4px;
       width: 0%;
       background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
-      transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 12px rgba(124,58,237,0.3);
+      transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms;
+      position: relative;
+    }
+    .dv-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+      border-radius: 4px 4px 0 0;
+    }
+    .dv-row:hover .dv-bar-fill {
+      box-shadow: 0 0 16px rgba(124,58,237,0.5);
     }
     .dv-bar-fill.is-throughput {
       background: linear-gradient(90deg, #059669 0%, #34d399 100%);
+      box-shadow: 0 0 12px rgba(5,150,105,0.3);
+    }
+    .dv-row:hover .dv-bar-fill.is-throughput {
+      box-shadow: 0 0 16px rgba(5,150,105,0.5);
     }
 
     /* ── Value ─────────────────────────────────── */
     .dv-row-value {
       font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      color: #e5e7eb;
       text-align: right;
       white-space: nowrap;
+      transition: color 150ms;
     }
     @media (min-width: 640px) {
-      .dv-row-value { font-size: 14px; }
+      .dv-row-value { font-size: 16px; }
+    }
+    .dv-row:hover .dv-row-value {
+      color: #ffffff;
+    }
+    .dv-row.is-top3 .dv-row-value {
+      color: #c4b5fd;
+      font-weight: 800;
     }
 
     /* ── Note ──────────────────────────────────── */
