@@ -92,14 +92,16 @@ type Metric = 'ttft' | 'throughput';
       </div>
 
       <!-- X-axis labels -->
-      <div class="flex mt-2 gap-[2px] sm:gap-1 dv-x-axis">
+      <div class="flex mt-8 gap-[2px] sm:gap-1 dv-x-axis items-start justify-center">
         @for (entry of sortedModels(); track entry.label) {
-          <div class="dv-x-label">{{ entry.label }}</div>
+          <div class="dv-x-label">
+            <span>{{ entry.label }}</span>
+          </div>
         }
       </div>
 
       <!-- Footer note -->
-      <p class="dv-note mt-5">
+      <p class="dv-note mt-6">
         {{ metric() === 'ttft'
           ? 'TTFT reduction vs baseline. Higher is better. Averaged across 4 RAG workload patterns.'
           : 'Throughput multiplier vs baseline. Higher is better. Tokens per second, same hardware.'
@@ -232,18 +234,27 @@ type Metric = 'ttft' | 'throughput';
     /* ── X-axis ───────────────────────────────── */
     .dv-x-label {
       flex: 1;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      height: 42px;
+    }
+    @media (min-width: 640px) {
+      .dv-x-label { height: 48px; }
+    }
+    
+    .dv-x-label span {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 8px;
       color: #6b7280;
       letter-spacing: 0.02em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.3;
+      line-height: 1.2;
+      transform: rotate(-45deg);
+      transform-origin: center center;
+      padding-top: 12px;
     }
     @media (min-width: 640px) {
-      .dv-x-label { font-size: 9px; }
+      .dv-x-label span { font-size: 9px; padding-top: 14px; }
     }
 
     /* ── Note ──────────────────────────────────── */
