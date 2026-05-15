@@ -128,7 +128,7 @@ type Metric = 'ttft' | 'throughput';
 
     .dv-row {
       display: grid;
-      grid-template-columns: 28px 115px minmax(140px, 1fr) 52px;
+      grid-template-columns: 28px 108px 1fr 52px;
       align-items: center;
       gap: 8px;
       padding: 8px 10px;
@@ -139,9 +139,8 @@ type Metric = 'ttft' | 'throughput';
     }
     @media (min-width: 640px) {
       .dv-row {
-        grid-template-columns: 32px 155px minmax(180px, 1fr) 64px;
-        gap: 12px;
-        padding: 10px 12px;
+        grid-template-columns: 32px 148px 1fr 64px;
+        gap: 10px;
       }
     }
     .dv-row:hover {
@@ -234,9 +233,14 @@ type Metric = 'ttft' | 'throughput';
       border-radius: 5px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.06);
+      margin-right: -4px;
     }
     @media (min-width: 640px) {
-      .dv-bar-wrap { height: 12px; border-radius: 6px; }
+      .dv-bar-wrap { 
+        height: 12px; 
+        border-radius: 6px;
+        margin-right: -6px;
+      }
     }
 
     .dv-bar-fill {
