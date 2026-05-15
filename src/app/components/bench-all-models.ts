@@ -213,18 +213,20 @@ type Metric = 'ttft' | 'throughput';
     }
 
     .dv-model-logo {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
       object-fit: contain;
-      opacity: 0.85;
+      opacity: 0.9;
       transition: opacity 150ms;
+      filter: brightness(1.1);
     }
     @media (min-width: 640px) {
-      .dv-model-logo { width: 20px; height: 20px; }
+      .dv-model-logo { width: 22px; height: 22px; }
     }
     .dv-row:hover .dv-model-logo {
       opacity: 1;
+      filter: brightness(1.2);
     }
 
     /* ── Bars ──────────────────────────────────── */
@@ -385,7 +387,8 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
     if (label.includes('Mistral')) return '/model-logos/mistral.svg';
     if (label.includes('DeepSeek')) return '/model-logos/deepseek.svg';
     if (label.includes('Nemotron')) return '/model-logos/nvidia.svg';
-    return '';
+    if (label.includes('GPT')) return '/model-logos/generic.svg';
+    return '/model-logos/generic.svg';
   }
 
   constructor() {
