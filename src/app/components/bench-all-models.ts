@@ -128,9 +128,9 @@ type Metric = 'ttft' | 'throughput';
 
     .dv-row {
       display: grid;
-      grid-template-columns: 28px 110px minmax(120px, 1fr) 56px;
+      grid-template-columns: 28px 115px minmax(140px, 1fr) 52px;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       padding: 8px 10px;
       border-radius: 8px;
       background: rgba(255,255,255,0.02);
@@ -139,8 +139,8 @@ type Metric = 'ttft' | 'throughput';
     }
     @media (min-width: 640px) {
       .dv-row {
-        grid-template-columns: 32px 150px minmax(160px, 1fr) 68px;
-        gap: 14px;
+        grid-template-columns: 32px 155px minmax(180px, 1fr) 64px;
+        gap: 12px;
         padding: 10px 12px;
       }
     }
