@@ -224,10 +224,21 @@ export interface BenchOption {
       object-fit: contain;
       opacity: 0.9;
       transition: opacity 150ms;
+      filter: brightness(0) invert(1);
     }
     .dv-pill:hover .dv-pill-logo,
     .dv-pill.is-active .dv-pill-logo {
       opacity: 1;
+    }
+    
+    /* Keep colored logos as-is */
+    .dv-pill-logo[src*="meta.svg"],
+    .dv-pill-logo[src*="google.svg"],
+    .dv-pill-logo[src*="microsoft.svg"],
+    .dv-pill-logo[src*="mistral.svg"],
+    .dv-pill-logo[src*="qwen.svg"],
+    .dv-pill-logo[src*="deepseek.svg"] {
+      filter: none;
     }
 
     /* ── Chart + Y-axis dimensions (responsive) ── */

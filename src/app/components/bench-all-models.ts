@@ -218,12 +218,23 @@ type Metric = 'ttft' | 'throughput';
       object-fit: contain;
       opacity: 0.9;
       transition: opacity 150ms;
+      filter: brightness(0) invert(1);
     }
     @media (min-width: 640px) {
       .dv-model-logo { width: 22px; height: 22px; }
     }
     .dv-row:hover .dv-model-logo {
       opacity: 1;
+    }
+    
+    /* Keep colored logos as-is */
+    .dv-model-logo[src*="meta.svg"],
+    .dv-model-logo[src*="google.svg"],
+    .dv-model-logo[src*="microsoft.svg"],
+    .dv-model-logo[src*="mistral.svg"],
+    .dv-model-logo[src*="qwen.svg"],
+    .dv-model-logo[src*="deepseek.svg"] {
+      filter: none;
     }
 
     /* ── Bars ──────────────────────────────────── */
