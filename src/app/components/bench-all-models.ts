@@ -219,14 +219,12 @@ type Metric = 'ttft' | 'throughput';
       object-fit: contain;
       opacity: 0.9;
       transition: opacity 150ms;
-      filter: brightness(1.1);
     }
     @media (min-width: 640px) {
       .dv-model-logo { width: 22px; height: 22px; }
     }
     .dv-row:hover .dv-model-logo {
       opacity: 1;
-      filter: brightness(1.2);
     }
 
     /* ── Bars ──────────────────────────────────── */
