@@ -128,7 +128,7 @@ type Metric = 'ttft' | 'throughput';
 
     .dv-row {
       display: grid;
-      grid-template-columns: 28px 108px 1fr 52px;
+      grid-template-columns: 28px 135px 1fr 52px;
       align-items: center;
       gap: 8px;
       padding: 8px 10px;
@@ -139,7 +139,7 @@ type Metric = 'ttft' | 'throughput';
     }
     @media (min-width: 640px) {
       .dv-row {
-        grid-template-columns: 32px 148px 1fr 64px;
+        grid-template-columns: 32px 175px 1fr 64px;
         gap: 10px;
       }
     }
