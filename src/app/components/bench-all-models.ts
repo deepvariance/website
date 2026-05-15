@@ -46,9 +46,9 @@ type Metric = 'ttft' | 'throughput';
 
       <!-- Ranked bars -->
       <div class="dv-rows">
-        @for (entry of sortedModels(); track entry.label; let i = $index) {
+        @for (entry of displayedModels(); track entry.label; let i = $index) {
           <div class="dv-row" [class.is-top3]="i < 3">
-            <div class="dv-row-rank" [class.is-top3]="i < 3">{{ i + 1 }}</div>
+            <div class="dv-row-rank" [class.is-top3]="i < 3">{{ getRank(entry) }}</div>
             <span class="dv-row-label">{{ entry.label }}</span>
             <div class="dv-bar-wrap">
               <div
@@ -61,6 +61,23 @@ type Metric = 'ttft' | 'throughput';
           </div>
         }
       </div>
+
+      <!-- Expand/Collapse button -->
+      @if (sortedModels().length > 7) {
+        <button class="dv-expand-btn" (click)="expanded.set(!expanded())">
+          @if (expanded()) {
+            <span>Show less</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M12 10L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          } @else {
+            <span>Show all {{ sortedModels().length }} models</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
+        </button>
+      }
 
       <!-- Footer note -->
       <p class="dv-note mt-5">
@@ -252,6 +269,34 @@ type Metric = 'ttft' | 'throughput';
       font-weight: 800;
     }
 
+    /* ── Expand button ────────────────────────── */
+    .dv-expand-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 8px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #9ca3af;
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+    .dv-expand-btn:hover {
+      background: rgba(124,58,237,0.08);
+      border-color: rgba(124,58,237,0.35);
+      color: #c4b5fd;
+    }
+    .dv-expand-btn svg {
+      transition: transform 200ms ease;
+    }
+
     /* ── Note ──────────────────────────────────── */
     .dv-note {
       font-family: 'IBM Plex Mono', monospace;
@@ -271,6 +316,7 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
 
   readonly metric = signal<Metric>('ttft');
   readonly barsVisible = signal(false);
+  readonly expanded = signal(false);
 
   private initTimer: ReturnType<typeof setTimeout> | null = null;
   private switchTimer: ReturnType<typeof setTimeout> | null = null;
@@ -282,6 +328,11 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
       const vb = m === 'ttft' ? b.ttftPct : b.throughputX;
       return vb - va;
     });
+  });
+
+  readonly displayedModels = computed<AllModelEntry[]>(() => {
+    const all = this.sortedModels();
+    return this.expanded() ? all : all.slice(0, 7);
   });
 
   readonly maxValue = computed<number>(() => {
@@ -299,6 +350,10 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
   valueLabel(entry: AllModelEntry): string {
     if (this.metric() === 'ttft') return entry.ttftPct.toFixed(0) + '%';
     return entry.throughputX.toFixed(2) + '×';
+  }
+
+  getRank(entry: AllModelEntry): number {
+    return this.sortedModels().findIndex(e => e.label === entry.label) + 1;
   }
 
   constructor() {
