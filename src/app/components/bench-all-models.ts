@@ -49,7 +49,10 @@ type Metric = 'ttft' | 'throughput';
         @for (entry of displayedModels(); track entry.label; let i = $index) {
           <div class="dv-row" [class.is-top3]="i < 3">
             <div class="dv-row-rank" [class.is-top3]="i < 3">{{ getRank(entry) }}</div>
-            <span class="dv-row-label">{{ entry.label }}</span>
+            <div class="dv-row-label">
+              <img [src]="getModelLogo(entry.label)" [alt]="entry.label" class="dv-model-logo" />
+              <span>{{ entry.label }}</span>
+            </div>
             <div class="dv-bar-wrap">
               <div
                 class="dv-bar-fill"
@@ -184,11 +187,14 @@ type Metric = 'ttft' | 'throughput';
     }
 
     .dv-row-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       color: #9ca3af;
       font-weight: 500;
-      text-align: right;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -196,7 +202,7 @@ type Metric = 'ttft' | 'throughput';
       transition: color 150ms;
     }
     @media (min-width: 640px) {
-      .dv-row-label { font-size: 12px; }
+      .dv-row-label { font-size: 12px; gap: 10px; }
     }
     .dv-row:hover .dv-row-label {
       color: #d1d5db;
@@ -204,6 +210,21 @@ type Metric = 'ttft' | 'throughput';
     .dv-row.is-top3 .dv-row-label {
       color: #c4b5fd;
       font-weight: 600;
+    }
+
+    .dv-model-logo {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      object-fit: contain;
+      opacity: 0.85;
+      transition: opacity 150ms;
+    }
+    @media (min-width: 640px) {
+      .dv-model-logo { width: 20px; height: 20px; }
+    }
+    .dv-row:hover .dv-model-logo {
+      opacity: 1;
     }
 
     /* ── Bars ──────────────────────────────────── */
@@ -354,6 +375,17 @@ export class BenchAllModelsComponent implements OnInit, AfterViewInit {
 
   getRank(entry: AllModelEntry): number {
     return this.sortedModels().findIndex(e => e.label === entry.label) + 1;
+  }
+
+  getModelLogo(label: string): string {
+    if (label.includes('Llama')) return '/model-logos/meta.svg';
+    if (label.includes('Qwen')) return '/model-logos/qwen.svg';
+    if (label.includes('Gemma')) return '/model-logos/google.svg';
+    if (label.includes('Phi')) return '/model-logos/microsoft.svg';
+    if (label.includes('Mistral')) return '/model-logos/mistral.svg';
+    if (label.includes('DeepSeek')) return '/model-logos/deepseek.svg';
+    if (label.includes('Nemotron')) return '/model-logos/nvidia.svg';
+    return '';
   }
 
   constructor() {
