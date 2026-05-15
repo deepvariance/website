@@ -188,7 +188,7 @@ type Metric = 'ttft' | 'throughput';
     .dv-row-label {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
       gap: 8px;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
