@@ -374,7 +374,7 @@ r = ctrl.query(
         <div class="max-w-3xl mx-auto mb-8">
           <div class="grid grid-cols-3 divide-x divide-border rounded-xl border border-border overflow-hidden">
             <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
-              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:9px;color:#8a8a8a">
+              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:10px;color:#8a8a8a">
                 <span class="hidden sm:inline">Models tested</span>
                 <span class="sm:hidden">Tested</span>
               </p>
@@ -382,7 +382,7 @@ r = ctrl.query(
               <p class="font-mono mt-1 hidden sm:block" style="font-size:10px;color:#6b7280">2B to 120B params</p>
             </div>
             <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
-              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:9px;color:#8a8a8a">
+              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:10px;color:#8a8a8a">
                 <span class="hidden sm:inline">Avg TTFT reduction</span>
                 <span class="sm:hidden">Avg TTFT</span>
               </p>
@@ -390,7 +390,7 @@ r = ctrl.query(
               <p class="font-mono mt-1 hidden sm:block" style="font-size:10px;color:#6b7280">across all 14 models</p>
             </div>
             <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
-              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:9px;color:#8a8a8a">
+              <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:10px;color:#8a8a8a">
                 <span class="hidden sm:inline">Avg throughput gain</span>
                 <span class="sm:hidden">Throughput</span>
               </p>
