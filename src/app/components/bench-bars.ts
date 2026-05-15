@@ -69,7 +69,10 @@ export interface BenchOption {
               class="dv-pill"
               [class.is-active]="model() === opt.id"
               (click)="onModelChange(opt.id)"
-            >{{ opt.label }}</button>
+            >
+              <img [src]="getModelLogo(opt.label)" [alt]="opt.label" class="dv-pill-logo" />
+              <span>{{ opt.label }}</span>
+            </button>
           }
         </div>
       }
@@ -196,6 +199,9 @@ export interface BenchOption {
     /* ── Model pills ──────────────────────────── */
     .dv-pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
     .dv-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       background: #1a1a2e;
       border: 1px solid #2d2d4e;
       border-radius: 6px;
@@ -210,6 +216,19 @@ export interface BenchOption {
     }
     .dv-pill:hover { border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
     .dv-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
+    
+    .dv-pill-logo {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      object-fit: contain;
+      opacity: 0.9;
+      transition: opacity 150ms;
+    }
+    .dv-pill:hover .dv-pill-logo,
+    .dv-pill.is-active .dv-pill-logo {
+      opacity: 1;
+    }
 
     /* ── Chart + Y-axis dimensions (responsive) ── */
     .dv-chart-area { height: 160px; }
@@ -441,6 +460,18 @@ export class BenchBarsComponent implements OnInit, AfterViewInit {
 
   isBest(w: BenchWorkload): boolean {
     return Math.abs(this.speedupOf(w) - this.bestSpeedup()) < 0.001;
+  }
+
+  getModelLogo(label: string): string {
+    if (label.includes('Llama')) return '/model-logos/meta.svg';
+    if (label.includes('Qwen')) return '/model-logos/qwen.svg';
+    if (label.includes('Gemma')) return '/model-logos/google.svg';
+    if (label.includes('Phi')) return '/model-logos/microsoft.svg';
+    if (label.includes('Mistral')) return '/model-logos/mistral.svg';
+    if (label.includes('DeepSeek')) return '/model-logos/deepseek.svg';
+    if (label.includes('Nemotron')) return '/model-logos/nvidia.svg';
+    if (label.includes('GPT')) return '/model-logos/generic.svg';
+    return '/model-logos/generic.svg';
   }
 
   onModelChange(id: string): void {
