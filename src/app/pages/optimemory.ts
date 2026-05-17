@@ -52,7 +52,7 @@ import { SeoService } from '../services/seo.service';
         <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
 
           <!-- Desktop: abstract memory convergence image, absolute right, mix-blend-mode:screen -->
-          <div class="hidden desk:block absolute inset-y-0 right-0 w-[54%] pointer-events-none select-none">
+          <div class="hidden desk:block absolute top-32 bottom-0 right-0 w-[54%] pointer-events-none select-none">
             <img
               src="/optimemory-hero-v2.webp"
               alt=""

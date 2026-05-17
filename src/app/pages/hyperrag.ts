@@ -63,7 +63,7 @@ import { SeoService } from '../services/seo.service';
         <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
 
           <!-- Desktop: funnel diagram of requests served by HyperRAG, absolute right, mix-blend-mode:screen -->
-          <div class="hidden desk:block absolute inset-y-0 right-0 w-[44%] pointer-events-none select-none">
+          <div class="hidden desk:block absolute top-32 bottom-0 right-0 w-[44%] pointer-events-none select-none">
             <img
               src="/hyperrag-hero.webp"
               alt="Infographic: ten violet document queries on the left feed into a glowing hexagonal HyperRAG capsule. Eight emerald lines exit right to checkmark nodes (cache hits). Two amber lines curve down to a small GPU chip (the rare compute path)."
