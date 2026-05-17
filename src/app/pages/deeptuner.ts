@@ -297,7 +297,7 @@ import { SeoService } from '../services/seo.service';
           <div class="grid grid-cols-2 gap-5">
             <div class="flex flex-col gap-3 items-center text-center">
               <div class="w-16 h-16 rounded-xl bg-surface-dim border border-border flex items-center justify-center">
-                <img src="/model-logos/amd.svg" alt="AMD" class="w-10 h-10 object-contain" />
+                <img src="/model-logos/amd.svg" alt="AMD" class="w-10 h-10 object-contain" style="filter: brightness(0) invert(1)" />
               </div>
               <div>
                 <p class="font-display font-semibold text-on-surface mb-1">AMD ROCm</p>
