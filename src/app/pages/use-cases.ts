@@ -13,11 +13,6 @@ import {
 } from 'lucide-angular';
 
 import { CtaButtonComponent } from '../components/cta-button';
-import {
-  ChipGroup,
-  ChipState,
-  FilterChipsComponent,
-} from '../components/filter-chips';
 import { GlassCardComponent } from '../components/glass-card';
 import { StatusPillComponent } from '../components/status-pill';
 import { SeoService } from '../services/seo.service';
@@ -42,12 +37,6 @@ interface UseCase {
   kpis: KpiTile[];
   addresses: string[];
   ctaLabel: string;
-  /** filter chip tags */
-  tags: {
-    vertical: string;
-    stage: string;
-    deployment: string;
-  };
 }
 
 @Component({
@@ -59,53 +48,49 @@ interface UseCase {
     LucideAngularModule,
     GlassCardComponent,
     CtaButtonComponent,
-    FilterChipsComponent,
     StatusPillComponent,
   ],
   template: `
     <div class="relative">
       <!-- Hero -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-12 md:pt-40 md:pb-16">
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
         <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
         <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
 
-        <div class="relative text-center max-w-3xl mx-auto">
-          <div class="flex justify-center mb-7">
-            <app-status-pill variant="live">Use cases</app-status-pill>
+        <div class="relative grid grid-cols-1 desk:grid-cols-2 gap-12 items-center">
+          <!-- Text column -->
+          <div>
+            <div class="flex mb-7">
+              <app-status-pill variant="live">Use cases</app-status-pill>
+            </div>
+            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
+              How teams build with
+              <span class="text-white">Deep Variance</span>
+            </h1>
+            <p class="text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed mb-8">
+              Five industry verticals running infrastructure at scale. Real problems, measured outcomes, no generic cloud pitch.
+            </p>
           </div>
-          <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
-            How teams build on
-            <br class="hidden sm:block" />
-            <span class="text-white">Deep Variance</span>.
-          </h1>
-          <p class="text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed">
-            Patterns we've researched across the industry and validated through direct
-            experimentation. Five problems and what we learned building through them.
-          </p>
+
+          <!-- Image column -->
+          <div class="relative desk:block hidden">
+            <img
+              src="/use-cases-hero.webp"
+              alt="Deep Variance use cases across industries"
+              class="w-full h-auto"
+              style="mix-blend-mode: screen"
+            />
+          </div>
         </div>
       </section>
 
-      <!-- Filter chips -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pb-6 md:pb-8">
-        <app-filter-chips
-          [groups]="filterGroups"
-          (stateChange)="onFilterChange($event)"
-        />
-      </section>
-
       <!-- 5-card bento -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-12 md:py-16">
-        @if (filteredUseCases().length === 0) {
-          <div class="glass-panel rounded-xl p-10 text-center text-on-surface-variant">
-            <p class="font-display text-lg mb-2">No use cases match these filters.</p>
-            <p class="text-sm">Try widening one of the chip groups above.</p>
-          </div>
-        }
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-12 md:py-16 border-t border-white/5">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
-          @for (uc of filteredUseCases(); track uc.id; let i = $index) {
+          @for (uc of useCases; track uc.id; let i = $index) {
             <a
-              [routerLink]="['/use-cases']"
-              [fragment]="uc.id"
+              [routerLink]="['/use-cases', uc.id]"
+              [attr.href]="'/use-cases/' + uc.id"
               class="group glass-card rounded-xl p-7 flex flex-col relative overflow-hidden"
               [class.lg:col-span-2]="i === 0"
               [class.lg:row-span-1]="i === 0"
@@ -140,86 +125,6 @@ interface UseCase {
           }
         </div>
       </section>
-
-      <!-- Per-vertical detail sections -->
-      @for (uc of useCases; track uc.id) {
-        <section
-          [id]="uc.id"
-          class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-16 md:py-24 scroll-mt-28"
-        >
-          <div class="max-w-6xl mx-auto">
-            <div class="flex items-center gap-3 mb-8">
-              <div class="dv-feature-icon !mb-0"><lucide-icon [img]="uc.icon" [size]="20" /></div>
-              <span class="label-caps text-white">{{ uc.label }}</span>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              <div class="lg:col-span-7">
-                <h2 class="font-display font-bold tracking-tight text-on-surface text-3xl md:text-4xl mb-6 leading-tight">
-                  {{ uc.detailHeading }}
-                </h2>
-                @for (p of uc.paragraphs; track $index) {
-                  <p class="text-on-surface-variant leading-relaxed mb-5" [innerHTML]="p"></p>
-                }
-
-                <div class="flex flex-wrap gap-2 mt-8 mb-8">
-                  @for (link of uc.productLinks; track link.route) {
-                    <a
-                      [routerLink]="link.route"
-                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
-                    >
-                      {{ link.label }}
-                      <lucide-icon [img]="ArrowRight" [size]="11" />
-                    </a>
-                  }
-                </div>
-
-                <app-cta-button
-                  variant="ghost"
-                  routerLink="/pricing"
-                  fragment="contact-form"
-                  [fullWidth]="true"
-                >
-                  {{ uc.ctaLabel }}
-                </app-cta-button>
-              </div>
-
-              <div class="lg:col-span-5 space-y-4">
-                <div class="grid grid-cols-2 gap-3">
-                  @for (k of uc.kpis; track k.label) {
-                    <app-glass-card variant="kpi-rail" extraClass="p-5 pl-6">
-                      <p class="font-display text-2xl font-bold mb-1"
-                        [class.text-neon]="k.highlight"
-                        [class.text-white]="k.highlight"
-                        [class.text-on-surface]="!k.highlight"
-                      >
-                        {{ k.value }}
-                      </p>
-                      <p class="text-[11px] text-on-surface-variant leading-snug">{{ k.label }}</p>
-                    </app-glass-card>
-                  }
-                </div>
-
-                <app-glass-card extraClass="p-6">
-                  <p class="label-caps mb-4">What this addresses</p>
-                  <ul class="space-y-3">
-                    @for (a of uc.addresses; track $index) {
-                      <li class="flex items-start gap-3">
-                        <lucide-icon
-                          [img]="CheckCircle2"
-                          [size]="15"
-                          class="text-neon flex-shrink-0 mt-0.5"
-                        />
-                        <span class="text-xs text-on-surface-variant leading-relaxed">{{ a }}</span>
-                      </li>
-                    }
-                  </ul>
-                </app-glass-card>
-              </div>
-            </div>
-          </div>
-        </section>
-      }
 
       <!-- Bottom CTA -->
       <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-16 md:py-24">
@@ -284,15 +189,15 @@ export class UseCasesPageComponent {
       id: 'hpc-infrastructure',
       icon: Layers,
       label: 'HPC Infrastructure',
-      bentoTitle: 'Long-running training and inference at scale.',
+      bentoTitle: 'Multi-week training runs at scale',
       bentoSubtitle:
-        'Multi-week jobs amplify every kernel inefficiency. DeepTuner tunes kernel shape and power cap for minimum energy per token across the run.',
+        'Long-running GPU workloads waste energy and compute. DeepTuner and Optimemory optimize power, memory, and throughput without changing your code.',
       bentoMetric: '−50%',
-      bentoMetricLabel: 'Energy per token on MHA',
-      detailHeading: 'Energy-efficient kernels for multi-week training and serving fleets.',
+      bentoMetricLabel: 'Energy per token',
+      detailHeading: 'Cut energy costs and boost throughput for long-running training.',
       paragraphs: [
-        'HPC clusters running continuous AI training pay every kernel inefficiency in joules and dollars. The standard answer, exhaustive runtime profiling, is itself an energy tax that scales O(2ⁿ) with config parameters.',
-        '<strong class="text-on-surface">DeepTuner</strong> uses intermediate code analysis to predict optimal kernel configurations and GPU power caps before a single benchmark runs. <strong class="text-on-surface">Optimemory</strong> caps allocator drift so long jobs don\'t stall on fragmentation.',
+        'HPC clusters running continuous AI training face a compounding problem: small inefficiencies in how GPUs run multiply across weeks into significant energy waste and slower results. Traditional profiling tools add their own overhead and require extensive manual tuning.',
+        '<strong class="text-on-surface">DeepTuner</strong> automatically identifies the optimal GPU configuration and power settings for your workload before it runs. <strong class="text-on-surface">Optimemory</strong> prevents memory fragmentation that causes multi-week jobs to slow down or fail.',
       ],
       productLinks: [
         { route: '/deeptuner', label: 'DeepTuner' },
@@ -305,27 +210,26 @@ export class UseCasesPageComponent {
         { value: '1x', label: 'Calibration per GPU generation' },
       ],
       addresses: [
-        'Kernel configuration tax compounding over multi-week training runs',
-        'Power-cap settings tuned by hand and re-tuned on every hardware migration',
-        'Allocator fragmentation degrading throughput in long-lived processes',
-        'Throughput regressions from naive shape choices on new GPU generations',
+        'Energy costs compounding over multi-week training runs',
+        'Manual GPU tuning that breaks on every hardware update',
+        'Memory issues that slow down or crash long-running jobs',
+        'Performance drops when moving to new GPU generations',
       ],
       ctaLabel: 'Talk to us about HPC pilots',
-      tags: { vertical: 'HPC', stage: 'Training', deployment: 'On-prem' },
     },
     {
       id: 'gpu-providers',
       icon: Cpu,
       label: 'GPU Providers',
-      bentoTitle: 'Turning stranded VRAM into a competitive advantage.',
+      bentoTitle: 'Turn idle GPU capacity into revenue',
       bentoSubtitle:
-        'Tenants over-provision to avoid OOM. Optimemory closes the gap at the driver level, no model changes, no per-tenant integration.',
+        'Customers over-provision GPUs to avoid out-of-memory errors, leaving capacity stranded. Optimemory unlocks that capacity automatically.',
       bentoMetric: '+38%',
-      bentoMetricLabel: 'Fleet utilisation',
-      detailHeading: 'Turning stranded VRAM into a competitive advantage.',
+      bentoMetricLabel: 'Fleet utilization',
+      detailHeading: 'Boost GPU fleet utilization without changing tenant workloads.',
       paragraphs: [
-        'GPU-as-a-service operators running H100 or A100 fleets face a structural utilisation problem: tenants routinely over-provision instance size to hedge against peak VRAM demand, then idle at 40–50% the rest of the time. OOM crashes are the leading source of support tickets and the primary cause of early churn.',
-        'Deploying <strong class="text-on-surface">Optimemory</strong> as a default driver layer changes the unit economics. The VMM stitching layer lets a 40 GB physical card address 80–100 GB of model memory. <strong class="text-on-surface">HyperRAG</strong> raises per-tenant throughput for RAG workloads, and <strong class="text-on-surface">DeepTuner</strong> cuts idle energy costs during low-QPS windows.',
+        'GPU providers face a utilization challenge: customers allocate 2x the memory they actually need to prevent crashes, then run at 40-50% capacity. Out-of-memory errors drive support costs and customer churn.',
+        '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of each GPU, letting you fit larger models or more tenants on the same hardware. <strong class="text-on-surface">HyperRAG</strong> accelerates RAG inference workloads by up to 6x. <strong class="text-on-surface">DeepTuner</strong> reduces idle energy costs when utilization is low.',
       ],
       productLinks: [
         { route: '/optimemory', label: 'Optimemory' },
@@ -338,28 +242,27 @@ export class UseCasesPageComponent {
         { value: '1 import', label: 'To enable VMM on a node' },
       ],
       addresses: [
-        'Tenants allocating 2x the GPU they need to avoid OOM failures mid-run',
-        'Low fleet density from uneven workload packing across nodes',
-        'High barrier to first training run for new tenants without AutoML tooling',
-        'CUDA allocator fragmentation causing silent performance regressions at scale',
+        'Customers over-provisioning to avoid out-of-memory crashes',
+        'Uneven workload distribution leaving capacity unused',
+        'Support costs from memory-related failures and restarts',
+        'Revenue left on the table from idle GPU capacity',
       ],
       ctaLabel: 'Talk to us about GPU provider pricing',
-      tags: { vertical: 'Cloud', stage: 'Inference', deployment: 'Cloud' },
     },
     {
       id: 'enterprise-training',
       icon: Building2,
       label: 'Enterprise Training',
-      bentoTitle: 'Long pipelines in regulated environments.',
+      bentoTitle: 'On-premise ML for regulated industries',
       bentoSubtitle:
-        'Memory drift, energy spikes, and governance requirements compound across long runs. We surface them all in one integration.',
+        'Financial, healthcare, and insurance firms need on-premise infrastructure that stays efficient across long training runs and strict compliance requirements.',
       bentoMetric: '11w → 3d',
-      bentoMetricLabel: 'Pipeline build cycle',
-      detailHeading: 'High-compliance ML teams stuck rebuilding the same pipeline.',
+      bentoMetricLabel: 'Development cycle',
+      detailHeading: 'Enterprise ML infrastructure that stays compliant and efficient.',
       paragraphs: [
-        'Large ML platform teams at financial services, insurance, and healthcare firms consistently report the same bottleneck: 60–70% of model development time goes to data plumbing, not modelling. Every new use case triggers a fresh pipeline build despite solving structurally identical problems.',
-        'Long training runs in regulated environments are where inefficiency compounds most. <strong class="text-on-surface">Optimemory</strong> eliminates VRAM fragmentation across steps. <strong class="text-on-surface">DeepTuner</strong> identifies energy-optimal kernel configurations before the run starts, not after the power bill arrives.',
-        'DeepTuner runs on-premise with no data leaving your environment. One integration surfaces memory, latency, and energy metrics together.',
+        'Enterprise ML teams in regulated industries face a dual challenge: data must stay on-premise for compliance, and long training runs amplify every inefficiency in memory and energy usage.',
+        '<strong class="text-on-surface">Optimemory</strong> prevents memory fragmentation that slows down multi-step training pipelines. <strong class="text-on-surface">DeepTuner</strong> optimizes GPU energy usage automatically, reducing power costs before they show up on the bill.',
+        'Both products run entirely on your infrastructure with zero data transmission. One integration gives you visibility into memory, latency, and energy across your training workloads.',
       ],
       productLinks: [
         { route: '/optimemory', label: 'Optimemory' },
@@ -372,28 +275,27 @@ export class UseCasesPageComponent {
         { value: '8+', label: 'Architectures ranked per pipeline' },
       ],
       addresses: [
-        'Bespoke preprocessing pipelines rebuilt from scratch for each new ML project',
-        'Data governance constraints blocking every managed AutoML or cloud training service',
-        'Large FP32 models too heavy to deploy on on-device or edge inference hardware',
-        'No reproducible audit trail over automated data cleaning and model selection decisions',
+        'Data compliance requirements preventing use of cloud ML services',
+        'Long training runs with compounding memory and energy inefficiencies',
+        'Need for full audit trail and reproducibility in model training',
+        'High infrastructure costs from suboptimal GPU utilization',
       ],
       ctaLabel: 'Talk to us about enterprise deployments',
-      tags: { vertical: 'Enterprise', stage: 'Training', deployment: 'On-prem' },
     },
     {
       id: 'research-institutions',
       icon: Microscope,
       label: 'Research Institutions',
-      bentoTitle: 'VRAM ceilings before science can scale.',
+      bentoTitle: 'Train larger models on limited research budgets',
       bentoSubtitle:
-        'Labs hit allocator limits before model design matters. Optimemory recovers addressable memory at the driver level, no training-code changes.',
+        'Research labs hit memory limits before they can test their hypotheses. Optimemory doubles the model size you can train on existing hardware.',
       bentoMetric: '3B → 6B',
-      bentoMetricLabel: 'Model scale on same hardware',
-      detailHeading: 'Computational biology labs hitting VRAM ceilings before their science could scale.',
+      bentoMetricLabel: 'Model scale',
+      detailHeading: 'Break through memory limits without buying more GPUs.',
       paragraphs: [
-        'Research groups training transformer models on genomic and proteomic sequences share a recurring constraint: the architectures required for meaningful discovery are too large to load on the hardware a lab can budget. A 6B-parameter sequence classifier that looks fine on paper will OOM in practice due to CUDA allocator fragmentation.',
-        '<strong class="text-on-surface">Optimemory</strong>\'s VMM stitching layer recovers addressable memory at the driver level without altering training code. In our experiments, a single import moved the effective ceiling from 3B to 6B parameters on a four-card A100 node. <strong class="text-on-surface">HyperRAG</strong>\'s KV cache eliminates redundant prefill costs across genomic literature queries.',
-        'For clinical edge deployment, <strong class="text-on-surface">DeepTuner</strong> identifies thread block configurations that minimize energy per token without retraining.',
+        'Academic research groups face a fundamental constraint: the models needed for breakthrough discoveries are too large for the GPUs they can afford. Memory fragmentation makes this worse, causing out-of-memory errors on models that should technically fit.',
+        '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of your GPUs, letting you train 2x larger models on the same hardware. In genomics research, this enabled moving from 3B to 6B parameter models on a four-GPU setup. <strong class="text-on-surface">HyperRAG</strong> accelerates literature search and RAG queries across research databases.',
+        '<strong class="text-on-surface">DeepTuner</strong> optimizes GPU configurations for edge deployment of clinical models, reducing energy usage for battery-powered medical devices.',
       ],
       productLinks: [
         { route: '/optimemory', label: 'Optimemory' },
@@ -407,28 +309,27 @@ export class UseCasesPageComponent {
         { value: '−40%', label: 'Wall-clock vs grad-checkpointing' },
       ],
       addresses: [
-        'VRAM ceilings forcing architecture compromises before experiments begin',
-        'Grad-checkpointing adding 40%+ wall-clock overhead to long training runs',
-        'Multi-week iteration cycles on tabular phenotype datasets slowing hypothesis testing',
-        'FP32 clinical models too large for on-device deployment without retraining',
+        'Budget constraints limiting model size and research scope',
+        'Out-of-memory errors forcing architecture compromises',
+        'Slow iteration cycles delaying scientific discovery',
+        'Clinical models too large for edge or mobile deployment',
       ],
       ctaLabel: 'Talk to us about academic licensing',
-      tags: { vertical: 'Research', stage: 'Training', deployment: 'On-prem' },
     },
     {
       id: 'manufacturing',
       icon: Factory,
       label: 'Manufacturing',
-      bentoTitle: 'Quality inspection at the edge.',
+      bentoTitle: 'Real-time AI quality control at the edge',
       bentoSubtitle:
-        'Vision and predictive-maintenance models that must run on the factory floor, air-gapped, real-time, and on constrained GPU nodes.',
+        'Vision models for quality inspection must run on factory-floor hardware with no cloud latency and no data leaving the facility.',
       bentoMetric: '< 2 ms',
-      bentoMetricLabel: 'FP8 inference latency',
-      detailHeading: 'Models that need to run on the factory floor, not the cloud.',
+      bentoMetricLabel: 'Inference latency',
+      detailHeading: 'Deploy larger vision models on edge hardware without cloud dependency.',
       paragraphs: [
-        'Industrial ML teams face a constraint that\'s different from cloud-native orgs: inference must happen at the edge, on constrained hardware inside the facility, with no tolerance for network latency or data leaving the site.',
-        '<strong class="text-on-surface">Optimemory</strong> extends the effective VRAM ceiling on constrained edge nodes, allowing larger vision architectures to run where only smaller ones fit before. <strong class="text-on-surface">DeepTuner</strong> identifies energy-optimal kernel configurations for the specific edge GPU hardware.',
-        'The full stack runs on-premise, air-gapped if required, with no production data transmitted externally at any stage.',
+        'Manufacturing operations need AI inference to happen in real-time on the factory floor, not in the cloud. Edge hardware has limited GPU capacity, and data sovereignty requirements prevent sending production data externally.',
+        '<strong class="text-on-surface">Optimemory</strong> lets you run larger, more accurate vision models on constrained edge GPUs. <strong class="text-on-surface">DeepTuner</strong> optimizes GPU settings for the specific hardware on your factory floor, minimizing latency and energy usage.',
+        'Everything runs on-premise and air-gapped if needed. No production data leaves your facility at any point.',
       ],
       productLinks: [
         { route: '/optimemory', label: 'Optimemory' },
@@ -441,57 +342,24 @@ export class UseCasesPageComponent {
         { value: '1 call', label: 'Sensor data to model leaderboard' },
       ],
       addresses: [
-        'Vision models too large to deploy on factory-floor edge hardware without accuracy compromise',
-        'Manual feature engineering on sensor time-series consuming weeks before any model can be trained',
-        'Data sovereignty requirements blocking cloud AutoML and managed training services entirely',
-        'Inference latency spikes from FP32 models missing real-time quality control deadlines on the line',
+        'Edge hardware constraints limiting model accuracy and capability',
+        'Cloud latency making real-time quality control impractical',
+        'Data sovereignty requirements preventing cloud-based inference',
+        'Energy and cost concerns from running high-power GPUs continuously',
       ],
       ctaLabel: 'Talk to us about manufacturing deployments',
-      tags: { vertical: 'Industrial', stage: 'Inference', deployment: 'Edge' },
     },
   ];
 
-  readonly filterGroups: ChipGroup[] = [
-    {
-      id: 'vertical',
-      label: 'Vertical',
-      options: ['HPC', 'Cloud', 'Enterprise', 'Research', 'Industrial'],
-    },
-    {
-      id: 'stage',
-      label: 'Stage',
-      options: ['Training', 'Inference'],
-    },
-    {
-      id: 'deployment',
-      label: 'Deployment',
-      options: ['On-prem', 'Cloud', 'Edge'],
-    },
-  ];
-
-  readonly filterState = signal<ChipState>({
-    vertical: '__all',
-    stage: '__all',
-    deployment: '__all',
-  });
-
-  readonly filteredUseCases = computed(() => {
-    const s = this.filterState();
-    return this.useCases.filter((uc) => {
-      if (s['vertical'] !== '__all' && uc.tags.vertical !== s['vertical'])
-        return false;
-      if (s['stage'] !== '__all' && uc.tags.stage !== s['stage']) return false;
-      if (
-        s['deployment'] !== '__all' &&
-        uc.tags.deployment !== s['deployment']
-      )
-        return false;
-      return true;
-    });
-  });
-
-  onFilterChange(state: ChipState): void {
-    this.filterState.set(state);
+  getUseCaseImage(id: string): string {
+    const imageMap: Record<string, string> = {
+      'hpc-infrastructure': '/use-cases-hpc.webp',
+      'gpu-providers': '/use-cases-cloud.webp',
+      'enterprise-training': '/use-cases-enterprise.webp',
+      'research-institutions': '/use-cases-research.webp',
+      'manufacturing': '/use-cases-manufacturing.webp',
+    };
+    return imageMap[id] || '';
   }
 
   constructor() {

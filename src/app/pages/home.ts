@@ -601,7 +601,7 @@ import { SeoService } from '../services/seo.service';
         </app-section-header>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a routerLink="/deeptuner" class="dv-card rounded-xl p-6 flex flex-col">
+          <a routerLink="/use-cases/hpc-infrastructure" class="dv-card rounded-xl p-6 flex flex-col">
             <div class="dv-vertical-icon mb-5"><lucide-icon [img]="Layers" [size]="16" /></div>
             <span class="label-caps mb-4">HPC Clusters</span>
             <p class="font-display font-bold text-white text-3xl mb-1">-50%</p>
@@ -610,7 +610,7 @@ import { SeoService } from '../services/seo.service';
               Kernels that tune themselves to your job. Long-running workloads stop compounding inefficiency across every epoch.
             </p>
           </a>
-          <a routerLink="/use-cases" fragment="gpu-providers" class="dv-card rounded-xl p-6 flex flex-col">
+          <a routerLink="/use-cases/gpu-providers" class="dv-card rounded-xl p-6 flex flex-col">
             <div class="dv-vertical-icon mb-5"><lucide-icon [img]="Cpu" [size]="16" /></div>
             <span class="label-caps mb-4">GPU Cloud Providers</span>
             <p class="font-display font-bold text-white text-3xl mb-1">+38%</p>
@@ -619,7 +619,7 @@ import { SeoService } from '../services/seo.service';
               Tenants over-provision to stay safe. Optimemory eliminates stranded VRAM and gives that headroom back as usable, billable capacity.
             </p>
           </a>
-          <a routerLink="/use-cases" fragment="enterprise-training" class="dv-card rounded-xl p-6 flex flex-col">
+          <a routerLink="/use-cases/enterprise-training" class="dv-card rounded-xl p-6 flex flex-col">
             <div class="dv-vertical-icon mb-5"><lucide-icon [img]="Building2" [size]="16" /></div>
             <span class="label-caps mb-4">Enterprise AI Teams</span>
             <p class="font-display font-bold text-white text-3xl mb-1">11w</p>
@@ -628,7 +628,7 @@ import { SeoService } from '../services/seo.service';
               DeepTuner predicts optimal kernel configurations before your job starts. No more waiting for profiling sweeps to finish.
             </p>
           </a>
-          <a routerLink="/use-cases" fragment="research-institutions" class="dv-card rounded-xl p-6 flex flex-col">
+          <a routerLink="/use-cases/research-institutions" class="dv-card rounded-xl p-6 flex flex-col">
             <div class="dv-vertical-icon mb-5"><lucide-icon [img]="Microscope" [size]="16" /></div>
             <span class="label-caps mb-4">Research Labs</span>
             <p class="font-display font-bold text-white text-3xl mb-1">2x</p>
