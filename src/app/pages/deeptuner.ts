@@ -99,7 +99,6 @@ import { SeoService } from '../services/seo.service';
           <div class="py-4 flex flex-col desk:flex-row desk:items-center gap-3 desk:gap-8">
             <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-center desk:text-left" style="color:#8a8a8a">Works alongside</p>
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-              <img src="/nvidia-logo.svg" alt="NVIDIA" width="120" height="30" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" loading="lazy" />
               <img src="/pytorch-logo.webp" alt="PyTorch" width="120" height="30" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" loading="lazy" />
               <img src="/vllm-logo.webp" alt="vLLM" width="280" height="80" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" loading="lazy" />
               <img src="/sglang-logo.webp" alt="SGLang" width="262" height="80" style="height:22px;width:auto;filter:grayscale(1) brightness(4);opacity:0.5" loading="lazy" />
