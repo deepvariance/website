@@ -36,7 +36,7 @@ export type CtaVariant = 'primary' | 'glass' | 'ghost';
     <ng-template #content>
       <ng-content />
       @if (showArrow) {
-        <lucide-icon [img]="ArrowRight" [size]="16" class="ml-1.5" />
+        <lucide-icon [img]="ArrowRight" [size]="14" />
       }
     </ng-template>
   `,
@@ -55,16 +55,14 @@ export class CtaButtonComponent {
   @Input() fullWidth = false;
 
   get classes(): string {
-    const base =
-      'inline-flex items-center justify-center gap-2 font-display font-semibold tracking-wide uppercase rounded-md transition-all duration-300 active:scale-[0.98]';
-    const sizing = this.size === 'lg' ? 'px-7 py-3.5 text-[12px] tracking-[0.16em]' : 'px-5 py-2.5 text-[11px] tracking-[0.14em]';
-    const variant =
+    const variantClass =
       this.variant === 'primary'
-        ? 'btn-primary-glow'
+        ? 'btn-primary'
         : this.variant === 'ghost'
           ? 'btn-ghost'
-          : 'btn-glass';
-    const width = this.fullWidth ? 'w-full' : '';
-    return `${base} ${sizing} ${variant} ${width}`.trim();
+          : 'btn-secondary';
+    const sizeClass = this.size === 'lg' ? 'btn--lg' : '';
+    const widthClass = this.fullWidth ? 'w-full' : '';
+    return [variantClass, sizeClass, widthClass].filter(Boolean).join(' ');
   }
 }

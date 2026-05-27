@@ -10,14 +10,14 @@ module.exports = {
       colors: {
         // ── Surfaces ──────────────────────────────────────────────────────────
         background:                    '#000000',
-        surface:                       '#0a0a0a',
-        'surface-dim':                 '#111111',
-        'surface-bright':              '#1a1a1a',
+        surface:                       '#656565',
+        'surface-dim':                 '#6a6a6a',
+        'surface-bright':              '#717171',
         'surface-container-lowest':    '#000000',
-        'surface-container-low':       '#0a0a0a',
-        'surface-container':           '#111111',
-        'surface-container-high':      '#1a1a1a',
-        'surface-container-highest':   '#222222',
+        'surface-container-low':       '#656565',
+        'surface-container':           '#6a6a6a',
+        'surface-container-high':      '#717171',
+        'surface-container-highest':   '#797979',
 
         // ── Type ──────────────────────────────────────────────────────────────
         'on-surface':          '#ffffff',
@@ -67,8 +67,8 @@ module.exports = {
       fontFamily: {
         display:  ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans:     ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body:     ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
-        mono:     ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        body:     ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        mono:     ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         editorial:['"Space Grotesk"', 'system-ui', 'sans-serif'],
       },
 
@@ -77,8 +77,6 @@ module.exports = {
           'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
         'dotted-grid-dim':
           'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
-        'spectrum-headline': 'linear-gradient(90deg, #ffffff 0%, #a3a3a3 100%)',
-        'spectrum-warm':     'linear-gradient(90deg, #e5e5e5 0%, #737373 100%)',
       },
       backgroundSize: {
         'dotted-grid': '24px 24px',

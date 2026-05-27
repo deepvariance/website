@@ -24,10 +24,10 @@ export class StepPillComponent {
 
   get colorClass(): string {
     const map: Record<StepColor, string> = {
-      1: 'bg-purple-500/10 text-purple-300 border border-purple-500/20',
-      2: 'bg-blue-500/10   text-blue-300   border border-blue-500/20',
-      3: 'bg-green-500/10  text-green-300  border border-green-500/20',
-      4: 'bg-amber-500/10  text-amber-300  border border-amber-500/20',
+      1: 'panel-pill text-on-surface-variant',
+      2: 'panel-pill text-on-surface-variant',
+      3: 'panel-pill text-on-surface-variant',
+      4: 'panel-pill text-on-surface-variant',
     };
     return map[this.color];
   }

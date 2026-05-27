@@ -72,8 +72,9 @@ export interface PipelineStep {
     `
       .dv-step-icon {
         @apply inline-flex items-center justify-center w-9 h-9 rounded-md text-neon;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       }
     `,
   ],

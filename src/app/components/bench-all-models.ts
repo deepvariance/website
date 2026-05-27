@@ -97,8 +97,9 @@ type Metric = 'ttft' | 'throughput';
     :host { display: block; }
 
     .dv-all-card {
-      background: #0f0f14;
-      border: 1px solid rgba(124, 58, 237, 0.2);
+      background: #525256;
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 12px;
       padding: 16px;
     }
@@ -108,8 +109,8 @@ type Metric = 'ttft' | 'throughput';
 
     /* ── Pills ─────────────────────────────────── */
     .dv-pill {
-      background: #1a1a2e;
-      border: 1px solid #2d2d4e;
+      background: #5a5a69;
+      border: 1px solid #686880;
       border-radius: 6px;
       padding: 5px 14px;
       font-size: 13px;
@@ -120,8 +121,8 @@ type Metric = 'ttft' | 'throughput';
       transition: border-color 150ms, color 150ms, background 150ms;
       line-height: 1.5;
     }
-    .dv-pill:hover { border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
-    .dv-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
+    .dv-pill:hover { border-color: rgba(255, 255, 255, 0.2); color: #ffffff; }
+    .dv-pill.is-active { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); color: #ffffff; }
 
     /* ── Row layout ────────────────────────────── */
     .dv-rows { display: flex; flex-direction: column; gap: 8px; }
@@ -133,7 +134,7 @@ type Metric = 'ttft' | 'throughput';
       gap: 8px;
       padding: 8px 10px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.031);
       border: 1px solid transparent;
       transition: all 200ms ease;
     }
@@ -144,16 +145,16 @@ type Metric = 'ttft' | 'throughput';
       }
     }
     .dv-row:hover {
-      background: rgba(124,58,237,0.05);
-      border-color: rgba(124,58,237,0.15);
+      background: rgba(255, 255, 255, 0.048);
+      border-color: rgba(255, 255, 255, 0.12);
     }
     .dv-row.is-top3 {
-      background: rgba(124,58,237,0.08);
-      border-color: rgba(124,58,237,0.25);
+      background: rgba(255, 255, 255, 0.064);
+      border-color: rgba(255, 255, 255, 0.18);
     }
     .dv-row.is-top3:hover {
-      background: rgba(124,58,237,0.12);
-      border-color: rgba(124,58,237,0.35);
+      background: rgba(255, 255, 255, 0.079);
+      border-color: rgba(255, 255, 255, 0.22);
     }
 
     .dv-row-rank {
@@ -166,8 +167,9 @@ type Metric = 'ttft' | 'throughput';
       font-size: 11px;
       font-weight: 600;
       color: #6b7280;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.064);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 6px;
       line-height: 1;
     }
@@ -179,9 +181,10 @@ type Metric = 'ttft' | 'throughput';
       }
     }
     .dv-row-rank.is-top3 {
-      background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(167,139,250,0.15) 100%);
-      border-color: rgba(124,58,237,0.4);
-      color: #c4b5fd;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       font-weight: 700;
     }
 
@@ -190,7 +193,7 @@ type Metric = 'ttft' | 'throughput';
       align-items: center;
       justify-content: flex-start;
       gap: 8px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 11px;
       color: #9ca3af;
       font-weight: 500;
@@ -207,7 +210,7 @@ type Metric = 'ttft' | 'throughput';
       color: #d1d5db;
     }
     .dv-row.is-top3 .dv-row-label {
-      color: #c4b5fd;
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -240,10 +243,11 @@ type Metric = 'ttft' | 'throughput';
     /* ── Bars ──────────────────────────────────── */
     .dv-bar-wrap {
       height: 10px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.053);
       border-radius: 5px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       margin-right: -4px;
     }
     @media (min-width: 640px) {
@@ -258,8 +262,8 @@ type Metric = 'ttft' | 'throughput';
       height: 100%;
       border-radius: 4px;
       width: 0%;
-      background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
-      box-shadow: 0 0 12px rgba(124,58,237,0.3);
+      background: linear-gradient(90deg, #525252 0%, #d4d4d4 100%);
+      box-shadow: none;
       transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms;
       position: relative;
     }
@@ -274,14 +278,14 @@ type Metric = 'ttft' | 'throughput';
       border-radius: 4px 4px 0 0;
     }
     .dv-row:hover .dv-bar-fill {
-      box-shadow: 0 0 16px rgba(124,58,237,0.5);
+      box-shadow: none;
     }
     .dv-bar-fill.is-throughput {
-      background: linear-gradient(90deg, #059669 0%, #34d399 100%);
-      box-shadow: 0 0 12px rgba(5,150,105,0.3);
+      background: linear-gradient(90deg, #404040 0%, #a3a3a3 100%);
+      box-shadow: none;
     }
     .dv-row:hover .dv-bar-fill.is-throughput {
-      box-shadow: 0 0 16px rgba(5,150,105,0.5);
+      box-shadow: none;
     }
 
     /* ── Value ─────────────────────────────────── */
@@ -301,7 +305,7 @@ type Metric = 'ttft' | 'throughput';
       color: #ffffff;
     }
     .dv-row.is-top3 .dv-row-value {
-      color: #c4b5fd;
+      color: #ffffff;
       font-weight: 800;
     }
 
@@ -314,8 +318,9 @@ type Metric = 'ttft' | 'throughput';
       width: 100%;
       margin-top: 10px;
       padding: 10px 16px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(124,58,237,0.2);
+      background: rgba(255, 255, 255, 0.031);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 8px;
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 13px;
@@ -325,9 +330,9 @@ type Metric = 'ttft' | 'throughput';
       transition: all 200ms ease;
     }
     .dv-expand-btn:hover {
-      background: rgba(124,58,237,0.08);
-      border-color: rgba(124,58,237,0.35);
-      color: #c4b5fd;
+      background: rgba(255, 255, 255, 0.079);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
     }
     .dv-expand-btn svg {
       transition: transform 200ms ease;
@@ -335,7 +340,7 @@ type Metric = 'ttft' | 'throughput';
 
     /* ── Note ──────────────────────────────────── */
     .dv-note {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 10px;
       color: #4b5563;
       letter-spacing: 0.04em;

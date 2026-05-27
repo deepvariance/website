@@ -1,0 +1,109 @@
+<header class="dv-header" [class.dv-header--scrolled]="scrolled()">
+  <div class="dv-header__inner">
+    
+    <!-- Logo -->
+    <a routerLink="/" (click)="closeMobileMenu()" class="dv-logo" aria-label="Deep Variance home">
+      <img src="/logo-mark.svg" alt="" width="38" height="38" class="dv-logo__mark" />
+      <app-wordmark [size]="24" />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="dv-nav">
+
+      <a
+        routerLink="/platform"
+        routerLinkActive="dv-nav-link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        class="dv-nav-link"
+      >
+        Platform
+      </a>
+
+      <a
+        routerLink="/get-started"
+        routerLinkActive="dv-nav-link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        class="dv-nav-link"
+      >
+        Get started
+      </a>
+
+      <a
+        routerLink="/use-cases"
+        routerLinkActive="dv-nav-link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        class="dv-nav-link"
+      >
+        Use Cases
+      </a>
+
+      <a
+        routerLink="/docs"
+        routerLinkActive="dv-nav-link--active"
+        [routerLinkActiveOptions]="navExactOptions"
+        class="dv-nav-link"
+      >
+        Docs
+      </a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="dv-actions">
+      <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary btn--sm">
+        Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
+      </a>
+
+      <button 
+        (click)="toggleMobileMenu()" 
+        class="dv-mobile-toggle"
+        aria-label="Toggle menu"
+      >
+        @if (!isMobileMenuOpen()) {
+          <lucide-icon [img]="Menu" [size]="20" />
+        } @else {
+          <lucide-icon [img]="X" [size]="20" />
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="dv-mobile-menu dv-mobile-menu--visible">
+      <a
+        routerLink="/platform"
+        routerLinkActive="dv-mobile-menu__link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        (click)="closeMobileMenu()"
+        class="dv-mobile-menu__link"
+      >Platform</a>
+      <a
+        routerLink="/get-started"
+        routerLinkActive="dv-mobile-menu__link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        (click)="closeMobileMenu()"
+        class="dv-mobile-menu__link"
+      >Get started</a>
+      <a
+        routerLink="/use-cases"
+        routerLinkActive="dv-mobile-menu__link--active"
+        [routerLinkActiveOptions]="navActiveOptions"
+        (click)="closeMobileMenu()"
+        class="dv-mobile-menu__link"
+      >Use Cases</a>
+      <a
+        routerLink="/docs"
+        routerLinkActive="dv-mobile-menu__link--active"
+        [routerLinkActiveOptions]="navExactOptions"
+        (click)="closeMobileMenu()"
+        class="dv-mobile-menu__link"
+      >Docs</a>
+      
+      <div class="dv-mobile-menu__cta">
+        <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary btn--sm" style="width: 100%; justify-content: center;">
+          Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
+        </a>
+      </div>
+    </div>
+  }
+</header>

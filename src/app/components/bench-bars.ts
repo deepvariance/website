@@ -153,8 +153,9 @@ export interface BenchOption {
     :host { display: block; }
 
     .dv-bench-card {
-      background: #0f0f14;
-      border: 1px solid rgba(124, 58, 237, 0.2);
+      background: #525256;
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 12px;
       padding: 16px;
     }
@@ -168,7 +169,7 @@ export interface BenchOption {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 36px;
       font-weight: 700;
-      color: #a78bfa;
+      color: #ffffff;
       line-height: 1;
       letter-spacing: -0.02em;
     }
@@ -179,7 +180,7 @@ export interface BenchOption {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 26px;
       font-weight: 600;
-      color: #7c3aed;
+      color: #a3a3a3;
     }
     .dv-bench-hero-caption {
       font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -189,7 +190,7 @@ export interface BenchOption {
     }
     .dv-bench-hero-dim { color: #9ca3af; font-weight: 400; }
     .dv-bench-hero-sub {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 11px;
       color: #6b7280;
       letter-spacing: 0.02em;
@@ -202,8 +203,8 @@ export interface BenchOption {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #1a1a2e;
-      border: 1px solid #2d2d4e;
+      background: #5a5a69;
+      border: 1px solid #686880;
       border-radius: 6px;
       padding: 5px 14px;
       font-size: 13px;
@@ -214,8 +215,8 @@ export interface BenchOption {
       transition: border-color 150ms, color 150ms, background 150ms;
       line-height: 1.5;
     }
-    .dv-pill:hover { border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
-    .dv-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
+    .dv-pill:hover { border-color: rgba(255, 255, 255, 0.2); color: #ffffff; }
+    .dv-pill.is-active { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); color: #ffffff; }
     
     .dv-pill-logo {
       width: 16px;
@@ -255,7 +256,7 @@ export interface BenchOption {
     .dv-y-label {
       position: absolute;
       right: 8px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 10px;
       color: #4b5563;
       line-height: 1;
@@ -268,7 +269,7 @@ export interface BenchOption {
       position: absolute;
       left: 0; right: 0;
       height: 1px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.066);
     }
 
     /* ── Bar groups ───────────────────────────── */
@@ -293,8 +294,8 @@ export interface BenchOption {
       .dv-bar { width: 30px; }
     }
     .dv-bar--hyper {
-      background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
-      box-shadow: 0 0 10px rgba(124,58,237,0.4);
+      background: linear-gradient(180deg, #d4d4d4 0%, #525252 100%);
+      box-shadow: none;
     }
     .dv-bar--base { background: #2d2d4e; }
 
@@ -305,7 +306,8 @@ export interface BenchOption {
       left: 50%;
       transform: translateX(-50%);
       background: #16162a;
-      border: 1px solid rgba(124,58,237,0.35);
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 8px;
       padding: 10px 14px;
       white-space: nowrap;
@@ -322,10 +324,10 @@ export interface BenchOption {
     }
     .dv-tooltip-row { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
     .dv-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-    .dv-dot--hyper { background: #7c3aed; }
+    .dv-dot--hyper { background: #d4d4d4; }
     .dv-dot--base  { background: #4b5563; }
     .dv-tooltip-text {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 11px;
       color: #9ca3af;
     }
@@ -335,7 +337,7 @@ export interface BenchOption {
     .dv-x-label {
       flex: 1;
       text-align: center;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 10px;
       color: #6b7280;
       text-transform: uppercase;
@@ -347,15 +349,16 @@ export interface BenchOption {
 
     /* ── Stat cards ───────────────────────────── */
     .dv-stat {
-      background: #12121f;
-      border: 1px solid #1f1f3a;
+      background: #55555d;
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       border-radius: 8px;
       padding: 12px 14px;
       transition: border-color 200ms;
     }
-    .dv-stat.is-best { border-color: rgba(124,58,237,0.5); }
+    .dv-stat.is-best { border-color: rgba(255, 255, 255, 0.22); }
     .dv-stat-label {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 10px;
       font-weight: 600;
       color: #6b7280;
@@ -367,13 +370,13 @@ export interface BenchOption {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 22px;
       font-weight: 700;
-      color: #a78bfa;
+      color: #ffffff;
       line-height: 1.1;
       margin: 0 0 2px;
     }
     .dv-stat-x { font-size: 14px; color: #7c3aed; margin-left: 1px; }
     .dv-stat-ms {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono), ui-monospace, monospace;
       font-size: 11px;
       color: #6b7280;
       margin: 0;

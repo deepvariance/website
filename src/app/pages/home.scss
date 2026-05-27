@@ -1,0 +1,500 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/panels' as panels;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// HOME PAGE — grayscale, matches deepvariance.com prod
+// ══════════════════════════════════════════════════════════════════════════════
+
+.home-page {
+  width: 100%;
+  max-width: 100%;
+  background: $bg-base;
+  overflow-x: clip;
+}
+
+// ── HERO (centered, text-only, typewriter headline) ──────────────────────────
+
+// Grid + glow: src/styles/_hero-grid.scss
+.hero-section {
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding-top: $header-offset;
+  padding-bottom: clamp(2rem, 5vh, 3rem);
+
+  @media (min-width: 768px) {
+    padding-top: $header-offset-md;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid $bg-border;
+
+  .container {
+    width: 100%;
+  }
+}
+
+.hero-copy {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-headline {
+  font-family: $font-display;
+  font-size: clamp(2rem, 8.5vw, 4.5rem);
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 2rem;
+  min-height: 2em;
+}
+
+.hero-headline__line {
+  display: block;
+}
+
+.hero-headline .hero-headline__accent {
+  color: #9d6fff;
+}
+
+.hero-headline__caret {
+  display: inline-block;
+  width: 0.45ch;
+  height: 0.82em;
+  margin-left: 0.04em;
+  vertical-align: -0.1em;
+  background: $text-primary;
+  border-radius: 2px;
+  pointer-events: none;
+
+  &--blink {
+    animation: dv-caret-blink 1s steps(2, end) infinite;
+  }
+}
+
+@keyframes dv-caret-blink {
+  0%, 50%    { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.hero-tagline {
+  font-family: $font-mono;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $text-secondary;
+  margin: 0 auto 2.5rem;
+  max-width: 620px;
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 0.5rem 0.75rem; // room for retro shadow plate
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// ── PERFORMANCE / METRICS BAND (image left, copy + metrics right) ───────────
+
+.metrics-band {
+  position: relative;
+  padding: $section-padding;
+  padding-bottom: clamp(2.75rem, 4.5vw, 4rem);
+  background: $bg-base;
+  border-bottom: 1px solid $bg-border;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-lg;
+  }
+}
+
+.metrics-band__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+  }
+}
+
+.metrics-band__image {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 2;
+
+  @media (min-width: 1024px) {
+    order: 0;
+    margin-left: -2rem;
+  }
+
+  @media (min-width: 1280px) {
+    margin-left: -4rem;
+  }
+}
+
+.metrics-band__img {
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+.metrics-band__copy {
+  min-width: 0;
+  order: 1;
+}
+
+.metrics-band__head {
+  margin-bottom: 1.75rem;
+}
+
+.metrics-band__title {
+  font-family: $font-display;
+  font-size: clamp(1.875rem, 3.4vw, 2.625rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.hero-metric-card {
+  display: flex;
+  flex-direction: column;
+  @include panels.borderless-panel($panel-fill-strong, 14px);
+  overflow: hidden;
+}
+
+.hero-metric-card__cell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid $panel-divider;
+  text-align: left;
+
+  &:last-child { border-bottom: none; }
+
+  @media (min-width: 768px) {
+    padding: 1.75rem 2rem;
+    gap: 2.5rem;
+  }
+}
+
+.hero-metric-card__prefix {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-bottom: 0.625rem;
+}
+
+.hero-metric-card__value {
+  font-family: $font-display;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  min-width: 5.5ch;
+}
+
+.hero-metric-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.hero-metric-card__dim {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $text-primary;
+}
+
+.hero-metric-card__label {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: $text-secondary;
+  line-height: 1.5;
+  max-width: 42ch;
+}
+
+.metrics-band__footnote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-faint;
+  margin: 1.5rem 0 0;
+  letter-spacing: 0.02em;
+}
+
+.metrics-band__footnote-line {
+  display: block;
+}
+
+// Button system lives in src/styles/_buttons.scss (loaded globally).
+
+// ── SUPPORT SECTION (software + hardware logo wall) ─────────────────────────
+
+.support-section {
+  position: relative;
+  padding: $section-padding;
+  background: $bg-base;
+  border-bottom: 1px solid $bg-border;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-lg;
+  }
+}
+
+.support-section__title {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: $text-primary;
+  margin: 0 0 1rem;
+}
+
+.support-section__tagline {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  color: $text-secondary;
+  text-align: center;
+  margin: 0 0 3.5rem;
+
+  @media (min-width: 1024px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.support-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    gap: 3.5rem;
+  }
+}
+
+.support-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
+  text-align: center;
+}
+
+.support-group__label {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.support-group__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem 3.5rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 2rem 4rem;
+  }
+}
+
+.support-logo {
+  height: 32px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: brightness(0) invert(1);
+  transition: opacity $duration-base $ease-out-expo;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &--wide {
+    height: 44px;
+    max-width: 240px;
+  }
+
+  &--icon {
+    height: 36px;
+    max-width: 200px;
+  }
+}
+
+// ── PLATFORM SECTION (text + cta left, animated stack right) ────────────────
+
+.modules-section {
+  position: relative;
+  padding: $section-padding;
+  background: $bg-base;
+  border-bottom: 1px solid $bg-border;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-lg;
+  }
+}
+
+.section-overline {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $text-secondary;
+  margin-bottom: 1.5rem;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.platform-copy {
+  min-width: 0;
+}
+
+.platform-copy__title {
+  font-family: $font-display;
+  font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+  margin: 0 0 1.5rem;
+  text-wrap: balance;
+}
+
+.platform-copy__intro {
+  font-family: $font-mono;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: $text-secondary;
+  margin: 0 0 1rem;
+  max-width: 480px;
+
+  &:last-of-type {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.platform-copy__cta {
+  margin-top: 0.5rem;
+}
+
+.platform-stack {
+  min-width: 0;
+}
+
+// ── FINAL SECTION ─────────────────────────────────────────────────────────────
+
+.final-section {
+  position: relative;
+  padding: clamp(3.5rem, 6vw, 5rem) 0 clamp(4rem, 7vw, 6rem);
+  background: $bg-base;
+  text-align: center;
+  overflow: hidden;
+
+  .container { position: relative; z-index: 1; }
+
+  @media (min-width: 1024px) {
+    padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(5rem, 8vw, 7rem);
+  }
+}
+
+.final-section__title {
+  font-family: $font-display;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+  margin: 0 0 1.25rem;
+  text-wrap: balance;
+}
+
+.final-section__tagline {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  color: $text-secondary;
+  margin: 0 0 2.5rem;
+}
+
+.final-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.875rem;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

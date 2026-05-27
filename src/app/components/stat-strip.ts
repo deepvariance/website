@@ -14,14 +14,14 @@ export interface Stat {
   imports: [CommonModule],
   template: `
     <div
-      class="rounded-lg overflow-hidden border border-border divide-x divide-border"
+      class="panel-divided rounded-lg"
       [style.max-width]="stats.length === 1 ? '200px' : stats.length === 2 ? '420px' : '48rem'"
       [class.mx-auto]="centered"
       [style.display]="'grid'"
       [style.grid-template-columns]="'repeat(' + stats.length + ', minmax(0, 1fr))'"
     >
       @for (s of stats; track s.label) {
-        <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface">
+        <div class="px-3 sm:px-6 py-4 sm:py-5 text-center">
           @if (s.qualifier) {
             <p class="font-mono text-[10px] uppercase tracking-[0.22em] mb-1" style="color:#8a8a8a">{{ s.qualifier }}</p>
           }

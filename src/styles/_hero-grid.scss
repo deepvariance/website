@@ -1,0 +1,138 @@
+@use 'tokens' as *;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PAGE HERO — dot grid + cursor glow (shared across site)
+// Use with appDotGridGlow directive + .page-hero-grid__soft-glow child
+// ══════════════════════════════════════════════════════════════════════════════
+
+.page-hero-grid,
+.hero-section {
+  position: relative;
+  box-sizing: border-box;
+  --grid-size: 28px;
+  --grid-glow-x: 50%;
+  --grid-glow-y: 50%;
+
+  background-color: $bg-base;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.09) 1.25px, transparent 1.25px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.57) 1.25px, transparent 1.25px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: 0 0;
+    mask-image: radial-gradient(
+      200px circle at var(--grid-glow-x) var(--grid-glow-y),
+      #000 0%,
+      #000 28%,
+      rgba(0, 0, 0, 0.55) 48%,
+      transparent 72%
+    );
+    -webkit-mask-image: radial-gradient(
+      200px circle at var(--grid-glow-x) var(--grid-glow-y),
+      #000 0%,
+      #000 28%,
+      rgba(0, 0, 0, 0.55) 48%,
+      transparent 72%
+    );
+  }
+
+  &.dot-grid-glow--active::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 95% 75% at 50% 50%, transparent 30%, $bg-base 100%);
+  }
+}
+
+.page-hero-grid__soft-glow,
+.hero-section__soft-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  background:
+    radial-gradient(
+      520px circle at var(--grid-glow-x) var(--grid-glow-y),
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 38%,
+      transparent 68%
+    );
+}
+
+.page-hero-grid.dot-grid-glow--active .page-hero-grid__soft-glow,
+.hero-section.dot-grid-glow--active .page-hero-grid__soft-glow,
+.page-hero-grid.dot-grid-glow--active .hero-section__soft-glow,
+.hero-section.dot-grid-glow--active .hero-section__soft-glow {
+  opacity: 1;
+}
+
+// Default inner content sits above vignette
+.page-hero-grid > .container,
+.page-hero-grid > .page-hero-grid__inner,
+.hero-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+// Standard page hero (platform, use cases, products, docs)
+.page-hero-grid--standard {
+  padding-top: $header-offset;
+  border-bottom: 1px solid $bg-border;
+
+  @media (min-width: 768px) {
+    padding-top: $header-offset-md;
+  }
+}
+
+// Opaque fills in hero — translucent panel tokens let the dot grid bleed through cards
+.page-hero-grid,
+.hero-section {
+  .panel-box,
+  .glass-card,
+  .module-card {
+    background: $bg-surface;
+  }
+
+  .panel-box--strong {
+    background: $bg-elevated;
+  }
+
+  .panel-box--highlighted,
+  .panel-box--featured {
+    background: $bg-surface-highlight;
+  }
+
+  .panel-box--highlighted.panel-box--strong,
+  .panel-box--featured.panel-box--strong {
+    background: $bg-elevated-highlight;
+  }
+
+  .panel-box--hover:hover,
+  .glass-card.panel-box--hover:hover,
+  a.glass-card:hover,
+  .group.glass-card:hover,
+  a.module-card:hover {
+    background: $bg-elevated;
+  }
+}

@@ -1,0 +1,176 @@
+<div class="platform-page">
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="platform-hero page-hero-grid page-hero-grid--standard" appDotGridGlow>
+    <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="platform-hero__copy">
+        <div class="section-overline">Platform</div>
+        <h1 class="platform-hero__title">
+          The runtime optimization layer<br />between framework<br />and silicon.
+        </h1>
+        <p class="platform-hero__subtitle">
+          Deep Variance sits between PyTorch or vLLM and the CUDA driver. Same call graph in, optimized work out, no model changes.
+        </p>
+      </div>
+
+      <div class="platform-hero__diagram">
+        <app-stack-viz />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       EXECUTION LIFECYCLE
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="section section--alt execution-path-section">
+    <div class="container">
+      <div class="execution-path">
+        <header class="execution-path__intro">
+          <div class="section-overline">Execution path</div>
+          <h2 class="section-title">One request, end to end.</h2>
+          <p class="section-subtitle">
+            The intercept sits below the framework and above the driver. Your app keeps the same API. The GPU gets a cleaner path to silicon.
+          </p>
+        </header>
+
+        <ol class="execution-flow" aria-label="Request execution steps">
+          @for (step of lifecycle; track step.step; let i = $index; let last = $last) {
+            <li
+              class="execution-flow__step"
+              [class.execution-flow__step--accent]="step.accent"
+              [class.execution-flow__step--last]="last"
+            >
+              <div class="execution-flow__marker" aria-hidden="true">
+                <span class="execution-flow__index">0{{ i + 1 }}</span>
+                <span class="execution-flow__node"></span>
+              </div>
+              <div class="execution-flow__content">
+                @if (step.chip) {
+                  <span class="execution-flow__chip">{{ step.chip }}</span>
+                }
+                <h3 class="execution-flow__title">{{ step.step }}</h3>
+                <p class="execution-flow__detail">{{ step.detail }}</p>
+              </div>
+            </li>
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       MODULES — editorial preview rows that link to full pages
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-overline">Modules</div>
+        <h2 class="section-title">Three modules.<br />One install.</h2>
+        <p class="section-subtitle">
+          Each attaches at a different layer. Run one, two, or all three.
+        </p>
+      </div>
+
+      <ul class="module-cards">
+        @for (mod of modules; track mod.slug; let i = $index) {
+          <li>
+            <a [routerLink]="['/platform', mod.slug]" class="module-card" [id]="mod.slug">
+              <div class="module-card__head">
+                <span class="module-card__index">0{{ i + 1 }}</span>
+                <span class="module-card__status">
+                  <span class="module-card__status-dot"></span>
+                  {{ mod.status }}
+                </span>
+              </div>
+
+              <div class="module-card__subtitle">{{ mod.subtitle }}</div>
+              <h3 class="module-card__title">{{ mod.title }}</h3>
+              <p class="module-card__tagline">{{ mod.tagline }}</p>
+
+              <div class="module-card__metric">
+                <div class="module-card__metric-value">{{ mod.metric }}</div>
+                <div class="module-card__metric-label">{{ mod.metricLabel }}</div>
+              </div>
+
+              <div class="module-card__stack">{{ mod.stack }}</div>
+
+              <div class="module-card__cta">
+                <span>Read the full page</span>
+                <lucide-icon [img]="ArrowRight" [size]="14" />
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       WHAT CHANGES / WHAT STAYS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="section section--alt integration-diff-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-overline">Integration</div>
+        <h2 class="section-title">What changes.<br />What stays.</h2>
+        <p class="section-subtitle">
+          The layer is non-invasive. Training code, model weights, and orchestration are untouched.
+        </p>
+      </div>
+
+      <div class="integration-diff__panels">
+        <div class="diff-col">
+          <h3 class="diff-col__title">
+            <lucide-icon [img]="RefreshCw" [size]="14" /> What changes
+          </h3>
+          <ul class="diff-list">
+            @for (item of whatChanges; track item) {
+              <li class="diff-list__item">
+                <span class="diff-list__bullet diff-list__bullet--change"></span>
+                {{ item }}
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="diff-col">
+          <h3 class="diff-col__title">
+            <lucide-icon [img]="Check" [size]="14" /> What stays
+          </h3>
+          <ul class="diff-list">
+            @for (item of whatStays; track item) {
+              <li class="diff-list__item">
+                <span class="diff-list__bullet diff-list__bullet--stay"></span>
+                {{ item }}
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       FINAL CTA
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="section section--cta">
+    <div class="container">
+      <div class="platform-cta">
+        <div class="section-overline">Get started</div>
+        <h2 class="platform-cta__title">See the numbers<br />on your workload.</h2>
+        <p class="platform-cta__subtitle">
+          Send a representative job. Get a baseline-vs-Deep-Variance report back within two weeks.
+        </p>
+        <div class="platform-cta__actions">
+          <a routerLink="/get-started" fragment="contact-form" class="btn-primary">
+            Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

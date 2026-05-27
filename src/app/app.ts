@@ -14,7 +14,6 @@ import { FooterComponent } from './components/footer';
     FooterComponent,
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css',
 })
 export class App {
   private router = inject(Router);

@@ -10,6 +10,7 @@ import {
 
 import { CtaButtonComponent } from '../components/cta-button';
 import { GlassCardComponent } from '../components/glass-card';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -21,14 +22,14 @@ import { SeoService } from '../services/seo.service';
     LucideAngularModule,
     GlassCardComponent,
     CtaButtonComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-hidden">
       <!-- Hero -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
-        <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
-        <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
-
+      <section class="page-hero-grid border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+        <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
         <div class="relative grid grid-cols-1 desk:grid-cols-2 gap-12 items-center">
           <!-- Text column -->
           <div>
@@ -38,7 +39,7 @@ import { SeoService } from '../services/seo.service';
               </div>
               <span class="label-caps text-white">Research Institutions</span>
             </div>
-            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
+            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
               Break through memory limits without buying more GPUs
             </h1>
             <p class="text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed mb-8">
@@ -66,6 +67,7 @@ import { SeoService } from '../services/seo.service';
             />
           </div>
         </div>
+        </div>
       </section>
 
       <!-- Content section -->
@@ -85,22 +87,22 @@ import { SeoService } from '../services/seo.service';
 
             <div class="flex flex-wrap gap-2 mb-8">
               <a
-                routerLink="/optimemory"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
+                routerLink="/platform" fragment="optimemory"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full panel-pill text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
               >
                 Optimemory
                 <lucide-icon [img]="ArrowRightIcon" [size]="11" />
               </a>
               <a
-                routerLink="/hyperrag"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
+                routerLink="/platform" fragment="hyperrag"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full panel-pill text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
               >
                 HyperRAG
                 <lucide-icon [img]="ArrowRightIcon" [size]="11" />
               </a>
               <a
-                routerLink="/deeptuner"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
+                routerLink="/platform" fragment="deeptuner"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full panel-pill text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
               >
                 DeepTuner
                 <lucide-icon [img]="ArrowRightIcon" [size]="11" />
@@ -109,36 +111,36 @@ import { SeoService } from '../services/seo.service';
 
             <app-glass-card extraClass="p-6 mb-8">
               <p class="label-caps mb-4">What this addresses</p>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3">
+              <ul class="list-check space-y-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Budget constraints limiting model size and research scope</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Out-of-memory errors forcing architecture compromises</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Slow iteration cycles delaying scientific discovery</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Clinical models too large for edge or mobile deployment</span>
                 </li>
@@ -147,7 +149,7 @@ import { SeoService } from '../services/seo.service';
 
             <app-cta-button
               variant="ghost"
-              routerLink="/pricing"
+              routerLink="/get-started"
               fragment="contact-form"
               [fullWidth]="true"
             >
@@ -164,7 +166,7 @@ import { SeoService } from '../services/seo.service';
                   Academic labs operate under budget constraints that commercial teams don't face. A 4-GPU A100 node is a significant capital expense, and hardware upgrades happen on 3-5 year cycles.
                 </p>
                 <p>
-                  Meanwhile, model complexity grows faster than Moore's Law. A genomics researcher designing a 6B-parameter sequence classifier will hit OOM errors on a configuration that should technically fit — not because the math is wrong, but because CUDA's allocator fragments memory across training steps.
+                  Meanwhile, model complexity grows faster than Moore's Law. A genomics researcher designing a 6B-parameter sequence classifier will hit OOM errors on a configuration that should technically fit, not because the math is wrong, but because CUDA's allocator fragments memory across training steps.
                 </p>
                 <p class="text-on-surface font-medium">
                   Optimemory recovers the stranded capacity. In computational biology experiments, we've seen effective ceilings move from 3B to 6B parameters on identical hardware, unlocking model architectures that were previously inaccessible.
@@ -192,10 +194,6 @@ import { SeoService } from '../services/seo.service';
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-neon mt-0.5">•</span>
-                  <span>Free tier for labs under 8 GPUs</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-neon mt-0.5">•</span>
                   <span>Publication rights retained for research results</span>
                 </li>
                 <li class="flex items-start gap-2">
@@ -217,7 +215,7 @@ import { SeoService } from '../services/seo.service';
           <p class="text-on-surface-variant max-w-xl mx-auto mb-9 leading-relaxed">
             We scope every deployment to your hardware, data governance constraints, and team size.
           </p>
-          <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">
+          <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">
             Talk to our team
           </app-cta-button>
         </app-glass-card>
@@ -236,9 +234,10 @@ import { SeoService } from '../services/seo.service';
         width: 40px;
         height: 40px;
         border-radius: 0.5rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
     `,
   ],

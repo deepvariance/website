@@ -50,7 +50,7 @@ When making design decisions or seeking UI/UX references, draw from these source
 ```
 src/
   app/
-    pages/         # Route-level components (home, pricing, use-cases, product pages, legal)
+    pages/         # Route-level components (home, get-started, use-cases, product pages, legal)
     components/    # Shared UI (header, footer, stack-viz, stat-strip, cta-button, …)
     services/      # seo.service.ts
   styles.css       # Global styles, design tokens, Tailwind base

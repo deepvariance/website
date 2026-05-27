@@ -1,0 +1,77 @@
+@use 'tokens' as *;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// BORDERLESS PANELS — subtle fill + top highlight, no stroke
+// ══════════════════════════════════════════════════════════════════════════════
+
+@mixin borderless-panel($fill: $panel-fill, $radius: $radius-xl) {
+  background: $fill;
+  border: none;
+  border-radius: $radius;
+  box-shadow: $panel-inset;
+}
+
+.panel-box,
+.glass-card,
+.dv-panel,
+.dv-card {
+  @include borderless-panel;
+  transition:
+    background-color 200ms $ease-out-expo,
+    box-shadow 200ms $ease-out-expo,
+    transform 200ms $ease-out-expo;
+}
+
+.panel-box--strong,
+.glass-card.panel-box--strong,
+.dv-panel {
+  background: $panel-fill-strong;
+}
+
+.panel-box--hover:hover,
+.glass-card.panel-box--hover:hover,
+a.glass-card:hover,
+.group.glass-card:hover {
+  background: $panel-fill-hover;
+}
+
+// Highlighted / featured cards — Deep Variance violet tint
+.panel-box--highlighted,
+.panel-box--featured,
+.glass-card.panel-box--highlighted {
+  background: $panel-fill-highlight;
+  box-shadow: $panel-inset-highlight;
+}
+
+.panel-box--highlighted.panel-box--strong,
+.glass-card.panel-box--highlighted.panel-box--strong {
+  background: $panel-fill-highlight-strong;
+}
+
+.panel-box--highlighted.panel-box--hover:hover,
+.glass-card.panel-box--highlighted.panel-box--hover:hover {
+  background: $panel-fill-highlight-strong;
+}
+
+// Small icon / chip holders (replaces bordered bg-surface-dim boxes)
+.panel-chip {
+  @include borderless-panel($panel-fill-strong, $radius-md);
+}
+
+// Product link pills on use-case pages
+.panel-pill {
+  @include borderless-panel($panel-fill, $radius-full);
+}
+
+.panel-divided {
+  @include borderless-panel($panel-fill-strong);
+  overflow: hidden;
+
+  > * + * {
+    border-left: 1px solid $panel-divider;
+  }
+}
+
+.panel-divider-t {
+  border-top: 1px solid $panel-divider;
+}

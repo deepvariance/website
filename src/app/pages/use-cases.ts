@@ -15,6 +15,7 @@ import {
 import { CtaButtonComponent } from '../components/cta-button';
 import { GlassCardComponent } from '../components/glass-card';
 import { StatusPillComponent } from '../components/status-pill';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 interface KpiTile {
@@ -33,7 +34,7 @@ interface UseCase {
   bentoMetricLabel: string;
   detailHeading: string;
   paragraphs: string[];
-  productLinks: { route: string; label: string }[];
+  productLinks: { route: string; fragment?: string; label: string }[];
   kpis: KpiTile[];
   addresses: string[];
   ctaLabel: string;
@@ -49,21 +50,21 @@ interface UseCase {
     GlassCardComponent,
     CtaButtonComponent,
     StatusPillComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-clip">
       <!-- Hero -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
-        <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
-        <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
-
+      <section class="page-hero-grid border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+        <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
         <div class="relative grid grid-cols-1 desk:grid-cols-2 gap-12 items-center">
           <!-- Text column -->
           <div>
             <div class="flex mb-7">
               <app-status-pill variant="live">Use cases</app-status-pill>
             </div>
-            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
+            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
               How teams build with
               <span class="text-white">Deep Variance</span>
             </h1>
@@ -82,6 +83,7 @@ interface UseCase {
             />
           </div>
         </div>
+        </div>
       </section>
 
       <!-- 5-card bento -->
@@ -91,35 +93,37 @@ interface UseCase {
             <a
               [routerLink]="['/use-cases', uc.id]"
               [attr.href]="'/use-cases/' + uc.id"
-              class="group glass-card rounded-xl p-7 flex flex-col relative overflow-hidden"
+              class="group glass-card rounded-xl p-7 flex flex-col relative overflow-hidden isolate"
               [class.lg:col-span-2]="i === 0"
               [class.lg:row-span-1]="i === 0"
             >
               <div
                 aria-hidden="true"
-                class="pointer-events-none absolute -bottom-24 -right-16 w-72 h-72 rounded-full bg-surface-dim blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                class="pointer-events-none absolute -bottom-24 -right-16 z-0 w-72 h-72 rounded-full bg-surface-dim blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               ></div>
-              <div class="flex items-center gap-3 mb-6">
-                <div class="dv-feature-icon !mb-0">
-                  <lucide-icon [img]="uc.icon" [size]="18" />
+              <div class="relative z-10 flex flex-col flex-1 min-h-0">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="dv-feature-icon !mb-0">
+                    <lucide-icon [img]="uc.icon" [size]="18" />
+                  </div>
+                  <span class="label-caps text-white">{{ uc.label }}</span>
                 </div>
-                <span class="label-caps text-white">{{ uc.label }}</span>
-              </div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-on-surface leading-tight mb-3">
-                {{ uc.bentoTitle }}
-              </h3>
-              <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-1">
-                {{ uc.bentoSubtitle }}
-              </p>
-              <div class="flex items-end justify-between mt-auto pt-4 border-t border-white/5">
-                <div>
-                  <p class="font-display text-3xl font-bold text-on-surface text-white mb-1">{{ uc.bentoMetric }}</p>
-                  <p class="label-caps">{{ uc.bentoMetricLabel }}</p>
+                <h3 class="font-display text-xl md:text-2xl font-semibold text-on-surface leading-tight mb-3">
+                  {{ uc.bentoTitle }}
+                </h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-1">
+                  {{ uc.bentoSubtitle }}
+                </p>
+                <div class="flex items-end justify-between mt-auto pt-4 border-t border-white/5">
+                  <div>
+                    <p class="font-display text-3xl font-bold text-on-surface text-white mb-1">{{ uc.bentoMetric }}</p>
+                    <p class="label-caps">{{ uc.bentoMetricLabel }}</p>
+                  </div>
+                  <span class="dv-arrow">
+                    Read more
+                    <lucide-icon [img]="ArrowRight" [size]="14" />
+                  </span>
                 </div>
-                <span class="dv-arrow">
-                  Read more
-                  <lucide-icon [img]="ArrowRight" [size]="14" />
-                </span>
               </div>
             </a>
           }
@@ -127,8 +131,8 @@ interface UseCase {
       </section>
 
       <!-- Bottom CTA -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-16 md:py-24">
-        <app-glass-card variant="strong" rounded="2xl" extraClass="px-8 py-14 md:px-16 md:py-20 text-center" [glow]="true">
+      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 py-16 md:py-24 overflow-x-clip">
+        <app-glass-card variant="strong" rounded="2xl" extraClass="px-8 py-14 md:px-16 md:py-20 text-center relative z-0" [glow]="true">
           <h2 class="font-display font-bold tracking-tight text-on-surface text-3xl sm:text-5xl mb-5 max-w-3xl mx-auto leading-tight">
             Recognise your <span class="text-white">infrastructure problem</span>?
           </h2>
@@ -136,7 +140,7 @@ interface UseCase {
             We scope every deployment to your hardware, data governance constraints, and team size.
             No generic pricing tiers, just what fits.
           </p>
-          <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">
+          <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">
             Talk to our team
           </app-cta-button>
         </app-glass-card>
@@ -156,20 +160,21 @@ interface UseCase {
         height: 40px;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
       .dv-arrow {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-family: var(--font-mono), ui-monospace, monospace;
         font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.16em;
-        color: #9d6fff;
+        color: #a3a3a3;
         transition: transform 240ms ease;
       }
       .group:hover .dv-arrow {
@@ -200,8 +205,8 @@ export class UseCasesPageComponent {
         '<strong class="text-on-surface">DeepTuner</strong> automatically identifies the optimal GPU configuration and power settings for your workload before it runs. <strong class="text-on-surface">Optimemory</strong> prevents memory fragmentation that causes multi-week jobs to slow down or fail.',
       ],
       productLinks: [
-        { route: '/deeptuner', label: 'DeepTuner' },
-        { route: '/optimemory', label: 'Optimemory' },
+        { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
+        { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
       ],
       kpis: [
         { value: '−50%', label: 'Energy per token on MHA', highlight: true },
@@ -232,8 +237,8 @@ export class UseCasesPageComponent {
         '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of each GPU, letting you fit larger models or more tenants on the same hardware. <strong class="text-on-surface">HyperRAG</strong> accelerates RAG inference workloads by up to 6x. <strong class="text-on-surface">DeepTuner</strong> reduces idle energy costs when utilization is low.',
       ],
       productLinks: [
-        { route: '/optimemory', label: 'Optimemory' },
-        { route: '/hyperrag', label: 'HyperRAG' },
+        { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
+        { route: '/platform', fragment: 'hyperrag', label: 'HyperRAG' },
       ],
       kpis: [
         { value: '2.5x', label: 'Effective model scale per physical GPU', highlight: true },
@@ -265,8 +270,8 @@ export class UseCasesPageComponent {
         'Both products run entirely on your infrastructure with zero data transmission. One integration gives you visibility into memory, latency, and energy across your training workloads.',
       ],
       productLinks: [
-        { route: '/optimemory', label: 'Optimemory' },
-        { route: '/deeptuner', label: 'DeepTuner' },
+        { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
+        { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
       ],
       kpis: [
         { value: '11w → 3d', label: 'Pipeline build cycle in benchmarks', highlight: true },
@@ -298,9 +303,9 @@ export class UseCasesPageComponent {
         '<strong class="text-on-surface">DeepTuner</strong> optimizes GPU configurations for edge deployment of clinical models, reducing energy usage for battery-powered medical devices.',
       ],
       productLinks: [
-        { route: '/optimemory', label: 'Optimemory' },
-        { route: '/hyperrag', label: 'HyperRAG' },
-        { route: '/deeptuner', label: 'DeepTuner' },
+        { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
+        { route: '/platform', fragment: 'hyperrag', label: 'HyperRAG' },
+        { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
       ],
       kpis: [
         { value: '3B → 6B', label: 'Model scale on identical hardware', highlight: true },
@@ -332,8 +337,8 @@ export class UseCasesPageComponent {
         'Everything runs on-premise and air-gapped if needed. No production data leaves your facility at any point.',
       ],
       productLinks: [
-        { route: '/optimemory', label: 'Optimemory' },
-        { route: '/deeptuner', label: 'DeepTuner' },
+        { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
+        { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
       ],
       kpis: [
         { value: '50%', label: 'Less VRAM for edge vision models', highlight: true },

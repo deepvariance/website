@@ -19,6 +19,7 @@ import {
   SectionRailComponent,
 } from '../components/section-rail';
 import { StatusPillComponent } from '../components/status-pill';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -32,13 +33,15 @@ import { SeoService } from '../services/seo.service';
     CtaButtonComponent,
     SectionRailComponent,
     StatusPillComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-hidden pt-20 md:pt-24">
       <app-section-rail [sections]="railSections" ariaLabel="DeepTuner section navigation" />
 
       <!-- Hero -->
-      <section id="hero" class="relative border-b border-border overflow-hidden">
+      <section id="hero" class="page-hero-grid relative border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
         <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
 
           <!-- Desktop: problem image absolute right -->
@@ -54,12 +57,12 @@ import { SeoService } from '../services/seo.service';
           </div>
 
           <!-- Mobile: full-width image above text -->
-          <div class="desk:hidden pt-16 -mx-6">
+          <div class="desk:hidden pt-16 w-full max-w-full overflow-hidden">
             <img
               src="/deeptuner-problem.webp"
               alt="GPU cluster showing wasted energy from unoptimized kernel configurations"
               width="1536" height="1024"
-              class="w-full"
+              class="w-full max-w-full h-auto object-contain"
               style="mix-blend-mode:screen;opacity:0.85"
             />
           </div>
@@ -120,7 +123,7 @@ import { SeoService } from '../services/seo.service';
             </p>
             <div class="space-y-5">
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="Zap" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -128,7 +131,7 @@ import { SeoService } from '../services/seo.service';
                 </p>
               </div>
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="Clock" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -136,7 +139,7 @@ import { SeoService } from '../services/seo.service';
                 </p>
               </div>
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="TrendingDown" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -296,21 +299,21 @@ import { SeoService } from '../services/seo.service';
 
           <div class="grid grid-cols-2 gap-5">
             <div class="flex flex-col gap-3 items-center text-center">
-              <div class="w-16 h-16 rounded-xl bg-surface-dim border border-border flex items-center justify-center">
+              <div class="w-16 h-16 rounded-xl panel-chip flex items-center justify-center">
                 <img src="/model-logos/amd.svg" alt="AMD" class="w-10 h-10 object-contain" style="filter: brightness(0) invert(1)" />
               </div>
               <div>
                 <p class="font-display font-semibold text-on-surface mb-1">AMD ROCm</p>
-                <span class="text-[9px] font-mono uppercase tracking-[0.16em] px-2 py-0.5 rounded-full bg-indigo-soft/10 text-indigo-soft border border-indigo-soft/25">In progress</span>
+                <span class="text-[9px] font-mono uppercase tracking-[0.16em] px-2 py-0.5 rounded-full panel-pill text-on-surface-variant">In progress</span>
               </div>
             </div>
             <div class="flex flex-col gap-3 items-center text-center">
-              <div class="w-16 h-16 rounded-xl bg-surface-dim border border-border flex items-center justify-center">
+              <div class="w-16 h-16 rounded-xl panel-chip flex items-center justify-center">
                 <img src="/model-logos/google.svg" alt="Google" class="w-8 h-8 object-contain" />
               </div>
               <div>
                 <p class="font-display font-semibold text-on-surface mb-1">Google TPUs</p>
-                <span class="text-[9px] font-mono uppercase tracking-[0.16em] px-2 py-0.5 rounded-full bg-indigo-soft/10 text-indigo-soft border border-indigo-soft/25">In progress</span>
+                <span class="text-[9px] font-mono uppercase tracking-[0.16em] px-2 py-0.5 rounded-full panel-pill text-on-surface-variant">In progress</span>
               </div>
             </div>
           </div>
@@ -328,7 +331,7 @@ import { SeoService } from '../services/seo.service';
             We're onboarding HPC teams with active training or inference infrastructure. Tell us
             your hardware setup and we'll scope a pilot.
           </p>
-          <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">
+          <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">
             Get early access
           </app-cta-button>
         </app-glass-card>
@@ -348,9 +351,10 @@ import { SeoService } from '../services/seo.service';
         height: 44px;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
     `,
   ],

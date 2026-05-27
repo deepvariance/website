@@ -35,6 +35,7 @@ import {
   SectionRailComponent,
 } from '../components/section-rail';
 import { StatusPillComponent } from '../components/status-pill';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -53,13 +54,15 @@ import { SeoService } from '../services/seo.service';
     CommandRowComponent,
     SectionRailComponent,
     StatusPillComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-hidden pt-20 md:pt-24">
       <app-section-rail [sections]="railSections" ariaLabel="HyperRAG section navigation" />
 
       <!-- Hero -->
-      <section id="hero" class="relative border-b border-border overflow-hidden">
+      <section id="hero" class="page-hero-grid relative border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
         <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
 
           <!-- Desktop: funnel diagram of requests served by HyperRAG, absolute right, mix-blend-mode:screen -->
@@ -75,12 +78,12 @@ import { SeoService } from '../services/seo.service';
           </div>
 
           <!-- Mobile: full-width image above text -->
-          <div class="desk:hidden pt-16 -mx-6">
+          <div class="desk:hidden pt-16 w-full max-w-full overflow-hidden">
             <img
               src="/hyperrag-hero.webp"
               alt="Infographic: ten violet document queries on the left feed into a glowing hexagonal HyperRAG capsule. Eight emerald lines exit right to checkmark nodes (cache hits). Two amber lines curve down to a small GPU chip (the rare compute path)."
               width="1536" height="1024"
-              class="w-full"
+              class="w-full max-w-full h-auto object-contain"
               style="mix-blend-mode:screen;opacity:0.85"
             />
           </div>
@@ -155,7 +158,7 @@ import { SeoService } from '../services/seo.service';
             <div class="space-y-5">
               @for (item of ragChallenges; track item.highlight) {
                 <div class="flex gap-4 items-start">
-                  <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                  <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                     <lucide-icon [img]="item.icon" [size]="14" />
                   </span>
                   <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -223,7 +226,7 @@ import { SeoService } from '../services/seo.service';
             </h2>
             <div class="space-y-5">
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="CircleCheck" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -231,7 +234,7 @@ import { SeoService } from '../services/seo.service';
                 </p>
               </div>
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="CircleCheck" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -239,7 +242,7 @@ import { SeoService } from '../services/seo.service';
                 </p>
               </div>
               <div class="flex gap-4 items-start">
-                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant bg-surface-dim border border-border mt-0.5">
+                <span class="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-md text-on-surface-variant panel-chip mt-0.5">
                   <lucide-icon [img]="CircleCheck" [size]="14" />
                 </span>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">
@@ -299,7 +302,7 @@ import { SeoService } from '../services/seo.service';
           <!-- Right: model family pill list -->
           <div class="flex flex-wrap gap-3">
             @for (model of modelFamilies; track model.family) {
-              <div class="flex items-center gap-3 rounded-lg border border-border px-4 py-3">
+              <div class="flex items-center gap-3 panel-box rounded-lg px-4 py-3">
                 <lucide-icon [img]="Microchip" [size]="14" class="text-outline" />
                 <span class="font-display font-semibold text-on-surface text-sm">{{ model.family }}</span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-outline">{{ model.sizes }}</span>
@@ -329,11 +332,11 @@ import { SeoService } from '../services/seo.service';
               />
             </div>
             <div class="space-y-4">
-              <div class="rounded-xl border border-border p-5 flex gap-4 items-start">
+              <div class="panel-box rounded-xl p-5 flex gap-4 items-start">
                 <div class="dv-outcome-icon flex-shrink-0"><lucide-icon [img]="CircleCheck" [size]="16" /></div>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">No model changes. No migration. No cluster reconfiguration.</p>
               </div>
-              <div class="rounded-xl border border-border p-5 flex gap-4 items-start">
+              <div class="panel-box rounded-xl p-5 flex gap-4 items-start">
                 <div class="dv-outcome-icon flex-shrink-0"><lucide-icon [img]="Zap" [size]="16" /></div>
                 <p class="font-mono text-sm text-on-surface-variant leading-relaxed">Smarter caching starts on the first query. Gains visible immediately.</p>
               </div>
@@ -349,12 +352,12 @@ ctrl = hr.deploy()
 
 <span class="text-gray-500"># Query as usual - HyperRAG optimizes automatically</span>
 r = ctrl.query(
-    text=<span class="text-amber-300">"What is transformer attention?"</span>,
-    doc_ids=[<span class="text-amber-300">"d1"</span>, <span class="text-amber-300">"d2"</span>],
+    text=<span class="text-on-surface-variant">"What is transformer attention?"</span>,
+    doc_ids=[<span class="text-on-surface-variant">"d1"</span>, <span class="text-on-surface-variant">"d2"</span>],
 )
 
 <span class="text-gray-500"># Metrics available from first request</span>
-<span class="text-white">print</span>(r.latency_ms, <span class="text-amber-300">"ms"</span>)
+<span class="text-white">print</span>(r.latency_ms, <span class="text-on-surface-variant">"ms"</span>)
 <span class="text-white">print</span>(ctrl.metrics())</pre>
             </app-code-window>
           </div>
@@ -372,7 +375,7 @@ r = ctrl.query(
 
         <!-- Aggregate stats across all 14 tested models -->
         <div class="max-w-3xl mx-auto mb-8">
-          <div class="grid grid-cols-3 divide-x divide-border rounded-xl border border-border overflow-hidden">
+          <div class="panel-divided grid grid-cols-3 rounded-xl overflow-hidden">
             <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
               <p class="font-mono uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-1.5 sm:mb-2 leading-tight" style="font-size:10px;color:#8a8a8a">
                 <span class="hidden sm:inline">Models tested</span>
@@ -386,7 +389,7 @@ r = ctrl.query(
                 <span class="hidden sm:inline">Avg TTFT reduction</span>
                 <span class="sm:hidden">Avg TTFT</span>
               </p>
-              <p class="font-display font-bold leading-none text-xl sm:text-[2.25rem]" style="color:#a78bfa">54%</p>
+              <p class="font-display font-bold text-white leading-none text-xl sm:text-[2.25rem]">54%</p>
               <p class="font-mono mt-1 hidden sm:block" style="font-size:10px;color:#6b7280">across all 14 models</p>
             </div>
             <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
@@ -394,7 +397,7 @@ r = ctrl.query(
                 <span class="hidden sm:inline">Avg throughput gain</span>
                 <span class="sm:hidden">Throughput</span>
               </p>
-              <p class="font-display font-bold leading-none text-xl sm:text-[2.25rem]" style="color:#a78bfa">2.4×</p>
+              <p class="font-display font-bold text-white leading-none text-xl sm:text-[2.25rem]">2.4×</p>
               <p class="font-mono mt-1 hidden sm:block" style="font-size:10px;color:#6b7280">tokens per second</p>
             </div>
           </div>
@@ -446,7 +449,7 @@ r = ctrl.query(
             HyperRAG is available now on PyPI. Drop it in front of your inference API and start seeing the difference immediately.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">Talk to us</app-cta-button>
+            <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">Talk to us</app-cta-button>
             <app-cta-button variant="glass" href="https://pypi.org/project/dv-hyperrag/" [external]="true">View on PyPI</app-cta-button>
           </div>
         </app-glass-card>
@@ -466,13 +469,14 @@ r = ctrl.query(
         height: 40px;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
       .bench-view-pill {
-        background: #1a1a2e;
-        border: 1px solid #2d2d4e;
+        background: #5a5a69;
+        border: 1px solid #686880;
         border-radius: 6px;
         padding: 5px 16px;
         font-size: 13px;
@@ -483,8 +487,8 @@ r = ctrl.query(
         transition: border-color 150ms, color 150ms, background 150ms;
         line-height: 1.5;
       }
-      .bench-view-pill:hover { border-color: rgba(124,58,237,0.45); color: #c4b5fd; }
-      .bench-view-pill.is-active { background: #2d1b6b; border-color: #7c3aed; color: #ffffff; }
+      .bench-view-pill:hover { border-color: rgba(255, 255, 255, 0.2); color: #ffffff; }
+      .bench-view-pill.is-active { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); color: #ffffff; }
 
       .dv-outcome-icon {
         display: inline-flex;
@@ -493,9 +497,10 @@ r = ctrl.query(
         width: 36px;
         height: 36px;
         border-radius: 0.5rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.18);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
     `,
   ],

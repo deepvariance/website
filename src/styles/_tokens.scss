@@ -1,0 +1,147 @@
+@use 'sass:color';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// DEEP VARIANCE DESIGN TOKENS — pure grayscale (matches deepvariance.com prod)
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── COLOR TOKENS ──────────────────────────────────────────────────────────────
+
+// Background layers — pure black with neutral gray steps
+$bg-base:           #000000;   // pure black
+$bg-surface:        color.mix(#ffffff, #0a0a0a, 25%);
+$bg-elevated:       color.mix(#ffffff, #111111, 25%);
+$bg-border:         #262626;   // dividers and outlines (neutral-800)
+$bg-border-soft:    #1a1a1a;   // subtle inner dividers
+$footer-bg:         color.mix(#ffffff, $bg-base, 6%);
+
+// Forms — recessed fields on a slightly lifted panel
+$form-panel-bg:           color.mix(#ffffff, $bg-base, 8%);
+$form-field-bg:           $bg-base;
+$form-field-bg-hover:     color.mix(#ffffff, $bg-base, 3%);
+$form-field-bg-focus:     color.mix(#ffffff, $bg-base, 5%);
+$form-field-border:       rgba(255, 255, 255, 0.12);
+$form-field-border-hover: rgba(255, 255, 255, 0.2);
+$form-field-border-focus: rgba(123, 97, 255, 0.5);
+$form-field-placeholder:  #8c8c8c;
+$form-field-error-border: rgba(248, 113, 113, 0.55);
+$form-error-text:         #fca5a5;
+
+// Borderless panels — fill on black, no stroke
+$panel-fill:          rgba(255, 255, 255, 0.031);
+$panel-fill-hover:    rgba(255, 255, 255, 0.048);
+$panel-fill-strong:   rgba(255, 255, 255, 0.064);
+$panel-inset:         inset 0 1px 0 rgba(255, 255, 255, 0.092);
+$panel-divider:       rgba(255, 255, 255, 0.106);
+
+// Deep Variance brand violet — highlighted / featured cards only
+$dv-violet:              #7b61ff;
+$dv-violet-soft:         #a78bfa;
+$panel-fill-highlight:   rgba(123, 97, 255, 0.14);
+$panel-fill-highlight-strong: rgba(123, 97, 255, 0.22);
+$panel-inset-highlight:  inset 0 1px 0 rgba(167, 139, 250, 0.22);
+$panel-divider-highlight: rgba(123, 97, 255, 0.28);
+$bg-surface-highlight:   color.mix($dv-violet, $bg-surface, 24%);
+$bg-elevated-highlight:  color.mix($dv-violet, $bg-elevated, 30%);
+
+// Accent — primary UI emphasis (white on dark)
+$dv-blue:           #ffffff;
+$dv-blue-dim:       #e5e5e5;
+$dv-blue-glow:      rgba(255, 255, 255, 0.06);
+
+// Product accent colors (module identity; body UI stays grayscale)
+$optimemory-color:  #ffffff;
+$hyperrag-color:    $dv-violet;
+$deeptuner-color:   #ffffff;
+
+// Semantic — neutralized into grays
+$waste-red:         #404040;   // neutral-700 (was red)
+$recovered-green:   #ffffff;   // emphasis white (was green)
+$amber-warning:     #a3a3a3;   // neutral-400
+
+// Type — pure neutral grays (neutral-50 → neutral-500)
+$text-primary:      #ffffff;
+$text-secondary:    #a3a3a3;   // neutral-400
+$text-muted:        #737373;   // neutral-500
+$text-faint:        #525252;   // neutral-600
+$text-inverse:      #000000;
+
+// Metrics / numbers — always white in grayscale
+$metric-color:      $text-primary;
+
+// ── TYPOGRAPHY TOKENS ─────────────────────────────────────────────────────────
+
+// Headings: Space Grotesk (700)
+// Body / mono: JetBrains Mono (400, 500, 600)
+
+$font-display:      'Space Grotesk', sans-serif;
+$font-body:         'JetBrains Mono', ui-monospace, monospace;
+$font-mono:         'JetBrains Mono', ui-monospace, monospace;
+
+$font-size-hero:    clamp(2.5rem, 5vw, 4.5rem);
+$font-size-h1:      clamp(2rem, 4vw, 3rem);
+$font-size-h2:      clamp(1.5rem, 3vw, 2.25rem);
+$font-size-h3:      1.5rem;
+$font-size-h4:      1.25rem;
+$font-size-h5:      1.125rem;
+$font-size-body:    0.9375rem;
+$font-size-small:   0.8125rem;
+$font-size-micro:   0.75rem;
+$font-size-metric:  clamp(2rem, 4vw, 3.5rem);
+
+$line-height-display: 1.0;     // tight, matches prod (1:1 line-height)
+$line-height-body:    1.7;
+
+// ── SPACING TOKENS ─────────────────────────────────────────────────────────────
+
+$space-xs:   0.25rem;
+$space-sm:   0.5rem;
+$space-md:   1rem;
+$space-lg:   2rem;
+$space-xl:   4rem;
+$space-2xl:  8rem;
+$space-3xl:  12rem;
+
+// ── GRID / LAYOUT ──────────────────────────────────────────────────────────────
+
+$grid-max:         1440px;
+$grid-gutter:      clamp(1.5rem, 4vw, 2.5rem);
+$section-padding:        clamp(2.5rem, 4.5vw, 3.75rem) 0;
+$section-padding-lg:     clamp(3rem, 5vw, 4.5rem) 0;
+$section-head-gap:     clamp(1.75rem, 3vw, 2.5rem);
+
+// Fixed floating header clearance (padding-top + inner bar height + gap)
+$header-offset:        calc(1.25rem + 56px + 1.25rem);
+$header-offset-md:     calc(1.5rem + 60px + 1.5rem);
+
+// ── BORDER / RADIUS ────────────────────────────────────────────────────────────
+
+$radius-sm:   0.25rem;
+$radius-md:   0.5rem;
+$radius-lg:   0.75rem;
+$radius-xl:   1rem;
+$radius-full: 9999px;
+
+// ── TRANSITIONS ────────────────────────────────────────────────────────────────
+
+$ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$duration-base:    300ms;
+$duration-slow:    600ms;
+$duration-xslow:   1200ms;
+
+// ── SHADOWS ────────────────────────────────────────────────────────────────────
+
+$shadow-card:     0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
+$shadow-elevated: 0 8px 32px rgba(0,0,0,0.5);
+$glow-blue:       0 0 24px rgba(255, 255, 255, 0.05);
+$glow-optimemory: $glow-blue;
+$glow-hyperrag:   $glow-blue;
+$glow-deeptuner:  $glow-blue;
+
+// ── Z-INDEX SCALE ──────────────────────────────────────────────────────────────
+
+$z-base:      1;
+$z-elevated:  10;
+$z-sticky:    100;
+$z-modal:     1000;
+$z-toast:     2000;

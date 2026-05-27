@@ -1,0 +1,146 @@
+<div class="home-page">
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SECTION 1: HERO (two-column, image-led, prod-matching)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="hero-section" appDotGridGlow>
+    <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-copy">
+        <h1 class="hero-headline" aria-label="Your GPUs are fast. Your infrastructure isn't.">
+          <span class="hero-headline__line">
+            <span class="hero-headline__type">{{ line1Typed() }}</span>
+            @if (showCaretLine1()) {
+              <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
+            }
+          </span>
+          <span class="hero-headline__line">
+            <span class="hero-headline__type">
+              {{ line2Prefix() }}<span class="hero-headline__accent">{{ line2Highlight() }}</span>{{ line2Suffix() }}
+            </span>
+            @if (showCaretLine2()) {
+              <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
+            }
+          </span>
+        </h1>
+
+        <p class="hero-tagline">
+          The performance you&rsquo;re leaving on the table isn&rsquo;t in your model. It&rsquo;s in your stack.
+        </p>
+
+        <div class="hero-cta-row">
+          <a routerLink="/get-started" fragment="contact-form" class="btn-primary">
+            Contact us
+          </a>
+          <a routerLink="/platform" class="btn-secondary">
+            See the platform
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SECTION 1b: HERO METRIC BAND
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="metrics-band">
+    <div class="container metrics-band__grid">
+
+      <div class="metrics-band__image">
+        <img src="/gpu-hero-v3.webp" alt="GPU compute substrate" class="metrics-band__img" />
+      </div>
+
+      <div class="metrics-band__copy">
+        <div class="metrics-band__head">
+          <div class="section-overline">Measured in production</div>
+          <h2 class="metrics-band__title">
+            One command in.<br />Measurable headroom out.
+          </h2>
+        </div>
+
+        <div class="hero-metric-card">
+          @for (metric of heroMetrics; track metric.label) {
+            <div class="hero-metric-card__cell">
+              <div class="hero-metric-card__value">{{ metric.value }}</div>
+              <div class="hero-metric-card__copy">
+                <div class="hero-metric-card__dim">{{ metric.dim }}</div>
+                <div class="hero-metric-card__label">{{ metric.label }}</div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <p class="metrics-band__footnote">
+          <span class="metrics-band__footnote-line">Headline figures are upper-bound.</span>
+          <span class="metrics-band__footnote-line">Tested on supercomputing infra with 600&times; NVIDIA H100s.</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SECTION 2: THE PLATFORM (text + cta left, animated stack right)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="modules-section">
+    <div class="container">
+      <div class="platform-grid">
+
+        <div class="platform-copy">
+          <div class="section-overline">Platform</div>
+          <h2 class="platform-copy__title">
+            A runtime optimization layer for inference and training.
+          </h2>
+          <p class="platform-copy__intro">
+            Your framework can&rsquo;t see the allocator, the KV cache, or the kernel registry. That is where serving latency and training throughput leak. Deep Variance sits there.
+          </p>
+          <div class="platform-copy__cta">
+            <a routerLink="/platform" class="btn-primary">
+              See how it works <lucide-icon [img]="ArrowRight" [size]="14" />
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-stack">
+          <app-stack-viz />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SECTION 3: SUPPORTED STACK (software + hardware logo wall)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="support-section">
+    <div class="container">
+      <h2 class="support-section__title">
+        Works with what you already run.
+      </h2>
+      <p class="support-section__tagline">
+        No new framework. No new scheduler. No code changes.
+      </p>
+
+      <div class="support-groups">
+        <div class="support-group">
+          <div class="support-group__label">Frameworks</div>
+          <div class="support-group__logos">
+            <img src="/pytorch-logo.webp" alt="PyTorch" class="support-logo" />
+            <img src="/tensorflow-logo.webp" alt="TensorFlow" class="support-logo" />
+            <img src="/vllm-logo.webp" alt="vLLM" class="support-logo" />
+            <img src="/sglang-logo.webp" alt="SGLang" class="support-logo" />
+          </div>
+        </div>
+
+        <div class="support-group">
+          <div class="support-group__label">Silicon, shipping today</div>
+          <div class="support-group__logos">
+            <img src="/nvidia-logo.svg" alt="NVIDIA" class="support-logo support-logo--wide" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>

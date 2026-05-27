@@ -10,6 +10,7 @@ import {
 
 import { CtaButtonComponent } from '../components/cta-button';
 import { GlassCardComponent } from '../components/glass-card';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -21,14 +22,14 @@ import { SeoService } from '../services/seo.service';
     LucideAngularModule,
     GlassCardComponent,
     CtaButtonComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative">
+    <div class="relative overflow-x-hidden">
       <!-- Hero -->
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
-        <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
-        <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
-
+      <section class="page-hero-grid border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+        <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
         <div class="relative grid grid-cols-1 desk:grid-cols-2 gap-12 items-center">
           <!-- Text column -->
           <div>
@@ -38,7 +39,7 @@ import { SeoService } from '../services/seo.service';
               </div>
               <span class="label-caps text-white">GPU Providers</span>
             </div>
-            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
+            <h1 class="font-display font-bold tracking-tight text-on-surface text-[2rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6">
               Boost GPU fleet utilization without changing tenant workloads
             </h1>
             <p class="text-base sm:text-lg text-on-surface-variant font-medium leading-relaxed mb-8">
@@ -66,6 +67,7 @@ import { SeoService } from '../services/seo.service';
             />
           </div>
         </div>
+        </div>
       </section>
 
       <!-- Content section -->
@@ -82,15 +84,15 @@ import { SeoService } from '../services/seo.service';
 
             <div class="flex flex-wrap gap-2 mb-8">
               <a
-                routerLink="/optimemory"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
+                routerLink="/platform" fragment="optimemory"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full panel-pill text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
               >
                 Optimemory
                 <lucide-icon [img]="ArrowRightIcon" [size]="11" />
               </a>
               <a
-                routerLink="/hyperrag"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neon/8 border border-border text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
+                routerLink="/platform" fragment="hyperrag"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full panel-pill text-xs font-display font-semibold uppercase tracking-[0.14em] text-white hover:bg-neon/15 transition-colors"
               >
                 HyperRAG
                 <lucide-icon [img]="ArrowRightIcon" [size]="11" />
@@ -99,36 +101,36 @@ import { SeoService } from '../services/seo.service';
 
             <app-glass-card extraClass="p-6 mb-8">
               <p class="label-caps mb-4">What this addresses</p>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3">
+              <ul class="list-check space-y-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Customers over-provisioning to avoid out-of-memory crashes</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Uneven workload distribution leaving capacity unused</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Support costs from memory-related failures and restarts</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li>
                   <lucide-icon
                     [img]="CheckCircle2Icon"
-                    [size]="15"
-                    class="text-neon flex-shrink-0 mt-0.5"
+                    [size]="18"
+                    class="text-neon"
                   />
                   <span class="text-xs text-on-surface-variant leading-relaxed">Revenue left on the table from idle GPU capacity</span>
                 </li>
@@ -137,7 +139,7 @@ import { SeoService } from '../services/seo.service';
 
             <app-cta-button
               variant="ghost"
-              routerLink="/pricing"
+              routerLink="/get-started"
               fragment="contact-form"
               [fullWidth]="true"
             >
@@ -207,7 +209,7 @@ import { SeoService } from '../services/seo.service';
           <p class="text-on-surface-variant max-w-xl mx-auto mb-9 leading-relaxed">
             We scope every deployment to your hardware, data governance constraints, and team size.
           </p>
-          <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">
+          <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">
             Talk to our team
           </app-cta-button>
         </app-glass-card>
@@ -226,9 +228,10 @@ import { SeoService } from '../services/seo.service';
         width: 40px;
         height: 40px;
         border-radius: 0.5rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
     `,
   ],

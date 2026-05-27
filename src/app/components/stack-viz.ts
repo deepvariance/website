@@ -24,19 +24,12 @@ import { Component } from '@angular/core';
           <symbol id="ic-openai" viewBox="0 0 24 24">
             <path fill="currentColor" d="M22.282 9.821a6 6 0 0 0-.516-4.91a6.05 6.05 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a6 6 0 0 0-3.998 2.9a6.05 6.05 0 0 0 .743 7.097a5.98 5.98 0 0 0 .51 4.911a6.05 6.05 0 0 0 6.515 2.9A6 6 0 0 0 13.26 24a6.06 6.06 0 0 0 5.772-4.206a6 6 0 0 0 3.997-2.9a6.06 6.06 0 0 0-.747-7.073M13.26 22.43a4.48 4.48 0 0 1-2.876-1.04l.141-.081l4.779-2.758a.8.8 0 0 0 .392-.681v-6.737l2.02 1.168a.07.07 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494M3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085l4.783 2.759a.77.77 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646M2.34 7.896a4.5 4.5 0 0 1 2.366-1.973V11.6a.77.77 0 0 0 .388.677l5.815 3.354l-2.02 1.168a.08.08 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.08.08 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667m2.01-3.023l-.141-.085l-4.774-2.782a.78.78 0 0 0-.785 0L9.409 9.23V6.897a.07.07 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.8.8 0 0 0-.393.681zm1.097-2.365l2.602-1.5l2.607 1.5v2.999l-2.597 1.5l-2.607-1.5Z"/>
           </symbol>
-          <symbol id="ic-anthropic" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M17.304 3.541h-3.672l6.696 16.918H24Zm-10.608 0L0 20.459h3.744l1.37-3.553h7.005l1.369 3.553h3.744L10.536 3.541Zm-.371 10.223L8.616 7.82l2.291 5.945Z"/>
-          </symbol>
           <symbol id="ic-pytorch" viewBox="0 0 24 24">
             <path fill="currentColor" d="M12.005 0L4.952 7.053a9.865 9.865 0 0 0 0 14.022a9.866 9.866 0 0 0 14.022 0c3.984-3.9 3.986-10.205.085-14.023l-1.744 1.743c2.904 2.905 2.904 7.634 0 10.538s-7.634 2.904-10.538 0s-2.904-7.634 0-10.538l4.647-4.646l.582-.665zm3.568 3.899a1.327 1.327 0 0 0-1.327 1.327a1.327 1.327 0 0 0 1.327 1.328A1.327 1.327 0 0 0 16.9 5.226A1.327 1.327 0 0 0 15.573 3.9z"/>
           </symbol>
           <symbol id="ic-tensorflow" viewBox="0 0 24 24">
             <path fill="currentColor" d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.168 3.564l.015-5.31zm21.43 5.311l-.014-5.31L12.46 0v24l4.095-2.378V14.87l3.092 1.788l-.018-4.618l-3.074-1.756V7.603z"/>
           </symbol>
-          <symbol id="ic-nvidia" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M8.948 8.798v-1.43a7 7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851a3.7 3.7 0 0 1-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6 6 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964a6.5 6.5 0 0 1-1.095-.097v1.325c.3.035.61.062.91.062c3.957 0 6.82-2.023 9.593-4.408c.459.371 2.34 1.263 2.73 1.652c-2.633 2.208-8.772 3.984-12.253 3.984c-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936"/>
-          </symbol>
-
           <!-- ── Product icons (matching home.ts product cards) ──────────────── -->
           <!-- Optimemory → lucide:server -->
           <symbol id="ic-optimemory" viewBox="0 0 24 24">
@@ -78,9 +71,9 @@ import { Component } from '@angular/core';
 
           <!-- ── animateMotion flow paths ───────────────────────────────────── -->
           <!-- Models → Frameworks (24px, quieter at top of hierarchy) -->
-          <path id="mf1" d="M95,82 L95,106"/>
-          <path id="mf2" d="M240,82 L240,106"/>
-          <path id="mf3" d="M385,82 L385,106"/>
+          <path id="mf1" d="M95,94 L95,106"/>
+          <path id="mf2" d="M240,94 L240,106"/>
+          <path id="mf3" d="M385,94 L385,106"/>
           <!-- Framework → DV  (44px, the key intercept) -->
           <path id="fd1" d="M95,194 L95,238"/>
           <path id="fd2" d="M240,194 L240,238"/>
@@ -94,26 +87,34 @@ import { Component } from '@angular/core';
         </defs>
 
         <!-- ══ LAYER 0: Models ═══════════════════════════════════════════════ -->
-        <rect x="20" y="18" width="440" height="64" rx="6"
+        <rect x="20" y="18" width="440" height="76" rx="6"
           fill="none" stroke="#2a2a2a" stroke-width="1"/>
-        <text x="36" y="36" font-family="IBM Plex Mono,monospace" font-size="8"
+        <text x="36" y="34" font-size="8"
           fill="#888" letter-spacing="0.18em">MODELS</text>
 
-        <!-- 4 models at cx = 75, 185, 295, 405 -->
-        <use href="#ic-meta"      x="65"  y="38" width="20" height="20" fill="#bbb"/>
-        <use href="#ic-gemini"    x="175" y="38" width="20" height="20" fill="#bbb"/>
-        <use href="#ic-openai"    x="285" y="38" width="20" height="20" fill="#bbb"/>
-        <use href="#ic-anthropic" x="395" y="38" width="20" height="20" fill="#bbb"/>
+        <!-- 4 models at cx = 75, 185, 295, 405 — GPT · LLaMA · Gemini · Qwen -->
+        <use href="#ic-openai" x="65"  y="46" width="20" height="20" fill="#bbb"/>
+        <use href="#ic-meta"   x="175" y="46" width="20" height="20" fill="#bbb"/>
+        <use href="#ic-gemini" x="285" y="46" width="20" height="20" fill="#bbb"/>
+        <image
+          class="stack-viz__model-logo"
+          href="/model-logos/qwen.svg"
+          x="395"
+          y="46"
+          width="20"
+          height="20"
+          preserveAspectRatio="xMidYMid meet"
+        />
 
-        <text x="75"  y="72" font-family="IBM Plex Mono,monospace" font-size="9" fill="#ccc" text-anchor="middle">LLaMA</text>
-        <text x="185" y="72" font-family="IBM Plex Mono,monospace" font-size="9" fill="#ccc" text-anchor="middle">Gemini</text>
-        <text x="295" y="72" font-family="IBM Plex Mono,monospace" font-size="9" fill="#ccc" text-anchor="middle">GPT</text>
-        <text x="405" y="72" font-family="IBM Plex Mono,monospace" font-size="9" fill="#ccc" text-anchor="middle">Claude</text>
+        <text x="75"  y="80" font-size="9" fill="#ccc" text-anchor="middle">GPT</text>
+        <text x="185" y="80" font-size="9" fill="#ccc" text-anchor="middle">LLaMA</text>
+        <text x="295" y="80" font-size="9" fill="#ccc" text-anchor="middle">Gemini</text>
+        <text x="405" y="80" font-size="9" fill="#ccc" text-anchor="middle">Qwen</text>
 
         <!-- Connectors model → framework + animated particles -->
-        <line x1="95"  y1="82" x2="95"  y2="106" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="240" y1="82" x2="240" y2="106" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="385" y1="82" x2="385" y2="106" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="95"  y1="94" x2="95"  y2="106" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="240" y1="94" x2="240" y2="106" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="385" y1="94" x2="385" y2="106" stroke="#2a2a2a" stroke-width="1"/>
 
         <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
         <circle r="2" fill="#555" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.35s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.35s"/></circle>
@@ -128,24 +129,24 @@ import { Component } from '@angular/core';
         <!-- ══ LAYER 1: Frameworks ════════════════════════════════════════════ -->
         <rect x="20" y="106" width="440" height="88" rx="6"
           fill="none" stroke="#2a2a2a" stroke-width="1"/>
-        <text x="36" y="128" font-family="IBM Plex Mono,monospace" font-size="8"
+        <text x="36" y="128" font-size="8"
           fill="#888" letter-spacing="0.18em">FRAMEWORKS</text>
 
-        <!-- Pills aligned to cx=95, 240, 385 matching DV modules exactly -->
+        <!-- Pills aligned to cx=95, 240, 385 — cy=166 (nudged below FRAMEWORKS label) -->
         <!-- PyTorch cx=95: x=40, w=110 -->
-        <rect x="40"  y="140" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-pytorch"    x="50"  y="147" width="14" height="14" style="color:#bbb"/>
-        <text x="70"  y="159" font-family="IBM Plex Mono,monospace" font-size="11" fill="#d4d4d4">PyTorch</text>
+        <rect x="40"  y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
+        <use href="#ic-pytorch"    x="50"  y="159" width="14" height="14" style="color:#bbb"/>
+        <text x="70"  y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">PyTorch</text>
 
         <!-- TensorFlow cx=240: x=185, w=110 -->
-        <rect x="185" y="140" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-tensorflow" x="195" y="147" width="14" height="14" style="color:#bbb"/>
-        <text x="215" y="159" font-family="IBM Plex Mono,monospace" font-size="11" fill="#d4d4d4">TensorFlow</text>
+        <rect x="185" y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
+        <use href="#ic-tensorflow" x="195" y="159" width="14" height="14" style="color:#bbb"/>
+        <text x="215" y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">TensorFlow</text>
 
         <!-- JAX pill with isometric cube icon -->
-        <rect x="330" y="140" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-jax" x="344" y="147" width="13" height="13" style="color:#bbb"/>
-        <text x="364" y="159" font-family="IBM Plex Mono,monospace" font-size="11" fill="#d4d4d4">JAX</text>
+        <rect x="330" y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
+        <use href="#ic-jax" x="344" y="159.5" width="13" height="13" style="color:#bbb"/>
+        <text x="364" y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">JAX</text>
 
         <!-- ══ Flow: Frameworks → DV  (44px, animated) ═══════════════════════ -->
         <line x1="95"  y1="194" x2="95"  y2="238" stroke="#2a2a2a" stroke-width="1"/>
@@ -169,7 +170,7 @@ import { Component } from '@angular/core';
             repeatCount="indefinite" calcMode="spline"
             keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
         </rect>
-        <text x="36" y="260" font-family="IBM Plex Mono,monospace" font-size="9"
+        <text x="36" y="260" font-size="9"
           fill="#777" letter-spacing="0.14em">DEEP VARIANCE STACK</text>
 
         <!-- Optimemory (cx=95) -->
@@ -207,7 +208,7 @@ import { Component } from '@angular/core';
           fill="none" stroke="#282828" stroke-width="1"/>
         <!-- chip icon + label vertically centered (layer cy=433) -->
         <use href="#ic-chip" x="178" y="423" width="20" height="20" fill="#888"/>
-        <text x="204" y="437" font-family="IBM Plex Mono,monospace" font-size="12"
+        <text x="204" y="433" dominant-baseline="middle" font-size="12"
           fill="#bbb" letter-spacing="0.04em">GPU Driver</text>
 
         <!-- ══ Flow: Driver → Hardware (20px) ════════════════════════════════ -->
@@ -246,24 +247,51 @@ import { Component } from '@angular/core';
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.9s" repeatCount="indefinite" begin="1.5s"/>
         </rect>
 
-        <!-- Right separator only — ×8 label removed, left separator removed -->
-        <line x1="106" y1="484" x2="106" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
+        <!-- Column dividers (clear of text — middle/right content is text-anchor middle) -->
+        <line x1="100" y1="484" x2="100" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
+        <line x1="232" y1="484" x2="232" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
 
-        <!-- NVIDIA icon + GPU names, centered in layer (cy=504) -->
-        <use href="#ic-nvidia" x="112" y="493" width="14" height="14" style="color:#888"/>
-        <text x="130" y="502" font-family="IBM Plex Mono,monospace" font-size="9" fill="#aaa">H100 · A100</text>
-        <text x="112" y="516" font-family="IBM Plex Mono,monospace" font-size="9" fill="#888">AMD MI300X</text>
+        <!-- Silicon column (~100–232): official NVIDIA wordmark (layer cy=504) -->
+        <image
+          class="stack-viz__nvidia-wordmark"
+          href="/nvidia-logo.svg"
+          x="134"
+          y="497.5"
+          width="64"
+          height="13"
+          preserveAspectRatio="xMidYMid meet"
+        />
 
-        <!-- Right separator -->
-        <line x1="215" y1="484" x2="215" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
-
-        <text x="337" y="499" font-family="IBM Plex Mono,monospace" font-size="8"
-          fill="#888" text-anchor="middle" letter-spacing="0.06em">NVLink · PCIe · Infinity Fabric</text>
-        <text x="337" y="515" font-family="IBM Plex Mono,monospace" font-size="8"
-          fill="#666" text-anchor="middle" letter-spacing="0.06em">Single Node · Multi-Node</text>
+        <!-- Interconnect column (~232–460), vertically centered in layer -->
+        <text
+          x="346"
+          y="504"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          font-size="8"
+        >
+          <tspan x="346" dy="-0.55em" fill="#888" letter-spacing="0.05em">PCIe · NVLink · NVSwitch</tspan>
+          <tspan x="346" dy="1.15em" fill="#666" letter-spacing="0.05em">Single node · Multi-node</tspan>
+        </text>
       </svg>
     </div>
   `,
-  styles: [`:host{display:block;width:100%}.stack-viz-wrap{width:100%}`],
+  styles: [`
+    :host { display: block; width: 100%; }
+    .stack-viz-wrap { width: 100%; }
+    .stack-viz-wrap text,
+    .stack-viz-wrap tspan {
+      font-family: var(--font-mono), ui-monospace, monospace;
+      font-feature-settings: 'liga' 0, 'calt' 0;
+    }
+    .stack-viz__nvidia-wordmark {
+      opacity: 0.7;
+      filter: grayscale(1) brightness(0.72) contrast(0.92);
+    }
+    .stack-viz__model-logo {
+      opacity: 0.88;
+      filter: grayscale(1) brightness(0.9) contrast(0.95);
+    }
+  `],
 })
 export class StackVizComponent {}

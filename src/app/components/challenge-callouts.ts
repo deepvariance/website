@@ -24,7 +24,7 @@ export interface ChallengeCallout {
         @for (item of items; track item.highlight) {
           <div class="dv-card rounded-xl p-5 flex flex-col gap-3">
             @if (item.icon) {
-              <span class="inline-flex items-center justify-center w-9 h-9 rounded-md text-on-surface-variant bg-surface-dim border border-border">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-md text-on-surface-variant panel-box">
                 <lucide-icon [img]="item.icon" [size]="16" />
               </span>
             }

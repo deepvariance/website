@@ -34,7 +34,7 @@ import { SeoService } from '../services/seo.service';
           <section class="space-y-4">
             <h2 class="font-display text-xl font-semibold text-on-surface">2. Cookies We Use</h2>
 
-            <div class="overflow-x-auto rounded-xl border border-white/8 bg-black/20 not-prose">
+            <div class="overflow-x-auto rounded-xl panel-box not-prose">
               <table class="w-full text-sm text-left">
                 <thead class="text-[11px] font-mono uppercase tracking-[0.16em] text-outline border-b border-white/8">
                   <tr>

@@ -26,6 +26,7 @@ import {
   SectionRailComponent,
 } from '../components/section-rail';
 import { StatusPillComponent } from '../components/status-pill';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -42,13 +43,15 @@ import { SeoService } from '../services/seo.service';
     CommandRowComponent,
     SectionRailComponent,
     StatusPillComponent,
+    DotGridGlowDirective,
   ],
   template: `
-    <div class="relative overflow-x-hidden">
+    <div class="relative overflow-x-hidden pt-20 md:pt-24">
       <app-section-rail [sections]="railSections" ariaLabel="Optimemory section navigation" />
 
       <!-- ── Hero ─────────────────────────────────────────────────────── -->
-      <section id="hero" class="relative border-b border-border overflow-hidden">
+      <section id="hero" class="page-hero-grid relative border-b border-border overflow-hidden" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
         <div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10">
 
           <!-- Desktop: abstract memory convergence image, absolute right, mix-blend-mode:screen -->
@@ -64,12 +67,12 @@ import { SeoService } from '../services/seo.service';
           </div>
 
           <!-- Mobile: full-width image above text -->
-          <div class="desk:hidden pt-16 -mx-6">
+          <div class="desk:hidden pt-16 w-full max-w-full overflow-hidden">
             <img
               src="/optimemory-hero-v2.webp"
               alt=""
               width="1536" height="1024"
-              class="w-full"
+              class="w-full max-w-full h-auto object-contain"
               style="mix-blend-mode:screen;opacity:0.85"
             />
           </div>
@@ -131,15 +134,15 @@ import { SeoService } from '../services/seo.service';
 
           <!-- Right: outcome bullets -->
           <div class="space-y-4 order-2 lg:order-2">
-            <div class="rounded-xl border border-border p-6 flex gap-5 items-start">
+            <div class="panel-box rounded-xl p-6 flex gap-5 items-start">
               <div class="dv-outcome-icon flex-shrink-0"><lucide-icon [img]="TrendingUp" [size]="18" /></div>
               <p class="font-mono text-sm text-on-surface-variant leading-relaxed">Teams blocked on model scaling ship on the cluster they already operate. No hardware procurement.</p>
             </div>
-            <div class="rounded-xl border border-border p-6 flex gap-5 items-start">
+            <div class="panel-box rounded-xl p-6 flex gap-5 items-start">
               <div class="dv-outcome-icon flex-shrink-0"><lucide-icon [img]="Sparkles" [size]="18" /></div>
               <p class="font-mono text-sm text-on-surface-variant leading-relaxed">40–60% fewer GPUs to serve the same inference load. Clusters that over-provision for memory right-size immediately.</p>
             </div>
-            <div class="rounded-xl border border-border p-6 flex gap-5 items-start">
+            <div class="panel-box rounded-xl p-6 flex gap-5 items-start">
               <div class="dv-outcome-icon flex-shrink-0"><lucide-icon [img]="Zap" [size]="18" /></div>
               <p class="font-mono text-sm text-on-surface-variant leading-relaxed">8–16x larger batch sizes on the same card. Jobs that crashed at batch_size=1 run at practical scale today.</p>
             </div>
@@ -172,11 +175,11 @@ import { SeoService } from '../services/seo.service';
                 />
               </div>
               <div class="grid grid-cols-2 gap-3">
-                <div class="rounded-md bg-black/20 border border-white/5 px-4 py-3">
+                <div class="rounded-md panel-box px-4 py-3">
                   <p class="label-caps mb-1">Recovered</p>
                   <p class="font-display text-xl font-bold text-white">up to 65%</p>
                 </div>
-                <div class="rounded-md bg-black/20 border border-white/5 px-4 py-3">
+                <div class="rounded-md panel-box px-4 py-3">
                   <p class="label-caps mb-1">Utilization</p>
                   <p class="font-display text-xl font-bold text-on-surface">up to 99%</p>
                 </div>
@@ -219,8 +222,8 @@ import { SeoService } from '../services/seo.service';
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Run LLaMA-70B on a single H100 with no tensor parallelism and no NVLink required.
             </p>
-            <div class="mt-4 pt-3 border-t border-border">
-              <span class="font-mono text-[10px] font-semibold" style="color:#9d6fff">2x GPU reduction</span>
+            <div class="mt-4 pt-3 panel-divider-t">
+              <span class="font-mono text-[10px] font-semibold text-on-surface-variant">2x GPU reduction</span>
             </div>
           </app-glass-card>
 
@@ -231,8 +234,8 @@ import { SeoService } from '../services/seo.service';
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Full-resolution FLUX at full batch size with no gradient checkpointing, same 24 GB card.
             </p>
-            <div class="mt-4 pt-3 border-t border-border">
-              <span class="font-mono text-[10px] font-semibold" style="color:#9d6fff">larger batch, same card</span>
+            <div class="mt-4 pt-3 panel-divider-t">
+              <span class="font-mono text-[10px] font-semibold text-on-surface-variant">larger batch, same card</span>
             </div>
           </app-glass-card>
 
@@ -243,8 +246,8 @@ import { SeoService } from '../services/seo.service';
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               Every batch served from pre-allocated VMM slots. Cold-start latency spikes eliminated.
             </p>
-            <div class="mt-4 pt-3 border-t border-border">
-              <span class="font-mono text-[10px] font-semibold" style="color:#9d6fff">near-zero allocation overhead</span>
+            <div class="mt-4 pt-3 panel-divider-t">
+              <span class="font-mono text-[10px] font-semibold text-on-surface-variant">near-zero allocation overhead</span>
             </div>
           </app-glass-card>
 
@@ -255,8 +258,8 @@ import { SeoService } from '../services/seo.service';
             <p class="font-mono text-sm text-on-surface-variant leading-relaxed flex-1">
               13B models at batch_size=8 on the same RTX 4090 that previously crashed at batch_size=1.
             </p>
-            <div class="mt-4 pt-3 border-t border-border">
-              <span class="font-mono text-[10px] font-semibold" style="color:#9d6fff">8x batch size increase</span>
+            <div class="mt-4 pt-3 panel-divider-t">
+              <span class="font-mono text-[10px] font-semibold text-on-surface-variant">8x batch size increase</span>
             </div>
           </app-glass-card>
 
@@ -280,13 +283,13 @@ import { SeoService } from '../services/seo.service';
 
 <span class="text-outline"># Pre-allocate a reusable GPU buffer once</span>
 img_buf = vmm_empty_nd(
-    (batch_size, <span class="text-amber-300">3</span>, <span class="text-amber-300">224</span>, <span class="text-amber-300">224</span>),
+    (batch_size, <span class="text-on-surface-variant">3</span>, <span class="text-on-surface-variant">224</span>, <span class="text-on-surface-variant">224</span>),
     dtype=torch.float32
 )
 
 <span class="text-outline"># Reuse across every training step, zero overhead</span>
 <span class="text-white">for</span> imgs, labels <span class="text-white">in</span> dataloader:
-    img_buf.copy_(imgs.cuda(non_blocking=<span class="text-amber-300">True</span>))
+    img_buf.copy_(imgs.cuda(non_blocking=<span class="text-on-surface-variant">True</span>))
 
 <span class="text-white">print</span>(cache_stats())</pre>
             </app-code-window>
@@ -306,19 +309,19 @@ img_buf = vmm_empty_nd(
               />
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-border p-4 flex items-start gap-3">
+              <div class="panel-box rounded-xl p-4 flex items-start gap-3">
                 <span class="dv-step flex-shrink-0">1</span>
                 <p class="font-mono text-xs text-on-surface-variant leading-relaxed">One pip install. No compiler, no build tools.</p>
               </div>
-              <div class="rounded-xl border border-border p-4 flex items-start gap-3">
+              <div class="panel-box rounded-xl p-4 flex items-start gap-3">
                 <span class="dv-step flex-shrink-0">2</span>
                 <p class="font-mono text-xs text-on-surface-variant leading-relaxed">Call vmm_empty_nd once. Pages from the driver pool.</p>
               </div>
-              <div class="rounded-xl border border-border p-4 flex items-start gap-3">
+              <div class="panel-box rounded-xl p-4 flex items-start gap-3">
                 <span class="dv-step flex-shrink-0">3</span>
                 <p class="font-mono text-xs text-on-surface-variant leading-relaxed">Copy into the buffer every step. Zero overhead.</p>
               </div>
-              <div class="rounded-xl border border-border p-4 flex items-start gap-3">
+              <div class="panel-box rounded-xl p-4 flex items-start gap-3">
                 <span class="dv-step flex-shrink-0">4</span>
                 <p class="font-mono text-xs text-on-surface-variant leading-relaxed">cache_stats() shows pool health live.</p>
               </div>
@@ -371,7 +374,7 @@ img_buf = vmm_empty_nd(
             Drop Optimemory into your training loop and reclaim VRAM you're already paying for.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <app-cta-button variant="primary" routerLink="/pricing" fragment="contact-form">Talk to our team</app-cta-button>
+            <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">Talk to our team</app-cta-button>
             <app-cta-button variant="glass" href="https://pypi.org/project/deep-variance/" [external]="true">View on PyPI</app-cta-button>
           </div>
         </app-glass-card>
@@ -386,25 +389,28 @@ img_buf = vmm_empty_nd(
       .dv-feature-icon {
         display: inline-flex; align-items: center; justify-content: center;
         width: 44px; height: 44px; border-radius: 0.5rem; margin-bottom: 1.1rem;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
 
       .dv-outcome-icon {
         display: inline-flex; align-items: center; justify-content: center;
         width: 36px; height: 36px; border-radius: 0.5rem; flex-shrink: 0;
-        background: rgba(157, 111, 255, 0.06);
-        border: 1px solid rgba(157, 111, 255, 0.22);
-        color: #9d6fff;
+        background: rgba(255, 255, 255, 0.064);
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
+        color: #ffffff;
       }
 
       .dv-step {
         display: inline-flex; align-items: center; justify-content: center;
         width: 28px; height: 28px; flex-shrink: 0; border-radius: 9999px;
-        font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600;
-        background: rgba(157, 111, 255, 0.08); color: #c4b5fd;
-        border: 1px solid rgba(157, 111, 255, 0.3);
+        font-family: var(--font-mono), ui-monospace, monospace; font-size: 12px; font-weight: 600;
+        background: rgba(255, 255, 255, 0.064); color: #ffffff;
+        border: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
       }
     `,
   ],

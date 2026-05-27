@@ -1,0 +1,168 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/panels' as panels;
+
+// Sit above fixed section rail (z-30) and page layers that bleed past main
+:host {
+  display: block;
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  isolation: isolate;
+}
+
+.dv-footer {
+  background: $footer-bg;
+  border-top: 1px solid $bg-border;
+  padding: clamp(2.75rem, 4.5vw, 3.5rem) 0 1.75rem;
+  overflow: hidden;
+}
+
+.dv-footer__inner {
+  max-width: $grid-max;
+  margin: 0 auto;
+  padding: 0 $grid-gutter;
+}
+
+.dv-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+// ── Brand Column ─────────────────────────────────────────────────────────────
+
+.dv-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.dv-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.dv-footer__logo-mark {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  filter: none;
+  opacity: 1;
+}
+
+.dv-footer__tagline {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: $text-muted;
+  max-width: 320px;
+}
+
+.dv-footer__social {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.dv-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: $text-muted;
+  @include panels.borderless-panel($panel-fill, $radius-md);
+  text-decoration: none;
+  transition: all $duration-base $ease-out-expo;
+
+  &:hover {
+    color: $text-primary;
+    background: $panel-fill-hover;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// ── Link Columns ─────────────────────────────────────────────────────────────
+
+.dv-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.dv-footer__column-title {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $text-muted;
+}
+
+.dv-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dv-footer__link {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+}
+
+// ── Bottom Bar ───────────────────────────────────────────────────────────────
+
+.dv-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding-top: $space-lg;
+  border-top: 1px solid $bg-border;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.dv-footer__copyright {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: $text-muted;
+}
+
+.dv-footer__legal {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-muted;
+}
+

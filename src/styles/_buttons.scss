@@ -1,0 +1,171 @@
+@use 'tokens' as *;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// BUTTON SYSTEM — brutalist (sharp corners, hard offset shadow, no blur)
+// On dark pages: shadow must be LIGHT to read against #000 (not black-on-black)
+// Rounded rect only inside .dv-header
+// ══════════════════════════════════════════════════════════════════════════════
+
+$btn-shift:        3px;
+$btn-border:       2px;
+$btn-radius:       0;
+$btn-padding-y:    0.75rem;
+$btn-padding-x:    1.5rem;
+$btn-font-size:    0.8125rem;
+$btn-letter-sp:    0.04em;
+$btn-ease:         cubic-bezier(0.2, 0.8, 0.2, 1);
+
+// Hard shadows on $bg-base (#000) — gray blocks, not white
+$btn-shadow-primary:   #404040;
+$btn-shadow-secondary: #525252;
+
+// Lucide host + SVG — centered with label text in inline-flex buttons
+@mixin button-lucide-icon {
+  lucide-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.125em;
+    height: 1.125em;
+    line-height: 0;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+%btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: $btn-padding-y $btn-padding-x;
+  font-family: $font-mono;
+  font-size: $btn-font-size;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: $btn-letter-sp;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: $btn-radius;
+  border: $btn-border solid;
+  cursor: pointer;
+  user-select: none;
+  @include button-lucide-icon;
+  transition:
+    transform 70ms $btn-ease,
+    box-shadow 70ms $btn-ease,
+    background-color 150ms $btn-ease,
+    color 150ms $btn-ease,
+    border-color 150ms $btn-ease;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      $btn-shift $btn-shift 0 0 $btn-shadow-secondary,
+      0 0 0 3px rgba(255, 255, 255, 0.2);
+  }
+
+  &:active {
+    transform: translate($btn-shift, $btn-shift);
+    box-shadow: 0 0 0 0 transparent !important;
+  }
+}
+
+// ── PRIMARY — white tile, black ink, gray hard shadow ───────────────────────
+
+.btn-primary {
+  @extend %btn-base;
+  color: $text-inverse;
+  background: $text-primary;
+  border-color: $text-inverse;
+  box-shadow: $btn-shift $btn-shift 0 0 $btn-shadow-primary;
+
+  &:hover {
+    background: #ebebeb;
+    border-color: $text-inverse;
+    color: $text-inverse;
+    box-shadow: $btn-shift $btn-shift 0 0 $btn-shadow-primary;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      $btn-shift $btn-shift 0 0 $btn-shadow-primary,
+      0 0 0 3px rgba(255, 255, 255, 0.22);
+  }
+}
+
+// ── SECONDARY — dark tile, white ink, gray hard shadow ──────────────────────
+
+.btn-secondary {
+  @extend %btn-base;
+  color: $text-primary;
+  background: $bg-elevated;
+  border-color: $text-primary;
+  box-shadow: $btn-shift $btn-shift 0 0 $btn-shadow-secondary;
+
+  &:hover {
+    background: #1a1a1a;
+    border-color: $text-primary;
+    color: $text-primary;
+    box-shadow: $btn-shift $btn-shift 0 0 #737373;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      $btn-shift $btn-shift 0 0 $btn-shadow-secondary,
+      0 0 0 3px rgba(255, 255, 255, 0.16);
+  }
+}
+
+// ── GHOST ───────────────────────────────────────────────────────────────────
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: $font-mono;
+  font-size: $btn-font-size;
+  font-weight: 500;
+  line-height: 1;
+  color: $text-secondary;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 150ms $btn-ease;
+  padding: 0.5rem 0.25rem;
+  box-shadow: none;
+  @include button-lucide-icon;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &:active {
+    transform: none;
+  }
+}
+
+// ── SIZE MODIFIERS ──────────────────────────────────────────────────────────
+
+.btn--lg {
+  padding: 0.95rem 1.85rem;
+  font-size: 0.875rem;
+}
+
+.btn--sm {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.75rem;
+}
+
+// Flex CTAs that pair label + lucide but are not .btn-* (cards, links)
+.module-card__cta,
+.dv-arrow {
+  @include button-lucide-icon;
+}

@@ -4,18 +4,18 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { BlogCardComponent } from '../components/blog-card';
 import { GlassCardComponent } from '../components/glass-card';
 import { SanityPost, SanityService } from '../services/sanity.service';
+import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, BlogCardComponent, GlassCardComponent],
+  imports: [CommonModule, BlogCardComponent, GlassCardComponent, DotGridGlowDirective],
   template: `
     <div class="relative">
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-12 md:pt-40 md:pb-16">
-        <div aria-hidden="true" class="hero-halo-neon top-12 left-1/2 -translate-x-1/2 opacity-70"></div>
-        <div aria-hidden="true" class="hero-halo-indigo right-[-10%] top-12"></div>
-
+      <section class="page-hero-grid border-b border-border" appDotGridGlow>
+        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+        <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-12 md:pt-40 md:pb-16">
         <div class="relative max-w-3xl mx-auto text-center">
           <span class="status-chip mx-auto mb-7">
             <span class="status-chip__dot"></span>
@@ -29,6 +29,7 @@ import { SeoService } from '../services/seo.service';
             Research notes, engineering deep-dives, and infrastructure insights from the Deep
             Variance team.
           </p>
+        </div>
         </div>
       </section>
 

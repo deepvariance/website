@@ -1,0 +1,151 @@
+<div class="get-started-page">
+
+  <section class="get-started-hero page-hero-grid page-hero-grid--standard" appDotGridGlow>
+    <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overline">Get started</div>
+        <h1 class="section-title">Pilot, deploy, then maintain.</h1>
+        <p class="section-subtitle">
+          Every engagement follows the same path. Use the contact button above when you are ready to start.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ol class="get-started-journey" aria-label="Customer journey">
+        @for (phase of journeyPhases; track phase.step; let last = $last) {
+          <li
+            class="get-started-phase"
+            [class.get-started-phase--featured]="phase.featured"
+            [class.get-started-phase--last]="last"
+          >
+            <div class="get-started-phase__marker" aria-hidden="true">
+              <span class="get-started-phase__index">{{ phase.step }}</span>
+              <span class="get-started-phase__node"></span>
+            </div>
+
+            <div class="get-started-phase__panel">
+              <div class="get-started-phase__head">
+                <span class="get-started-phase__badge">{{ phase.badge }}</span>
+                <h2 class="get-started-phase__title">{{ phase.title }}</h2>
+                @if (phase.summary) {
+                  <p class="get-started-phase__summary">{{ phase.summary }}</p>
+                }
+              </div>
+
+              @if (phase.details) {
+                <ul class="get-started-phase__details">
+                  @for (item of phase.details; track item) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              }
+
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact-form" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Get in touch</h2>
+      </div>
+
+      <div class="contact-form">
+        @if (formSubmitted()) {
+          <div class="form-success">
+            <lucide-icon [img]="Check" [size]="48" />
+            <h3>Message sent</h3>
+            <p>We'll get back to you within 24 hours.</p>
+          </div>
+        } @else {
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                class="form-input"
+                [class.form-input--error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                placeholder="Your name"
+              />
+              @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                <span class="form-error">Name is required</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                class="form-input"
+                [class.form-input--error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                placeholder="you@company.com"
+              />
+              @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                <span class="form-error">
+                  @if (contactForm.get('email')?.hasError('invalidEmail')) {
+                    Please enter a valid email address
+                  }
+                  @if (contactForm.get('email')?.hasError('disposableEmail')) {
+                    Please use a business email address
+                  }
+                  @if (contactForm.get('email')?.hasError('required')) {
+                    Email is required
+                  }
+                </span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="company">Company</label>
+              <input
+                id="company"
+                type="text"
+                formControlName="company"
+                class="form-input"
+                [class.form-input--error]="contactForm.get('company')?.invalid && contactForm.get('company')?.touched"
+                placeholder="Your company"
+              />
+              @if (contactForm.get('company')?.invalid && contactForm.get('company')?.touched) {
+                <span class="form-error">Company is required</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Tell us about your workload</label>
+              <textarea
+                id="message"
+                formControlName="message"
+                class="form-textarea"
+                [class.form-input--error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                placeholder="Hardware, model, framework, and what you're trying to optimize..."
+              ></textarea>
+              @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                <span class="form-error">Please provide details about your workload</span>
+              }
+            </div>
+
+            <button type="submit" class="btn-primary get-started-phase__btn" [disabled]="isSubmitting()">
+              @if (isSubmitting()) {
+                Sending...
+              } @else {
+                Send message <lucide-icon [img]="ArrowRight" [size]="14" />
+              }
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </section>
+
+</div>

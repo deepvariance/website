@@ -1,9 +1,9 @@
-<div class="relative min-h-screen flex flex-col text-on-surface">
+<div class="app-shell relative min-h-screen flex flex-col text-on-surface">
   <app-header />
 
-  <main class="flex-grow relative z-0">
+  <main class="app-shell__main flex-grow relative z-0 min-h-0 overflow-x-clip">
     <router-outlet />
   </main>
 
-  <app-footer />
+  <app-footer class="relative z-50 shrink-0" />
 </div>

@@ -9,12 +9,13 @@ export type GlassVariant = 'panel' | 'card' | 'kpi-rail' | 'strong';
   imports: [CommonModule],
   template: `
     <div
-      class="relative overflow-hidden bg-surface border border-border transition-colors"
+      class="panel-box relative overflow-hidden"
+      [class.panel-box--strong]="variant === 'strong'"
+      [class.panel-box--highlighted]="glow"
+      [class.panel-box--hover]="variant === 'card'"
       [class.rounded-lg]="rounded === 'lg'"
       [class.rounded-xl]="rounded === 'xl'"
       [class.rounded-2xl]="rounded === '2xl'"
-      [class.hover:border-border-hi]="variant === 'card'"
-      [class.border-border-mid]="variant === 'strong'"
       [ngClass]="extraClass"
     >
       <ng-content />

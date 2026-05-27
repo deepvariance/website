@@ -1,0 +1,243 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// DEEP VARIANCE GLOBAL STYLES
+// ══════════════════════════════════════════════════════════════════════════════
+
+@use 'styles/tokens' as *;
+@use 'styles/buttons';
+@use 'styles/links' as links;
+@use 'styles/hero-grid';
+@use 'styles/panels';
+@use 'styles/module-card';
+
+@tailwind components;
+@tailwind utilities;
+
+// ── RESET & BASE ──────────────────────────────────────────────────────────────
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ── CSS CUSTOM PROPERTIES (exposed for runtime/inline use) ───────────────────
+
+:root {
+  --bg-base: #{$bg-base};
+  --bg-surface: #{$bg-surface};
+  --bg-elevated: #{$bg-elevated};
+  --panel-fill: #{$panel-fill};
+  --panel-fill-strong: #{$panel-fill-strong};
+  --panel-fill-highlight: #{$panel-fill-highlight};
+  --dv-violet: #{$dv-violet};
+  --bg-border: #{$bg-border};
+  --dv-blue: #{$dv-blue};
+  --dv-blue-dim: #{$dv-blue-dim};
+  --optimemory-color: #{$optimemory-color};
+  --hyperrag-color: #{$hyperrag-color};
+  --deeptuner-color: #{$deeptuner-color};
+  --waste-red: #{$waste-red};
+  --recovered-green: #{$recovered-green};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --font-display: #{$font-display};
+  --font-body: #{$font-body};
+  --font-mono: #{$font-mono};
+}
+
+html {
+  background-color: $bg-base;
+  color-scheme: dark;
+  // Single scroll root — overflow-x on both html+body causes double-scroll in Chrome/Safari
+  overflow-x: clip;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+  color: $text-secondary;
+  background-color: $bg-base;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+// ── TYPOGRAPHY ────────────────────────────────────────────────────────────────
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: $line-height-display;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+
+p {
+  margin-bottom: $space-md;
+  &:last-child { margin-bottom: 0; }
+}
+
+a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost):not(.dv-logo):not(.dv-nav-link):not(.dv-footer__social-link):not(.dv-mega-menu__item):not(.module-card):not(.platform-hero__jump):not(.dv-footer__link):not(.dv-footer__legal-link):not(.dv-mobile-menu__link) {
+  @include links.text-link;
+}
+
+// Nav, buttons, logo, card links, and icon controls — no dotted underline
+a.btn-primary,
+a.btn-secondary,
+a.btn-ghost,
+a.dv-logo,
+a.dv-nav-link,
+a.dv-footer__social-link,
+a.dv-mega-menu__item,
+a.module-card,
+a.platform-hero__jump,
+button {
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+}
+
+// Footer / mobile text links (component SCSS sets text-decoration: none — need higher specificity)
+@include links.dotted-underline-hover-for('dv-footer__link');
+@include links.dotted-underline-hover-for('dv-footer__legal-link', links.$link-color-muted, links.$link-color-muted-hover);
+@include links.dotted-underline-hover-for('dv-mobile-menu__link');
+
+// ── SELECTION ──────────────────────────────────────────────────────────────────
+
+::selection {
+  background: $dv-blue-glow;
+  color: $text-primary;
+}
+
+// ── SCROLLBAR ──────────────────────────────────────────────────────────────────
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-base;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-elevated;
+  border-radius: $radius-full;
+  
+  &:hover {
+    background: $bg-border;
+  }
+}
+
+// ── FOCUS STATES ───────────────────────────────────────────────────────────────
+
+*:focus-visible {
+  outline: 2px solid $dv-blue;
+  outline-offset: 3px;
+  border-radius: $radius-sm;
+}
+
+// App shell — one page scroll (flex child must shrink, not create a second scroller)
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.app-shell__main {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+// ── UTILITY CLASSES ────────────────────────────────────────────────────────────
+
+.container {
+  max-width: $grid-max;
+  margin: 0 auto;
+  padding: 0 $grid-gutter;
+}
+
+.section-padding {
+  padding: $section-padding;
+}
+
+// Typography utilities
+.label-caps {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $text-muted;
+}
+
+.label-mono {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-muted;
+}
+
+.metric-number {
+  font-family: $font-mono;
+  font-size: $font-size-metric;
+  font-weight: 700;
+  color: $metric-color;
+  line-height: 1;
+}
+
+// Check list (e.g. “What this addresses” on use-case pages)
+.list-check {
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+
+  lucide-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.25rem;
+    margin-top: 0.0625rem;
+    line-height: 0;
+    color: $text-primary;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// ── REDUCED MOTION ─────────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
