@@ -41,7 +41,40 @@
   </section>
 
   <!-- ═════════════════════════════════════════════════════════════════════════
-       SECTION 1b: HERO METRIC BAND
+       SECTION 2: THE PLATFORM (text + cta left, animated stack right)
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <section class="modules-section">
+    <div class="container">
+      <div class="platform-grid">
+
+        <div class="platform-copy">
+          <div class="section-overline">Platform</div>
+          <h2 class="platform-copy__title">
+            More from every GPU you already run.
+          </h2>
+          <p class="platform-copy__intro">
+            Your models and serving pipelines stay exactly as they are. Same weights, same APIs, same schedulers and containers. Nothing upstream has to move.
+          </p>
+          <p class="platform-copy__intro">
+            Deep Variance is a runtime layer under that stack&mdash;not a one-off script. It recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
+          </p>
+          <div class="platform-copy__cta">
+            <a routerLink="/platform" class="btn-primary">
+              See how it works <lucide-icon [img]="ArrowRight" [size]="14" />
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-stack">
+          <app-stack-viz />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════════
+       SECTION 3: HERO METRIC BAND (scores)
        ═════════════════════════════════════════════════════════════════════════ -->
   <section class="metrics-band">
     <div class="container metrics-band__grid">
@@ -52,9 +85,9 @@
 
       <div class="metrics-band__copy">
         <div class="metrics-band__head">
-          <div class="section-overline">Measured in production</div>
+          <div class="section-overline">Optimized in production</div>
           <h2 class="metrics-band__title">
-            One command in.<br />Measurable headroom out.
+            Install once.<br />Run more for less.
           </h2>
         </div>
 
@@ -76,36 +109,6 @@
         </p>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ═════════════════════════════════════════════════════════════════════════
-       SECTION 2: THE PLATFORM (text + cta left, animated stack right)
-       ═════════════════════════════════════════════════════════════════════════ -->
-  <section class="modules-section">
-    <div class="container">
-      <div class="platform-grid">
-
-        <div class="platform-copy">
-          <div class="section-overline">Platform</div>
-          <h2 class="platform-copy__title">
-            A runtime optimization layer for inference and training.
-          </h2>
-          <p class="platform-copy__intro">
-            Your framework can&rsquo;t see the allocator, the KV cache, or the kernel registry. That is where serving latency and training throughput leak. Deep Variance sits there.
-          </p>
-          <div class="platform-copy__cta">
-            <a routerLink="/platform" class="btn-primary">
-              See how it works <lucide-icon [img]="ArrowRight" [size]="14" />
-            </a>
-          </div>
-        </div>
-
-        <div class="platform-stack">
-          <app-stack-viz />
-        </div>
-
-      </div>
     </div>
   </section>
 
