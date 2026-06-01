@@ -38,8 +38,12 @@ export class HeaderComponent {
 
   @HostListener('window:scroll')
   onScroll() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.scrolled.set(window.scrollY > 80);
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    const next = window.scrollY > 80;
+    if (next !== this.scrolled()) {
+      this.scrolled.set(next);
     }
   }
 

@@ -155,7 +155,12 @@ button {
 // App shell — one page scroll (flex child must shrink, not create a second scroller)
 .app-shell {
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
+
+  @media (hover: hover) and (pointer: fine) {
+    min-height: 100dvh;
+  }
+
   overflow-x: clip;
   max-width: 100%;
 }

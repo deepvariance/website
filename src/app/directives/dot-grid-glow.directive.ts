@@ -10,7 +10,7 @@ import { Directive, ElementRef, OnDestroy, inject } from '@angular/core';
 })
 export class DotGridGlowDirective implements OnDestroy {
   private readonly el = inject(ElementRef<HTMLElement>);
-  private boundEnter = () => this.onPointerEnter();
+  private boundEnter = (e: PointerEvent) => this.onPointerEnter(e);
   private boundMove = (e: PointerEvent) => this.onPointerMove(e);
   private boundLeave = () => this.onPointerLeave();
 
@@ -28,11 +28,19 @@ export class DotGridGlowDirective implements OnDestroy {
     node.removeEventListener('pointerleave', this.boundLeave);
   }
 
-  private onPointerEnter(): void {
+  private onPointerEnter(e: PointerEvent): void {
+    if (e.pointerType === 'touch') {
+      return;
+    }
     this.el.nativeElement.classList.add('dot-grid-glow--active');
   }
 
   private onPointerMove(e: PointerEvent): void {
+    // Touch drags while scrolling update glow + layout and fight native scroll on mobile
+    if (e.pointerType === 'touch') {
+      return;
+    }
+
     const rect = this.el.nativeElement.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;

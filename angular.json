@@ -71,8 +71,12 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
+            "host": "0.0.0.0",
             "allowedHosts": [
-              "75c8-129-79-197-22.ngrok-free.app"
+              "localhost",
+              ".ngrok.io",
+              ".ngrok-free.app",
+              ".ngrok.app"
             ]
           },
           "configurations": {

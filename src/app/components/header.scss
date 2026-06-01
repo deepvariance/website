@@ -13,11 +13,6 @@
   z-index: $z-sticky;
   padding: 1.25rem 1rem 0;
   pointer-events: none;
-  transition: padding $duration-base $ease-out-expo;
-
-  &--scrolled {
-    padding-top: 0.875rem;
-  }
 
   @media (min-width: 768px) {
     padding: 1.5rem 1.5rem 0;
@@ -270,10 +265,13 @@
 // ── Mobile Menu ──────────────────────────────────────────────────────────────
 
 .dv-mobile-menu {
+  // Header shell is pointer-events: none; only __inner is auto — menu sits outside __inner
+  pointer-events: auto;
   position: fixed;
   top: 88px;
   left: 1rem;
   right: 1rem;
+  z-index: 1;
   background: rgba(23, 23, 23, 0.94);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
