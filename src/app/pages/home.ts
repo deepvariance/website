@@ -4,7 +4,6 @@ import { RouterLink } from '@angular/router';
 import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 import { StackVizComponent } from '../components/stack-viz';
 import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
-import { HeroCometFrameComponent } from '../components/hero-comet-frame';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -16,7 +15,6 @@ import { SeoService } from '../services/seo.service';
     LucideAngularModule,
     StackVizComponent,
     DotGridGlowDirective,
-    HeroCometFrameComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

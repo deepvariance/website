@@ -8,12 +8,12 @@
     <div class="container">
       <div class="hero-copy">
         <h1 class="hero-headline" aria-label="Your GPUs are fast. Your infrastructure isn't.">
-          <app-hero-comet-frame class="hero-headline__line">
+          <span class="hero-headline__line">
             <span class="hero-headline__type">{{ line1Typed() }}</span>
             @if (showCaretLine1()) {
               <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
             }
-          </app-hero-comet-frame>
+          </span>
           <span class="hero-headline__line hero-headline__line--2">
             <span class="hero-headline__type">
               {{ line2Prefix() }}<span class="hero-headline__accent">{{ line2Highlight() }}</span>{{ line2Suffix() }}
