@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div class="stack-viz-wrap" aria-hidden="true">
-      <svg viewBox="0 0 480 532" xmlns="http://www.w3.org/2000/svg"
-           class="w-full h-auto" style="max-height:532px">
+      <svg viewBox="0 0 480 466" xmlns="http://www.w3.org/2000/svg"
+           class="w-full h-auto" style="max-height:466px">
         <defs>
           <style>@media(prefers-reduced-motion:reduce){.fp{display:none}}</style>
 
@@ -55,20 +55,6 @@ import { Component } from '@angular/core';
             <path d="M0,4 L8,8 L8,16 L0,12 Z"   fill="currentColor" opacity="0.5"/>
             <path d="M8,8 L16,4 L16,12 L8,16 Z" fill="currentColor" opacity="0.28"/>
           </symbol>
-          <!-- GPU chip (for driver layer) -->
-          <symbol id="ic-chip" viewBox="0 0 16 16">
-            <rect x="4" y="4" width="8" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
-            <line x1="1" y1="6.5" x2="4" y2="6.5" stroke="currentColor" stroke-width="1"/>
-            <line x1="1" y1="9.5" x2="4" y2="9.5" stroke="currentColor" stroke-width="1"/>
-            <line x1="12" y1="6.5" x2="15" y2="6.5" stroke="currentColor" stroke-width="1"/>
-            <line x1="12" y1="9.5" x2="15" y2="9.5" stroke="currentColor" stroke-width="1"/>
-            <line x1="6.5" y1="1"  x2="6.5" y2="4"  stroke="currentColor" stroke-width="1"/>
-            <line x1="9.5" y1="1"  x2="9.5" y2="4"  stroke="currentColor" stroke-width="1"/>
-            <line x1="6.5" y1="12" x2="6.5" y2="15" stroke="currentColor" stroke-width="1"/>
-            <line x1="9.5" y1="12" x2="9.5" y2="15" stroke="currentColor" stroke-width="1"/>
-            <rect x="6" y="6" width="4" height="4" rx="0.5" fill="currentColor"/>
-          </symbol>
-
           <!-- ── animateMotion flow paths ───────────────────────────────────── -->
           <!-- Models → Frameworks (24px, quieter at top of hierarchy) -->
           <path id="mf1" d="M95,94 L95,106"/>
@@ -78,16 +64,11 @@ import { Component } from '@angular/core';
           <path id="fd1" d="M95,194 L95,238"/>
           <path id="fd2" d="M240,194 L240,238"/>
           <path id="fd3" d="M385,194 L385,238"/>
-          <!-- DV → Driver (32px) -->
-          <path id="dd1" d="M95,378 L95,410"/>
-          <path id="dd2" d="M240,378 L240,410"/>
-          <path id="dd3" d="M385,378 L385,410"/>
-          <!-- Driver → Hardware (20px) -->
-          <path id="dh1" d="M240,456 L240,476"/>
+          <!-- DV → GPU hardware (32px) -->
+          <path id="dh1" d="M95,378 L95,410"/>
+          <path id="dh2" d="M240,378 L240,410"/>
+          <path id="dh3" d="M385,378 L385,410"/>
         </defs>
-
-        <!-- Opaque base — hides hero dot grid behind diagram -->
-        <rect x="0" y="0" width="480" height="532" fill="#000000" />
 
         <!-- ══ LAYER 0: Models ═══════════════════════════════════════════════ -->
         <rect x="20" y="18" width="440" height="76" rx="6"
@@ -194,72 +175,59 @@ import { Component } from '@angular/core';
         <text x="385" y="336" font-family="Space Grotesk,sans-serif" font-size="13"
           fill="#ffffff" text-anchor="middle" font-weight="600">DeepTuner</text>
 
-        <!-- ══ Flow: DV → Driver (32px) ═══════════════════════════════════════ -->
+        <!-- ══ Flow: DV → GPU hardware (32px) ═════════════════════════════════ -->
         <line x1="95"  y1="378" x2="95"  y2="410" stroke="#2a2a2a" stroke-width="1"/>
         <line x1="240" y1="378" x2="240" y2="410" stroke="#2a2a2a" stroke-width="1"/>
         <line x1="385" y1="378" x2="385" y2="410" stroke="#2a2a2a" stroke-width="1"/>
 
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#dd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.5s"><mpath href="#dd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.5s"/></circle>
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.17s"><mpath href="#dd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.17s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.67s"><mpath href="#dd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.67s"/></circle>
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.33s"><mpath href="#dd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.33s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.83s"><mpath href="#dd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.83s"/></circle>
+        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
+        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.5s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.17s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.17s"/></circle>
+        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.67s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.67s"/></circle>
+        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.33s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.33s"/></circle>
+        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.83s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.83s"/></circle>
 
-        <!-- ══ LAYER 3: GPU Driver ════════════════════════════════════════════ -->
-        <rect x="20" y="410" width="440" height="46" rx="6"
-          fill="#0a0a0a" stroke="#282828" stroke-width="1"/>
-        <!-- chip icon + label vertically centered (layer cy=433) -->
-        <use href="#ic-chip" x="178" y="423" width="20" height="20" fill="#888"/>
-        <text x="204" y="433" dominant-baseline="middle" font-size="12"
-          fill="#bbb" letter-spacing="0.04em">GPU Driver</text>
+        <!-- ══ LAYER 3: GPU Hardware (animated active/inactive cluster) ════════ -->
+        <rect x="20" y="410" width="440" height="56" rx="6"
+          fill="#0a0a0a" stroke="#3a3a3a" stroke-width="1"/>
 
-        <!-- ══ Flow: Driver → Hardware (20px) ════════════════════════════════ -->
-        <line x1="240" y1="456" x2="240" y2="476" stroke="#2a2a2a" stroke-width="1"/>
-        <circle r="1.5" fill="#444" class="fp"><animateMotion dur="0.6s" repeatCount="indefinite" begin="0s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="0.6s" repeatCount="indefinite" begin="0s"/></circle>
-        <circle r="1.5" fill="#444" class="fp"><animateMotion dur="0.6s" repeatCount="indefinite" begin="0.3s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="0.6s" repeatCount="indefinite" begin="0.3s"/></circle>
-
-        <!-- ══ LAYER 4: GPU Hardware (animated active/inactive cluster) ════════ -->
-        <rect x="20" y="476" width="440" height="56" rx="6"
-          fill="#060606" stroke="#3a3a3a" stroke-width="1"/>
-
-        <!-- 2×4 chip grid — simple opacity fade in/out at varied intervals -->
-        <!-- Row 1: y=492, Row 2: y=506 → grid center y=504 matches layer center -->
-        <rect x="28" y="492" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <!-- 2×4 chip grid — inset from layer edge (left column) -->
+        <!-- Row 1: y=426, Row 2: y=440 → grid center y=438 matches layer center -->
+        <rect x="38" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.1s" repeatCount="indefinite" begin="0s"/>
         </rect>
-        <rect x="46" y="492" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="56" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.8s" repeatCount="indefinite" begin="0.7s"/>
         </rect>
-        <rect x="64" y="492" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="74" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.4s" repeatCount="indefinite" begin="1.3s"/>
         </rect>
-        <rect x="82" y="492" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="92" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.6s" repeatCount="indefinite" begin="0.3s"/>
         </rect>
-        <rect x="28" y="506" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="38" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.2s" repeatCount="indefinite" begin="1.9s"/>
         </rect>
-        <rect x="46" y="506" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="56" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.7s" repeatCount="indefinite" begin="0.9s"/>
         </rect>
-        <rect x="64" y="506" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="74" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.6s" repeatCount="indefinite" begin="0.5s"/>
         </rect>
-        <rect x="82" y="506" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="92" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.9s" repeatCount="indefinite" begin="1.5s"/>
         </rect>
 
         <!-- Column dividers — GPUs | silicon | interconnect -->
-        <line x1="114" y1="484" x2="114" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
-        <line x1="198" y1="484" x2="198" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
+        <line x1="114" y1="418" x2="114" y2="459" stroke="#2a2a2a" stroke-width="0.8"/>
+        <line x1="198" y1="418" x2="198" y2="459" stroke="#2a2a2a" stroke-width="0.8"/>
 
-        <!-- Silicon column (~114–198): official NVIDIA wordmark (layer cy=504) -->
+        <!-- Silicon column (~114–198): official NVIDIA wordmark (layer cy=438) -->
         <image
           class="stack-viz__nvidia-wordmark"
           href="/nvidia-logo.svg"
           x="124"
-          y="497.5"
+          y="431.5"
           width="64"
           height="13"
           preserveAspectRatio="xMidYMid meet"
@@ -267,11 +235,11 @@ import { Component } from '@angular/core';
 
         <!-- Interconnect column (~198–460), vertically centered in layer -->
         <text
+          class="stack-viz__interconnect"
           x="329"
-          y="504"
+          y="438"
           text-anchor="middle"
           dominant-baseline="middle"
-          font-size="8"
         >
           <tspan x="329" dy="-0.55em" fill="#888" letter-spacing="0.05em">PCIe · NVLink · NVSwitch</tspan>
           <tspan x="329" dy="1.15em" fill="#666" letter-spacing="0.05em">Single node · Multi-node</tspan>
@@ -283,8 +251,7 @@ import { Component } from '@angular/core';
     :host { display: block; width: 100%; }
     .stack-viz-wrap {
       width: 100%;
-      background: #000000;
-      border-radius: 6px;
+      background: transparent;
     }
     .stack-viz-wrap text,
     .stack-viz-wrap tspan {
@@ -298,6 +265,14 @@ import { Component } from '@angular/core';
     .stack-viz__model-logo {
       opacity: 0.88;
       filter: grayscale(1) brightness(0.9) contrast(0.95);
+    }
+    .stack-viz__interconnect {
+      font-size: 8px;
+    }
+    @media (min-width: 1024px) {
+      .stack-viz__interconnect {
+        font-size: 10px;
+      }
     }
   `],
 })
