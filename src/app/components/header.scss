@@ -20,6 +20,8 @@
 }
 
 .dv-header__inner {
+  position: relative;
+  z-index: 3;
   max-width: 1180px;
   width: 100%;
   margin: 0 auto;
@@ -262,7 +264,37 @@
   }
 }
 
-// ── Mobile Menu ──────────────────────────────────────────────────────────────
+// ── Mobile menu backdrop + panel ─────────────────────────────────────────────
+
+.dv-mobile-backdrop {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  animation: dv-mobile-backdrop-in 220ms $ease-out-expo both;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+@keyframes dv-mobile-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-mobile-backdrop {
+    animation: none;
+  }
+}
 
 .dv-mobile-menu {
   // Header shell is pointer-events: none; only __inner is auto — menu sits outside __inner
@@ -271,7 +303,7 @@
   top: 88px;
   left: 1rem;
   right: 1rem;
-  z-index: 1;
+  z-index: 2;
   background: rgba(23, 23, 23, 0.94);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);

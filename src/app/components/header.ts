@@ -48,10 +48,22 @@ export class HeaderComponent {
   }
 
   toggleMobileMenu() {
-    this.isMobileMenuOpen.update(v => !v);
+    this.isMobileMenuOpen.update(v => {
+      const next = !v;
+      this.syncMobileMenuScrollLock(next);
+      return next;
+    });
   }
 
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
+    this.syncMobileMenuScrollLock(false);
+  }
+
+  private syncMobileMenuScrollLock(locked: boolean) {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    document.body.style.overflow = locked ? 'hidden' : '';
   }
 }

@@ -165,7 +165,7 @@ $btn-shadow-secondary: #525252;
 }
 
 // Flex CTAs that pair label + lucide but are not .btn-* (cards, links)
-.module-card__cta,
+.module-card__go,
 .dv-arrow {
   @include button-lucide-icon;
 }

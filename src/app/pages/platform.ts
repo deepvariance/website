@@ -1,6 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideAngularModule, ArrowRight, Server, Gauge, Zap, CircleCheck, Check, RefreshCw } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  ArrowRight,
+  Server,
+  Database,
+  Zap,
+  CircleCheck,
+  Check,
+  RefreshCw,
+  type LucideIconData,
+} from 'lucide-angular';
+import type { ModuleDef } from '../data/modules';
 import { StackVizComponent } from '../components/stack-viz';
 import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
@@ -16,7 +27,7 @@ import { MODULES } from '../data/modules';
 export class PlatformPageComponent {
   readonly ArrowRight = ArrowRight;
   readonly Server = Server;
-  readonly Gauge = Gauge;
+  readonly Database = Database;
   readonly Zap = Zap;
   readonly CircleCheck = CircleCheck;
   readonly Check = Check;
@@ -34,6 +45,15 @@ export class PlatformPageComponent {
 
   // Three modules — shared with /platform/:slug detail pages
   modules = MODULES;
+
+  moduleIcon(slug: ModuleDef['slug']): LucideIconData {
+    const icons: Record<ModuleDef['slug'], LucideIconData> = {
+      optimemory: Server,
+      hyperrag: Database,
+      deeptuner: Zap,
+    };
+    return icons[slug];
+  }
 
   // Execution lifecycle
   lifecycle = [

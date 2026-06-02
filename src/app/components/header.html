@@ -67,8 +67,15 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile menu backdrop (blurs page) -->
   @if (isMobileMenuOpen()) {
+    <button
+      type="button"
+      class="dv-mobile-backdrop"
+      (click)="closeMobileMenu()"
+      aria-label="Close menu"
+    ></button>
+
     <div class="dv-mobile-menu dv-mobile-menu--visible">
       <a
         routerLink="/platform"

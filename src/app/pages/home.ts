@@ -58,8 +58,8 @@ export class HomeComponent implements OnDestroy {
     if (n <= start) return '';
     return this.LINE_2.slice(start, n);
   });
-  line1Done  = computed(() => this.idx1() >= this.LINE_1.length);
-  line2Done  = computed(() => this.idx2() >= this.LINE_2.length);
+  line1Done = computed(() => this.idx1() >= this.LINE_1.length);
+  line2Done = computed(() => this.idx2() >= this.LINE_2.length);
 
   /** Inline caret on line 1 while typing, or during pause before line 2 */
   showCaretLine1 = computed(

@@ -1,4 +1,4 @@
-# Deep Variance — FAQ
+# Deep Variance: FAQ
 
 Single source of truth for FAQ copy.
 Same tone as the platform page: brutally honest, short, no marketing fluff, no em dashes,
@@ -11,13 +11,13 @@ Each entry is keyed by `id` so it can be rendered in any combination on any page
 
 ## Categories
 
-1. Product — what it is, what it does
-2. Integration — how it slots into an existing stack
-3. Performance — what to expect on real workloads
-4. Compatibility — frameworks, hardware, OS
-5. Security & deployment — telemetry, permissions, audit
-6. Operations — rollback, observability, support
-7. Commercial — pricing, contracts, pilots
+1. Product: what it is, what it does
+2. Integration: how it slots into an existing stack
+3. Performance: what to expect on real workloads
+4. Compatibility: frameworks, hardware, OS
+5. Security & deployment: telemetry, permissions, audit
+6. Operations: rollback, observability, support
+7. Commercial: pricing, contracts, pilots
 
 ---
 
@@ -236,13 +236,13 @@ on request under NDA.
 The full set is too long for any single page on the marketing site. Recommended
 splits:
 
-- **Per-module page (existing `faqs` array on each `ModuleDef`)** — only the 3 most
+- **Per-module page (existing `faqs` array on each `ModuleDef`)**: only the 3 most
   relevant entries from the categories above for that module. Already in place.
-- **`/platform` page** — do not add an FAQ section. The page should stay as an index.
-- **`/docs/faq`** — render every entry above, grouped by the 7 categories. Single
+- **`/platform` page**: do not add an FAQ section. The page should stay as an index.
+- **`/docs/faq`**: render every entry above, grouped by the 7 categories. Single
   source of buyer truth.
-- **`/get-started`** — render only the Commercial category (5 entries).
-- **`/docs/security`** — render only the Security & deployment category (5 entries).
+- **`/get-started`**: render only the Commercial category (5 entries).
+- **`/docs/security`**: render only the Security & deployment category (5 entries).
 
 When we wire this up later, the file structure should be:
 

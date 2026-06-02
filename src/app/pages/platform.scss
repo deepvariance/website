@@ -121,14 +121,18 @@
   line-height: 0.98;
   letter-spacing: -0.035em;
   color: $text-primary;
+  background: none;
+  -webkit-text-fill-color: currentColor;
   margin: 0 0 1.75rem;
 }
 
 .platform-hero__subtitle {
-  font-family: $font-body;
+  font-family: $font-mono;
   font-size: 1rem;
   line-height: 1.75;
   color: $text-secondary;
+  background: none;
+  -webkit-text-fill-color: currentColor;
   max-width: 560px;
   margin: 0 0 2.5rem;
 }
@@ -233,7 +237,7 @@
 // EXECUTION PATH — intro + vertical spine timeline
 // ══════════════════════════════════════════════════════════════════════════════
 
-$execution-accent: $text-primary;
+$execution-accent: $dv-violet;
 
 .execution-path-section {
   .section-subtitle {
@@ -379,28 +383,34 @@ $execution-accent: $text-primary;
   }
 }
 
-// Highlighted intercept step
+// Highlighted intercept step — violet featured panel (matches get-started)
 .execution-flow__step--accent {
   margin: 0.5rem 0;
   padding: 1rem 0.75rem 1rem 0.5rem;
   border-radius: 12px;
-  background: $panel-fill-strong;
+  background: $panel-fill-highlight;
   border: none;
-  box-shadow: $panel-inset;
+  box-shadow: $panel-inset-highlight;
 
   @media (min-width: 640px) {
     padding: 1.25rem 1rem 1.25rem 0.5rem;
   }
 
+  .execution-flow__chip {
+    color: $dv-violet-soft;
+    background: $panel-fill-highlight-strong;
+    box-shadow: $panel-inset-highlight;
+  }
+
   .execution-flow__index {
-    color: $execution-accent;
+    color: $dv-violet-soft;
   }
 
   .execution-flow__node {
     width: 11px;
     height: 11px;
     background: $execution-accent;
-    border-color: $text-muted;
+    border-color: $dv-violet-soft;
     box-shadow: none;
   }
 

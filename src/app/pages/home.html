@@ -9,18 +9,26 @@
       <div class="hero-copy">
         <h1 class="hero-headline" aria-label="Your GPUs are fast. Your infrastructure isn't.">
           <span class="hero-headline__line">
-            <span class="hero-headline__type">{{ line1Typed() }}</span>
-            @if (showCaretLine1()) {
-              <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
-            }
+            <span class="hero-headline__ghost" aria-hidden="true">Your GPUs are fast.</span>
+            <span class="hero-headline__live">
+              <span class="hero-headline__type">{{ line1Typed() }}</span>
+              @if (showCaretLine1()) {
+                <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
+              }
+            </span>
           </span>
           <span class="hero-headline__line hero-headline__line--2">
-            <span class="hero-headline__type">
-              {{ line2Prefix() }}<span class="hero-headline__accent">{{ line2Highlight() }}</span>{{ line2Suffix() }}
+            <span class="hero-headline__ghost" aria-hidden="true">
+              Your <span class="hero-headline__accent">infrastructure</span> isn&rsquo;t.
             </span>
-            @if (showCaretLine2()) {
-              <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
-            }
+            <span class="hero-headline__live">
+              <span class="hero-headline__type">
+                {{ line2Prefix() }}<span class="hero-headline__accent">{{ line2Highlight() }}</span>{{ line2Suffix() }}
+              </span>
+              @if (showCaretLine2()) {
+                <span class="hero-headline__caret hero-headline__caret--blink" aria-hidden="true"></span>
+              }
+            </span>
           </span>
         </h1>
 
@@ -30,10 +38,10 @@
 
         <div class="hero-cta-row">
           <a routerLink="/get-started" fragment="contact-form" class="btn-primary">
-            Contact us
+            Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
           </a>
           <a routerLink="/platform" class="btn-secondary">
-            See the platform
+            See the platform <lucide-icon [img]="ArrowRight" [size]="14" />
           </a>
         </div>
       </div>
@@ -53,14 +61,14 @@
             More from every GPU you already run.
           </h2>
           <p class="platform-copy__intro">
-            Your models and serving pipelines stay as they are&mdash;same weights, APIs, schedulers, and containers. Nothing upstream has to move.
+            Your models and serving pipelines stay as they are. Same weights, APIs, schedulers, and containers. Nothing upstream has to move.
           </p>
           <p class="platform-copy__intro">
             Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
           </p>
           <!-- UNDO: single bridge paragraph
           <p class="platform-copy__intro">
-            Your models and serving pipelines stay as they are&mdash;same weights, APIs, schedulers, and containers, with nothing upstream to move. Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
+            Your models and serving pipelines stay as they are. Same weights, APIs, schedulers, and containers, with nothing upstream to move. Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
           </p>
           -->
           <div class="platform-copy__cta">

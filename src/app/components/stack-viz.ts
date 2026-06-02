@@ -86,9 +86,12 @@ import { Component } from '@angular/core';
           <path id="dh1" d="M240,456 L240,476"/>
         </defs>
 
+        <!-- Opaque base — hides hero dot grid behind diagram -->
+        <rect x="0" y="0" width="480" height="532" fill="#000000" />
+
         <!-- ══ LAYER 0: Models ═══════════════════════════════════════════════ -->
         <rect x="20" y="18" width="440" height="76" rx="6"
-          fill="none" stroke="#2a2a2a" stroke-width="1"/>
+          fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
         <text x="36" y="34" font-size="8"
           fill="#888" letter-spacing="0.18em">MODELS</text>
 
@@ -128,7 +131,7 @@ import { Component } from '@angular/core';
 
         <!-- ══ LAYER 1: Frameworks ════════════════════════════════════════════ -->
         <rect x="20" y="106" width="440" height="88" rx="6"
-          fill="none" stroke="#2a2a2a" stroke-width="1"/>
+          fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
         <text x="36" y="128" font-size="8"
           fill="#888" letter-spacing="0.18em">FRAMEWORKS</text>
 
@@ -205,7 +208,7 @@ import { Component } from '@angular/core';
 
         <!-- ══ LAYER 3: GPU Driver ════════════════════════════════════════════ -->
         <rect x="20" y="410" width="440" height="46" rx="6"
-          fill="none" stroke="#282828" stroke-width="1"/>
+          fill="#0a0a0a" stroke="#282828" stroke-width="1"/>
         <!-- chip icon + label vertically centered (layer cy=433) -->
         <use href="#ic-chip" x="178" y="423" width="20" height="20" fill="#888"/>
         <text x="204" y="433" dominant-baseline="middle" font-size="12"
@@ -247,38 +250,42 @@ import { Component } from '@angular/core';
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.9s" repeatCount="indefinite" begin="1.5s"/>
         </rect>
 
-        <!-- Column dividers (clear of text — middle/right content is text-anchor middle) -->
-        <line x1="100" y1="484" x2="100" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
-        <line x1="232" y1="484" x2="232" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
+        <!-- Column dividers — GPUs | silicon | interconnect -->
+        <line x1="114" y1="484" x2="114" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
+        <line x1="198" y1="484" x2="198" y2="525" stroke="#2a2a2a" stroke-width="0.8"/>
 
-        <!-- Silicon column (~100–232): official NVIDIA wordmark (layer cy=504) -->
+        <!-- Silicon column (~114–198): official NVIDIA wordmark (layer cy=504) -->
         <image
           class="stack-viz__nvidia-wordmark"
           href="/nvidia-logo.svg"
-          x="134"
+          x="124"
           y="497.5"
           width="64"
           height="13"
           preserveAspectRatio="xMidYMid meet"
         />
 
-        <!-- Interconnect column (~232–460), vertically centered in layer -->
+        <!-- Interconnect column (~198–460), vertically centered in layer -->
         <text
-          x="346"
+          x="329"
           y="504"
           text-anchor="middle"
           dominant-baseline="middle"
           font-size="8"
         >
-          <tspan x="346" dy="-0.55em" fill="#888" letter-spacing="0.05em">PCIe · NVLink · NVSwitch</tspan>
-          <tspan x="346" dy="1.15em" fill="#666" letter-spacing="0.05em">Single node · Multi-node</tspan>
+          <tspan x="329" dy="-0.55em" fill="#888" letter-spacing="0.05em">PCIe · NVLink · NVSwitch</tspan>
+          <tspan x="329" dy="1.15em" fill="#666" letter-spacing="0.05em">Single node · Multi-node</tspan>
         </text>
       </svg>
     </div>
   `,
   styles: [`
     :host { display: block; width: 100%; }
-    .stack-viz-wrap { width: 100%; }
+    .stack-viz-wrap {
+      width: 100%;
+      background: #000000;
+      border-radius: 6px;
+    }
     .stack-viz-wrap text,
     .stack-viz-wrap tspan {
       font-family: var(--font-mono), ui-monospace, monospace;

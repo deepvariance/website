@@ -52,16 +52,6 @@
   &.dot-grid-glow--active::before {
     opacity: 1;
   }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background:
-      radial-gradient(ellipse 95% 75% at 50% 50%, transparent 30%, $bg-base 100%);
-  }
 }
 
 .page-hero-grid__soft-glow,
@@ -88,7 +78,7 @@
   opacity: 1;
 }
 
-// Default inner content sits above vignette
+// Content above dot-grid layers
 .page-hero-grid > .container,
 .page-hero-grid > .page-hero-grid__inner,
 .hero-section > .container {

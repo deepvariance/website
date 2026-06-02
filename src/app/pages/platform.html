@@ -9,10 +9,10 @@
       <div class="platform-hero__copy">
         <div class="section-overline">Platform</div>
         <h1 class="platform-hero__title">
-          The runtime optimization layer<br />between framework<br />and silicon.
+          The optimization layer<br />between framework<br />and silicon.
         </h1>
         <p class="platform-hero__subtitle">
-          Deep Variance sits between PyTorch or vLLM and the CUDA driver. Same call graph in, optimized work out, no model changes.
+          Deep Variance is the runtime optimization layer between PyTorch or vLLM and the CUDA driver. Same call graph in, optimized work out, no model changes.
         </p>
       </div>
 
@@ -77,30 +77,36 @@
       <ul class="module-cards">
         @for (mod of modules; track mod.slug; let i = $index) {
           <li>
-            <a [routerLink]="['/platform', mod.slug]" class="module-card" [id]="mod.slug">
-              <div class="module-card__head">
-                <span class="module-card__index">0{{ i + 1 }}</span>
+            <a
+              [routerLink]="['/platform', mod.slug]"
+              class="module-card"
+              [id]="mod.slug"
+            >
+              <div class="module-card__top">
+                <div class="module-card__heading">
+                  <div class="module-card__icon" aria-hidden="true">
+                    <lucide-icon [img]="moduleIcon(mod.slug)" [size]="20" />
+                  </div>
+                  <h3 class="module-card__title">{{ mod.title }}</h3>
+                </div>
                 <span class="module-card__status">
                   <span class="module-card__status-dot"></span>
                   {{ mod.status }}
                 </span>
               </div>
 
-              <div class="module-card__subtitle">{{ mod.subtitle }}</div>
-              <h3 class="module-card__title">{{ mod.title }}</h3>
               <p class="module-card__tagline">{{ mod.tagline }}</p>
 
-              <div class="module-card__metric">
-                <div class="module-card__metric-value">{{ mod.metric }}</div>
-                <div class="module-card__metric-label">{{ mod.metricLabel }}</div>
+              <div class="module-card__foot">
+                <div class="module-card__metric">
+                  <div class="module-card__metric-value">{{ mod.metric }}</div>
+                  <div class="module-card__metric-label">{{ mod.metricLabel }}</div>
+                </div>
+                <span class="module-card__go" aria-hidden="true">
+                  <lucide-icon [img]="ArrowRight" [size]="22" />
+                </span>
               </div>
-
-              <div class="module-card__stack">{{ mod.stack }}</div>
-
-              <div class="module-card__cta">
-                <span>Read the full page</span>
-                <lucide-icon [img]="ArrowRight" [size]="14" />
-              </div>
+              <span class="module-card__sr-only">Read the full {{ mod.title }} page</span>
             </a>
           </li>
         }

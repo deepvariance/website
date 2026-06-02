@@ -78,6 +78,26 @@ h1, h2, h3, h4, h5, h6 {
   color: $text-primary;
   line-height: $line-height-display;
   letter-spacing: -0.02em;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+// Solid type only — no gradient text utilities
+:where(
+  h1, h2, h3, h4, h5, h6,
+  p,
+  .section-title,
+  .section-subtitle,
+  .platform-hero__title,
+  .platform-hero__subtitle,
+  .hero-headline,
+  .hero-tagline,
+  .metrics-band__title
+) {
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important;
 }
 
 h1 { font-size: $font-size-h1; }
