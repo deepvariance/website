@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as *;
+@use '../../styles/typography' as type;
 @use '../../styles/panels' as panels;
 
 .platform-page {
@@ -55,19 +56,14 @@
 }
 
 .section-overline {
+  @include type.type-overline;
   display: inline-block;
-  font-family: $font-mono;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: $text-muted;
   margin-bottom: 1.25rem;
 }
 
 .section-title {
   font-family: $font-display;
-  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+  font-size: $font-size-h2;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.025em;
@@ -76,10 +72,8 @@
 }
 
 .section-subtitle {
-  font-family: $font-body;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: $text-secondary;
+  @include type.type-body;
+  font-size: $font-size-body;
   max-width: 620px;
   margin: 0;
 }
@@ -143,10 +137,9 @@
 }
 
 .platform-hero__subtitle {
+  @include type.type-body;
   font-family: $font-mono;
-  font-size: 1rem;
   line-height: 1.75;
-  color: $text-secondary;
   background: none;
   -webkit-text-fill-color: currentColor;
   max-width: 560px;
@@ -374,7 +367,7 @@ $execution-accent: $dv-violet;
 
 .execution-flow__title {
   font-family: $font-display;
-  font-size: 1.0625rem;
+  font-size: $font-size-h5;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -382,21 +375,14 @@ $execution-accent: $dv-violet;
   margin: 0 0 0.35rem;
 
   @media (min-width: 640px) {
-    font-size: 1.1875rem;
+    font-size: $font-size-h4;
   }
 }
 
 .execution-flow__detail {
-  font-family: $font-body;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: $text-muted;
+  @include type.type-body-small;
   margin: 0;
   max-width: 52ch;
-
-  @media (min-width: 640px) {
-    font-size: 0.9375rem;
-  }
 }
 
 // Highlighted intercept step — violet featured panel (matches get-started)
@@ -476,22 +462,18 @@ $execution-accent: $dv-violet;
   @include panels.borderless-panel($panel-fill-strong, $radius-lg);
 }
 
-.diff-col__title {
+.diff-col__label {
+  @include type.type-card-label;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: $text-primary;
   margin: 0;
   padding-bottom: 1rem;
   border-bottom: 1px solid $bg-border-soft;
 
   lucide-icon {
     color: $text-secondary;
+    flex-shrink: 0;
   }
 }
 
@@ -507,12 +489,9 @@ $execution-accent: $dv-violet;
 .diff-list__item {
   display: grid;
   grid-template-columns: 14px 1fr;
-  gap: 0.875rem;
+  gap: 0.75rem;
   align-items: baseline;
-  font-family: $font-body;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: $text-secondary;
+  @include type.type-body-small;
 }
 
 .diff-list__bullet {
@@ -548,10 +527,9 @@ $execution-accent: $dv-violet;
 }
 
 .platform-cta__subtitle {
-  font-family: $font-body;
-  font-size: 1.0625rem;
+  @include type.type-body;
+  font-size: $font-size-body;
   line-height: 1.65;
-  color: $text-secondary;
   max-width: 560px;
   margin: 0 auto 2.5rem;
 }

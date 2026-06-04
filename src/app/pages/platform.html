@@ -130,9 +130,9 @@
 
       <div class="integration-diff__panels">
         <div class="diff-col">
-          <h3 class="diff-col__title">
+          <p class="diff-col__label">
             <lucide-icon [img]="RefreshCw" [size]="14" /> What changes
-          </h3>
+          </p>
           <ul class="diff-list">
             @for (item of whatChanges; track item) {
               <li class="diff-list__item">
@@ -144,9 +144,9 @@
         </div>
 
         <div class="diff-col">
-          <h3 class="diff-col__title">
+          <p class="diff-col__label">
             <lucide-icon [img]="Check" [size]="14" /> What stays
-          </h3>
+          </p>
           <ul class="diff-list">
             @for (item of whatStays; track item) {
               <li class="diff-list__item">

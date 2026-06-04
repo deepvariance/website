@@ -3,6 +3,7 @@
 // ══════════════════════════════════════════════════════════════════════════════
 
 @use 'styles/tokens' as *;
+@use 'styles/typography' as type;
 @use 'styles/buttons';
 @use 'styles/links' as links;
 @use 'styles/hero-grid';
@@ -100,9 +101,12 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: currentColor !important;
 }
 
-h1 { font-size: $font-size-h1; }
-h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
+// Low specificity so component classes (e.g. .diff-col__label) always win
+:where(h1) { font-size: $font-size-h1; }
+:where(h2) { font-size: $font-size-h2; }
+:where(h3) { font-size: $font-size-h3; }
+:where(h4) { font-size: $font-size-h4; }
+:where(h5) { font-size: $font-size-h5; }
 
 p {
   margin-bottom: $space-md;
@@ -204,12 +208,8 @@ button {
 
 // Typography utilities
 .label-caps {
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 600;
+  @include type.type-overline;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: $text-muted;
 }
 
 .label-mono {
