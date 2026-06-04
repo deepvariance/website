@@ -41,6 +41,11 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Local visual QA captures (regenerate with npm run visual:check)
+/screenshots/
+/test-results/
+/playwright-report/
+
 # Sanity Studio
 /studio/node_modules
 /studio/dist

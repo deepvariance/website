@@ -39,4 +39,6 @@ export const routes: Routes = [
   { path: 'privacy-policy', loadComponent: () => import('./pages/privacy-policy').then(m => m.PrivacyPolicyComponent) },
   { path: 'terms', loadComponent: () => import('./pages/terms').then(m => m.TermsComponent) },
   { path: 'cookie-policy', loadComponent: () => import('./pages/cookie-policy').then(m => m.CookiePolicyComponent) },
+
+  { path: '**', loadComponent: () => import('./pages/not-found').then(m => m.NotFoundComponent), data: { prerender: false } },
 ];

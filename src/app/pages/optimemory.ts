@@ -456,7 +456,7 @@ export class OptimemoryPageComponent {
       title: 'Optimemory | Deep Variance',
       description:
         'Optimemory reclaims fragmented VRAM your framework can\'t reach, letting you run larger models and bigger batches on the hardware you already own.',
-      path: '/optimemory',
+      path: '/platform/optimemory',
     });
   }
 }

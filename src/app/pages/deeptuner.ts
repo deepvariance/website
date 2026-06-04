@@ -385,7 +385,7 @@ export class DeepTunerPageComponent {
       title: 'DeepTuner | Deep Variance',
       description:
         'DeepTuner uses intermediate code analysis to predict energy-efficient GPU kernel configurations without runtime profiling. Up to 50% less energy and 2x throughput on MHA kernels.',
-      path: '/deeptuner',
+      path: '/platform/deeptuner',
     });
   }
 }

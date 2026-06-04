@@ -24,7 +24,7 @@ import {
   BenchModelData,
   BenchOption,
 } from '../components/bench-bars';
-import { ChallengeCallout } from '../components/challenge-callouts';
+import { ChallengeCallout } from '../data/challenge-callout';
 import { CodeWindowComponent } from '../components/code-window';
 import { CommandRowComponent } from '../components/command-row';
 import { CtaButtonComponent } from '../components/cta-button';
@@ -621,7 +621,7 @@ export class HyperRagPageComponent {
       title: 'HyperRAG | Deep Variance',
       description:
         'Your inference framework already has KV cache. HyperRAG makes it up to 6x more effective with smarter eviction, prefix reuse, and coordinated scheduling on top of vLLM, SGLang, and TensorRT-LLM.',
-      path: '/hyperrag',
+      path: '/platform/hyperrag',
     });
   }
 
