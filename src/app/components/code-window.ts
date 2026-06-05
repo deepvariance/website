@@ -16,29 +16,35 @@ import { Component, Input } from '@angular/core';
           <span class="w-2.5 h-2.5 rounded-full bg-amber-500/40 border border-amber-500/60"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/40 border border-emerald-500/60"></span>
         </div>
-        <span class="ml-3 text-[11px] font-mono text-on-surface-variant tracking-wider">{{ filename }}</span>
+        <span class="ml-3 ui-caption text-on-surface-variant tracking-wider">{{ filename }}</span>
         @if (language) {
-          <span class="ml-auto text-[10px] font-mono uppercase tracking-[0.2em] text-outline">
+          <span class="ml-auto label-caps text-[10px] text-outline">
             {{ language }}
           </span>
         }
       </div>
 
       <!-- Body -->
-      <div class="p-6 font-mono text-[13px] leading-relaxed text-on-surface-variant overflow-x-auto">
+      <div class="p-6 ui-code text-[13px] leading-relaxed text-on-surface-variant overflow-x-auto">
         <ng-content />
       </div>
 
       <!-- Optional console output footer -->
       @if (output) {
         <div
-          class="flex items-center justify-between px-5 py-3 border-t border-white/5 bg-black/30 text-[10px] font-mono uppercase tracking-[0.18em]"
+          class="flex items-center justify-between px-5 py-3 border-t border-white/5 bg-black/30 label-caps text-[10px]"
         >
           <span class="text-outline">{{ outputLabel }}</span>
           <span class="text-neon">{{ output }}</span>
         </div>
       }
     </div>
+  `,
+  styles: `
+    :host pre,
+    :host code {
+      font-family: var(--font-body) !important;
+    }
   `,
 })
 export class CodeWindowComponent {

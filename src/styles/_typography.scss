@@ -7,13 +7,13 @@
 // Display H1   clamp(2rem–4.5rem)   Space Grotesk 700   page heroes
 // Section H2   clamp(1.875–2.75rem)  Space Grotesk 700   .section-title
 // Card title   1.125rem (18px)       Space Grotesk 600   in-panel titles
-// Overline     11px                  JetBrains Mono 600  .section-overline, .label-caps
-// Body         15px (0.9375rem)      JetBrains Mono 400  paragraphs, lists
-// Body small   13px (0.8125rem)      JetBrains Mono 400  dense lists, meta
-// Micro        12px (0.75rem)        JetBrains Mono 600  chips, captions
+// Overline     11px                  DM Sans 600         .section-overline, .label-caps
+// Body         15px (0.9375rem)      DM Sans 400         paragraphs, lists
+// Body small   13px (0.8125rem)      DM Sans 400         dense lists, meta
+// Micro        12px (0.75rem)        DM Sans 600         chips, captions
 
 @mixin type-overline {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem; // 11px — section labels (matches .label-caps)
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -36,7 +36,7 @@
 }
 
 @mixin type-card-label {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: $font-size-micro;
   font-weight: 600;
   letter-spacing: 0.14em;

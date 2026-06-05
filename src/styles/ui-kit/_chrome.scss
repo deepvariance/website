@@ -1,0 +1,135 @@
+@use 'sass:color';
+@use '../tokens' as *;
+
+// ── UI Kit — marketing chrome ─────────────────────────────────────────────────
+
+.ui-icon,
+.dv-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  margin-bottom: 1.1rem;
+  background: $panel-fill-strong;
+  border: none;
+  box-shadow: $panel-inset;
+  color: $text-primary;
+
+  &.ui-icon--sm,
+  &.dv-feature-icon--sm {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+
+  &.ui-icon--center,
+  &.dv-feature-icon--center {
+    margin-inline: auto;
+  }
+
+  &.mb-0 {
+    margin-bottom: 0;
+  }
+}
+
+.ui-outcome-icon,
+.dv-outcome-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  background: $panel-fill-strong;
+  box-shadow: $panel-inset;
+  color: $text-primary;
+}
+
+.ui-step,
+.dv-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: $radius-full;
+  font-family: $font-label;
+  font-size: $font-size-micro;
+  font-weight: 600;
+  background: $panel-fill-strong;
+  color: $text-primary;
+  box-shadow: $panel-inset;
+}
+
+.ui-pill-toggle,
+.bench-view-pill {
+  background: color.mix(#ffffff, $bg-elevated, 35%);
+  border: 1px solid color.mix(#ffffff, $bg-border, 55%);
+  border-radius: $radius-sm;
+  padding: 5px 16px;
+  font-family: $font-display;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $text-muted;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background 150ms ease;
+  line-height: 1.5;
+
+  &:hover {
+    border-color: $form-field-border-hover;
+    color: $text-primary;
+  }
+
+  &.is-active {
+    background: $panel-fill-hover;
+    border-color: $form-field-border-hover;
+    color: $text-primary;
+  }
+}
+
+.ui-stat-label,
+.bench-stat-label {
+  font-family: $font-label;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $form-field-placeholder;
+  line-height: 1.25;
+
+  @media (min-width: 640px) {
+    letter-spacing: 0.16em;
+  }
+}
+
+.ui-stat-hint,
+.bench-stat-hint {
+  font-family: $font-label;
+  font-size: 0.625rem;
+  color: $text-faint;
+}
+
+.ui-arrow,
+.dv-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: $text-secondary;
+  transition: transform 240ms $duration-base ease;
+}
+
+.group:hover .ui-arrow,
+.group:hover .dv-arrow {
+  transform: translateX(4px);
+}

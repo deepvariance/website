@@ -15,11 +15,6 @@
           "options": {
             "outputPath": "dist/fusion-angular-tailwind-starter",
             "browser": "src/main.ts",
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            },
             "polyfills": [
               "zone.js"
             ],
@@ -31,7 +26,6 @@
               }
             ],
             "styles": [
-              "node_modules/prismjs/themes/prism-tomorrow.css",
               "src/styles.scss"
             ],
             "allowedCommonJsDependencies": [
@@ -58,12 +52,19 @@
                   "maximumError": "32kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "server": "src/main.server.ts",
+              "prerender": true,
+              "ssr": {
+                "entry": "server.ts"
+              }
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "ssr": false,
+              "prerender": false
             }
           },
           "defaultConfiguration": "production"

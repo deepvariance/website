@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="stack-viz-wrap" aria-hidden="true">
       <svg viewBox="0 0 480 466" xmlns="http://www.w3.org/2000/svg"
-           class="w-full h-auto" style="max-height:466px">
+           class="w-full h-auto dv-stack-viz-max">
         <defs>
           <style>@media(prefers-reduced-motion:reduce){.fp{display:none}}</style>
 
@@ -72,14 +72,14 @@ import { Component } from '@angular/core';
 
         <!-- ══ LAYER 0: Models ═══════════════════════════════════════════════ -->
         <rect x="20" y="18" width="440" height="76" rx="6"
-          fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
+          fill="var(--sv-bg)" stroke="var(--sv-border)" stroke-width="1"/>
         <text x="36" y="34" font-size="8"
-          fill="#888" letter-spacing="0.18em">MODELS</text>
+          fill="var(--sv-text-dim)" letter-spacing="0.18em">MODELS</text>
 
         <!-- 4 models at cx = 75, 185, 295, 405 — GPT · LLaMA · Gemini · Qwen -->
-        <use href="#ic-openai" x="65"  y="46" width="20" height="20" fill="#bbb"/>
-        <use href="#ic-meta"   x="175" y="46" width="20" height="20" fill="#bbb"/>
-        <use href="#ic-gemini" x="285" y="46" width="20" height="20" fill="#bbb"/>
+        <use href="#ic-openai" x="65"  y="46" width="20" height="20" fill="var(--sv-text-secondary)"/>
+        <use href="#ic-meta"   x="175" y="46" width="20" height="20" fill="var(--sv-text-secondary)"/>
+        <use href="#ic-gemini" x="285" y="46" width="20" height="20" fill="var(--sv-text-secondary)"/>
         <image
           class="stack-viz__model-logo"
           href="/model-logos/qwen.svg"
@@ -90,190 +90,162 @@ import { Component } from '@angular/core';
           preserveAspectRatio="xMidYMid meet"
         />
 
-        <text x="75"  y="80" font-size="9" fill="#ccc" text-anchor="middle">GPT</text>
-        <text x="185" y="80" font-size="9" fill="#ccc" text-anchor="middle">LLaMA</text>
-        <text x="295" y="80" font-size="9" fill="#ccc" text-anchor="middle">Gemini</text>
-        <text x="405" y="80" font-size="9" fill="#ccc" text-anchor="middle">Qwen</text>
+        <text x="75"  y="80" font-size="9" fill="var(--sv-text-secondary)" text-anchor="middle">GPT</text>
+        <text x="185" y="80" font-size="9" fill="var(--sv-text-secondary)" text-anchor="middle">LLaMA</text>
+        <text x="295" y="80" font-size="9" fill="var(--sv-text-secondary)" text-anchor="middle">Gemini</text>
+        <text x="405" y="80" font-size="9" fill="var(--sv-text-secondary)" text-anchor="middle">Qwen</text>
 
         <!-- Connectors model → framework + animated particles -->
-        <line x1="95"  y1="94" x2="95"  y2="106" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="240" y1="94" x2="240" y2="106" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="385" y1="94" x2="385" y2="106" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="95"  y1="94" x2="95"  y2="106" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="240" y1="94" x2="240" y2="106" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="385" y1="94" x2="385" y2="106" stroke="var(--sv-border)" stroke-width="1"/>
 
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
-        <circle r="2" fill="#555" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.35s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.35s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.7s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.7s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.1s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.1s"/></circle>
-        <circle r="2" fill="#555" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.45s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.45s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.8s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.8s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.2s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.2s"/></circle>
-        <circle r="2" fill="#555" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.55s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.55s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.9s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.9s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
+        <circle r="2" fill="var(--sv-flow-alt)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.35s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.35s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.7s"><mpath href="#mf1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.7s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.1s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.1s"/></circle>
+        <circle r="2" fill="var(--sv-flow-alt)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.45s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.45s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.8s"><mpath href="#mf2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.8s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.2s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.2s"/></circle>
+        <circle r="2" fill="var(--sv-flow-alt)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.55s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.55s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.9s"><mpath href="#mf3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.9s"/></circle>
 
         <!-- ══ LAYER 1: Frameworks ════════════════════════════════════════════ -->
         <rect x="20" y="106" width="440" height="88" rx="6"
-          fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
+          fill="var(--sv-bg)" stroke="var(--sv-border)" stroke-width="1"/>
         <text x="36" y="128" font-size="8"
-          fill="#888" letter-spacing="0.18em">FRAMEWORKS</text>
+          fill="var(--sv-text-dim)" letter-spacing="0.18em">FRAMEWORKS</text>
 
         <!-- Pills aligned to cx=95, 240, 385 — cy=166 (nudged below FRAMEWORKS label) -->
         <!-- PyTorch cx=95: x=40, w=110 -->
-        <rect x="40"  y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-pytorch"    x="50"  y="159" width="14" height="14" style="color:#bbb"/>
-        <text x="70"  y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">PyTorch</text>
+        <rect x="40"  y="152" width="110" height="28" rx="4" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-pytorch"    x="50"  y="159" width="14" height="14" class="stack-viz__icon"/>
+        <text x="70"  y="166" dominant-baseline="middle" font-size="11" fill="var(--sv-text-secondary)">PyTorch</text>
 
         <!-- TensorFlow cx=240: x=185, w=110 -->
-        <rect x="185" y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-tensorflow" x="195" y="159" width="14" height="14" style="color:#bbb"/>
-        <text x="215" y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">TensorFlow</text>
+        <rect x="185" y="152" width="110" height="28" rx="4" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-tensorflow" x="195" y="159" width="14" height="14" class="stack-viz__icon"/>
+        <text x="215" y="166" dominant-baseline="middle" font-size="11" fill="var(--sv-text-secondary)">TensorFlow</text>
 
         <!-- JAX pill with isometric cube icon -->
-        <rect x="330" y="152" width="110" height="28" rx="4" fill="#161616" stroke="#3a3a3a" stroke-width="1"/>
-        <use href="#ic-jax" x="344" y="159.5" width="13" height="13" style="color:#bbb"/>
-        <text x="364" y="166" dominant-baseline="middle" font-size="11" fill="#d4d4d4">JAX</text>
+        <rect x="330" y="152" width="110" height="28" rx="4" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-jax" x="344" y="159.5" width="13" height="13" class="stack-viz__icon"/>
+        <text x="364" y="166" dominant-baseline="middle" font-size="11" fill="var(--sv-text-secondary)">JAX</text>
 
         <!-- ══ Flow: Frameworks → DV  (44px, animated) ═══════════════════════ -->
-        <line x1="95"  y1="194" x2="95"  y2="238" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="240" y1="194" x2="240" y2="238" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="385" y1="194" x2="385" y2="238" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="95"  y1="194" x2="95"  y2="238" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="240" y1="194" x2="240" y2="238" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="385" y1="194" x2="385" y2="238" stroke="var(--sv-border)" stroke-width="1"/>
 
         <!-- 3 staggered particles per path -->
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0s"/></circle>
-        <circle r="2.5" fill="#888" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.37s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.37s"/></circle>
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.74s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.74s"/></circle>
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.1s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.1s"/></circle>
-        <circle r="2.5" fill="#888" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.47s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.47s"/></circle>
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.84s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.84s"/></circle>
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.2s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.2s"/></circle>
-        <circle r="2.5" fill="#888" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.57s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.57s"/></circle>
-        <circle r="2.5" fill="#aaa" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.94s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.94s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0s"/></circle>
+        <circle r="2.5" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.37s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.37s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.74s"><mpath href="#fd1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.74s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.1s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.1s"/></circle>
+        <circle r="2.5" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.47s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.47s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.84s"><mpath href="#fd2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.84s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.2s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.2s"/></circle>
+        <circle r="2.5" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.57s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.57s"/></circle>
+        <circle r="2.5" fill="var(--sv-flow)" class="fp"><animateMotion dur="1.1s" repeatCount="indefinite" begin="0.94s"><mpath href="#fd3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="1.1s" repeatCount="indefinite" begin="0.94s"/></circle>
 
         <!-- ══ LAYER 2: Deep Variance Stack (pulsing border) ═════════════════ -->
-        <rect x="20" y="238" width="440" height="140" rx="6" fill="#0d0d0d" stroke="#ffffff" stroke-width="1.5">
+        <rect x="20" y="238" width="440" height="140" rx="6" fill="var(--sv-bg)" stroke="var(--sv-text-primary)" stroke-width="1.5">
           <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3.5s"
             repeatCount="indefinite" calcMode="spline"
             keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
         </rect>
         <text x="36" y="260" font-size="9"
-          fill="#777" letter-spacing="0.14em">DEEP VARIANCE STACK</text>
+          fill="var(--sv-text-muted)" letter-spacing="0.14em">DEEP VARIANCE STACK</text>
 
         <!-- Optimemory (cx=95) -->
-        <rect x="34"  y="270" width="122" height="90" rx="5" fill="#141414" stroke="#555555" stroke-width="1"/>
-        <use href="#ic-optimemory" x="81"  y="284" width="28" height="28" style="color:#ffffff"/>
+        <rect x="34"  y="270" width="122" height="90" rx="5" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-optimemory" x="81"  y="284" width="28" height="28" class="stack-viz__icon stack-viz__icon--light"/>
         <text x="95"  y="336" font-family="Space Grotesk,sans-serif" font-size="13"
-          fill="#ffffff" text-anchor="middle" font-weight="600">Optimemory</text>
+          fill="var(--sv-text-primary)" text-anchor="middle" font-weight="600">Optimemory</text>
 
         <!-- HyperRAG (cx=240) -->
-        <rect x="179" y="270" width="122" height="90" rx="5" fill="#141414" stroke="#555555" stroke-width="1"/>
-        <use href="#ic-hyperrag"   x="226" y="284" width="28" height="28" style="color:#ffffff"/>
+        <rect x="179" y="270" width="122" height="90" rx="5" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-hyperrag"   x="226" y="284" width="28" height="28" class="stack-viz__icon stack-viz__icon--light"/>
         <text x="240" y="336" font-family="Space Grotesk,sans-serif" font-size="13"
-          fill="#ffffff" text-anchor="middle" font-weight="600">HyperRAG</text>
+          fill="var(--sv-text-primary)" text-anchor="middle" font-weight="600">HyperRAG</text>
 
         <!-- DeepTuner (cx=385) -->
-        <rect x="324" y="270" width="122" height="90" rx="5" fill="#141414" stroke="#555555" stroke-width="1"/>
-        <use href="#ic-deeptuner"  x="371" y="284" width="28" height="28" style="color:#ffffff"/>
+        <rect x="324" y="270" width="122" height="90" rx="5" fill="var(--sv-panel)" stroke="var(--sv-border-soft)" stroke-width="1"/>
+        <use href="#ic-deeptuner"  x="371" y="284" width="28" height="28" class="stack-viz__icon stack-viz__icon--light"/>
         <text x="385" y="336" font-family="Space Grotesk,sans-serif" font-size="13"
-          fill="#ffffff" text-anchor="middle" font-weight="600">DeepTuner</text>
+          fill="var(--sv-text-primary)" text-anchor="middle" font-weight="600">DeepTuner</text>
 
         <!-- ══ Flow: DV → GPU hardware (32px) ═════════════════════════════════ -->
-        <line x1="95"  y1="378" x2="95"  y2="410" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="240" y1="378" x2="240" y2="410" stroke="#2a2a2a" stroke-width="1"/>
-        <line x1="385" y1="378" x2="385" y2="410" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="95"  y1="378" x2="95"  y2="410" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="240" y1="378" x2="240" y2="410" stroke="var(--sv-border)" stroke-width="1"/>
+        <line x1="385" y1="378" x2="385" y2="410" stroke="var(--sv-border)" stroke-width="1"/>
 
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.5s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.5s"/></circle>
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.17s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.17s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.67s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.67s"/></circle>
-        <circle r="2" fill="#888" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.33s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.33s"/></circle>
-        <circle r="2" fill="#666" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.83s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.83s"/></circle>
+        <circle r="2" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.5s"><mpath href="#dh1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <circle r="2" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.17s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.17s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.67s"><mpath href="#dh2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.67s"/></circle>
+        <circle r="2" fill="var(--sv-text-dim)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.33s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.33s"/></circle>
+        <circle r="2" fill="var(--sv-text-faint)" class="fp"><animateMotion dur="1.0s" repeatCount="indefinite" begin="0.83s"><mpath href="#dh3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="1.0s" repeatCount="indefinite" begin="0.83s"/></circle>
 
         <!-- ══ LAYER 3: GPU Hardware (animated active/inactive cluster) ════════ -->
         <rect x="20" y="410" width="440" height="56" rx="6"
-          fill="#0a0a0a" stroke="#3a3a3a" stroke-width="1"/>
+          fill="var(--sv-bg)" stroke="var(--sv-border-soft)" stroke-width="1"/>
 
         <!-- 2×4 chip grid — inset from layer edge (left column) -->
         <!-- Row 1: y=426, Row 2: y=440 → grid center y=438 matches layer center -->
-        <rect x="38" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="38" y="426" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.1s" repeatCount="indefinite" begin="0s"/>
         </rect>
-        <rect x="56" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="56" y="426" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.8s" repeatCount="indefinite" begin="0.7s"/>
         </rect>
-        <rect x="74" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="74" y="426" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.4s" repeatCount="indefinite" begin="1.3s"/>
         </rect>
-        <rect x="92" y="426" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="92" y="426" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.6s" repeatCount="indefinite" begin="0.3s"/>
         </rect>
-        <rect x="38" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="38" y="440" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.2s" repeatCount="indefinite" begin="1.9s"/>
         </rect>
-        <rect x="56" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="56" y="440" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.7s" repeatCount="indefinite" begin="0.9s"/>
         </rect>
-        <rect x="74" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="74" y="440" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="2.6s" repeatCount="indefinite" begin="0.5s"/>
         </rect>
-        <rect x="92" y="440" width="14" height="10" rx="1.5" fill="#1a2e00" stroke="#76b900" stroke-width="0.9">
+        <rect x="92" y="440" width="14" height="10" rx="1.5" fill="var(--sv-vendor-nvidia-dim)" stroke="var(--sv-vendor-nvidia)" stroke-width="0.9">
           <animate attributeName="opacity" values="0.15;1;0.15" dur="1.9s" repeatCount="indefinite" begin="1.5s"/>
         </rect>
 
         <!-- Column dividers — GPUs | silicon | interconnect -->
-        <line x1="114" y1="418" x2="114" y2="459" stroke="#2a2a2a" stroke-width="0.8"/>
-        <line x1="198" y1="418" x2="198" y2="459" stroke="#2a2a2a" stroke-width="0.8"/>
+        <line x1="126" y1="418" x2="126" y2="459" stroke="var(--sv-border)" stroke-width="0.8"/>
+        <line x1="212" y1="418" x2="212" y2="459" stroke="var(--sv-border)" stroke-width="0.8"/>
 
-        <!-- Silicon column (~114–198): official NVIDIA wordmark (layer cy=438) -->
+        <!-- Silicon column (~126–212): official NVIDIA wordmark (layer cy=438) -->
         <image
           class="stack-viz__nvidia-wordmark"
           href="/nvidia-logo.svg"
-          x="124"
+          x="136"
           y="431.5"
           width="64"
           height="13"
           preserveAspectRatio="xMidYMid meet"
         />
 
-        <!-- Interconnect column (~198–460), vertically centered in layer -->
+        <!-- Interconnect column (~212–460), vertically centered in layer -->
         <text
           class="stack-viz__interconnect"
-          x="329"
+          x="336"
           y="438"
           text-anchor="middle"
           dominant-baseline="middle"
-        >
-          <tspan x="329" dy="-0.55em" fill="#888" letter-spacing="0.05em">PCIe · NVLink · NVSwitch</tspan>
-          <tspan x="329" dy="1.15em" fill="#666" letter-spacing="0.05em">Single node · Multi-node</tspan>
-        </text>
+          fill="var(--sv-text-dim)"
+          letter-spacing="0.06em"
+        >PCIe / NVLINK</text>
       </svg>
     </div>
   `,
-  styles: [`
-    :host { display: block; width: 100%; }
-    .stack-viz-wrap {
-      width: 100%;
-      background: transparent;
-    }
-    .stack-viz-wrap text,
-    .stack-viz-wrap tspan {
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-feature-settings: 'liga' 0, 'calt' 0;
-    }
-    .stack-viz__nvidia-wordmark {
-      opacity: 0.7;
-      filter: grayscale(1) brightness(0.72) contrast(0.92);
-    }
-    .stack-viz__model-logo {
-      opacity: 0.88;
-      filter: grayscale(1) brightness(0.9) contrast(0.95);
-    }
-    .stack-viz__interconnect {
-      font-size: 8px;
-    }
-    @media (min-width: 1024px) {
-      .stack-viz__interconnect {
-        font-size: 10px;
-      }
-    }
-  `],
+  styleUrl: './stack-viz.scss',
 })
 export class StackVizComponent {}

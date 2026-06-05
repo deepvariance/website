@@ -20,7 +20,7 @@ import { Component, Input } from '@angular/core';
       </h2>
       @if (subhead) {
         <p
-          class="mt-5 font-mono text-on-surface-variant text-base leading-relaxed"
+          class="mt-5 ui-body text-on-surface-variant leading-relaxed"
           [class.max-w-3xl]="align === 'center'"
           [class.mx-auto]="align === 'center'"
         >

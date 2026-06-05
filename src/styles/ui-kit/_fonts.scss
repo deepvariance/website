@@ -1,0 +1,69 @@
+@use '../tokens' as *;
+
+// ── Global font enforcement ───────────────────────────────────────────────────
+// Prism, Tailwind Typography, and `monospace` on macOS often resolve to JetBrains Mono.
+// These rules keep the site on Space Grotesk + DM Sans only.
+
+html {
+  font-family: $font-body;
+}
+
+body {
+  font-family: $font-body;
+}
+
+:where(
+  code,
+  pre,
+  kbd,
+  samp,
+  .ui-code,
+  .code-window,
+  .code-window pre,
+  .code-window code,
+  [class*='language-']
+) {
+  font-family: $font-body !important;
+}
+
+:where(
+  .label-caps,
+  .label-mono,
+  .ui-overline,
+  .ui-caption,
+  .ui-table-head,
+  .ui-stat-label,
+  .ui-stat-hint,
+  .ui-link,
+  .ui-arrow,
+  .strip-eyebrow,
+  .bench-stat-label,
+  .bench-stat-hint
+) {
+  font-family: $font-label !important;
+}
+
+:where(.ui-body, .ui-body-sm, .text-body, .text-body-sm) {
+  font-family: $font-body !important;
+}
+
+:where(.font-display, .ui-metric, h1, h2, h3, h4, h5, h6) {
+  font-family: $font-display;
+}
+
+.font-body {
+  font-family: $font-body !important;
+}
+
+.font-label {
+  font-family: $font-label !important;
+}
+
+.font-display {
+  font-family: $font-display !important;
+}
+
+// Legacy Tailwind name — same as font-label, NOT system monospace
+.font-mono {
+  font-family: $font-label !important;
+}

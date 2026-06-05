@@ -12,12 +12,12 @@ import { Component, Input } from '@angular/core';
     <img
       src="/wordmark-traced.svg"
       [style.height.px]="size"
-      style="width:auto;display:block;"
+      class="dv-wordmark__img"
       alt="Deep Variance"
       draggable="false"
     />
   `,
-  styles: [':host { display: inline-flex; align-items: center; }'],
+  styleUrl: './wordmark.scss',
 })
 export class WordmarkComponent {
   /** Height in px — width scales automatically from the SVG viewBox ratio. */

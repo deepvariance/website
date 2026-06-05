@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
+import { HeroFluidShaderComponent } from '../components/hero-fluid-shader';
 import { CodeWindowComponent } from '../components/code-window';
 import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-docs',
   standalone: true,
-  imports: [DotGridGlowDirective, CodeWindowComponent],
+  imports: [HeroFluidShaderComponent, CodeWindowComponent],
   templateUrl: './docs.html',
   styleUrl: './docs.scss',
 })

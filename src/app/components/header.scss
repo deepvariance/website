@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../styles/tokens' as *;
 @use '../../styles/panels' as panels;
 
@@ -34,24 +35,22 @@
   pointer-events: auto;
   min-width: 0;
 
-  background: rgba(12, 12, 12, 0.7);
+  background: color.mix(transparent, $form-panel-bg, 70%);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid $form-field-border;
   border-radius: 14px;
 
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 10px 32px rgba(0, 0, 0, 0.55);
+  box-shadow: $panel-inset, $shadow-elevated;
 
   transition: background $duration-base $ease-out-expo,
               border-color $duration-base $ease-out-expo,
               box-shadow $duration-base $ease-out-expo;
 
   .dv-header--scrolled & {
-    background: rgba(8, 8, 8, 0.82);
-    border-color: rgba(255, 255, 255, 0.10);
+    background: color.mix(transparent, $bg-base, 82%);
+    border-color: $form-field-border;
   }
 
   @media (min-width: 768px) {
@@ -103,7 +102,7 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.5rem 0.875rem;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 500;
   color: $text-secondary;
@@ -125,7 +124,7 @@
 
   &:hover {
     color: $text-primary;
-    background: rgba(255, 255, 255, 0.05);
+    background: $panel-fill-hover;
     text-decoration: none;
   }
 
@@ -146,7 +145,7 @@
 
     &:hover {
       color: $text-primary;
-      background: rgba(255, 255, 255, 0.05);
+      background: $panel-fill-hover;
     }
   }
 
@@ -171,7 +170,7 @@
   left: 50%;
   transform: translateX(-50%);
   @include panels.borderless-panel($panel-fill-strong, 20px);
-  box-shadow: $panel-inset, 0 12px 32px rgba(0, 0, 0, 0.6);
+  box-shadow: $panel-inset, $shadow-elevated;
   padding: $space-md;
   min-width: 560px;
   opacity: 0;
@@ -201,7 +200,7 @@
 
   &:hover,
   &:focus-visible {
-    background: rgba(255, 255, 255, 0.053);
+    background: $panel-fill;
   }
 }
 
@@ -212,14 +211,14 @@
 }
 
 .dv-mega-menu__title {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 600;
   color: $text-primary;
 }
 
 .dv-mega-menu__desc {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   color: $text-muted;
   line-height: 1.5;
@@ -260,7 +259,7 @@
 
   &:hover {
     color: $text-primary;
-    background: rgba(255, 255, 255, 0.053);
+    background: $panel-fill;
   }
 }
 
@@ -275,7 +274,7 @@
   padding: 0;
   border: none;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.52);
+  background: color.mix(transparent, $bg-base, 52%);
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
   animation: dv-mobile-backdrop-in 220ms $ease-out-expo both;
@@ -304,14 +303,14 @@
   left: 1rem;
   right: 1rem;
   z-index: 2;
-  background: rgba(23, 23, 23, 0.94);
+  background: color.mix(transparent, $bg-elevated, 94%);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: none;
   border-radius: 16px;
   box-shadow:
     $panel-inset,
-    0 12px 32px rgba(0, 0, 0, 0.6);
+    $shadow-elevated;
   padding: $space-md;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
@@ -335,7 +334,7 @@
   display: block;
   position: relative;
   padding: $space-md $space-md $space-md calc(#{$space-md} + 3px);
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.875rem;
   font-weight: 500;
   color: $text-secondary;
@@ -351,15 +350,15 @@
   &:hover,
   &:focus-visible {
     color: $text-primary;
-    background: rgba(255, 255, 255, 0.05);
+    background: $panel-fill-hover;
     text-decoration: none;
   }
 
   &--active {
     color: $text-primary;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.053);
-    border-left-color: rgba(255, 255, 255, 0.5);
+    background: $panel-fill;
+    border-left-color: $form-field-border-hover;
   }
 }
 

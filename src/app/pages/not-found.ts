@@ -35,25 +35,25 @@ import { SeoService } from '../services/seo.service';
       text-align: center;
     }
     .not-found__code {
-      font-family: var(--font-mono), ui-monospace, monospace;
+      font-family: var(--font-label);
       font-size: 0.75rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted, #737373);
+      color: var(--text-muted);
       margin-bottom: 0.75rem;
     }
     .not-found__title {
-      font-family: var(--font-display), sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
-      color: #fff;
+      color: var(--text-primary);
       margin-bottom: 1rem;
     }
     .not-found__body {
-      font-family: var(--font-mono), ui-monospace, monospace;
+      font-family: var(--font-body);
       font-size: 0.875rem;
       line-height: 1.6;
-      color: #a3a3a3;
+      color: var(--text-secondary);
       margin-bottom: 1.5rem;
     }
     .not-found__actions {

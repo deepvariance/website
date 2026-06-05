@@ -24,6 +24,8 @@ module.exports = {
         'on-surface-variant':  '#a3a3a3',
         outline:               '#737373',
         'outline-variant':     '#2a2a2a',
+        faint:                 '#525252',
+        eyebrow:               '#8c8c8c',
 
         // ── Borders ───────────────────────────────────────────────────────────
         border:       '#1a1a1a',
@@ -67,8 +69,10 @@ module.exports = {
       fontFamily: {
         display:  ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans:     ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body:     ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        mono:     ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        body:     ['"DM Sans"', 'system-ui', 'sans-serif'],
+        label:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+        // Legacy alias — maps to DM Sans, not a monospace stack
+        mono:     ['"DM Sans"', 'system-ui', 'sans-serif'],
         editorial:['"Space Grotesk"', 'system-ui', 'sans-serif'],
       },
 
@@ -110,6 +114,10 @@ module.exports = {
       },
       maxWidth: {
         'container-max': '1440px',
+        'grid-max': 'var(--grid-max)',
+      },
+      padding: {
+        gutter: 'var(--grid-gutter)',
       },
 
       animation: {

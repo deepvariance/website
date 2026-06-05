@@ -9,6 +9,8 @@
 @use 'styles/hero-grid';
 @use 'styles/panels';
 @use 'styles/module-card';
+@use 'styles/prism-theme';
+@use 'styles/ui-kit';
 
 @tailwind components;
 @tailwind utilities;
@@ -28,6 +30,7 @@
   --bg-surface: #{$bg-surface};
   --bg-elevated: #{$bg-elevated};
   --panel-fill: #{$panel-fill};
+  --panel-fill-hover: #{$panel-fill-hover};
   --panel-fill-strong: #{$panel-fill-strong};
   --panel-fill-highlight: #{$panel-fill-highlight};
   --dv-violet: #{$dv-violet};
@@ -42,9 +45,21 @@
   --text-primary: #{$text-primary};
   --text-secondary: #{$text-secondary};
   --text-muted: #{$text-muted};
+  --text-faint: #{$text-faint};
+  --panel-divider: #{$panel-divider};
+  --panel-inset: #{$panel-inset};
+  --chart-bar-top: #{$chart-bar-top};
+  --chart-bar-bottom: #{$chart-bar-bottom};
+  --chart-bar-baseline: #{$chart-bar-baseline};
+  --chart-tooltip-bg: #{$chart-tooltip-bg};
+  --header-offset: #{$header-offset};
+  --grid-max: #{$grid-max};
+  --grid-gutter: #{$grid-gutter};
   --font-display: #{$font-display};
   --font-body: #{$font-body};
-  --font-mono: #{$font-mono};
+  --font-label: #{$font-label};
+  // Legacy alias — never use a monospace fallback with this name
+  --font-mono: var(--font-label);
 }
 
 html {
@@ -180,13 +195,12 @@ button {
 .app-shell {
   min-height: 100vh;
   min-height: 100svh;
+  overflow-x: clip;
+  max-width: 100%;
 
   @media (hover: hover) and (pointer: fine) {
     min-height: 100dvh;
   }
-
-  overflow-x: clip;
-  max-width: 100%;
 }
 
 .app-shell__main {
@@ -194,39 +208,10 @@ button {
   min-height: 0;
 }
 
-// ── UTILITY CLASSES ────────────────────────────────────────────────────────────
-
-.container {
-  max-width: $grid-max;
-  margin: 0 auto;
-  padding: 0 $grid-gutter;
-}
+// ── UTILITY CLASSES (layout/type chrome → styles/ui-kit/) ─────────────────────
 
 .section-padding {
   padding: $section-padding;
-}
-
-// Typography utilities
-.label-caps {
-  @include type.type-overline;
-  letter-spacing: 0.12em;
-}
-
-.label-mono {
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $text-muted;
-}
-
-.metric-number {
-  font-family: $font-mono;
-  font-size: $font-size-metric;
-  font-weight: 700;
-  color: $metric-color;
-  line-height: 1;
 }
 
 // Check list (e.g. “What this addresses” on use-case pages)

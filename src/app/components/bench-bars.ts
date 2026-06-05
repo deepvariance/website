@@ -66,7 +66,7 @@ export interface BenchOption {
         <div class="dv-pill-row mb-6">
           @for (opt of modelOptions ?? []; track opt.id) {
             <button
-              class="dv-pill"
+              class="bench-view-pill"
               [class.is-active]="model() === opt.id"
               (click)="onModelChange(opt.id)"
             >
@@ -78,7 +78,7 @@ export interface BenchOption {
       }
 
       <!-- Chart: y-axis + bar groups -->
-      <div class="flex dv-chart-area" style="overflow:visible">
+      <div class="flex dv-chart-area dv-chart-overflow">
 
         <!-- Y-axis labels -->
         <div class="dv-y-axis relative shrink-0">
@@ -91,7 +91,7 @@ export interface BenchOption {
         </div>
 
         <!-- Chart body -->
-        <div class="relative flex-1" style="overflow:visible">
+        <div class="relative flex-1 dv-chart-overflow">
 
           <!-- Grid lines -->
           @for (tick of yTicks(); track tick) {
@@ -99,7 +99,7 @@ export interface BenchOption {
           }
 
           <!-- Bar groups: stretch so children get a concrete height to compute % against -->
-          <div class="absolute inset-0 flex items-stretch" style="gap:8px;padding-right:4px">
+          <div class="absolute inset-0 flex items-stretch dv-bar-row">
             @for (w of displayWorkloads(); track w.id) {
               <div
                 class="dv-bar-group"
@@ -129,7 +129,7 @@ export interface BenchOption {
       </div>
 
       <!-- X-axis labels -->
-      <div class="flex mt-2 mb-6 dv-x-axis" style="gap:8px">
+      <div class="flex mt-2 mb-6 dv-x-axis dv-x-axis--gap">
         @for (w of activeWorkloads(); track w.id) {
           <div class="dv-x-label">{{ w.label }}</div>
         }
@@ -148,241 +148,7 @@ export interface BenchOption {
 
     </div>
   `,
-  styles: [
-    `
-    :host { display: block; }
-
-    .dv-bench-card {
-      background: #525256;
-      border: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
-      border-radius: 12px;
-      padding: 16px;
-    }
-    @media (min-width: 640px) {
-      .dv-bench-card { padding: 28px; }
-    }
-
-    /* ── Hero ─────────────────────────────────── */
-    .dv-bench-hero { margin-bottom: 20px; }
-    .dv-bench-hero-num {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-    @media (min-width: 640px) {
-      .dv-bench-hero-num { font-size: clamp(40px, 5vw, 56px); }
-    }
-    .dv-bench-hero-x {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: #a3a3a3;
-    }
-    .dv-bench-hero-caption {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: #ffffff;
-    }
-    .dv-bench-hero-dim { color: #9ca3af; font-weight: 400; }
-    .dv-bench-hero-sub {
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 11px;
-      color: #6b7280;
-      letter-spacing: 0.02em;
-      margin: 0;
-    }
-
-    /* ── Model pills ──────────────────────────── */
-    .dv-pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .dv-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #5a5a69;
-      border: 1px solid #686880;
-      border-radius: 6px;
-      padding: 5px 14px;
-      font-size: 13px;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-weight: 500;
-      color: #9ca3af;
-      cursor: pointer;
-      transition: border-color 150ms, color 150ms, background 150ms;
-      line-height: 1.5;
-    }
-    .dv-pill:hover { border-color: rgba(255, 255, 255, 0.2); color: #ffffff; }
-    .dv-pill.is-active { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); color: #ffffff; }
-    
-    .dv-pill-logo {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      object-fit: contain;
-      opacity: 0.9;
-      transition: opacity 150ms;
-      filter: brightness(0) invert(1);
-    }
-    .dv-pill:hover .dv-pill-logo,
-    .dv-pill.is-active .dv-pill-logo {
-      opacity: 1;
-    }
-    
-    /* Keep colored logos as-is */
-    .dv-pill-logo[src*="meta.svg"],
-    .dv-pill-logo[src*="google.svg"],
-    .dv-pill-logo[src*="microsoft.svg"],
-    .dv-pill-logo[src*="mistral.svg"],
-    .dv-pill-logo[src*="qwen.svg"],
-    .dv-pill-logo[src*="deepseek.svg"] {
-      filter: none;
-    }
-
-    /* ── Chart + Y-axis dimensions (responsive) ── */
-    .dv-chart-area { height: 160px; }
-    .dv-y-axis     { width: 34px; }
-    .dv-x-axis     { padding-left: 34px; }
-    @media (min-width: 640px) {
-      .dv-chart-area { height: 200px; }
-      .dv-y-axis     { width: 44px; }
-      .dv-x-axis     { padding-left: 44px; }
-    }
-
-    /* ── Y-axis ───────────────────────────────── */
-    .dv-y-label {
-      position: absolute;
-      right: 8px;
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 10px;
-      color: #4b5563;
-      line-height: 1;
-      transform: translateY(50%);
-      white-space: nowrap;
-    }
-
-    /* ── Grid lines ───────────────────────────── */
-    .dv-grid-line {
-      position: absolute;
-      left: 0; right: 0;
-      height: 1px;
-      background: rgba(255,255,255,0.066);
-    }
-
-    /* ── Bar groups ───────────────────────────── */
-    .dv-bar-group {
-      position: relative;
-      flex: 1;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 4px;
-      cursor: default;
-    }
-    .dv-bar {
-      width: 22px;
-      flex: none;
-      border-radius: 3px 3px 0 0;
-      min-height: 2px;
-      transition: height 600ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @media (min-width: 640px) {
-      .dv-bar { width: 30px; }
-    }
-    .dv-bar--hyper {
-      background: linear-gradient(180deg, #d4d4d4 0%, #525252 100%);
-      box-shadow: none;
-    }
-    .dv-bar--base { background: #2d2d4e; }
-
-    /* ── Tooltip ──────────────────────────────── */
-    .dv-tooltip {
-      position: absolute;
-      bottom: calc(100% + 10px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: #16162a;
-      border: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
-      border-radius: 8px;
-      padding: 10px 14px;
-      white-space: nowrap;
-      z-index: 20;
-      pointer-events: none;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    }
-    .dv-tooltip-title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #ffffff;
-      margin: 0 0 6px;
-    }
-    .dv-tooltip-row { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-    .dv-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-    .dv-dot--hyper { background: #d4d4d4; }
-    .dv-dot--base  { background: #4b5563; }
-    .dv-tooltip-text {
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-    .dv-tooltip-text b { color: #ffffff; font-weight: 500; }
-
-    /* ── X-axis ───────────────────────────────── */
-    .dv-x-label {
-      flex: 1;
-      text-align: center;
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 10px;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ── Stat cards ───────────────────────────── */
-    .dv-stat {
-      background: #55555d;
-      border: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.092);
-      border-radius: 8px;
-      padding: 12px 14px;
-      transition: border-color 200ms;
-    }
-    .dv-stat.is-best { border-color: rgba(255, 255, 255, 0.22); }
-    .dv-stat-label {
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 10px;
-      font-weight: 600;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin: 0 0 4px;
-    }
-    .dv-stat-speedup {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.1;
-      margin: 0 0 2px;
-    }
-    .dv-stat-x { font-size: 14px; color: #7c3aed; margin-left: 1px; }
-    .dv-stat-ms {
-      font-family: var(--font-mono), ui-monospace, monospace;
-      font-size: 11px;
-      color: #6b7280;
-      margin: 0;
-    }
-    `,
-  ],
+  styleUrl: './bench-bars.scss',
 })
 export class BenchBarsComponent implements OnInit, AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);

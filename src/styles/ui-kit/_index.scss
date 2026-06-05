@@ -1,0 +1,14 @@
+// Deep Variance UI Kit — single import surface for token-backed utilities.
+@forward 'fonts';
+@forward 'typography';
+@forward 'layout';
+@forward 'chrome';
+@forward 'bench-chart';
+@forward 'media';
+
+@use 'fonts';
+@use 'typography';
+@use 'layout';
+@use 'chrome';
+@use 'bench-chart';
+@use 'media';

@@ -1,0 +1,89 @@
+@use 'tokens' as *;
+
+// Prism syntax colors only — fonts must match the UI kit (DM Sans), never generic monospace.
+code[class*='language-'],
+pre[class*='language-'] {
+  color: $text-secondary;
+  background: none;
+  font-family: $font-body !important;
+  font-size: 0.875em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.6;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: $bg-elevated;
+  border-radius: $radius-md;
+}
+
+:not(pre) > code[class*='language-'] {
+  padding: 0.12em 0.35em;
+  border-radius: $radius-sm;
+  white-space: normal;
+  background: $panel-fill-strong;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $text-muted;
+}
+
+.token.punctuation {
+  color: $text-secondary;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: $dv-blue-dim;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: $text-primary;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: $text-secondary;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: $dv-violet-soft;
+}
+
+.token.function,
+.token.class-name {
+  color: $text-primary;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: $amber-warning;
+}

@@ -9,13 +9,13 @@ import { SeoService } from '../services/seo.service';
   standalone: true,
   imports: [RouterLink, GlassCardComponent],
   template: `
-    <div class="relative max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-24">
+    <div class="relative page-narrow pt-32 pb-24">
       <div class="mb-10">
         <p class="label-caps mb-4">Legal</p>
         <h1 class="font-display font-bold tracking-tight text-on-surface text-3xl md:text-5xl mb-3">
           Cookie Policy
         </h1>
-        <p class="text-sm font-mono uppercase tracking-[0.16em] text-outline">
+        <p class="label-caps text-sm text-outline">
           Last updated: March 14, 2026
         </p>
       </div>
@@ -36,7 +36,7 @@ import { SeoService } from '../services/seo.service';
 
             <div class="overflow-x-auto rounded-xl panel-box not-prose">
               <table class="w-full text-sm text-left">
-                <thead class="text-[11px] font-mono uppercase tracking-[0.16em] text-outline border-b border-white/8">
+                <thead class="label-caps text-[11px] text-outline border-b border-white/8">
                   <tr>
                     <th class="px-5 py-3.5">Cookie</th>
                     <th class="px-5 py-3.5">Provider</th>
@@ -46,7 +46,7 @@ import { SeoService } from '../services/seo.service';
                 </thead>
                 <tbody class="divide-y divide-white/5">
                   <tr>
-                    <td class="px-5 py-4 font-mono text-xs text-neon">_ga</td>
+                    <td class="px-5 py-4 ui-code text-xs text-neon">_ga</td>
                     <td class="px-5 py-4 text-on-surface-variant">Google Analytics</td>
                     <td class="px-5 py-4 text-on-surface-variant">Analytics</td>
                     <td class="px-5 py-4 text-on-surface-variant">
@@ -54,7 +54,7 @@ import { SeoService } from '../services/seo.service';
                     </td>
                   </tr>
                   <tr>
-                    <td class="px-5 py-4 font-mono text-xs text-neon">_ga_*</td>
+                    <td class="px-5 py-4 ui-code text-xs text-neon">_ga_*</td>
                     <td class="px-5 py-4 text-on-surface-variant">Google Analytics</td>
                     <td class="px-5 py-4 text-on-surface-variant">Analytics</td>
                     <td class="px-5 py-4 text-on-surface-variant">

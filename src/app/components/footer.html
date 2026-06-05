@@ -21,32 +21,27 @@
     </div>
 
     <nav class="dv-footer__nav" aria-label="Footer">
-      <div class="dv-footer__column">
-        <h3 class="dv-footer__column-title">Platform</h3>
-        <ul class="dv-footer__links">
-          <li><a routerLink="/platform" class="dv-footer__link">How it works</a></li>
-          <li><a routerLink="/platform/optimemory" class="dv-footer__link">Optimemory</a></li>
-          <li><a routerLink="/platform/hyperrag" class="dv-footer__link">HyperRAG</a></li>
-          <li><a routerLink="/platform/deeptuner" class="dv-footer__link">DeepTuner</a></li>
-        </ul>
-      </div>
-
-      <div class="dv-footer__column">
-        <h3 class="dv-footer__column-title">Explore</h3>
-        <ul class="dv-footer__links">
-          <li><a routerLink="/get-started" class="dv-footer__link">Get started</a></li>
-          <li><a routerLink="/use-cases" class="dv-footer__link">Use cases</a></li>
-          <li><a routerLink="/docs" class="dv-footer__link">Documentation</a></li>
-          <li>
-            <a
-              href="https://www.linkedin.com/company/deep-variance/jobs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="dv-footer__link"
-            >Careers</a>
-          </li>
-        </ul>
-      </div>
+      @for (column of navColumns; track column.title) {
+        <div class="dv-footer__column">
+          <h3 class="dv-footer__column-title">{{ column.title }}</h3>
+          <ul class="dv-footer__links">
+            @for (link of column.links; track link.path) {
+              <li>
+                @if (link.external) {
+                  <a
+                    [href]="link.path"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dv-footer__link"
+                  >{{ link.label }}</a>
+                } @else {
+                  <a [routerLink]="link.path" class="dv-footer__link">{{ link.label }}</a>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+      }
     </nav>
 
     <div class="dv-footer__bottom">

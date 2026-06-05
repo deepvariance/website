@@ -1,7 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, HostListener, PLATFORM_ID, inject, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  IsActiveMatchOptions,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { ArrowRight, LucideAngularModule, Menu, X } from 'lucide-angular';
+import { HEADER_PRIMARY_NAV } from '../data/site-nav';
 import { WordmarkComponent } from './wordmark';
 
 @Component({
@@ -15,20 +20,18 @@ export class HeaderComponent {
   readonly Menu = Menu;
   readonly X = X;
   readonly ArrowRight = ArrowRight;
-
-  /** Highlight nav when on child routes (e.g. /platform/optimemory). */
-  readonly navActiveOptions = {
-    paths: 'subset' as const,
-    queryParams: 'ignored' as const,
-    fragment: 'ignored' as const,
-    matrixParams: 'ignored' as const,
+  readonly primaryNav = HEADER_PRIMARY_NAV;
+  readonly navSubsetOptions: IsActiveMatchOptions = {
+    paths: 'subset',
+    queryParams: 'ignored',
+    fragment: 'ignored',
+    matrixParams: 'ignored',
   };
-
-  readonly navExactOptions = {
-    paths: 'exact' as const,
-    queryParams: 'ignored' as const,
-    fragment: 'ignored' as const,
-    matrixParams: 'ignored' as const,
+  readonly navExactOptions: IsActiveMatchOptions = {
+    paths: 'exact',
+    queryParams: 'ignored',
+    fragment: 'ignored',
+    matrixParams: 'ignored',
   };
 
   private platformId = inject(PLATFORM_ID);

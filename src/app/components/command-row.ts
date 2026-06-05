@@ -27,7 +27,7 @@ import {
       <button
         type="button"
         (click)="copy()"
-        class="group inline-flex items-center gap-2 pl-3 pr-2 py-2 rounded-md font-mono text-[13px] text-on-surface bg-black/30 border border-white/10 hover:border-neon/45 transition-colors"
+        class="group inline-flex items-center gap-2 pl-3 pr-2 py-2 rounded-md ui-code text-[13px] text-on-surface bg-black/30 border border-white/10 hover:border-neon/45 transition-colors"
       >
         <span class="text-neon select-none">$</span>
         <span class="text-on-surface">{{ command }}</span>

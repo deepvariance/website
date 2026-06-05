@@ -86,6 +86,59 @@
   z-index: 2;
 }
 
+// Home hero — WebGL shader background
+.hero-section > app-hero-fluid-shader {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-section.hero-section--flow {
+  isolation: isolate;
+  background-image: none;
+
+  &::before {
+    display: none;
+  }
+
+  .page-hero-grid__soft-glow {
+    display: none;
+  }
+}
+
+// Interior page heroes — same shader + header offset as home, without full-viewport height
+.hero-section--page {
+  min-height: auto;
+  display: block;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding-top: $header-offset;
+  padding-bottom: clamp(2.5rem, 5vh, 3.75rem);
+  border-bottom: 1px solid $bg-border;
+
+  @media (min-width: 768px) {
+    padding-top: $header-offset-md;
+    padding-bottom: clamp(3rem, 5vh, 4.5rem);
+  }
+
+  > .container,
+  > .page-hero__container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Vertically centered interior hero (docs, etc.)
+.hero-section--page.hero-section--centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - #{$header-offset});
+
+  @media (min-width: 768px) {
+    min-height: calc(100svh - #{$header-offset-md});
+  }
+}
+
 // Standard page hero (platform, use cases, products, docs)
 .page-hero-grid--standard {
   padding-top: $header-offset;

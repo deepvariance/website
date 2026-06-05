@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LucideAngularModule, Check, ArrowRight } from 'lucide-angular';
-import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
+import { HeroFluidShaderComponent } from '../components/hero-fluid-shader';
 import { SeoService } from '../services/seo.service';
 
 function businessEmailValidator(control: AbstractControl): ValidationErrors | null {
@@ -43,7 +43,7 @@ interface JourneyPhase {
     CommonModule,
     ReactiveFormsModule,
     LucideAngularModule,
-    DotGridGlowDirective,
+    HeroFluidShaderComponent,
   ],
   templateUrl: './get-started.html',
   styleUrl: './get-started.scss',

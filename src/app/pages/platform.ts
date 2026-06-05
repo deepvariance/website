@@ -13,14 +13,14 @@ import {
 } from 'lucide-angular';
 import type { ModuleDef } from '../data/modules';
 import { StackVizComponent } from '../components/stack-viz';
-import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
+import { HeroFluidShaderComponent } from '../components/hero-fluid-shader';
 import { SeoService } from '../services/seo.service';
 import { MODULES } from '../data/modules';
 
 @Component({
   selector: 'app-platform',
   standalone: true,
-  imports: [RouterLink, StackVizComponent, LucideAngularModule, DotGridGlowDirective],
+  imports: [RouterLink, StackVizComponent, LucideAngularModule, HeroFluidShaderComponent],
   templateUrl: './platform.html',
   styleUrl: './platform.scss',
 })

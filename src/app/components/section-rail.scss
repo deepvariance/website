@@ -1,0 +1,22 @@
+@use '../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.section-rail {
+  top: var(--header-offset);
+}
+
+.rail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: $text-faint;
+  transition: background $duration-base $ease-out-expo;
+
+  &[data-active='true'] {
+    background: $text-primary;
+    box-shadow: 0 0 8px $dv-blue-glow;
+  }
+}

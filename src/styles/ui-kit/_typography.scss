@@ -1,0 +1,116 @@
+@use '../tokens' as *;
+@use '../typography' as type;
+
+// ── UI Kit — typography roles (DM Sans + Space Grotesk only) ─────────────────
+//
+// Use these classes in templates instead of font-mono / raw font-family.
+//
+// .ui-display     Space Grotesk — hero / page titles (prefer font-display in TW)
+// .ui-overline    DM Sans 600 caps — section eyebrows (alias: .label-caps)
+// .ui-body        DM Sans 400 — paragraphs
+// .ui-body-sm     DM Sans 400 — dense copy, FAQ answers
+// .ui-caption     DM Sans 600 — 10px chips, table meta
+// .ui-metric      DM Sans 700 — large numbers
+// .ui-code        DM Sans — code blocks (not monospace)
+
+.ui-overline {
+  @include type.type-overline;
+  letter-spacing: 0.12em;
+}
+
+.ui-body {
+  @include type.type-body;
+}
+
+.ui-body-sm {
+  @include type.type-body-small;
+}
+
+.ui-caption {
+  font-family: $font-label;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: $text-secondary;
+}
+
+.ui-metric {
+  font-family: $font-label;
+  font-size: $font-size-metric;
+  font-weight: 700;
+  color: $metric-color;
+  line-height: 1;
+}
+
+.ui-code {
+  font-family: $font-body;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  font-variant-ligatures: none;
+}
+
+.ui-table-head {
+  font-family: $font-label;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.ui-link {
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: $text-secondary;
+}
+
+// Legacy aliases — migrate templates off font-mono / label-mono
+.label-caps {
+  @extend .ui-overline;
+}
+
+.label-mono {
+  @extend .ui-overline;
+  letter-spacing: 0.08em;
+}
+
+.text-body {
+  @extend .ui-body;
+}
+
+.text-body-sm {
+  @extend .ui-body-sm;
+}
+
+.strip-eyebrow {
+  @extend .ui-overline;
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  color: $form-field-placeholder;
+}
+
+.metric-number {
+  @extend .ui-metric;
+}
+
+// Tailwind Typography defaults to a monospace stack for code — override globally
+.prose {
+  :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-family: $font-body;
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+
+  :where(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-family: $font-body;
+  }
+
+  :where(pre code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-family: inherit;
+  }
+}

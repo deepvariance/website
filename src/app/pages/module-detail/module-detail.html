@@ -1,0 +1,85 @@
+@if (config(); as cfg) {
+  <div class="relative overflow-x-hidden pt-20 md:pt-24">
+    <app-section-rail [sections]="cfg.rail" [ariaLabel]="railAriaLabel()" />
+
+    <app-page-hero
+      [statusLabel]="cfg.statusLabel"
+      [statusVariant]="cfg.statusVariant"
+      [image]="cfg.heroImage ?? null"
+      [kpis]="cfg.heroKpis ?? []"
+    >
+      <ng-container heroTitle>
+        @switch (cfg.slug) {
+          @case ('optimemory') {
+            <h1>
+              You're running <span class="whitespace-nowrap">out of VRAM.</span><br />
+              <span class="text-on-surface">The hardware isn't.</span>
+            </h1>
+          }
+          @case ('hyperrag') {
+            <h1>
+              Your KV cache exists.<br />
+              <span class="text-white">We make it better.</span>
+            </h1>
+          }
+          @case ('deeptuner') {
+            <h1>
+              Stop wasting energy<br />
+              <span class="text-white">on unoptimized kernels</span>.
+            </h1>
+          }
+        }
+      </ng-container>
+      <ng-container heroSubtitle>
+        @switch (cfg.slug) {
+          @case ('optimemory') {
+            <p>
+              Every AI team hits the same wall: the dashboard shows 95% memory utilization, but the next allocation fails anyway. That memory is fragmented into gaps the allocator can't reassemble. Optimemory closes that gap automatically, on every job, without touching your code.
+            </p>
+          }
+          @case ('hyperrag') {
+            <p>
+              Every major inference server ships with KV cache. But default caching leaves most of that capacity on the table. HyperRAG is a drop-in optimization layer that makes your existing cache capture far more hits, automatically, from the first request.
+            </p>
+          }
+          @case ('deeptuner') {
+            <p>
+              DeepTuner predicts the most energy-efficient GPU kernel configuration before any code runs. Get up to 50% energy savings and 2x throughput without runtime profiling overhead.
+            </p>
+          }
+        }
+      </ng-container>
+    </app-page-hero>
+
+    @if (cfg.frameworkTools?.length) {
+      <section class="border-b border-border logo-strip">
+        <div class="logo-strip__inner">
+          <p class="logo-strip__label">Built for</p>
+          <div class="logo-strip__logos">
+            @for (tool of cfg.frameworkTools; track tool.name) {
+              <img
+                class="logo-strip__logo"
+                [src]="tool.imgSrc"
+                [alt]="tool.name"
+                [attr.width]="tool.imgWidth"
+                [attr.height]="tool.imgHeight"
+                loading="lazy"
+              />
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <ng-container *ngComponentOutlet="bodyComponent()" />
+
+    @if (module(); as mod) {
+      @if (cfg.showBenchmarkTable) {
+        <app-module-benchmark-table [module]="mod" />
+      }
+      @if (cfg.showFaqSection) {
+        <app-module-faq-section [module]="mod" />
+      }
+    }
+  </div>
+}

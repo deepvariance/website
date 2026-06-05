@@ -3,7 +3,8 @@
   <!-- ═════════════════════════════════════════════════════════════════════════
        SECTION 1: HERO (two-column, image-led, prod-matching)
        ═════════════════════════════════════════════════════════════════════════ -->
-  <section class="hero-section" appDotGridGlow>
+  <section class="hero-section hero-section--flow">
+    <app-hero-fluid-shader />
     <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-copy">
@@ -33,7 +34,8 @@
         </h1>
 
         <p class="hero-tagline">
-          The performance you&rsquo;re leaving on the table isn&rsquo;t in your model. It&rsquo;s in your stack.
+          The performance you&rsquo;re leaving on the table isn&rsquo;t in your model.
+          <span class="hero-tagline__line">It&rsquo;s in your stack.</span>
         </p>
 
         <div class="hero-cta-row">
@@ -64,11 +66,11 @@
             Your models and serving pipelines stay as they are. Same weights, APIs, schedulers, and containers. Nothing upstream has to move.
           </p>
           <p class="platform-copy__intro">
-            Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
+            Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip.
           </p>
           <!-- UNDO: single bridge paragraph
           <p class="platform-copy__intro">
-            Your models and serving pipelines stay as they are. Same weights, APIs, schedulers, and containers, with nothing upstream to move. Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip. The diagram shows where it attaches.
+            Your models and serving pipelines stay as they are. Same weights, APIs, schedulers, and containers, with nothing upstream to move. Deep Variance is the runtime layer underneath: it recovers wasted memory, cuts repeat work on serving, and runs leaner on the chip.
           </p>
           -->
           <div class="platform-copy__cta">

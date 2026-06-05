@@ -1,0 +1,68 @@
+@use '../../styles/tokens' as *;
+
+:host {
+  display: inline-flex;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: $radius-full;
+  border: 1px solid transparent;
+  font-family: $font-label;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+
+  &__dot {
+    display: inline-flex;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+
+  &--live {
+    background: $status-pill-bg;
+    border-color: $status-pill-border;
+    color: $text-secondary;
+
+    .status-pill__dot {
+      background: $status-live-dot;
+    }
+  }
+
+  &--beta {
+    background: $status-pill-bg;
+    border-color: $status-pill-border;
+    color: $text-muted;
+
+    .status-pill__dot {
+      background: $status-beta-dot;
+    }
+  }
+
+  &--preview {
+    background: $status-pill-bg;
+    border-color: $status-pill-border-soft;
+    color: $text-muted;
+
+    .status-pill__dot {
+      background: $status-preview-dot;
+    }
+  }
+
+  &--soon {
+    background: $status-pill-bg-muted;
+    border-color: $status-pill-border-soft;
+    color: $text-faint;
+
+    .status-pill__dot {
+      background: $status-soon-dot;
+    }
+  }
+}

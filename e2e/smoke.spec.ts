@@ -7,6 +7,7 @@ const routes = [
   '/platform/hyperrag',
   '/platform/deeptuner',
   '/use-cases',
+  '/use-cases/hpc-infrastructure',
   '/get-started',
   '/docs',
 ];

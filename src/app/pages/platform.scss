@@ -3,7 +3,6 @@
 @use '../../styles/panels' as panels;
 
 .platform-page {
-  padding-top: 72px;
   background: $bg-base;
   overflow-x: clip;
   max-width: 100%;
@@ -85,7 +84,8 @@
 // ══════════════════════════════════════════════════════════════════════════════
 
 .platform-hero {
-  padding: clamp(4.5rem, 8vh, 5.5rem) 0 clamp(3rem, 5vh, 4rem);
+  // Top spacing from .hero-section--page. Only tune vertical rhythm below.
+  padding-bottom: clamp(3rem, 5vh, 4rem);
 
   .container {
     display: grid;
@@ -102,7 +102,7 @@
   }
 
   @media (min-width: 1024px) {
-    padding: clamp(5rem, 8vh, 6rem) 0 clamp(3.5rem, 5vh, 4.5rem);
+    padding-bottom: clamp(3.5rem, 5vh, 4.5rem);
   }
 }
 
@@ -138,8 +138,7 @@
 
 .platform-hero__subtitle {
   @include type.type-body;
-  font-family: $font-mono;
-  line-height: 1.75;
+  font-family: $font-label;
   background: none;
   -webkit-text-fill-color: currentColor;
   max-width: 560px;
@@ -182,7 +181,7 @@
     color: $text-muted;
     opacity: 0;
     transition: all $duration-base $ease-out-expo;
-    font-family: $font-mono;
+    font-family: $font-label;
   }
 
   &:hover {
@@ -201,7 +200,7 @@
 
 .platform-hero__jump-index {
   grid-area: index;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -219,7 +218,7 @@
 
 .platform-hero__jump-subtitle {
   grid-area: sub;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.625rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -229,7 +228,7 @@
 
 .platform-hero__jump-metric {
   grid-area: metric;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 700;
   color: $text-primary;
@@ -327,7 +326,7 @@ $execution-accent: $dv-violet;
 }
 
 .execution-flow__index {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -353,7 +352,7 @@ $execution-accent: $dv-violet;
   display: inline-block;
   margin-bottom: 0.5rem;
   padding: 0.2rem 0.5rem;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.625rem;
   font-weight: 600;
   letter-spacing: 0.12em;

@@ -68,14 +68,36 @@ $text-inverse:      #000000;
 // Metrics / numbers — always white in grayscale
 $metric-color:      $text-primary;
 
+// Charts / data viz (grayscale + module accent)
+$chart-bar-top:           $dv-blue-dim;
+$chart-bar-bottom:        $text-faint;
+$chart-bar-baseline:      color.mix($dv-violet, $bg-elevated, 18%);
+$chart-bar-track:         $panel-fill;
+$chart-tooltip-bg:        color.mix($dv-violet, $bg-elevated, 10%);
+$chart-grid-line:         $panel-divider;
+$chart-shadow-overlay:    rgba(0, 0, 0, 0.6);
+$chart-vendor-nvidia:     #76b900;
+$chart-vendor-nvidia-dim: #1a2e00;
+
+// Status pill variants
+$status-live-dot:         $text-primary;
+$status-beta-dot:         $dv-blue-dim;
+$status-preview-dot:      $text-muted;
+$status-soon-dot:         $waste-red;
+$status-pill-bg:          $bg-elevated;
+$status-pill-bg-muted:    $bg-base;
+$status-pill-border:      $bg-border;
+$status-pill-border-soft: $bg-border-soft;
+
 // ── TYPOGRAPHY TOKENS ─────────────────────────────────────────────────────────
 
 // Headings: Space Grotesk (700)
-// Body / mono: JetBrains Mono (400, 500, 600)
+// Body / UI labels: DM Sans (400, 500, 600)
 
 $font-display:      'Space Grotesk', sans-serif;
-$font-body:         'JetBrains Mono', ui-monospace, monospace;
-$font-mono:         'JetBrains Mono', ui-monospace, monospace;
+$font-body:         'DM Sans', system-ui, sans-serif;
+// UI labels, overlines, captions, table headers — NOT a monospace stack
+$font-label:        'DM Sans', system-ui, sans-serif;
 
 $font-size-hero:    clamp(2.5rem, 5vw, 4.5rem);
 $font-size-h1:      clamp(2rem, 4vw, 3rem);
@@ -83,13 +105,13 @@ $font-size-h2:      clamp(1.5rem, 3vw, 2.25rem);
 $font-size-h3:      1.5rem;
 $font-size-h4:      1.25rem;
 $font-size-h5:      1.125rem;
-$font-size-body:    0.9375rem;
+$font-size-body:    1rem;
 $font-size-small:   0.8125rem;
 $font-size-micro:   0.75rem;
 $font-size-metric:  clamp(2rem, 4vw, 3.5rem);
 
 $line-height-display: 1.0;     // tight, matches prod (1:1 line-height)
-$line-height-body:    1.7;
+$line-height-body:    1.6;
 
 // ── SPACING TOKENS ─────────────────────────────────────────────────────────────
 

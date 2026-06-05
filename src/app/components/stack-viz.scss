@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use '../../styles/tokens' as *;
+
+:host {
+  display: block;
+  width: 100%;
+
+  // SVG palette — keep in sync with _tokens.scss
+  --sv-bg: #{$bg-base};
+  --sv-surface: #{$bg-elevated};
+  --sv-panel: #{color.mix(#ffffff, $bg-base, 8%)};
+  --sv-border: #{$bg-border};
+  --sv-border-soft: #{color.mix(#ffffff, $bg-border, 35%)};
+  --sv-text-primary: #{$text-primary};
+  --sv-text-secondary: #{$text-secondary};
+  --sv-text-muted: #{$text-muted};
+  --sv-text-faint: #{$text-faint};
+  --sv-text-dim: #{$form-field-placeholder};
+  --sv-flow: #{$text-muted};
+  --sv-flow-alt: #{$text-faint};
+  --sv-vendor-nvidia: #{$chart-vendor-nvidia};
+  --sv-vendor-nvidia-dim: #{$chart-vendor-nvidia-dim};
+}
+
+.stack-viz-wrap {
+  width: 100%;
+  background: transparent;
+}
+
+.stack-viz-wrap text,
+.stack-viz-wrap tspan {
+  font-family: var(--font-label);
+  font-feature-settings: 'liga' 0, 'calt' 0;
+}
+
+.stack-viz__nvidia-wordmark {
+  opacity: 0.7;
+  filter: grayscale(1) brightness(0.72) contrast(0.92);
+}
+
+.stack-viz__model-logo {
+  opacity: 0.88;
+  filter: grayscale(1) brightness(0.9) contrast(0.95);
+}
+
+.stack-viz__icon {
+  color: var(--sv-text-secondary);
+}
+
+.stack-viz__icon--light {
+  color: var(--sv-text-primary);
+}
+
+.stack-viz__interconnect {
+  font-size: 10px;
+}
+
+@media (min-width: 1024px) {
+  .stack-viz__interconnect {
+    font-size: 11px;
+  }
+}

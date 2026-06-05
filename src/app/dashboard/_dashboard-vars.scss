@@ -1,0 +1,8 @@
+// Dashboard components — use global design tokens (no hex / monospace fallbacks).
+// Imported once from dashboard-layout.
+
+:host-context(.dash-shell),
+.dash-shell {
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}

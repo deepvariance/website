@@ -24,8 +24,7 @@ export interface RailSection {
   imports: [CommonModule],
   template: `
     <aside
-      class="hidden 2xl:flex flex-col fixed left-4 z-30"
-      style="top: 132px;"
+      class="section-rail hidden 2xl:flex flex-col fixed left-4 z-30"
       [attr.aria-label]="ariaLabel"
     >
       <ul class="flex flex-col gap-1.5">
@@ -35,7 +34,7 @@ export interface RailSection {
             <a
               [href]="'#' + s.id"
               (click)="onClick($event, s.id)"
-              class="text-[11px] font-mono uppercase tracking-[0.16em] transition-colors"
+              class="label-caps text-[11px] transition-colors"
               [class.text-neon]="active() === s.id"
               [class.text-on-surface-variant]="active() !== s.id"
               [class.opacity-0]="active() !== s.id"
@@ -48,6 +47,7 @@ export interface RailSection {
       </ul>
     </aside>
   `,
+  styleUrl: './section-rail.scss',
 })
 export class SectionRailComponent implements AfterViewInit, OnDestroy {
   @Input() sections: RailSection[] = [];

@@ -1,0 +1,77 @@
+@use '../tokens' as *;
+@use '../typography' as type;
+
+// ── UI Kit — layout ───────────────────────────────────────────────────────────
+
+.ui-section,
+.page-section {
+  width: 100%;
+  max-width: $grid-max;
+  margin-inline: auto;
+  padding-inline: $grid-gutter;
+}
+
+.ui-section-narrow,
+.page-narrow {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-inline: $grid-gutter;
+}
+
+.ui-logo-strip,
+.logo-strip {
+  width: 100%;
+  max-width: $grid-max;
+  margin-inline: auto;
+  padding-inline: $grid-gutter;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding-block: 1rem;
+
+    @media (min-width: 940px) {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &__label {
+    @include type.type-overline;
+    font-size: 0.625rem;
+    letter-spacing: 0.22em;
+    color: $form-field-placeholder;
+    text-align: center;
+
+    @media (min-width: 940px) {
+      text-align: left;
+    }
+  }
+
+  &__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+
+    @media (min-width: 940px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    width: auto;
+    filter: grayscale(1) brightness(4);
+    opacity: 0.5;
+  }
+}
+
+.container {
+  @extend .ui-section;
+}

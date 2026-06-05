@@ -4,18 +4,18 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { BlogCardComponent } from '../components/blog-card';
 import { GlassCardComponent } from '../components/glass-card';
 import { SanityPost, SanityService } from '../services/sanity.service';
-import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
+import { HeroFluidShaderComponent } from '../components/hero-fluid-shader';
 import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, BlogCardComponent, GlassCardComponent, DotGridGlowDirective],
+  imports: [CommonModule, BlogCardComponent, GlassCardComponent, HeroFluidShaderComponent],
   template: `
     <div class="relative">
-      <section class="page-hero-grid border-b border-border" appDotGridGlow>
-        <div class="page-hero-grid__soft-glow" aria-hidden="true"></div>
-        <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-10 pt-32 pb-12 md:pt-40 md:pb-16">
+      <section class="hero-section hero-section--flow hero-section--page border-b border-border">
+        <app-hero-fluid-shader />
+        <div class="container relative z-[2]">
         <div class="relative max-w-3xl mx-auto text-center">
           <span class="status-chip mx-auto mb-7">
             <span class="status-chip__dot"></span>
@@ -33,7 +33,7 @@ import { SeoService } from '../services/seo.service';
         </div>
       </section>
 
-      <section class="relative max-w-[1440px] mx-auto px-6 lg:px-10 pb-24">
+      <section class="relative page-section pb-24">
         @if (posts() === null) {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @for (i of skeletons; track i) {
@@ -52,7 +52,7 @@ import { SeoService } from '../services/seo.service';
 
         @if (error()) {
           <div class="max-w-md mx-auto text-center py-16">
-            <p class="text-on-surface-variant font-mono uppercase tracking-[0.16em] text-sm">
+            <p class="label-caps text-on-surface-variant text-sm">
               Unable to load posts. Please try again shortly.
             </p>
           </div>

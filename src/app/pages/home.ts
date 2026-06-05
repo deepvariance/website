@@ -2,8 +2,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, computed, inject, OnDestroy, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule, ArrowRight } from 'lucide-angular';
+import { HeroFluidShaderComponent } from '../components/hero-fluid-shader';
 import { StackVizComponent } from '../components/stack-viz';
-import { DotGridGlowDirective } from '../directives/dot-grid-glow.directive';
 import { SeoService } from '../services/seo.service';
 
 @Component({
@@ -13,8 +13,8 @@ import { SeoService } from '../services/seo.service';
     CommonModule,
     RouterLink,
     LucideAngularModule,
+    HeroFluidShaderComponent,
     StackVizComponent,
-    DotGridGlowDirective,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

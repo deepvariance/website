@@ -14,7 +14,7 @@ import { SeoService } from '../services/seo.service';
   template: `
     <div class="relative min-h-screen">
       @if (loading()) {
-        <div class="max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-14 animate-pulse">
+        <div class="page-narrow pt-32 pb-14 animate-pulse">
           <div class="h-3 bg-white/5 rounded-full w-16 mb-8"></div>
           <div class="h-8 bg-white/5 rounded-full w-3/4 mb-4"></div>
           <div class="h-8 bg-white/5 rounded-full w-1/2 mb-8"></div>
@@ -45,7 +45,7 @@ import { SeoService } from '../services/seo.service';
       }
 
       @if (post()) {
-        <article class="max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-24">
+        <article class="page-narrow pt-32 pb-24">
           <a
             routerLink="/blog"
             class="inline-flex items-center gap-2 text-xs font-display font-semibold uppercase tracking-[0.18em] text-on-surface-variant hover:text-white transition-colors mb-12"
@@ -67,7 +67,7 @@ import { SeoService } from '../services/seo.service';
               {{ post()!.title }}
             </h1>
             <div
-              class="flex items-center gap-4 text-[11px] font-mono uppercase tracking-[0.18em] text-outline"
+              class="flex items-center gap-4 label-caps text-[11px] text-outline"
             >
               <time [attr.datetime]="post()!.publishedAt">
                 {{ post()!.publishedAt | date: 'MMMM d, yyyy' }}
@@ -93,7 +93,8 @@ import { SeoService } from '../services/seo.service';
             class="blog-body prose prose-invert prose-lg max-w-none
                    prose-headings:font-display prose-headings:font-semibold prose-headings:text-on-surface prose-headings:tracking-tight
                    prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
-                   prose-p:text-on-surface-variant prose-p:font-medium prose-p:leading-relaxed
+                   prose-p:text-on-surface-variant prose-p:font-body prose-p:font-medium prose-p:leading-relaxed
+                   prose-code:font-body prose-pre:font-body
                    prose-a:text-white prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
                    prose-strong:text-on-surface prose-strong:font-semibold
                    prose-li:text-on-surface-variant"

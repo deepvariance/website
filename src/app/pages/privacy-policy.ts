@@ -9,7 +9,7 @@ import { SeoService } from '../services/seo.service';
   standalone: true,
   imports: [RouterLink, GlassCardComponent],
   template: `
-    <div class="relative max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-24">
+    <div class="relative page-narrow pt-32 pb-24">
       <div class="mb-10">
         <p class="label-caps mb-4">Legal</p>
         <h1
@@ -17,7 +17,7 @@ import { SeoService } from '../services/seo.service';
         >
           Privacy Policy
         </h1>
-        <p class="text-sm font-mono uppercase tracking-[0.16em] text-outline">
+        <p class="label-caps text-sm text-outline">
           Last updated: March 14, 2026
         </p>
       </div>
@@ -32,9 +32,9 @@ import { SeoService } from '../services/seo.service';
               Deep Variance, Inc. ("Deep Variance", "we", "us", or "our") operates
               <strong class="text-on-surface">deepvariance.com</strong> and associated developer
               tooling including the
-              <code class="bg-black/40 border border-white/5 px-1.5 py-0.5 rounded text-neon font-mono text-sm">deep-variance</code>
+              <code class="bg-black/40 border border-white/5 px-1.5 py-0.5 rounded text-neon ui-code text-sm">deep-variance</code>
               and
-              <code class="bg-black/40 border border-white/5 px-1.5 py-0.5 rounded text-neon font-mono text-sm">dv-hyperrag</code>
+              <code class="bg-black/40 border border-white/5 px-1.5 py-0.5 rounded text-neon ui-code text-sm">dv-hyperrag</code>
               Python packages. This Privacy Policy explains how we collect, use, and protect
               information when you interact with our website or products.
             </p>

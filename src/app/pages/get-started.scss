@@ -13,15 +13,6 @@
   }
 }
 
-.get-started-hero {
-  padding: $section-padding 0;
-  border-bottom: 1px solid $bg-border;
-
-  @media (min-width: 1024px) {
-    padding: $section-padding-lg 0;
-  }
-}
-
 .section {
   padding: $section-padding;
   border-bottom: 1px solid $bg-border;
@@ -39,7 +30,7 @@
 
 .section-overline {
   display: inline-block;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -135,7 +126,7 @@ $journey-marker-width: 2.75rem;
 .get-started-phase__index {
   display: block;
   width: 100%;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -185,7 +176,7 @@ $journey-marker-width: 2.75rem;
   display: inline-block;
   width: fit-content;
   padding: 0.25rem 0.75rem;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -275,7 +266,7 @@ $journey-marker-width: 2.75rem;
 
 .form-label {
   display: block;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -329,7 +320,7 @@ $journey-marker-width: 2.75rem;
 
 .form-error {
   display: block;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.75rem;
   color: $form-error-text;
   margin-top: 0.5rem;

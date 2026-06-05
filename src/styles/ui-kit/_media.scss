@@ -1,0 +1,25 @@
+@use '../tokens' as *;
+
+// ── Shared media / image treatments (module heroes, use-case cards) ───────────
+
+.dv-blend-screen {
+  mix-blend-mode: screen;
+}
+
+.dv-img-mask-radial {
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(
+    ellipse 85% 85% at 50% 50%,
+    black 55%,
+    transparent 100%
+  );
+}
+
+.dv-logo-invert {
+  filter: grayscale(1) brightness(4);
+  opacity: 0.88;
+}
+
+.dv-stack-viz-max {
+  max-height: 466px;
+}

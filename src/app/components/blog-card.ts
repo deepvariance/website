@@ -47,7 +47,7 @@ import { SanityPost } from '../services/sanity.service';
         }
 
         <div
-          class="mt-auto pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.18em] text-outline"
+          class="mt-auto pt-4 border-t border-white/5 flex items-center justify-between label-caps text-[11px] text-outline"
         >
           <time [attr.datetime]="post.publishedAt">
             {{ post.publishedAt | date: 'MMM d, yyyy' }}

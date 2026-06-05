@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FOOTER_NAV_COLUMNS } from '../data/site-nav';
 import { WordmarkComponent } from './wordmark';
 
 @Component({
@@ -9,4 +10,6 @@ import { WordmarkComponent } from './wordmark';
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  readonly navColumns = FOOTER_NAV_COLUMNS;
+}

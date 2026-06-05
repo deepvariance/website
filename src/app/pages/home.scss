@@ -1,5 +1,6 @@
 @use '../../styles/tokens' as *;
 @use '../../styles/panels' as panels;
+@use '../../styles/typography' as type;
 
 // ══════════════════════════════════════════════════════════════════════════════
 // HOME PAGE — grayscale, matches deepvariance.com prod
@@ -19,17 +20,8 @@
   // svh = full visible viewport with mobile chrome shown; stable while scrolling (dvh resizes and janks)
   min-height: 100vh;
   min-height: 100svh;
-
-  @media (hover: hover) and (pointer: fine) {
-    min-height: 100dvh;
-  }
-
   padding-top: $header-offset;
   padding-bottom: clamp(2rem, 5vh, 3rem);
-
-  @media (min-width: 768px) {
-    padding-top: $header-offset-md;
-  }
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,6 +29,14 @@
 
   .container {
     width: 100%;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    min-height: 100dvh;
+  }
+
+  @media (min-width: 768px) {
+    padding-top: $header-offset-md;
   }
 }
 
@@ -89,7 +89,7 @@
 }
 
 .hero-headline .hero-headline__accent {
-  color: #9d6fff;
+  color: $dv-violet-soft;
 }
 
 .hero-headline__caret {
@@ -113,19 +113,19 @@
 }
 
 .hero-tagline {
-  font-family: $font-mono;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: $text-secondary;
+  @include type.type-body;
   margin: 0 auto 2.5rem;
   max-width: 620px;
+
+  .hero-tagline__line {
+    display: block;
+    margin-top: 0.35em;
+  }
 
   @media (max-width: 767px) {
     text-align: left;
     margin-inline: 0;
     max-width: none;
-    font-size: 1.0625rem;
-    line-height: 1.55;
   }
 }
 
@@ -259,7 +259,7 @@
 }
 
 .hero-metric-card__prefix {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -292,7 +292,7 @@
 }
 
 .hero-metric-card__dim {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -301,7 +301,7 @@
 }
 
 .hero-metric-card__label {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -317,16 +317,19 @@
 .metrics-band__footnote {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  color: $text-faint;
-  margin: 1.5rem 0 0;
-  letter-spacing: 0.02em;
+  align-items: flex-end;
+  gap: 0.15rem;
+  margin: 1.25rem 0 0;
+  text-align: right;
 }
 
 .metrics-band__footnote-line {
   display: block;
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: $text-secondary;
 }
 
 // Button system lives in src/styles/_buttons.scss (loaded globally).
@@ -356,9 +359,7 @@
 }
 
 .support-section__tagline {
-  font-family: $font-mono;
-  font-size: 0.875rem;
-  color: $text-secondary;
+  @include type.type-body;
   text-align: center;
   margin: 0 0 3.5rem;
 
@@ -388,7 +389,7 @@
 }
 
 .support-group__label {
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -498,7 +499,7 @@
 
 .section-overline {
   display: inline-block;
-  font-family: $font-mono;
+  font-family: $font-label;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -535,10 +536,7 @@
 }
 
 .platform-copy__intro {
-  font-family: $font-mono;
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: $text-secondary;
+  @include type.type-body;
   margin: 0 0 1rem;
   max-width: 480px;
 
@@ -553,6 +551,10 @@
 
 .platform-stack {
   min-width: 0;
+}
+
+.platform-stack__placeholder {
+  min-height: clamp(280px, 42vw, 480px);
 }
 
 // ── FINAL SECTION ─────────────────────────────────────────────────────────────
@@ -583,9 +585,7 @@
 }
 
 .final-section__tagline {
-  font-family: $font-mono;
-  font-size: 0.875rem;
-  color: $text-secondary;
+  @include type.type-body;
   margin: 0 0 2.5rem;
 }
 
