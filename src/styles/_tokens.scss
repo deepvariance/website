@@ -84,10 +84,10 @@ $status-live-dot:         $text-primary;
 $status-beta-dot:         $dv-blue-dim;
 $status-preview-dot:      $text-muted;
 $status-soon-dot:         $waste-red;
-$status-pill-bg:          $bg-elevated;
-$status-pill-bg-muted:    $bg-base;
-$status-pill-border:      $bg-border;
-$status-pill-border-soft: $bg-border-soft;
+$status-pill-bg:          $panel-fill-strong;
+$status-pill-bg-muted:    $panel-fill;
+$status-pill-border:      transparent;
+$status-pill-border-soft: transparent;
 
 // ── TYPOGRAPHY TOKENS ─────────────────────────────────────────────────────────
 
