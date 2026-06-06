@@ -301,7 +301,7 @@ r = ctrl.query(
         <!-- Aggregate stats across all 14 tested models -->
         <div class="max-w-3xl mx-auto mb-8">
           <div class="panel-divided grid grid-cols-3 rounded-xl overflow-hidden">
-            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
+            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center">
               <p class="bench-stat-label mb-1.5 sm:mb-2">
                 <span class="hidden sm:inline">Models tested</span>
                 <span class="sm:hidden">Tested</span>
@@ -309,7 +309,7 @@ r = ctrl.query(
               <p class="font-display font-bold text-white leading-none text-xl sm:text-[2.25rem]">14</p>
               <p class="bench-stat-hint mt-1 hidden sm:block">2B to 120B params</p>
             </div>
-            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
+            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center">
               <p class="bench-stat-label mb-1.5 sm:mb-2">
                 <span class="hidden sm:inline">Avg TTFT reduction</span>
                 <span class="sm:hidden">Avg TTFT</span>
@@ -317,7 +317,7 @@ r = ctrl.query(
               <p class="font-display font-bold text-white leading-none text-xl sm:text-[2.25rem]">54%</p>
               <p class="bench-stat-hint mt-1 hidden sm:block">across all 14 models</p>
             </div>
-            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center bg-surface-dim">
+            <div class="px-3 sm:px-6 py-4 sm:py-5 text-center">
               <p class="bench-stat-label mb-1.5 sm:mb-2">
                 <span class="hidden sm:inline">Avg throughput gain</span>
                 <span class="sm:hidden">Throughput</span>
@@ -329,7 +329,7 @@ r = ctrl.query(
         </div>
 
         <div class="max-w-3xl mx-auto">
-          <div class="dv-bench-card">
+          <div class="dv-bench-card panel-box panel-box--strong rounded-xl">
             <div class="flex items-center gap-2 mb-6">
               <button
                 class="bench-view-pill"

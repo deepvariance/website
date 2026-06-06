@@ -67,8 +67,9 @@
 
 .ui-pill-toggle,
 .bench-view-pill {
-  background: color.mix(#ffffff, $bg-elevated, 35%);
-  border: 1px solid color.mix(#ffffff, $bg-border, 55%);
+  background: $panel-fill;
+  border: none;
+  box-shadow: $panel-inset;
   border-radius: $radius-sm;
   padding: 5px 16px;
   font-family: $font-display;
@@ -77,19 +78,18 @@
   color: $text-muted;
   cursor: pointer;
   transition:
-    border-color 150ms ease,
     color 150ms ease,
-    background 150ms ease;
+    background 150ms ease,
+    box-shadow 150ms ease;
   line-height: 1.5;
 
   &:hover {
-    border-color: $form-field-border-hover;
+    background: $panel-fill-hover;
     color: $text-primary;
   }
 
   &.is-active {
-    background: $panel-fill-hover;
-    border-color: $form-field-border-hover;
+    background: $panel-fill-strong;
     color: $text-primary;
   }
 }

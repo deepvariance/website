@@ -1,13 +1,15 @@
 @use '../tokens' as *;
+@use '../panels' as panels;
 
 // Shared benchmark chart surfaces (bench-bars + bench-all-models)
 
 .dv-bench-card {
-  background: var(--bg-elevated);
-  border: none;
-  box-shadow: $panel-inset;
-  border-radius: $radius-lg;
   padding: 16px;
+
+  // HyperRAG benchmark palette — white fast bars vs violet baseline (not muddy gray-violet)
+  --bench-bar-hyper: linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%);
+  --bench-bar-baseline: linear-gradient(180deg, #c4b5fd 0%, #{$dv-violet} 52%, #5b21b6 100%);
+  --bench-bar-rank: linear-gradient(90deg, #5b21b6 0%, #{$dv-violet} 45%, #e9e5ff 100%);
 
   @media (min-width: 640px) {
     padding: 28px;
@@ -186,11 +188,13 @@
 }
 
 .dv-bar--hyper {
-  background: linear-gradient(180deg, var(--chart-bar-top) 0%, var(--chart-bar-bottom) 100%);
+  background: var(--bench-bar-hyper, linear-gradient(180deg, #ffffff 0%, #d4d4d4 100%));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .dv-bar--base {
-  background: var(--chart-bar-baseline);
+  background: var(--bench-bar-baseline, linear-gradient(180deg, #c4b5fd 0%, #{$dv-violet} 52%, #5b21b6 100%));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .dv-tooltip {
@@ -231,11 +235,11 @@
 }
 
 .dv-dot--hyper {
-  background: var(--chart-bar-top);
+  background: #ffffff;
 }
 
 .dv-dot--base {
-  background: var(--text-muted);
+  background: $dv-violet;
 }
 
 .dv-tooltip-text {
@@ -254,7 +258,7 @@
   text-align: center;
   font-family: var(--font-label);
   font-size: 10px;
-  color: var(--text-muted);
+  color: $text-secondary;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -263,15 +267,12 @@
 }
 
 .dv-stat {
-  background: var(--panel-fill-strong);
-  border: none;
-  box-shadow: $panel-inset;
-  border-radius: $radius-md;
+  @include panels.borderless-panel($panel-fill, $radius-md);
   padding: 12px 14px;
-  transition: border-color 200ms;
+  transition: background-color 200ms $ease-out-expo;
 
   &.is-best {
-    border-color: $form-field-border-hover;
+    background: $panel-fill-hover;
   }
 }
 
@@ -296,14 +297,14 @@
 
 .dv-stat-x {
   font-size: 14px;
-  color: var(--dv-violet);
+  color: $text-secondary;
   margin-left: 1px;
 }
 
 .dv-stat-ms {
   font-family: var(--font-label);
   font-size: 11px;
-  color: var(--text-muted);
+  color: $text-secondary;
   margin: 0;
 }
 
@@ -454,7 +455,7 @@
   height: 100%;
   border-radius: 4px;
   width: 0%;
-  background: linear-gradient(90deg, var(--chart-bar-bottom) 0%, var(--chart-bar-top) 100%);
+  background: var(--bench-bar-rank, linear-gradient(90deg, #5b21b6 0%, #{$dv-violet} 45%, #e9e5ff 100%));
   transition: width 500ms $ease-out-expo;
   position: relative;
 
@@ -470,7 +471,7 @@
   }
 
   &.is-throughput {
-    background: linear-gradient(90deg, $waste-red 0%, var(--text-secondary) 100%);
+    background: linear-gradient(90deg, #5b21b6 0%, #{$dv-violet} 50%, #ddd6fe 100%);
   }
 }
 
@@ -478,7 +479,7 @@
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 700;
-  color: var(--dv-blue-dim);
+  color: $text-secondary;
   text-align: right;
   white-space: nowrap;
   transition: color 150ms;

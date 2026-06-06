@@ -19,7 +19,7 @@ import type { ModuleDef } from '../data/modules';
       <div class="overflow-x-auto rounded-xl border border-border">
         <table class="w-full text-left text-sm">
           <thead>
-            <tr class="border-b border-border bg-surface-dim">
+            <tr class="border-b border-border">
               <th class="px-4 py-3 ui-table-head text-on-surface-variant">Metric</th>
               <th class="px-4 py-3 ui-table-head text-on-surface-variant">Baseline</th>
               <th class="px-4 py-3 ui-table-head text-on-surface-variant">Deep Variance</th>
