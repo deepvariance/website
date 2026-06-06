@@ -5,7 +5,7 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { ArrowRight, LucideAngularModule, Menu, X } from 'lucide-angular';
+import { ArrowRight, Lock, LucideAngularModule, Menu, X } from 'lucide-angular';
 import { HEADER_PRIMARY_NAV } from '../data/site-nav';
 import { WordmarkComponent } from './wordmark';
 
@@ -19,6 +19,7 @@ import { WordmarkComponent } from './wordmark';
 export class HeaderComponent {
   readonly Menu = Menu;
   readonly X = X;
+  readonly Lock = Lock;
   readonly ArrowRight = ArrowRight;
   readonly primaryNav = HEADER_PRIMARY_NAV;
   readonly navSubsetOptions: IsActiveMatchOptions = {

@@ -2,19 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ArrowRight, CheckCircle2, LucideAngularModule } from 'lucide-angular';
+import { ArrowLeft, ArrowRight, CheckCircle2, LucideAngularModule } from 'lucide-angular';
 import { map } from 'rxjs/operators';
 
 import { CtaButtonComponent } from '../components/cta-button';
 import { GlassCardComponent } from '../components/glass-card';
 import { PageHeroComponent } from '../components/page-hero';
-import type { PageHeroKpi } from '../components/page-hero';
-import {
-  findUseCase,
-  type UseCaseDetail,
-  type UseCaseKpi,
-} from '../data/use-cases';
+import type { PageHeroImage, PageHeroKpi } from '../components/page-hero';
+import { findUseCase, type UseCaseDetail } from '../data/use-cases';
 import { setPageSeo } from '../services/page-seo';
+
+const HERO_IMAGE_SIZE = { width: 1536, height: 1024 } as const;
 
 @Component({
   selector: 'app-use-case-detail',
@@ -28,22 +26,13 @@ import { setPageSeo } from '../services/page-seo';
     CtaButtonComponent,
   ],
   templateUrl: './use-case-detail.html',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-      .page-hero__image-plain {
-        mix-blend-mode: screen;
-        mask-image: radial-gradient(ellipse 80% 70% at center, black 40%, transparent 90%);
-      }
-    `,
-  ],
+  styles: [`:host { display: block; }`],
 })
 export class UseCaseDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
+  readonly ArrowLeft = ArrowLeft;
   readonly ArrowRight = ArrowRight;
   readonly CheckCircle2 = CheckCircle2;
 
@@ -68,15 +57,21 @@ export class UseCaseDetailComponent {
     });
   }
 
+  heroImage(uc: UseCaseDetail): PageHeroImage {
+    return {
+      src: uc.heroImage,
+      alt: uc.label,
+      ...HERO_IMAGE_SIZE,
+      desktopBlend: true,
+      mobileBlendOpacity: 0.9,
+    };
+  }
+
   heroKpis(uc: UseCaseDetail): PageHeroKpi[] {
-    return uc.kpis.slice(0, 2).map((k) => ({
+    return uc.kpis.map((k) => ({
       value: k.value,
       label: k.label,
       highlight: k.highlight,
     }));
-  }
-
-  asideKpis(uc: UseCaseDetail): UseCaseKpi[] {
-    return uc.kpis.slice(2, 4);
   }
 }

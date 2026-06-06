@@ -176,6 +176,29 @@
   @media (min-width: 1024px) {
     font-size: 0.875rem;
   }
+
+  &--locked {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    line-height: 1;
+    cursor: not-allowed;
+    color: $text-muted;
+    opacity: 0.72;
+    user-select: none;
+
+    lucide-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 0;
+
+      svg {
+        display: block;
+      }
+    }
+  }
 }
 
 // ── Bottom bar ───────────────────────────────────────────────────────────────

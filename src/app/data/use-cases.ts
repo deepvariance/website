@@ -37,8 +37,10 @@ export interface UseCaseDetail {
   addresses: string[];
   ctaLabel: string;
   heroImage: string;
+  sectionHeading: string;
   technical: UseCaseTechnical;
   bottomCtaTitle: string;
+  bottomCtaBody: string;
   seo: { title: string; description: string };
 }
 
@@ -76,6 +78,7 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     ctaLabel: 'Talk to us about HPC pilots',
     heroImage: '/use-cases-hpc.webp',
+    sectionHeading: 'Cut waste on multi-week training runs',
     technical: {
       title: 'Why manual profiling fails at scale',
       paragraphs: [
@@ -93,6 +96,8 @@ export const USE_CASES: UseCaseDetail[] = [
       ],
     },
     bottomCtaTitle: 'Ready to <span class="text-white">optimize your HPC infrastructure</span>?',
+    bottomCtaBody:
+      'We scope HPC pilots around your cluster topology, workload mix, and energy targets — not a generic benchmark deck.',
     seo: {
       title: 'HPC Infrastructure Use Case | Deep Variance',
       description:
@@ -117,12 +122,13 @@ export const USE_CASES: UseCaseDetail[] = [
     productLinks: [
       { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
       { route: '/platform', fragment: 'hyperrag', label: 'HyperRAG' },
+      { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '2.5x', label: 'Effective model scale per physical GPU', highlight: true },
+      { value: '2.5x', label: 'Effective model scale per GPU', highlight: true },
       { value: '−62%', label: 'OOM errors in benchmarks', highlight: true },
-      { value: '+38%', label: 'Fleet utilisation gain' },
-      { value: '1 import', label: 'To enable VMM on a node' },
+      { value: '+38%', label: 'Fleet utilization gain' },
+      { value: 'Zero', label: 'Tenant workflow changes' },
     ],
     addresses: [
       'Customers over-provisioning to avoid out-of-memory crashes',
@@ -132,6 +138,7 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     ctaLabel: 'Talk to us about GPU provider pricing',
     heroImage: '/use-cases-cloud.webp',
+    sectionHeading: 'Unlock stranded capacity on every node',
     technical: {
       title: 'The GPU provider capacity problem',
       paragraphs: [
@@ -149,6 +156,8 @@ export const USE_CASES: UseCaseDetail[] = [
       ],
     },
     bottomCtaTitle: 'Ready to <span class="text-white">unlock your fleet capacity</span>?',
+    bottomCtaBody:
+      'We model fleet economics with your utilization data, tenant mix, and provisioning rules before recommending a rollout.',
     seo: {
       title: 'GPU Providers Use Case | Deep Variance',
       description:
@@ -176,10 +185,10 @@ export const USE_CASES: UseCaseDetail[] = [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '11w → 3d', label: 'Pipeline build cycle in benchmarks', highlight: true },
-      { value: '0', label: 'Raw rows transmitted to LLM APIs' },
-      { value: '−0.4%', label: 'Accuracy delta, FP8 classification' },
-      { value: '8+', label: 'Architectures ranked per pipeline' },
+      { value: '100%', label: 'On-premise data residency', highlight: true },
+      { value: '0', label: 'Rows sent to external APIs', highlight: true },
+      { value: '−50%', label: 'Energy per training run' },
+      { value: 'SOC 2', label: 'Type II deployment option' },
     ],
     addresses: [
       'Data compliance requirements preventing use of cloud ML services',
@@ -189,6 +198,7 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     ctaLabel: 'Talk to us about enterprise deployments',
     heroImage: '/use-cases-enterprise.webp',
+    sectionHeading: 'Stay compliant without sacrificing efficiency',
     technical: {
       title: 'Why regulated industries stay on-premise',
       paragraphs: [
@@ -206,6 +216,8 @@ export const USE_CASES: UseCaseDetail[] = [
       ],
     },
     bottomCtaTitle: 'Ready to <span class="text-white">optimize your enterprise ML infrastructure</span>?',
+    bottomCtaBody:
+      'We align pilots with your compliance posture, audit requirements, and on-prem hardware footprint.',
     seo: {
       title: 'Enterprise Training Use Case | Deep Variance',
       description:
@@ -247,6 +259,7 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     ctaLabel: 'Talk to us about academic licensing',
     heroImage: '/use-cases-research.webp',
+    sectionHeading: 'Train larger models on the hardware you have',
     technical: {
       title: 'The research compute ceiling',
       paragraphs: [
@@ -263,6 +276,8 @@ export const USE_CASES: UseCaseDetail[] = [
       ],
     },
     bottomCtaTitle: 'Ready to <span class="text-white">accelerate your research</span>?',
+    bottomCtaBody:
+      'Academic licensing is scoped to your lab size, publication goals, and existing GPU allocation.',
     seo: {
       title: 'Research Institutions Use Case | Deep Variance',
       description:
@@ -291,9 +306,9 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     kpis: [
       { value: '50%', label: 'Less VRAM for edge vision models', highlight: true },
-      { value: '< 2 ms', label: 'FP8 inference latency, embedded GPU', highlight: true },
-      { value: '0', label: 'Production records transmitted externally' },
-      { value: '1 call', label: 'Sensor data to model leaderboard' },
+      { value: '< 2 ms', label: 'FP8 inference on embedded GPU', highlight: true },
+      { value: '0', label: 'Production records sent externally' },
+      { value: '3', label: 'Edge GPU families supported' },
     ],
     addresses: [
       'Edge hardware constraints limiting model accuracy and capability',
@@ -303,6 +318,7 @@ export const USE_CASES: UseCaseDetail[] = [
     ],
     ctaLabel: 'Talk to us about manufacturing deployments',
     heroImage: '/use-cases-manufacturing.webp',
+    sectionHeading: 'Run larger vision models on the factory floor',
     technical: {
       title: 'The edge AI constraint',
       paragraphs: [
@@ -320,6 +336,8 @@ export const USE_CASES: UseCaseDetail[] = [
       ],
     },
     bottomCtaTitle: 'Ready to <span class="text-white">deploy AI at the edge</span>?',
+    bottomCtaBody:
+      'We validate latency, accuracy, and data sovereignty on your actual line hardware before production rollout.',
     seo: {
       title: 'Manufacturing Use Case | Deep Variance',
       description:

@@ -28,7 +28,7 @@ type Metric = 'ttft' | 'throughput';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="dv-all-card">
+    <div class="dv-all-models">
 
       <!-- Metric toggle -->
       <div class="flex gap-2 mb-7">
@@ -93,6 +93,7 @@ type Metric = 'ttft' | 'throughput';
     </div>
   `,
   styleUrl: './bench-all-models.scss',
+  host: { class: 'dv-all-models-host' },
 })
 export class BenchAllModelsComponent implements OnInit, AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);

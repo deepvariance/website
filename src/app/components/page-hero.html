@@ -5,45 +5,6 @@
 >
   <app-hero-fluid-shader />
   <div class="page-hero__container">
-
-    @if (image?.desktopBlend) {
-      <div class="page-hero__image-desk hidden desk:block" aria-hidden="true">
-        <img
-          [src]="image!.src"
-          [alt]="image!.alt ?? ''"
-          [attr.width]="image!.width"
-          [attr.height]="image!.height"
-          fetchpriority="high"
-          class="page-hero__image-desk-img"
-        />
-      </div>
-    }
-
-  @if (image && !image.desktopBlend) {
-    <div class="page-hero__image-desk relative desk:block hidden" aria-hidden="true">
-      <img
-        [src]="image.src"
-        [alt]="image.alt ?? ''"
-        [attr.width]="image.width"
-        [attr.height]="image.height"
-        class="page-hero__image-plain"
-      />
-    </div>
-  }
-
-    @if (image) {
-      <div class="page-hero__image-mobile desk:hidden" [class.page-hero__image-mobile--blend]="image.mobileBlendOpacity != null">
-        <img
-          [src]="image.src"
-          [alt]="image.alt ?? ''"
-          [attr.width]="image.width"
-          [attr.height]="image.height"
-          [style.opacity]="image.mobileBlendOpacity ?? 1"
-          class="page-hero__image-plain w-full max-w-full h-auto object-contain"
-        />
-      </div>
-    }
-
     <div class="page-hero__copy">
       <div class="page-hero__meta mb-7">
         @if (icon && iconLabel) {
@@ -66,6 +27,19 @@
         <ng-content select="[heroSubtitle]" />
       </div>
 
+      @if (image) {
+        <div class="page-hero__image-mobile desk:hidden" [class.page-hero__image-mobile--blend]="image.mobileBlendOpacity != null">
+          <img
+            [src]="image.src"
+            [alt]="image.alt ?? ''"
+            [attr.width]="image.width"
+            [attr.height]="image.height"
+            [style.opacity]="image.mobileBlendOpacity ?? 1"
+            class="page-hero__image-mobile-img"
+          />
+        </div>
+      }
+
       @if (kpis.length) {
         <div class="page-hero__kpis" [class.page-hero__kpis--grid]="kpis.length > 1">
           @for (kpi of kpis; track kpi.label) {
@@ -82,5 +56,31 @@
 
       <ng-content select="[heroActions]" />
     </div>
+
+    @if (image?.desktopBlend) {
+      <div class="page-hero__image-desk hidden desk:block" aria-hidden="true">
+        <img
+          [src]="image!.src"
+          [alt]="image!.alt ?? ''"
+          [attr.width]="image!.width"
+          [attr.height]="image!.height"
+          fetchpriority="high"
+          class="page-hero__image-desk-img"
+        />
+      </div>
+    }
+
+    @if (image && !image.desktopBlend) {
+      <div class="page-hero__image-desk hidden desk:block" aria-hidden="true">
+        <img
+          [src]="image.src"
+          [alt]="image.alt ?? ''"
+          [attr.width]="image.width"
+          [attr.height]="image.height"
+          fetchpriority="high"
+          class="page-hero__image-desk-img"
+        />
+      </div>
+    }
   </div>
 </section>

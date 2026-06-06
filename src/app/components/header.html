@@ -10,21 +10,32 @@
     <!-- Desktop Nav -->
     <nav class="dv-nav" aria-label="Primary">
       @for (item of primaryNav; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="dv-nav-link--active"
-          [routerLinkActiveOptions]="item.match === 'exact' ? navExactOptions : navSubsetOptions"
-          class="dv-nav-link"
-        >
-          {{ item.label }}
-        </a>
+        @if (item.locked) {
+          <span
+            class="dv-nav-link dv-nav-link--locked"
+            aria-disabled="true"
+            title="Coming soon"
+          >
+            {{ item.label }}
+            <lucide-icon [img]="Lock" [size]="14" aria-hidden="true" />
+          </span>
+        } @else {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="dv-nav-link--active"
+            [routerLinkActiveOptions]="item.match === 'exact' ? navExactOptions : navSubsetOptions"
+            class="dv-nav-link"
+          >
+            {{ item.label }}
+          </a>
+        }
       }
     </nav>
 
     <!-- Right Actions -->
     <div class="dv-actions">
-      <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary">
-        Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
+      <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary dv-header-cta">
+        Let's talk <lucide-icon [img]="ArrowRight" [size]="14" />
       </a>
 
       <button 
@@ -52,18 +63,29 @@
 
     <div class="dv-mobile-menu dv-mobile-menu--visible">
       @for (item of primaryNav; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="dv-mobile-menu__link--active"
-          [routerLinkActiveOptions]="item.match === 'exact' ? navExactOptions : navSubsetOptions"
-          (click)="closeMobileMenu()"
-          class="dv-mobile-menu__link"
-        >{{ item.label }}</a>
+        @if (item.locked) {
+          <span
+            class="dv-mobile-menu__link dv-mobile-menu__link--locked"
+            aria-disabled="true"
+            title="Coming soon"
+          >
+            {{ item.label }}
+            <lucide-icon [img]="Lock" [size]="14" aria-hidden="true" />
+          </span>
+        } @else {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="dv-mobile-menu__link--active"
+            [routerLinkActiveOptions]="item.match === 'exact' ? navExactOptions : navSubsetOptions"
+            (click)="closeMobileMenu()"
+            class="dv-mobile-menu__link"
+          >{{ item.label }}</a>
+        }
       }
       
       <div class="dv-mobile-menu__cta">
-        <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary btn--sm w-full justify-center">
-          Contact us <lucide-icon [img]="ArrowRight" [size]="14" />
+        <a routerLink="/get-started" fragment="contact-form" (click)="closeMobileMenu()" class="btn-primary dv-header-cta w-full justify-center">
+          Let's talk <lucide-icon [img]="ArrowRight" [size]="14" />
         </a>
       </div>
     </div>

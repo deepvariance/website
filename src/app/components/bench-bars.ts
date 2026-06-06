@@ -46,7 +46,7 @@ export interface BenchOption {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="dv-bench-card">
+    <div class="dv-bench-bars">
 
       <!-- Hero -->
       <div class="dv-bench-hero">
@@ -149,6 +149,7 @@ export interface BenchOption {
     </div>
   `,
   styleUrl: './bench-bars.scss',
+  host: { class: 'dv-bench-bars-host' },
 })
 export class BenchBarsComponent implements OnInit, AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);

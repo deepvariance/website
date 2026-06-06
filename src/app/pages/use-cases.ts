@@ -44,11 +44,13 @@ import { SeoService } from '../services/seo.service';
           </div>
 
           <!-- Image column -->
-          <div class="relative desk:block hidden">
+          <div class="relative mt-6 desk:mt-0 max-h-[15rem] desk:max-h-none overflow-hidden">
             <img
               src="/use-cases-hero.webp"
               alt="Deep Variance use cases across industries"
-              class="w-full h-auto dv-blend-screen"
+              width="1536"
+              height="1024"
+              class="w-full h-auto max-h-[15rem] desk:max-h-none object-contain object-center desk:object-right dv-blend-screen"
             />
           </div>
         </div>
@@ -58,13 +60,11 @@ import { SeoService } from '../services/seo.service';
       <!-- 5-card bento -->
       <section class="relative page-section py-12 md:py-16 border-t border-white/5">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
-          @for (uc of useCases; track uc.id; let i = $index) {
+          @for (uc of useCases; track uc.id) {
             <a
               [routerLink]="['/use-cases', uc.id]"
               [attr.href]="'/use-cases/' + uc.id"
               class="group glass-card rounded-xl p-7 flex flex-col relative overflow-hidden isolate"
-              [class.lg:col-span-2]="i === 0"
-              [class.lg:row-span-1]="i === 0"
             >
               <div
                 aria-hidden="true"
@@ -80,12 +80,12 @@ import { SeoService } from '../services/seo.service';
                 <h3 class="font-display text-xl md:text-2xl font-semibold text-on-surface leading-tight mb-3">
                   {{ uc.bentoTitle }}
                 </h3>
-                <p class="text-sm text-on-surface-variant leading-relaxed mb-6 flex-1">
+                <p class="text-on-surface-variant leading-relaxed mb-6 flex-1">
                   {{ uc.bentoSubtitle }}
                 </p>
                 <div class="flex items-end justify-between mt-auto pt-4 border-t border-white/5">
                   <div>
-                    <p class="font-display text-3xl font-bold text-on-surface text-white mb-1">{{ uc.bentoMetric }}</p>
+                    <p class="font-display text-3xl font-bold text-white mb-1">{{ uc.bentoMetric }}</p>
                     <p class="label-caps">{{ uc.bentoMetricLabel }}</p>
                   </div>
                   <span class="dv-arrow">
@@ -103,14 +103,14 @@ import { SeoService } from '../services/seo.service';
       <section class="relative page-section py-16 md:py-24 overflow-x-clip">
         <app-glass-card variant="strong" rounded="2xl" extraClass="px-8 py-14 md:px-16 md:py-20 text-center relative z-0" [glow]="true">
           <h2 class="font-display font-bold tracking-tight text-on-surface text-3xl sm:text-5xl mb-5 max-w-3xl mx-auto leading-tight">
-            Recognise your <span class="text-white">infrastructure problem</span>?
+            Recognize your <span class="text-white">infrastructure problem</span>?
           </h2>
           <p class="text-on-surface-variant max-w-xl mx-auto mb-9 leading-relaxed">
             We scope every deployment to your hardware, data governance constraints, and team size.
             No generic pricing tiers, just what fits.
           </p>
           <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">
-            Talk to our team
+            Let's talk
           </app-cta-button>
         </app-glass-card>
       </section>

@@ -2,8 +2,7 @@
 
 // Shared benchmark chart surfaces (bench-bars + bench-all-models)
 
-.dv-bench-card,
-.dv-all-card {
+.dv-bench-card {
   background: var(--bg-elevated);
   border: none;
   box-shadow: $panel-inset;
@@ -13,6 +12,11 @@
   @media (min-width: 640px) {
     padding: 28px;
   }
+}
+
+.dv-bench-bars-host,
+.dv-all-models-host {
+  display: block;
 }
 
 // ── bench-bars ────────────────────────────────────────────────────────────────

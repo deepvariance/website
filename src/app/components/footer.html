@@ -7,7 +7,7 @@
           <app-wordmark [size]="28" />
         </a>
         <p class="dv-footer__tagline">
-          Runtime optimization layer for production AI workloads.
+          Get more from the GPU stack you already run.
         </p>
       </div>
 
@@ -16,7 +16,7 @@
         fragment="contact-form"
         class="dv-footer__cta btn-primary btn--sm"
       >
-        Contact us
+        Let's talk
       </a>
     </div>
 
@@ -27,7 +27,16 @@
           <ul class="dv-footer__links">
             @for (link of column.links; track link.path) {
               <li>
-                @if (link.external) {
+                @if (link.locked) {
+                  <span
+                    class="dv-footer__link dv-footer__link--locked"
+                    aria-disabled="true"
+                    title="Coming soon"
+                  >
+                    {{ link.label }}
+                    <lucide-icon [img]="Lock" [size]="13" aria-hidden="true" />
+                  </span>
+                } @else if (link.external) {
                   <a
                     [href]="link.path"
                     target="_blank"

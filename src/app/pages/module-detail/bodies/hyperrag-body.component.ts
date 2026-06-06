@@ -328,30 +328,31 @@ r = ctrl.query(
           </div>
         </div>
 
-        <!-- View toggle -->
-        <div class="flex items-center gap-2 justify-center mb-6">
-          <button
-            class="bench-view-pill"
-            [class.is-active]="benchView() === 'workload'"
-            (click)="benchView.set('workload')"
-          >By workload</button>
-          <button
-            class="bench-view-pill"
-            [class.is-active]="benchView() === 'all'"
-            (click)="benchView.set('all')"
-          >All 14 models</button>
-        </div>
-
         <div class="max-w-3xl mx-auto">
-          @if (benchView() === 'workload') {
-            <app-bench-bars
-              [modelOptions]="benchModelOptions"
-              [data]="benchData"
-              defaultModel="qwen7b"
-            />
-          } @else {
-            <app-bench-all-models [models]="allModelsData" />
-          }
+          <div class="dv-bench-card">
+            <div class="flex items-center gap-2 mb-6">
+              <button
+                class="bench-view-pill"
+                [class.is-active]="benchView() === 'workload'"
+                (click)="benchView.set('workload')"
+              >By workload</button>
+              <button
+                class="bench-view-pill"
+                [class.is-active]="benchView() === 'all'"
+                (click)="benchView.set('all')"
+              >All 14 models</button>
+            </div>
+
+            @if (benchView() === 'workload') {
+              <app-bench-bars
+                [modelOptions]="benchModelOptions"
+                [data]="benchData"
+                defaultModel="qwen7b"
+              />
+            } @else {
+              <app-bench-all-models [models]="allModelsData" />
+            }
+          </div>
 
           <p class="text-center label-caps text-outline mt-5 tracking-wide">
             @if (benchView() === 'workload') {
@@ -374,7 +375,7 @@ r = ctrl.query(
             HyperRAG is available now on PyPI. Drop it in front of your inference API and start seeing the difference immediately.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">Talk to us</app-cta-button>
+            <app-cta-button variant="primary" routerLink="/get-started" fragment="contact-form">Let's talk</app-cta-button>
             <app-cta-button variant="glass" href="https://pypi.org/project/dv-hyperrag/" [external]="true">View on PyPI</app-cta-button>
           </div>
         </app-glass-card>
