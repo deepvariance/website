@@ -93,6 +93,10 @@
   z-index: 0;
 }
 
+.page-hero > app-hero-fluid-shader {
+  z-index: 0;
+}
+
 .hero-section.hero-section--flow {
   isolation: isolate;
   background-image: none;

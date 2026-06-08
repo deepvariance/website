@@ -1,0 +1,54 @@
+@use '../../styles/tokens' as t;
+
+:host {
+  display: block;
+}
+
+// ── Technical accordion ───────────────────────────────────────────────────────
+
+.uc-accordion {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.031);
+}
+
+.uc-accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.125rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 150ms ease;
+
+  &::-webkit-details-marker { display: none; }
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.uc-accordion__chevron {
+  flex-shrink: 0;
+  transition: transform 200ms ease;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.uc-accordion[open] .uc-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.uc-accordion[open] .uc-accordion__summary {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.uc-accordion__body {
+  padding: 1.5rem;
+}

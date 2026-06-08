@@ -30,6 +30,13 @@ $form-error-text:         #fca5a5;
 $panel-fill:          rgba(255, 255, 255, 0.031);
 $panel-fill-hover:    rgba(255, 255, 255, 0.048);
 $panel-fill-strong:   rgba(255, 255, 255, 0.064);
+// Glassmorphism — black frosted tint laid over a per-card, blurred copy of the live
+// shader (see page-hero). ~80% transparent black reads as glass while the torch bleeds through.
+$panel-glass-fill:           rgba(0, 0, 0, 0.2);
+$panel-glass-fill-fallback:  rgba(20, 20, 24, 0.9);
+$panel-glass-border:         rgba(255, 255, 255, 0.16);
+$panel-glass-blur:           blur(20px) saturate(160%);
+$panel-glass-shadow:         0 8px 32px rgba(0, 0, 0, 0.4);
 $panel-inset:         inset 0 1px 0 rgba(255, 255, 255, 0.092);
 $panel-divider:       rgba(255, 255, 255, 0.106);
 

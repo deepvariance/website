@@ -68,7 +68,7 @@ import { SeoService } from '../services/seo.service';
             >
               <div
                 aria-hidden="true"
-                class="pointer-events-none absolute -bottom-24 -right-16 z-0 w-72 h-72 rounded-full bg-surface-dim blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                class="pointer-events-none absolute -bottom-16 -right-10 z-0 w-44 h-44 rounded-full bg-surface-dim blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               ></div>
               <div class="relative z-10 flex flex-col flex-1 min-h-0">
                 <div class="flex items-center gap-3 mb-6">

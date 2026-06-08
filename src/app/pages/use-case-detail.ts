@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ArrowLeft, ArrowRight, CheckCircle2, LucideAngularModule } from 'lucide-angular';
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, LucideAngularModule } from 'lucide-angular';
 import { map } from 'rxjs/operators';
 
 import { CtaButtonComponent } from '../components/cta-button';
@@ -26,7 +26,7 @@ const HERO_IMAGE_SIZE = { width: 1536, height: 1024 } as const;
     CtaButtonComponent,
   ],
   templateUrl: './use-case-detail.html',
-  styles: [`:host { display: block; }`],
+  styleUrls: ['./use-case-detail.scss'],
 })
 export class UseCaseDetailComponent {
   private readonly route = inject(ActivatedRoute);
@@ -35,6 +35,7 @@ export class UseCaseDetailComponent {
   readonly ArrowLeft = ArrowLeft;
   readonly ArrowRight = ArrowRight;
   readonly CheckCircle2 = CheckCircle2;
+  readonly ChevronDown = ChevronDown;
 
   private readonly slug = toSignal(
     this.route.paramMap.pipe(map((p) => p.get('slug') ?? '')),
@@ -71,6 +72,7 @@ export class UseCaseDetailComponent {
     return uc.kpis.map((k) => ({
       value: k.value,
       label: k.label,
+      qualifier: k.qualifier,
       highlight: k.highlight,
     }));
   }

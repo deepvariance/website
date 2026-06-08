@@ -10,6 +10,7 @@ import {
 export interface UseCaseKpi {
   value: string;
   label: string;
+  qualifier?: string;
   highlight?: boolean;
 }
 
@@ -49,36 +50,34 @@ export const USE_CASES: UseCaseDetail[] = [
     id: 'hpc-infrastructure',
     icon: Layers,
     label: 'HPC Infrastructure',
-    bentoTitle: 'Multi-week training runs at scale',
+    bentoTitle: 'Training and inference at scale',
     bentoSubtitle:
-      'Long-running GPU workloads waste energy and compute. DeepTuner and Optimemory optimize power, memory, and throughput without changing your code.',
+      'Long-running GPU workloads — from multi-week training jobs to high-throughput LLM inference — waste energy and compute. DeepTuner and Optimemory optimize power, memory, and throughput without changing your code.',
     bentoMetric: '−50%',
     bentoMetricLabel: 'Energy per token',
-    detailHeading: 'Cut energy costs and boost throughput for long-running training',
+    detailHeading: 'Cut energy costs and boost throughput for long-running jobs',
     heroLead:
-      'HPC clusters running continuous AI training face a compounding problem: small inefficiencies in how GPUs run multiply across weeks into significant energy waste and slower results. Traditional profiling tools add their own overhead and require extensive manual tuning.',
+      'HPC clusters running large-scale training and LLM inference face the same compounding problem: small GPU inefficiencies multiply across weeks of training or millions of inference calls into significant energy waste and slower results. Serving large language models amplifies this further — each token generated draws power across hundreds of attention heads, and most clusters run those kernels at a fraction of their theoretical efficiency.',
     bodyParagraphs: [
-      '<strong class="text-on-surface">DeepTuner</strong> automatically identifies the optimal GPU configuration and power settings for your workload before it runs. <strong class="text-on-surface">Optimemory</strong> prevents memory fragmentation that causes multi-week jobs to slow down or fail.',
+      '<strong class="text-on-surface">DeepTuner</strong> automatically identifies the optimal GPU configuration for your workload — whether it\'s a multi-week fine-tune or a latency-sensitive inference endpoint — before it runs. <strong class="text-on-surface">Optimemory</strong> recovers VRAM headroom so you can serve larger LLMs on existing hardware or pack more concurrent inference requests per node without OOM failures.',
     ],
     productLinks: [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
       { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
     ],
     kpis: [
-      { value: '−50%', label: 'Energy per token on MHA', highlight: true },
-      { value: '2x', label: 'Throughput on attention kernels', highlight: true },
-      { value: '0', label: 'Live profiling required' },
-      { value: '1x', label: 'Calibration per GPU generation' },
+      { value: '50%', label: 'Less energy per token', qualifier: 'Up to', highlight: true },
+      { value: '1.5x', label: 'Throughput on LLMs', qualifier: 'Up to', highlight: true },
     ],
     addresses: [
-      'Energy costs compounding over multi-week training runs',
-      'Manual GPU tuning that breaks on every hardware update',
-      'Memory issues that slow down or crash long-running jobs',
-      'Performance drops when moving to new GPU generations',
+      'Energy costs compounding over multi-week training runs and high-throughput LLM inference',
+      'VRAM limits forcing smaller models or fewer concurrent inference requests per node',
+      'Manual GPU tuning that breaks on every hardware or model architecture update',
+      'Memory fragmentation that slows or crashes long-running jobs',
     ],
     ctaLabel: 'Talk to us about HPC pilots',
     heroImage: '/use-cases-hpc.webp',
-    sectionHeading: 'Cut waste on multi-week training runs',
+    sectionHeading: 'Cut waste across training and inference workloads',
     technical: {
       title: 'Why manual profiling fails at scale',
       paragraphs: [
@@ -101,7 +100,7 @@ export const USE_CASES: UseCaseDetail[] = [
     seo: {
       title: 'HPC Infrastructure Use Case | Deep Variance',
       description:
-        'Cut energy costs by 50% and double throughput for multi-week GPU training runs with DeepTuner and Optimemory.',
+        'Cut energy costs by up to 50% and boost throughput by up to 1.5x for multi-week GPU training runs with DeepTuner and Optimemory.',
     },
   },
   {
@@ -117,7 +116,7 @@ export const USE_CASES: UseCaseDetail[] = [
     heroLead:
       'GPU providers face a utilization challenge: customers allocate 2x the memory they actually need to prevent crashes, then run at 40-50% capacity. Out-of-memory errors drive support costs and customer churn.',
     bodyParagraphs: [
-      '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of each GPU, letting you fit larger models or more tenants on the same hardware. <strong class="text-on-surface">HyperRAG</strong> accelerates RAG inference workloads by up to 6x. <strong class="text-on-surface">DeepTuner</strong> reduces idle energy costs when utilization is low.',
+      '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of each GPU, letting you fit larger models or more tenants on the same hardware. <strong class="text-on-surface">HyperRAG</strong> accelerates RAG-based inference by caching KV blocks across requests. <strong class="text-on-surface">DeepTuner</strong> reduces idle energy costs when utilization is low.',
     ],
     productLinks: [
       { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
@@ -125,10 +124,8 @@ export const USE_CASES: UseCaseDetail[] = [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '2.5x', label: 'Effective model scale per GPU', highlight: true },
-      { value: '−62%', label: 'OOM errors in benchmarks', highlight: true },
-      { value: '+38%', label: 'Fleet utilization gain' },
-      { value: 'Zero', label: 'Tenant workflow changes' },
+      { value: '50%', label: 'Fewer OOM errors', qualifier: 'Up to', highlight: true },
+      { value: '38%', label: 'Fleet utilization gain', qualifier: 'Up to' },
     ],
     addresses: [
       'Customers over-provisioning to avoid out-of-memory crashes',
@@ -185,10 +182,7 @@ export const USE_CASES: UseCaseDetail[] = [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '100%', label: 'On-premise data residency', highlight: true },
-      { value: '0', label: 'Rows sent to external APIs', highlight: true },
-      { value: '−50%', label: 'Energy per training run' },
-      { value: 'SOC 2', label: 'Type II deployment option' },
+      { value: '50%', label: 'Less energy per run', qualifier: 'Up to' },
     ],
     addresses: [
       'Data compliance requirements preventing use of cloud ML services',
@@ -238,7 +232,7 @@ export const USE_CASES: UseCaseDetail[] = [
       'Academic research groups face a fundamental constraint: the models needed for breakthrough discoveries are too large for the GPUs they can afford. Memory fragmentation makes this worse, causing out-of-memory errors on models that should technically fit.',
     bodyParagraphs: [
       '<strong class="text-on-surface">Optimemory</strong> extends the effective memory of your GPUs, letting you train 2x larger models on the same hardware. In genomics research, this enabled moving from 3B to 6B parameter models on a four-GPU setup. <strong class="text-on-surface">HyperRAG</strong> accelerates literature search and RAG queries across research databases.',
-      '<strong class="text-on-surface">DeepTuner</strong> optimizes GPU configurations for edge deployment of clinical models, reducing energy usage for battery-powered medical devices.',
+      '<strong class="text-on-surface">DeepTuner</strong> optimizes GPU configurations across your cluster, reducing energy per experiment and cutting iteration time.',
     ],
     productLinks: [
       { route: '/platform', fragment: 'optimemory', label: 'Optimemory' },
@@ -246,10 +240,9 @@ export const USE_CASES: UseCaseDetail[] = [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '3B → 6B', label: 'Model scale on identical hardware', highlight: true },
-      { value: '4x', label: 'More experiments per GPU-week', highlight: true },
-      { value: '< 1 hr', label: 'Phenotype model leaderboard run' },
-      { value: '−40%', label: 'Wall-clock vs grad-checkpointing' },
+      { value: '3B → 6B', label: 'Model scale, same GPU', highlight: true },
+      { value: '2x', label: 'More experiments per week', qualifier: 'Up to', highlight: true },
+      { value: '25%', label: 'Less wall-clock time', qualifier: 'Up to' },
     ],
     addresses: [
       'Budget constraints limiting model size and research scope',
@@ -291,8 +284,8 @@ export const USE_CASES: UseCaseDetail[] = [
     bentoTitle: 'Real-time AI quality control at the edge',
     bentoSubtitle:
       'Vision models for quality inspection must run on factory-floor hardware with no cloud latency and no data leaving the facility.',
-    bentoMetric: '< 2 ms',
-    bentoMetricLabel: 'Inference latency',
+    bentoMetric: '1.5x',
+    bentoMetricLabel: 'Faster inference',
     detailHeading: 'Deploy larger vision models on edge hardware without cloud dependency',
     heroLead:
       'Manufacturing operations need AI inference to happen in real-time on the factory floor, not in the cloud. Edge hardware has limited GPU capacity, and data sovereignty requirements prevent sending production data externally.',
@@ -305,10 +298,8 @@ export const USE_CASES: UseCaseDetail[] = [
       { route: '/platform', fragment: 'deeptuner', label: 'DeepTuner' },
     ],
     kpis: [
-      { value: '50%', label: 'Less VRAM for edge vision models', highlight: true },
-      { value: '< 2 ms', label: 'FP8 inference on embedded GPU', highlight: true },
-      { value: '0', label: 'Production records sent externally' },
-      { value: '3', label: 'Edge GPU families supported' },
+      { value: '50%', label: 'Less VRAM', qualifier: 'Up to', highlight: true },
+      { value: '1.5x', label: 'Faster inference', qualifier: 'Up to', highlight: true },
     ],
     addresses: [
       'Edge hardware constraints limiting model accuracy and capability',
@@ -322,14 +313,14 @@ export const USE_CASES: UseCaseDetail[] = [
     technical: {
       title: 'The edge AI constraint',
       paragraphs: [
-        'Vision models for quality inspection face requirements that cloud-based inference cannot meet: sub-2ms latency for real-time production lines, zero network dependency for facility uptime, and complete data sovereignty for IP protection.',
-        'Edge GPUs like the NVIDIA Jetson or AMD Ryzen AI have memory and power budgets that force accuracy tradeoffs. A ResNet-101 that achieves 98% classification accuracy in the lab will OOM on the factory floor GPU, so teams deploy smaller models that hit 94% and accept the defect rate.',
+        'Vision models for quality inspection face requirements that cloud-based inference cannot meet: real-time latency for production lines, zero network dependency for facility uptime, and complete data sovereignty for IP protection.',
+        'NVIDIA edge GPUs have memory and power budgets that force accuracy tradeoffs. A ResNet-101 that achieves 98% classification accuracy in the lab will OOM on the factory floor GPU, so teams deploy smaller models that hit 94% and accept the defect rate.',
       ],
       highlight:
         'Optimemory extends the effective memory ceiling on constrained edge nodes. Deploy larger, more accurate vision architectures without upgrading hardware. DeepTuner minimizes energy per inference for battery-powered or passively-cooled installations.',
       asideTitle: 'Edge deployment',
       asideItems: [
-        'Runs on NVIDIA Jetson, AMD Ryzen AI, Intel Arc',
+        'Runs on NVIDIA Jetson and NVIDIA edge GPUs',
         'Air-gapped, no internet required for inference',
         'Compatible with TensorRT, ONNX Runtime',
         'Model training remains on your servers',
@@ -341,7 +332,7 @@ export const USE_CASES: UseCaseDetail[] = [
     seo: {
       title: 'Manufacturing Use Case | Deep Variance',
       description:
-        'Real-time vision AI on factory-floor GPUs. Optimemory and DeepTuner for edge deployment with sub-2ms latency and full data sovereignty.',
+        'Real-time vision AI on factory-floor GPUs. Optimemory and DeepTuner for edge deployment with full data sovereignty.',
     },
   },
 ];

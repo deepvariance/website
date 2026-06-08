@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { LucideAngularModule, type LucideIconData } from 'lucide-angular';
 import { HeroFluidShaderComponent } from './hero-fluid-shader';
@@ -25,7 +24,7 @@ export interface PageHeroImage {
 @Component({
   selector: 'app-page-hero',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, HeroFluidShaderComponent, StatusPillComponent],
+  imports: [LucideAngularModule, HeroFluidShaderComponent, StatusPillComponent],
   templateUrl: './page-hero.html',
   styleUrl: './page-hero.scss',
 })

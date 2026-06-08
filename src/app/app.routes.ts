@@ -3,7 +3,7 @@ import { HomeComponent } from './pages/home';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  
+
   // Platform index
   { path: 'platform', loadComponent: () => import('./pages/platform').then(m => m.PlatformPageComponent) },
 

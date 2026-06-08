@@ -1,28 +1,24 @@
 @if (useCase(); as uc) {
-  <div class="relative overflow-x-hidden">
-    <app-page-hero
-      [icon]="uc.icon"
-      [iconLabel]="uc.label"
-      [statusLabel]="uc.label"
-      [statusVariant]="'live'"
-      [image]="heroImage(uc)"
-      [kpis]="heroKpis(uc)"
-    >
-      <h1 heroTitle>{{ uc.detailHeading }}</h1>
-      <p heroSubtitle>{{ uc.heroLead }}</p>
-    </app-page-hero>
+  <app-page-hero
+    [statusLabel]="uc.label"
+    [statusVariant]="'live'"
+    [image]="heroImage(uc)"
+    [kpis]="heroKpis(uc)"
+  >
+    <h1 heroTitle>{{ uc.detailHeading }}</h1>
+    <p heroSubtitle>{{ uc.heroLead }}</p>
+  </app-page-hero>
 
+  <div class="relative overflow-x-clip">
     <section class="page-section relative py-16 md:py-24 border-t border-white/5">
-      <a routerLink="/use-cases" class="inline-flex items-center gap-1.5 text-sm text-on-surface-variant hover:text-white transition-colors mb-8">
+      <a routerLink="/use-cases" class="inline-flex items-center gap-1.5 text-sm text-on-surface-variant hover:text-white transition-colors mb-10">
         <lucide-icon [img]="ArrowLeft" [size]="14" />
         All use cases
       </a>
 
-      <div class="grid grid-cols-1 desk:grid-cols-2 gap-12">
+      <!-- Body: copy left, addresses right -->
+      <div class="grid grid-cols-1 desk:grid-cols-2 gap-12 mb-12">
         <div>
-          <h2 class="font-display font-bold tracking-tight text-on-surface text-2xl md:text-3xl mb-6 leading-tight">
-            {{ uc.sectionHeading }}
-          </h2>
           @for (para of uc.bodyParagraphs; track $index) {
             <p class="text-on-surface-variant leading-relaxed mb-5" [innerHTML]="para"></p>
           }
@@ -40,26 +36,32 @@
             }
           </div>
 
-          <app-glass-card extraClass="p-6 mb-8">
-            <p class="label-caps mb-4">What this addresses</p>
-            <ul class="list-check space-y-3">
-              @for (item of uc.addresses; track item) {
-                <li>
-                  <lucide-icon [img]="CheckCircle2" [size]="18" class="text-neon" />
-                  <span class="text-on-surface-variant leading-relaxed">{{ item }}</span>
-                </li>
-              }
-            </ul>
-          </app-glass-card>
-
           <app-cta-button variant="ghost" routerLink="/get-started" fragment="contact-form" [fullWidth]="true">
             {{ uc.ctaLabel }}
           </app-cta-button>
         </div>
 
-        <div class="flex flex-col gap-6">
-          <app-glass-card extraClass="p-6">
-            <p class="label-caps mb-4">{{ uc.technical.title }}</p>
+        <div>
+          <p class="label-caps mb-5">What this addresses</p>
+          <ul class="space-y-4">
+            @for (item of uc.addresses; track item) {
+              <li class="flex items-start gap-3">
+                <lucide-icon [img]="CheckCircle2" [size]="16" class="text-neon mt-0.5 shrink-0" />
+                <span class="text-on-surface-variant leading-relaxed">{{ item }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Technical accordion -->
+      <details class="uc-accordion">
+        <summary class="uc-accordion__summary">
+          <span>{{ uc.technical.title }}</span>
+          <lucide-icon [img]="ChevronDown" [size]="16" class="uc-accordion__chevron" />
+        </summary>
+        <div class="uc-accordion__body">
+          <div class="grid grid-cols-1 desk:grid-cols-2 gap-8">
             <div class="space-y-4 text-on-surface-variant leading-relaxed">
               @for (p of uc.technical.paragraphs; track p) {
                 <p>{{ p }}</p>
@@ -68,21 +70,20 @@
                 <p class="text-on-surface font-medium">{{ uc.technical.highlight }}</p>
               }
             </div>
-          </app-glass-card>
-
-          <app-glass-card extraClass="p-6">
-            <p class="label-caps mb-4">{{ uc.technical.asideTitle }}</p>
-            <ul class="space-y-3 text-on-surface-variant leading-relaxed">
-              @for (item of uc.technical.asideItems; track item) {
-                <li class="flex items-start gap-2">
-                  <span class="text-neon mt-0.5">•</span>
-                  <span>{{ item }}</span>
-                </li>
-              }
-            </ul>
-          </app-glass-card>
+            <div>
+              <p class="label-caps mb-4">{{ uc.technical.asideTitle }}</p>
+              <ul class="space-y-3 text-on-surface-variant leading-relaxed">
+                @for (item of uc.technical.asideItems; track item) {
+                  <li class="flex items-start gap-2">
+                    <span class="text-neon mt-0.5">•</span>
+                    <span>{{ item }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+      </details>
     </section>
 
     <section class="page-section relative py-16 md:py-24">

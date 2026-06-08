@@ -1,5 +1,5 @@
 @if (config(); as cfg) {
-  <div class="relative overflow-x-hidden pt-20 md:pt-24">
+  <div class="relative pt-20 md:pt-24">
     <app-section-rail [sections]="cfg.rail" [ariaLabel]="railAriaLabel()" />
 
     <app-page-hero
@@ -50,7 +50,9 @@
         }
       </ng-container>
     </app-page-hero>
+  </div>
 
+  <div class="relative overflow-x-clip">
     @if (cfg.frameworkTools?.length) {
       <section class="border-b border-border logo-strip">
         <div class="logo-strip__inner">

@@ -41,7 +41,7 @@ export const MODULE_PAGE_CONFIG: Record<ModuleDef['slug'], ModulePageConfig> = {
       desktopBlend: true,
       mobileBlendOpacity: 0.85,
     },
-    heroKpis: [{ qualifier: 'up to', value: '65%', label: 'VRAM recovered', highlight: true }],
+    heroKpis: [{ qualifier: 'Up to', value: '65%', label: 'VRAM recovered', highlight: true }],
     rail: [
       { id: 'hero', label: 'Overview' },
       { id: 'problem', label: 'The cost' },
@@ -78,8 +78,8 @@ export const MODULE_PAGE_CONFIG: Record<ModuleDef['slug'], ModulePageConfig> = {
       mobileBlendOpacity: 0.9,
     },
     heroKpis: [
-      { value: '94.2%', label: 'Cache hit rate', highlight: true },
-      { qualifier: 'up to', value: '6x faster', label: 'first token on cache hits', highlight: true },
+      { qualifier: 'Up to', value: '94.2%', label: 'Cache hit rate', highlight: true },
+      { qualifier: 'Up to', value: '6x', label: 'Faster first token on cache hits', highlight: true },
     ],
     rail: [
       { id: 'hero', label: 'Overview' },
@@ -113,8 +113,8 @@ export const MODULE_PAGE_CONFIG: Record<ModuleDef['slug'], ModulePageConfig> = {
       mobileBlendOpacity: 0.85,
     },
     heroKpis: [
-      { qualifier: 'Energy saved', value: 'Up to 50%', label: '', highlight: true },
-      { qualifier: 'Throughput', value: 'Up to 2x', label: '', highlight: true },
+      { qualifier: 'Up to', value: '50%', label: 'Energy saved', highlight: true },
+      { qualifier: 'Up to', value: '1.5x', label: 'Throughput gain', highlight: true },
     ],
     rail: [
       { id: 'hero', label: 'Overview' },

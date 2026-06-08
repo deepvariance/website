@@ -44,11 +44,13 @@
         <div class="page-hero__kpis" [class.page-hero__kpis--grid]="kpis.length > 1">
           @for (kpi of kpis; track kpi.label) {
             <div class="page-hero__kpi">
-              @if (kpi.qualifier) {
-                <span class="page-hero__kpi-qualifier">{{ kpi.qualifier }}</span>
-              }
-              <span class="page-hero__kpi-value" [class.text-white]="kpi.highlight !== false">{{ kpi.value }}</span>
-              <span class="page-hero__kpi-label">{{ kpi.label }}</span>
+              <div class="page-hero__kpi-content">
+                @if (kpi.qualifier) {
+                  <span class="page-hero__kpi-qualifier">{{ kpi.qualifier }}</span>
+                }
+                <span class="page-hero__kpi-value">{{ kpi.value }}</span>
+                <span class="page-hero__kpi-label">{{ kpi.label }}</span>
+              </div>
             </div>
           }
         </div>

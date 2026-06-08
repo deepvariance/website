@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnDestroy,
   PLATFORM_ID,
   ViewChild,
@@ -16,6 +17,9 @@ import {
   styleUrl: './hero-fluid-shader.scss',
 })
 export class HeroFluidShaderComponent implements AfterViewInit, OnDestroy {
+  /** Required when copying frames for CSS glass blur over the canvas */
+  @Input() preserveDrawingBuffer = false;
+
   @ViewChild('canvas', { static: true })
   private canvasRef!: ElementRef<HTMLCanvasElement>;
 
@@ -56,6 +60,10 @@ export class HeroFluidShaderComponent implements AfterViewInit, OnDestroy {
   private readonly boundPointerMove = (e: PointerEvent) => this.onPointerMove(e);
   private readonly boundPointerLeave = () => this.onPointerLeave();
 
+  getCanvas(): HTMLCanvasElement {
+    return this.canvasRef.nativeElement;
+  }
+
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;
@@ -71,7 +79,7 @@ export class HeroFluidShaderComponent implements AfterViewInit, OnDestroy {
       depth: false,
       stencil: false,
       premultipliedAlpha: true,
-      preserveDrawingBuffer: false,
+      preserveDrawingBuffer: this.preserveDrawingBuffer,
     });
     if (!gl) {
       return;

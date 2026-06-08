@@ -58,6 +58,26 @@ a.glass-card:hover,
   @include borderless-panel($panel-fill-strong, $radius-md);
 }
 
+// Frosted glass — W3Schools: translucent fill + backdrop-filter + border + depth shadow
+@mixin panel-glass($radius: $radius-lg) {
+  border: 1px solid $panel-glass-border;
+  border-radius: $radius;
+  box-shadow: $panel-glass-shadow, $panel-inset;
+  background-color: $panel-glass-fill;
+  backdrop-filter: $panel-glass-blur;
+  -webkit-backdrop-filter: $panel-glass-blur;
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background-color: $panel-glass-fill-fallback;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+.panel-glass {
+  @include panel-glass;
+}
+
 // Product link pills on use-case pages
 .panel-pill {
   @include borderless-panel($panel-fill, $radius-full);
